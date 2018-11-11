@@ -25,38 +25,13 @@
             --font-family: PingFangSC-Regular;
         }
 
-        .button {
-            font-size: var(--font-size);
-            line-height: var(--button-height);
-            color: var(--color-2);
-            background: var(--color-white);
-            border: var(--button-border);
-            padding: 0 1em;
-            border-radius: 6px;
-            outline:none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .button:hover{
-            border: var(--button-border-active);
-            color: var(--color-3)
-        }
-        .button:focus{
-            border: var(--button-border-active);
-            color: var(--color-3)
-        }
+
     </style>
 </head>
 <body>
 <div id="app">
     <w-button></w-button>
 </div>
-<script src="./node_modules/vue/dist/vue.min.js"></script>
-<script src="./wheel/button.js"></script>
-<script>
-    new Vue({
-        el: "#app",
-    })
-</script>
+<script src="src/app.js"></script>
 </body>
 </html>
