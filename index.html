@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wheel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-white: #ffffff;
+            --color-1: #fbfbfb;
+            --color-2: #90a4ae;
+            --color-3: #f7b633;
+            --button-height: 32px;
+            --font-size: 14px;
+            --button-border: 1px solid var(--color-2);
+            --button-border-active: 1px solid var(--color-3);
+            --font-family: PingFangSC-Regular;
+        }
+
+        .button {
+            font-size: var(--font-size);
+            line-height: var(--button-height);
+            color: var(--color-2);
+            background: var(--color-white);
+            border: var(--button-border);
+            padding: 0 1em;
+            border-radius: 6px;
+            outline:none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .button:hover{
+            border: var(--button-border-active);
+            color: var(--color-3)
+        }
+        .button:focus{
+            border: var(--button-border-active);
+            color: var(--color-3)
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <w-button></w-button>
+</div>
+<script src="./node_modules/vue/dist/vue.min.js"></script>
+<script src="./wheel/button.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+    })
+</script>
+</body>
+</html>
