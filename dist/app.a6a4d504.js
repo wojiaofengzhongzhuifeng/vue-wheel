@@ -11337,9 +11337,25 @@ exports.default = void 0;
 //
 //
 //
-//
 var _default = {
-  props: ["icon", "iconPosition"]
+  props: {
+    icon: {
+      type: String
+    },
+    iconPosition: {
+      type: String,
+      default: "left",
+      validator: function validator(value) {
+        if (['right', 'left'].indexOf(value) === -1) {
+          // 输错了
+          value = value === "" ? "空字符串" : value;
+          console.warn("\u8F93\u5165\u7684\u5B57\u7B26\u4E32\u6709\u8BEF, \u53EA\u80FD\u5728 left \u548C right \u9009\u4E00\u4E2A, \u4F60\u8F93\u7684\u662F".concat(value));
+        }
+
+        return true;
+      }
+    }
+  }
 };
 exports.default = _default;
         var $7dbf6d = exports.default || module.exports;
@@ -11364,7 +11380,7 @@ exports.default = _default;
               "svg",
               {
                 staticClass: "icon",
-                class: { right: _vm.iconPosition === "left" },
+                class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj),
                 attrs: { "aria-hidden": "true" }
               },
               [_c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } })]
@@ -11376,6 +11392,7 @@ exports.default = _default;
       2
     )
   ])
+  var _obj
 }
 var staticRenderFns = []
 render._withStripped = true
