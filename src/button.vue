@@ -2,19 +2,17 @@
 <template>
     <div>
         <button class="button">
-            <div>
-                <slot></slot>
-            </div>
-            <svg class="icon" aria-hidden="true" v-show="1">
+            <svg class="icon" aria-hidden="true" v-if="icon" :class="{right: iconPosition === 'left'}">
                 <use :xlink:href="`#icon-${icon}`"></use>
             </svg>
+            <slot></slot>
         </button>
     </div>
 </template>
 
 <script>
     export default {
-        props: ["icon", "iconPosition"],
+        props: ["icon","iconPosition"],
     }
 </script>
 
@@ -41,6 +39,9 @@
         }
         > svg{
             height: var(--button-height)
+        }
+        > .right{
+            order: 1
         }
     }
 

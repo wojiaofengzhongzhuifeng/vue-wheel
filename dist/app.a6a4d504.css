@@ -22,3 +22,6 @@
 .button > svg {
   height: var(--button-height);
 }
+.button > .right {
+  order: 1;
+}

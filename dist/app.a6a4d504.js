@@ -11338,8 +11338,6 @@ exports.default = void 0;
 //
 //
 //
-//
-//
 var _default = {
   props: ["icon", "iconPosition"]
 };
@@ -11357,21 +11355,26 @@ exports.default = _default;
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("button", { staticClass: "button" }, [
-      _c("div", [_vm._t("default")], 2),
-      _vm._v(" "),
-      _c(
-        "svg",
-        {
-          directives: [
-            { name: "show", rawName: "v-show", value: 1, expression: "1" }
-          ],
-          staticClass: "icon",
-          attrs: { "aria-hidden": "true" }
-        },
-        [_c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } })]
-      )
-    ])
+    _c(
+      "button",
+      { staticClass: "button" },
+      [
+        _vm.icon
+          ? _c(
+              "svg",
+              {
+                staticClass: "icon",
+                class: { right: _vm.iconPosition === "left" },
+                attrs: { "aria-hidden": "true" }
+              },
+              [_c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } })]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm._t("default")
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = []
@@ -11449,7 +11452,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6752" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8459" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
