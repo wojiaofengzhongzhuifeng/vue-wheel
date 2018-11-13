@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cb0d0d7c-f60a-45fa-893e-fcdf37a84776" name="Default Changelist" comment="功能: 添加icon组件">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.a6a4d504.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.a6a4d504.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.a6a4d504.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.a6a4d504.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.a6a4d504.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.a6a4d504.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/button.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/button.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/icon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/icon.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -91,20 +91,20 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="203" />
+          <entry key="html" value="242" />
           <entry key="js" value="14" />
           <entry key="md" value="37" />
           <entry key="txt" value="63" />
-          <entry key="vue" value="955" />
+          <entry key="vue" value="1329" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="203" />
+          <entry key="HTML" value="242" />
           <entry key="JavaScript" value="14" />
           <entry key="Markdown" value="37" />
           <entry key="PLAIN_TEXT" value="63" />
-          <entry key="Vue.js" value="955" />
+          <entry key="Vue.js" value="1329" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -130,8 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+            <state relative-caret-position="388">
+              <caret line="36" column="7" lean-forward="true" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -139,8 +139,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            <state relative-caret-position="276">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#11#32#0" expanded="true" />
               </folding>
@@ -151,8 +151,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/button.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="483">
+              <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -160,13 +160,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/icon.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+            <state relative-caret-position="253">
+              <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>icon</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -180,8 +185,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/src/app.js" />
-        <option value="$PROJECT_DIR$/src/icon.vue" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/icon.vue" />
         <option value="$PROJECT_DIR$/src/button.vue" />
       </list>
     </option>
@@ -237,7 +242,7 @@
     <property name="SearchEverywhereHistoryKey" value="setting&#9;ACTION&#9;WelcomeScreen.Settings&#10;set&#9;ACTION&#9;WelcomeScreen.Settings&#10;sett&#9;ACTION&#9;WelcomeScreen.Settings&#10;key&#9;ACTION&#9;ChangeKeymap&#10;keymap&#9;ACTION&#9;ChangeKeymap&#10;vcs&#9;ACTION&#9;Vcs.QuickListPopupAction" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542120166739" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542123210641" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -305,7 +310,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30600000" />
+    <option name="totallyTimeSpent" value="33714000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -320,7 +325,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -439,17 +444,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        <state relative-caret-position="276">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#11#32#0" expanded="true" />
           </folding>
@@ -458,15 +456,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/icon.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        <state relative-caret-position="253">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="36" column="7" lean-forward="true" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/button.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        <state relative-caret-position="483">
+          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
         </state>
       </provider>
     </entry>

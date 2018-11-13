@@ -1,7 +1,8 @@
 <template>
     <div>
         <button class="button">
-            <w-icon :icon-name="iconName"  class="icon" :class="{[iconPosition]: 1}" v-if="iconName"></w-icon>
+            <w-icon :icon-name="iconName"  class="icon" :class="{[iconPosition]: 1}" v-if="iconName && !loading"></w-icon>
+            <w-icon icon-name="loading" class="loading" v-if="loading"></w-icon>
             <div class="slot">
                 <slot></slot>
             </div>
@@ -14,6 +15,10 @@
         props: {
             iconName: {
                 type: String,
+            },
+            loading: {
+                type: Boolean,
+                default: false,
             },
             iconPosition: {
                 type: String,
@@ -28,11 +33,22 @@
 
                 }
             }
+        },
+        methods:{
+
         }
     }
 </script>
 
 <style lang="scss">
+    @keyframes loadingCircle {
+        from{
+            transform: rotate(0);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+    }
     .button {
         display: flex;
         font-size: var(--font-size);
@@ -60,6 +76,9 @@
             order: 1
         }
         > .left {
+        }
+        > .loading{
+            animation: loadingCircle 1s infinite linear;
         }
     }
 

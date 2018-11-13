@@ -11337,10 +11337,15 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   props: {
     iconName: {
       type: String
+    },
+    loading: {
+      type: Boolean,
+      default: false
     },
     iconPosition: {
       type: String,
@@ -11355,7 +11360,8 @@ var _default = {
         return true;
       }
     }
-  }
+  },
+  methods: {}
 };
 exports.default = _default;
         var $7dbf6d = exports.default || module.exports;
@@ -11375,11 +11381,18 @@ exports.default = _default;
       "button",
       { staticClass: "button" },
       [
-        _vm.iconName
+        _vm.iconName && !_vm.loading
           ? _c("w-icon", {
               staticClass: "icon",
               class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj),
               attrs: { "icon-name": _vm.iconName }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.loading
+          ? _c("w-icon", {
+              staticClass: "loading",
+              attrs: { "icon-name": "loading" }
             })
           : _vm._e(),
         _vm._v(" "),

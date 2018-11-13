@@ -1,3 +1,11 @@
+@keyframes loadingCircle {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .button {
   display: flex;
   font-size: var(--font-size);
@@ -24,6 +32,9 @@
 }
 .button > .right {
   order: 1;
+}
+.button > .loading {
+  animation: loadingCircle 1s infinite linear;
 }.w-icon {
   width: 1em;
   height: 1em;
