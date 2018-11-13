@@ -11339,7 +11339,7 @@ exports.default = void 0;
 //
 var _default = {
   props: {
-    icon: {
+    iconName: {
       type: String
     },
     iconPosition: {
@@ -11375,21 +11375,17 @@ exports.default = _default;
       "button",
       { staticClass: "button" },
       [
-        _vm.icon
-          ? _c(
-              "svg",
-              {
-                staticClass: "icon",
-                class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj),
-                attrs: { "aria-hidden": "true" }
-              },
-              [_c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } })]
-            )
+        _vm.iconName
+          ? _c("w-icon", {
+              staticClass: "icon",
+              class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj),
+              attrs: { "icon-name": _vm.iconName }
+            })
           : _vm._e(),
         _vm._v(" "),
-        _vm._t("default")
+        _c("div", { staticClass: "slot" }, [_vm._t("default")], 2)
       ],
-      2
+      1
     )
   ])
   var _obj
@@ -11442,7 +11438,7 @@ exports.default = void 0;
 //
 var _default = {
   props: {
-    icon: {
+    iconName: {
       type: String
     }
   }
@@ -11460,9 +11456,11 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("svg", { staticClass: "icon", attrs: { "aria-hidden": "true" } }, [
-    _c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } })
-  ])
+  return _c(
+    "svg",
+    { staticClass: "w-icon", attrs: { "aria-hidden": "true" } },
+    [_c("use", { attrs: { "xlink:href": "#icon-" + _vm.iconName } })]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

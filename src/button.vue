@@ -1,10 +1,10 @@
 <template>
     <div>
         <button class="button">
-            <svg class="icon" aria-hidden="true" v-if="icon" :class="{[iconPosition]: 1}">
-                <use :xlink:href="`#icon-${icon}`"></use>
-            </svg>
-            <slot></slot>
+            <w-icon :icon-name="iconName"  class="icon" :class="{[iconPosition]: 1}" v-if="iconName"></w-icon>
+            <div class="slot">
+                <slot></slot>
+            </div>
         </button>
     </div>
 </template>
@@ -12,7 +12,7 @@
 <script>
     export default {
         props: {
-            icon: {
+            iconName: {
                 type: String,
             },
             iconPosition: {

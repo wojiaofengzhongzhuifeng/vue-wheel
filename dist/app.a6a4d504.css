@@ -24,4 +24,11 @@
 }
 .button > .right {
   order: 1;
+}.w-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  color: var(--color-2);
 }
