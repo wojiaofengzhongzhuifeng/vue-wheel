@@ -11379,7 +11379,14 @@ exports.default = _default;
   return _c("div", [
     _c(
       "button",
-      { staticClass: "button" },
+      {
+        staticClass: "button",
+        on: {
+          click: function($event) {
+            _vm.$emit("click")
+          }
+        }
+      },
       [
         _vm.iconName && !_vm.loading
           ? _c("w-icon", {
@@ -11527,7 +11534,10 @@ _vue.default.component("w-button", _button.default);
 _vue.default.component("w-icon", _icon.default);
 
 new _vue.default({
-  el: "#app"
+  el: "#app",
+  data: {
+    loading1: false
+  }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon":"src/icon.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -11556,7 +11566,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9446" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3047" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
