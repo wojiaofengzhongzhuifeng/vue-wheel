@@ -2,7 +2,7 @@
     <div>
         <button class="button">
             <w-icon :icon-name="iconName"  class="icon" :class="{[iconPosition]: 1}" v-if="iconName && !loading"></w-icon>
-            <w-icon icon-name="loading" class="loading" v-if="loading"></w-icon>
+            <w-icon icon-name="loading" class="loading" v-if="loading" :class="{[iconPosition]: 1}"></w-icon>
             <div class="slot">
                 <slot></slot>
             </div>
@@ -35,7 +35,6 @@
             }
         },
         methods:{
-
         }
     }
 </script>
