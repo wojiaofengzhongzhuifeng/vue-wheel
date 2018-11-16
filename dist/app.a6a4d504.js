@@ -22685,6 +22685,28 @@ var expect = _chai.default.expect;
   vm.$el.remove();
   vm.$destroy();
 }
+{
+  var _Constructor = _vue.default.extend(_button.default);
+
+  var _vm = new _Constructor({
+    propsData: {
+      iconName: 'setting',
+      iconPosition: "left"
+    }
+  });
+
+  _vm.$mount();
+
+  var _useElement = _vm.$el.querySelector('svg');
+
+  var className = _useElement.getAttribute('class');
+
+  expect(className).to.eq('w-icon icon left');
+
+  _vm.$el.remove();
+
+  _vm.$destroy();
+}
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","chai":"node_modules/chai/index.js","chai-spies":"node_modules/chai-spies/chai-spies.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

@@ -38,4 +38,18 @@ const expect = chai.expect
     vm.$el.remove()
     vm.$destroy()
 }
-
+{
+    const Constructor = Vue.extend(Button)
+    const vm = new Constructor({
+        propsData: {
+            iconName: 'setting',
+            iconPosition: "left",
+        }
+    })
+    vm.$mount()
+    let useElement = vm.$el.querySelector('svg')
+    let className = useElement.getAttribute('class')
+    expect(className).to.eq('w-icon icon left')
+    vm.$el.remove()
+    vm.$destroy()
+}
