@@ -11319,133 +11319,7 @@ exports.reload = tryWrap(function (id, options) {
   })
 })
 
-},{}],"src/button.vue":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = {
-  props: {
-    iconName: {
-      type: String
-    },
-    loading: {
-      type: Boolean,
-      default: false
-    },
-    iconPosition: {
-      type: String,
-      default: "left",
-      validator: function validator(value) {
-        if (['right', 'left'].indexOf(value) === -1) {
-          // 输错了
-          value = value === "" ? "空字符串" : value;
-          console.warn("\u8F93\u5165\u7684\u5B57\u7B26\u4E32\u6709\u8BEF, \u53EA\u80FD\u5728 left \u548C right \u9009\u4E00\u4E2A, \u4F60\u8F93\u7684\u662F".concat(value));
-        }
-
-        return true;
-      }
-    }
-  },
-  methods: {}
-};
-exports.default = _default;
-        var $7dbf6d = exports.default || module.exports;
-      
-      if (typeof $7dbf6d === 'function') {
-        $7dbf6d = $7dbf6d.options;
-      }
-    
-        /* template */
-        Object.assign($7dbf6d, (function () {
-          var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "button",
-        on: {
-          click: function($event) {
-            _vm.$emit("click")
-          }
-        }
-      },
-      [
-        _vm.iconName && !_vm.loading
-          ? _c("w-icon", {
-              staticClass: "icon",
-              class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj),
-              attrs: { "icon-name": _vm.iconName }
-            })
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.loading
-          ? _c("w-icon", {
-              staticClass: "loading",
-              class: ((_obj$1 = {}), (_obj$1[_vm.iconPosition] = 1), _obj$1),
-              attrs: { "icon-name": "loading" }
-            })
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "slot" }, [_vm._t("default")], 2)
-      ],
-      1
-    )
-  ])
-  var _obj
-  var _obj$1
-}
-var staticRenderFns = []
-render._withStripped = true
-
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: null,
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$7dbf6d', $7dbf6d);
-          } else {
-            api.reload('$7dbf6d', $7dbf6d);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/icon.vue":[function(require,module,exports) {
+},{}],"src/icon.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11517,7 +11391,149 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button-group.vue":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _icon = _interopRequireDefault(require("./icon"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  components: {
+    'w-icon': _icon.default
+  },
+  props: {
+    iconName: {
+      type: String
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    iconPosition: {
+      type: String,
+      default: "left",
+      validator: function validator(value) {
+        if (['right', 'left'].indexOf(value) === -1) {
+          // 输错了
+          value = value === "" ? "空字符串" : value;
+          console.warn("\u8F93\u5165\u7684\u5B57\u7B26\u4E32\u6709\u8BEF, \u53EA\u80FD\u5728 left \u548C right \u9009\u4E00\u4E2A, \u4F60\u8F93\u7684\u662F".concat(value));
+        }
+
+        return true;
+      }
+    }
+  },
+  methods: {}
+};
+exports.default = _default;
+        var $7dbf6d = exports.default || module.exports;
+      
+      if (typeof $7dbf6d === 'function') {
+        $7dbf6d = $7dbf6d.options;
+      }
+    
+        /* template */
+        Object.assign($7dbf6d, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "button",
+        on: {
+          click: function($event) {
+            _vm.$emit("click")
+          }
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "icon",
+            class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj)
+          },
+          [
+            _vm.iconName && !_vm.loading
+              ? _c("w-icon", {
+                  staticClass: "icon",
+                  attrs: { "icon-name": _vm.iconName }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.loading
+              ? _c("w-icon", {
+                  staticClass: "loading",
+                  attrs: { "icon-name": "loading" }
+                })
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "slot" }, [_vm._t("default")], 2)
+      ]
+    )
+  ])
+  var _obj
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$7dbf6d', $7dbf6d);
+          } else {
+            api.reload('$7dbf6d', $7dbf6d);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"./icon":"src/icon.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button-group.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22643,8 +22659,6 @@ var _vue = _interopRequireDefault(require("vue"));
 
 var _button = _interopRequireDefault(require("./button.vue"));
 
-var _icon = _interopRequireDefault(require("./icon"));
-
 var _buttonGroup = _interopRequireDefault(require("./button-group"));
 
 var _chai = _interopRequireDefault(require("chai"));
@@ -22656,20 +22670,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // 所有组件的入口
 _vue.default.component("w-button", _button.default);
 
-_vue.default.component("w-icon", _icon.default);
-
 _vue.default.component("w-group", _buttonGroup.default);
 
 new _vue.default({
   el: "#app",
   data: {
-    loading1: false
+    loading1: true
   }
 }); // 单元测试
 
 _chai.default.use(_chaiSpies.default);
 
-var expect = _chai.default.expect;
+var expect = _chai.default.expect; // 测试 iconName 属性
+
 {
   var Constructor = _vue.default.extend(_button.default);
 
@@ -22684,30 +22697,98 @@ var expect = _chai.default.expect;
   expect(href).to.eq('#icon-setting');
   vm.$el.remove();
   vm.$destroy();
-}
+} // 测试 iconPosition 属性right
+
 {
   var _Constructor = _vue.default.extend(_button.default);
 
   var _vm = new _Constructor({
     propsData: {
       iconName: 'setting',
-      iconPosition: "left"
+      iconPosition: "right"
     }
   });
 
   _vm.$mount();
 
-  var _useElement = _vm.$el.querySelector('svg');
+  var _useElement = _vm.$el.querySelector('.icon');
 
   var className = _useElement.getAttribute('class');
 
-  expect(className).to.eq('w-icon icon left');
+  expect(className).to.eq('icon right');
 
   _vm.$el.remove();
 
   _vm.$destroy();
+} // 测试 iconPosition 属性 left
+
+{
+  var _Constructor2 = _vue.default.extend(_button.default);
+
+  var _vm2 = new _Constructor2({
+    propsData: {
+      iconName: 'setting'
+    }
+  });
+
+  _vm2.$mount();
+
+  var _useElement2 = _vm2.$el.querySelector('.icon');
+
+  var _className = _useElement2.getAttribute('class');
+
+  expect(_className).to.eq('icon left');
+
+  _vm2.$el.remove();
+
+  _vm2.$destroy();
+} // 测试 loading 属性
+
+{
+  var _Constructor3 = _vue.default.extend(_button.default);
+
+  var _vm3 = new _Constructor3({
+    propsData: {
+      loading: true
+    }
+  });
+
+  _vm3.$mount();
+
+  var _useElement3 = _vm3.$el.querySelector('use');
+
+  var link = _useElement3.getAttribute('xlink:href');
+
+  expect(link).to.eq('#icon-loading');
+
+  _vm3.$el.remove();
+
+  _vm3.$destroy();
+} // 测试点击
+
+{
+  var _Constructor4 = _vue.default.extend(_button.default);
+
+  var _vm4 = new _Constructor4({
+    propsData: {
+      iconName: "setting"
+    }
+  });
+
+  _vm4.$mount();
+
+  var spy = _chai.default.spy(function () {
+    console.log(1);
+  });
+
+  _vm4.$on('click', spy); // 希望这个函数被执行
+
+
+  var button = _vm4.$el;
+  button.click();
+  expect(spy).to.have.been.called();
 }
-},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","chai":"node_modules/chai/index.js","chai-spies":"node_modules/chai-spies/chai-spies.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","chai":"node_modules/chai/index.js","chai-spies":"node_modules/chai-spies/chai-spies.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

@@ -1,8 +1,10 @@
 <template>
     <div>
         <button class="button" @click="$emit('click')">
-            <w-icon :icon-name="iconName"  class="icon" :class="{[iconPosition]: 1}" v-if="iconName && !loading"></w-icon>
-            <w-icon icon-name="loading" class="loading" v-if="loading" :class="{[iconPosition]: 1}"></w-icon>
+            <div class="icon"  :class="{[iconPosition]: 1}" >
+                <w-icon :icon-name="iconName"  class="icon" v-if="iconName && !loading"></w-icon>
+                <w-icon icon-name="loading" class="loading" v-if="loading" ></w-icon>
+            </div>
             <div class="slot">
                 <slot></slot>
             </div>
@@ -11,7 +13,11 @@
 </template>
 
 <script>
+    import Icon from "./icon"
     export default {
+        components:{
+            'w-icon': Icon,
+        },
         props: {
             iconName: {
                 type: String,
@@ -60,24 +66,18 @@
         outline: none;
         cursor: pointer;
         transition: all 0.3s;
+        & .icon{
+            height: var(--button-height)
+        }
+        & .icon.right{
+            order: 1
+        }
+        & .icon .loading{
+            animation: loadingCircle 1s infinite linear;
+        }
         &:hover {
             border: var(--button-border-active);
             color: var(--color-3)
-        }
-        &:focus {
-            border: var(--button-border-active);
-            color: var(--color-3)
-        }
-        > svg {
-            height: var(--button-height)
-        }
-        > .right {
-            order: 1
-        }
-        > .left {
-        }
-        > .loading{
-            animation: loadingCircle 1s infinite linear;
         }
     }
 

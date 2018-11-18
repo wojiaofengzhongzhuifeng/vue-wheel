@@ -1,4 +1,11 @@
-@keyframes loadingCircle {
+.w-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  color: var(--color-2);
+}@keyframes loadingCircle {
   from {
     transform: rotate(0);
   }
@@ -19,29 +26,18 @@
   cursor: pointer;
   transition: all 0.3s;
 }
+.button .icon {
+  height: var(--button-height);
+}
+.button .icon.right {
+  order: 1;
+}
+.button .icon .loading {
+  animation: loadingCircle 1s infinite linear;
+}
 .button:hover {
   border: var(--button-border-active);
   color: var(--color-3);
-}
-.button:focus {
-  border: var(--button-border-active);
-  color: var(--color-3);
-}
-.button > svg {
-  height: var(--button-height);
-}
-.button > .right {
-  order: 1;
-}
-.button > .loading {
-  animation: loadingCircle 1s infinite linear;
-}.w-icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-  color: var(--color-2);
 }.button-group {
   display: flex;
 }
