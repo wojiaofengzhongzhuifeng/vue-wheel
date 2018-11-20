@@ -18,6 +18,7 @@ new Vue({
 // 单元测试
 import chai from 'chai'
 import spies from 'chai-spies'
+import sinon from "sinon"
 
 chai.use(spies)
 
@@ -92,11 +93,11 @@ const expect = chai.expect
         }
     })
     vm.$mount()
-    let spy = chai.spy(function(){console.log(1)})
-    vm.$on('click', spy)
-    // 希望这个函数被执行
-    let button = vm.$el
+
+    const callback = sinon.spy();
+    vm.$on('click', callback)
+    let button = vm.$el.querySelector('button')
     button.click()
-    expect(spy).to.have.been.called()
+    expect(callback).to.have.been.called
 }
 

@@ -1,0 +1,41 @@
+.w-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  color: var(--color-2);
+}@keyframes loadingCircle {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.button {
+  display: flex;
+  font-size: var(--font-size);
+  line-height: var(--button-height);
+  color: var(--color-2);
+  background: var(--color-white);
+  border: var(--button-border);
+  padding: 0 1em;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.button .icon {
+  height: var(--button-height);
+}
+.button .icon.right {
+  order: 1;
+}
+.button .icon .loading {
+  animation: loadingCircle 1s infinite linear;
+}
+.button:hover {
+  border: var(--button-border-active);
+  color: var(--color-3);
+}
