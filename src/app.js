@@ -94,9 +94,10 @@ const expect = chai.expect
     })
     vm.$mount()
 
-    const callback = sinon.spy();
-    vm.$on('click', callback)
+    const callback = sinon.fake();
     let button = vm.$el.querySelector('button')
+    console.log(button);
+    button.addEventListener('click', callback)
     button.click()
     expect(callback).to.have.been.called
 }

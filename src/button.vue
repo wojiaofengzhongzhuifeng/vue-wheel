@@ -1,15 +1,13 @@
 <template>
-    <div>
-        <button class="button" @click="$emit('click')">
-            <div class="icon"  :class="{[iconPosition]: 1}" >
-                <w-icon :icon-name="iconName"  class="icon" v-if="iconName && !loading"></w-icon>
-                <w-icon icon-name="loading" class="loading" v-if="loading" ></w-icon>
-            </div>
-            <div class="slot">
-                <slot></slot>
-            </div>
-        </button>
-    </div>
+    <button class="button" @click="$emit('click')">
+        <div class="icon"  :class="{[iconPosition]: 1}" >
+            <w-icon :icon-name="iconName"  class="icon" v-if="iconName && !loading"></w-icon>
+            <w-icon icon-name="loading" class="loading" v-if="loading" ></w-icon>
+        </div>
+        <div class="slot">
+            <slot></slot>
+        </div>
+    </button>
 </template>
 
 <script>

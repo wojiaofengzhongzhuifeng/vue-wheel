@@ -11415,8 +11415,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
 var _default = {
   components: {
     'w-icon': _icon.default
@@ -11458,46 +11456,44 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "button",
-        on: {
-          click: function($event) {
-            _vm.$emit("click")
-          }
+  return _c(
+    "button",
+    {
+      staticClass: "button",
+      on: {
+        click: function($event) {
+          _vm.$emit("click")
         }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "icon",
-            class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj)
-          },
-          [
-            _vm.iconName && !_vm.loading
-              ? _c("w-icon", {
-                  staticClass: "icon",
-                  attrs: { "icon-name": _vm.iconName }
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.loading
-              ? _c("w-icon", {
-                  staticClass: "loading",
-                  attrs: { "icon-name": "loading" }
-                })
-              : _vm._e()
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "slot" }, [_vm._t("default")], 2)
-      ]
-    )
-  ])
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "icon",
+          class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj)
+        },
+        [
+          _vm.iconName && !_vm.loading
+            ? _c("w-icon", {
+                staticClass: "icon",
+                attrs: { "icon-name": _vm.iconName }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.loading
+            ? _c("w-icon", {
+                staticClass: "loading",
+                attrs: { "icon-name": "loading" }
+              })
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "slot" }, [_vm._t("default")], 2)
+    ]
+  )
   var _obj
 }
 var staticRenderFns = []
@@ -39925,12 +39921,12 @@ var expect = _chai.default.expect; // 测试 iconName 属性
 
   _vm4.$mount();
 
-  var callback = _sinon.default.spy();
-
-  _vm4.$on('click', callback);
+  var callback = _sinon.default.fake();
 
   var button = _vm4.$el.querySelector('button');
 
+  console.log(button);
+  button.addEventListener('click', callback);
   button.click();
   expect(callback).to.have.been.called;
 }

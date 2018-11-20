@@ -70,15 +70,13 @@ describe('Button', () => {
         const Constructor = Vue.extend(Button)
         const vm = new Constructor({
             propsData: {
-                iconName: "setting"
+                iconName: 'setting',
             }
-        })
-        vm.$mount()
+        }).$mount()
 
-        // const callback = sinon.fake();
-        vm.$on('click', ()=>{console.log(123321)})
-        let button = vm.$el.querySelector('button')
-        button.click()
-        // expect(callback).to.have.been.called
+        const callback = sinon.fake();
+        vm.$on('click', callback)
+        vm.$el.click()
+        expect(callback).to.have.been.called
     })
 })

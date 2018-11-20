@@ -21436,8 +21436,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
 var _default = {
   components: {
     'w-icon': _icon.default
@@ -21475,7 +21473,7 @@ exports.default = _default;
     
         /* template */
         Object.assign($7dbf6d, (function () {
-          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',{staticClass:"button",on:{"click":function($event){_vm.$emit('click')}}},[_c('div',{staticClass:"icon",class:( _obj = {}, _obj[_vm.iconPosition] = 1, _obj )},[(_vm.iconName && !_vm.loading)?_c('w-icon',{staticClass:"icon",attrs:{"icon-name":_vm.iconName}}):_vm._e(),_vm._v(" "),(_vm.loading)?_c('w-icon',{staticClass:"loading",attrs:{"icon-name":"loading"}}):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"slot"},[_vm._t("default")],2)])])
+          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"button",on:{"click":function($event){_vm.$emit('click')}}},[_c('div',{staticClass:"icon",class:( _obj = {}, _obj[_vm.iconPosition] = 1, _obj )},[(_vm.iconName && !_vm.loading)?_c('w-icon',{staticClass:"icon",attrs:{"icon-name":_vm.iconName}}):_vm._e(),_vm._v(" "),(_vm.loading)?_c('w-icon',{staticClass:"loading",attrs:{"icon-name":"loading"}}):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"slot"},[_vm._t("default")],2)])
 var _obj;}
 var staticRenderFns = []
 
@@ -38717,16 +38715,15 @@ describe('Button', function () {
 
     var vm = new Constructor({
       propsData: {
-        iconName: "setting"
+        iconName: 'setting'
       }
-    });
-    vm.$mount(); // const callback = sinon.fake();
+    }).$mount();
 
-    vm.$on('click', function () {
-      console.log(123321);
-    });
-    var button = vm.$el.querySelector('button');
-    button.click(); // expect(callback).to.have.been.called
+    var callback = _sinon.default.fake();
+
+    vm.$on('click', callback);
+    vm.$el.click();
+    expect(callback).to.have.been.called;
   });
 });
 },{"chai":"Pqx3","vue":"ApMz","../src/button":"qcet","sinon":"9pR/"}]},{},["OGAT"], null)
