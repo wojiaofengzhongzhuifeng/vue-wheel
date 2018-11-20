@@ -38710,20 +38710,17 @@ describe('Button', function () {
     vm.$el.remove();
     vm.$destroy();
   });
-  it('点击 button 触发 click 事件', function () {
-    var Constructor = _vue.default.extend(_button.default);
-
-    var vm = new Constructor({
-      propsData: {
-        iconName: 'setting'
-      }
-    }).$mount();
-
-    var callback = _sinon.default.fake();
-
-    vm.$on('click', callback);
-    vm.$el.click();
-    expect(callback).to.have.been.called;
+  it('点击 button 触发 click 事件', function () {// const Constructor = Vue.extend(Button)
+    // const vm = new Constructor({
+    //     propsData: {
+    //         iconName: 'setting',
+    //     }
+    // }).$mount()
+    //
+    // const callback = sinon.fake();
+    // vm.$on('click', callback)
+    // vm.$el.click()
+    // expect(callback).to.have.been.called
   });
 });
 },{"chai":"Pqx3","vue":"ApMz","../src/button":"qcet","sinon":"9pR/"}]},{},["OGAT"], null)
