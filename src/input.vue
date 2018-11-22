@@ -13,14 +13,29 @@
     $height: 32px;
     $font-size: 12px;
     $font-color: #90a4ae;
-    .input{
+    $color-blue: rgb(66, 133, 244);
+    $color-red: rgb(219, 68, 55);
+    $color-yellow: rgb(244, 160, 0);
+    $color-green: rgb(15, 157, 88);
+    $border-radius: 5px;
+    .input {
         font-size: $font-size;
         color: $font-color;
-        > input{
+        > input {
+            transition: all 0.3s;
             outline: none;
             height: $height;
             padding-left: 8px;
             color: inherit;
+            border: 1px solid $font-color;
+            border-radius: $border-radius;
         }
+        > input:hover {
+            border-color: $color-blue;
+        }
+        > input:focus {
+            box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+        }
+
     }
 </style>

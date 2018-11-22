@@ -66,8 +66,17 @@ to {
   color: #90a4ae;
 }
 .input > input[data-v-3dcabc] {
+  transition: all 0.3s;
   outline: none;
   height: 32px;
   padding-left: 8px;
   color: inherit;
+  border: 1px solid #90a4ae;
+  border-radius: 5px;
+}
+.input > input[data-v-3dcabc]:hover {
+  border-color: #4285f4;
+}
+.input > input[data-v-3dcabc]:focus {
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
 }
