@@ -11703,6 +11703,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _icon = _interopRequireDefault(require("./icon"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -11710,14 +11719,17 @@ exports.default = void 0;
 //
 //
 var _default = {
+  components: {
+    'w-icon': _icon.default
+  },
   props: {
     disabled: {
       type: String,
       default: "false"
     },
-    iconPosition: {
-      type: String,
-      default: "left"
+    icon: {
+      type: Object || null,
+      default: null
     }
   }
 };
@@ -11734,9 +11746,24 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "input" }, [
-    _c("input", { attrs: { type: "text", disabled: _vm.disabled === "true" } })
-  ])
+  return _c(
+    "div",
+    { staticClass: "input" },
+    [
+      _c("input", {
+        attrs: { type: "text", disabled: _vm.disabled === "true" }
+      }),
+      _vm._v(" "),
+      _vm.icon
+        ? [
+            _c("w-icon", { attrs: { "icon-name": "setting" } }),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.icon.iconMsg))])
+          ]
+        : _vm._e()
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -11771,7 +11798,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"node_modules/assertion-error/index.js":[function(require,module,exports) {
+},{"./icon":"src/icon.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"node_modules/assertion-error/index.js":[function(require,module,exports) {
 /*!
  * assertion-error
  * Copyright(c) 2013 Jake Luer <jake@qualiancy.com>

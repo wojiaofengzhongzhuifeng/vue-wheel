@@ -1,19 +1,27 @@
 <template>
     <div class="input">
         <input type="text" :disabled="disabled === 'true'">
+        <template v-if="icon">
+            <w-icon icon-name="setting"></w-icon>
+            <span>{{icon.iconMsg}}</span>
+        </template>
     </div>
 </template>
 
 <script>
+    import Icon from "./icon"
     export default {
+        components:{
+            'w-icon': Icon,
+        },
         props: {
             disabled: {
                 type: String,
                 default: "false"
             },
-            iconPosition: {
-                type: String,
-                default: "left"
+            icon: {
+                type: Object || null,
+                default: null,
             }
         }
     }
