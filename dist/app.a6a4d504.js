@@ -11608,7 +11608,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-7dbf6d",
             functional: undefined
           };
         })());
@@ -11730,7 +11730,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("input", { attrs: { type: "text" } })])
+    return _c("div", { staticClass: "input" }, [
+      _c("input", { attrs: { type: "text" } })
+    ])
   }
 ]
 render._withStripped = true
@@ -11739,7 +11741,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-3dcabc",
             functional: undefined
           };
         })());
@@ -40135,7 +40137,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2097" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7834" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -40278,4 +40280,4 @@ function hmrAccept(bundle, id) {
   });
 }
 },{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/app.js"], null)
-//# sourceMappingURL=/app.a6a4d504.mapp
+//# sourceMappingURL=/app.a6a4d504.map

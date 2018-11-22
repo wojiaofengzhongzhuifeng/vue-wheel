@@ -43,7 +43,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @keyframes loadingCircle {
         from{
             transform: rotate(0);
