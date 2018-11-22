@@ -1,6 +1,6 @@
 <template>
     <button class="button" @click="$emit('click')">
-        <div class="icon"  :class="{[iconPosition]: 1}" >
+        <div class="icon"  :class="{[iconPosition]: 1}" v-if="iconName">
             <w-icon :icon-name="iconName"  class="icon" v-if="iconName && !loading"></w-icon>
             <w-icon icon-name="loading" class="loading" v-if="loading" ></w-icon>
         </div>
@@ -75,7 +75,9 @@
         }
         &:hover {
             border: var(--button-border-active);
-            color: var(--color-3)
+            color: var(--color-3);
+            z-index: 1;
+            position: relative;
         }
     }
 
