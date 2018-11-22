@@ -11709,7 +11709,18 @@ exports.default = void 0;
 //
 //
 //
-var _default = {};
+var _default = {
+  props: {
+    disabled: {
+      type: String,
+      default: "false"
+    },
+    iconPosition: {
+      type: String,
+      default: "left"
+    }
+  }
+};
 exports.default = _default;
         var $3dcabc = exports.default || module.exports;
       
@@ -11723,18 +11734,11 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "input" }, [
+    _c("input", { attrs: { type: "text", disabled: _vm.disabled === "true" } })
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input" }, [
-      _c("input", { attrs: { type: "text" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
           return {

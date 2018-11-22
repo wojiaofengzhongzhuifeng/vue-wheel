@@ -1,11 +1,21 @@
 <template>
     <div class="input">
-        <input type="text">
+        <input type="text" :disabled="disabled === 'true'">
     </div>
 </template>
 
 <script>
     export default {
+        props: {
+            disabled: {
+                type: String,
+                default: "false"
+            },
+            iconPosition: {
+                type: String,
+                default: "left"
+            }
+        }
     }
 </script>
 
@@ -29,9 +39,15 @@
             color: inherit;
             border: 1px solid $font-color;
             border-radius: $border-radius;
+            &[disabled]{
+                cursor: not-allowed;
+            }
         }
         > input:hover {
             border-color: $color-blue;
+        }
+        > input:hover[disabled]{
+            border-color: #90a4ae;
         }
         > input:focus {
             box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);

@@ -74,8 +74,14 @@ to {
   border: 1px solid #90a4ae;
   border-radius: 5px;
 }
+.input > input[disabled][data-v-3dcabc] {
+  cursor: not-allowed;
+}
 .input > input[data-v-3dcabc]:hover {
   border-color: #4285f4;
+}
+.input > input:hover[disabled][data-v-3dcabc] {
+  border-color: #90a4ae;
 }
 .input > input[data-v-3dcabc]:focus {
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
