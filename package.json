@@ -1,12 +1,13 @@
 {
   "name": "vue-wheel-rao",
   "entry": "index.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-minify --no-cache && karma start --single-run --browsers ChromeHeadless ./karma.config.js"
+    "test": "parcel build test/* --no-minify --no-cache && karma start --single-run --browsers ChromeHeadless ./karma.config.js",
+    "start": "npx parcel index.html --no-cache"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 ## 使用 vue 框架完成轮子
-
+[![Build Status](https://travis-ci.com/wojiaofengzhongzhuifeng/vue-wheel.svg?branch=master)](https://travis-ci.com/wojiaofengzhongzhuifeng/vue-wheel)
 
 ## 安装
 
@@ -8,9 +8,11 @@
 ```
 *{margin: 0;padding:0;}
 ```
-
-
 ## 轮子使用方法
+1. `npm install --save`
+2. 
+
+## 轮子api
 
 ### button
 
