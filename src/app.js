@@ -20,3 +20,19 @@ new Vue({
     }
 })
 
+const Constructor = Vue.extend(Input)
+const vm = new Constructor({
+    propsData: {
+        icon: {iconName: 'setting', iconMsg: '你填错了信息'}
+    }
+}).$mount()
+const use = vm.$el.querySelector('use')
+const span = vm.$el.querySelector('span')
+
+let linkText = use.getAttribute("xlink:href")
+let spanText = span.innerText
+
+expect(linkText).to.equal('#icon-setting')
+expect(spanText).to.equal('你填错了信息')
+
+vm.$destroy()

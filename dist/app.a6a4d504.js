@@ -11834,6 +11834,24 @@ new _vue.default({
     }
   }
 });
+
+var Constructor = _vue.default.extend(_input.default);
+
+var vm = new Constructor({
+  propsData: {
+    icon: {
+      iconName: 'setting',
+      iconMsg: '你填错了信息'
+    }
+  }
+}).$mount();
+var use = vm.$el.querySelector('use');
+var span = vm.$el.querySelector('span');
+var linkText = use.getAttribute("xlink:href");
+var spanText = span.innerText;
+expect(linkText).to.equal('#icon-setting');
+expect(spanText).to.equal('你填错了信息');
+vm.$destroy();
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","./input":"src/input.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
