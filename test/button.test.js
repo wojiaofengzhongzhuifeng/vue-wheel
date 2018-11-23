@@ -8,6 +8,8 @@ import sinon from "sinon";
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
+
+
 describe('Button', () => {
     it('存在.', () => {
         expect(Button).to.be.ok
@@ -31,8 +33,8 @@ describe('Button', () => {
             }
         })
         vm.$mount()
-        let useElement = vm.$el.querySelector('use')
-        let link = useElement.getAttribute('xlink:href')
+        let use = vm.$el.querySelector('use')
+        let link = use.getAttribute('xlink:href')
         expect(link).to.eq('#icon-loading')
         vm.$el.remove()
         vm.$destroy()

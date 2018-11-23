@@ -1,6 +1,6 @@
 <template>
     <div class="input">
-        <input type="text" :disabled="disabled === 'true'">
+        <input type="text" :disabled="disabled === 'true'" @change="$emit('input-change', $event)">
         <template v-if="icon">
             <w-icon icon-name="setting"></w-icon>
             <span>{{icon.iconMsg}}</span>

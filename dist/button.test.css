@@ -4,16 +4,17 @@
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
-  color: var(--color-2);
-}@keyframes loadingCircle {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  color: inherit;
 }
-.button {
+@keyframes loadingCircle-data-v-7dbf6d {
+from {
+    transform: rotate(0);
+}
+to {
+    transform: rotate(360deg);
+}
+}
+.button[data-v-7dbf6d] {
   display: flex;
   font-size: var(--font-size);
   line-height: var(--button-height);
@@ -26,16 +27,18 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-.button .icon {
+.button .icon[data-v-7dbf6d] {
   height: var(--button-height);
 }
-.button .icon.right {
+.button .icon.right[data-v-7dbf6d] {
   order: 1;
 }
-.button .icon .loading {
-  animation: loadingCircle 1s infinite linear;
+.button .icon .loading[data-v-7dbf6d] {
+  animation: loadingCircle-data-v-7dbf6d 1s infinite linear;
 }
-.button:hover {
+.button[data-v-7dbf6d]:hover {
   border: var(--button-border-active);
   color: var(--color-3);
+  z-index: 1;
+  position: relative;
 }
