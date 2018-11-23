@@ -56,7 +56,7 @@ describe('Input', () => {
 
             vm.$on('inputChange', spy)
 
-            // js 模拟触发input事件
+            // js 模拟触发input事件, 测试自制Input被执行,
             let event = new Event("change")
             console.log(event);
             let inputElement = vm.$el.querySelector("input")

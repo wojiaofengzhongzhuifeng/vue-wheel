@@ -11718,6 +11718,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 var _default = {
   components: {
     'w-icon': _icon.default
@@ -11730,9 +11732,6 @@ var _default = {
     icon: {
       type: Object || null,
       default: null
-    },
-    change1: {
-      type: String
     }
   }
 };
@@ -11757,7 +11756,7 @@ exports.default = _default;
         attrs: { type: "text", disabled: _vm.disabled === "true" },
         on: {
           change: function($event) {
-            _vm.$emit("inputChange", $event)
+            _vm.$emit("change", $event)
           }
         }
       }),
@@ -11864,7 +11863,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6388" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10141" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
