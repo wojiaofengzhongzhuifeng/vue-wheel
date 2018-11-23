@@ -1,14 +1,16 @@
 import chai from "chai";
+import spies  from "chai-spies";
 
 const expect = chai.expect;
 import Vue from 'vue'
-import Input from '../src/input'
-import sinon from "sinon";
+import Input from '../src/Input'
+chai.use(spies);
+
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
-describe('Button', () => {
+describe('Input', () => {
     it('存在.', () => {
         expect(Input).to.be.ok
     })
@@ -42,5 +44,24 @@ describe('Button', () => {
 
 
         vm.$destroy()
+    })
+    describe("事件", ()=>{
+        it("支持 change 事件", ()=>{
+            const Constructor = Vue.extend(Input)
+            const vm = new Constructor({}).$mount()
+
+            // 生成spy函数
+            function original () {}
+            const spy = chai.spy(original);
+
+            vm.$on('inputChange', spy)
+
+            // js 模拟触发input事件
+            let event = new Event("change")
+            console.log(event);
+            let inputElement = vm.$el.querySelector("input")
+            inputElement.dispatchEvent(event)
+            expect(spy).to.have.been.called().with(event);
+        })
     })
 })

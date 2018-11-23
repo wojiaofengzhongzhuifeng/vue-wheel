@@ -11730,6 +11730,9 @@ var _default = {
     icon: {
       type: Object || null,
       default: null
+    },
+    change1: {
+      type: String
     }
   }
 };
@@ -11754,7 +11757,7 @@ exports.default = _default;
         attrs: { type: "text", disabled: _vm.disabled === "true" },
         on: {
           change: function($event) {
-            _vm.$emit("input-change", $event)
+            _vm.$emit("inputChange", $event)
           }
         }
       }),
@@ -11830,28 +11833,10 @@ new _vue.default({
   },
   methods: {
     inputChange: function inputChange(e) {
-      console.log(e.target.value);
+      console.log(e);
     }
   }
 });
-
-var Constructor = _vue.default.extend(_input.default);
-
-var vm = new Constructor({
-  propsData: {
-    icon: {
-      iconName: 'setting',
-      iconMsg: '你填错了信息'
-    }
-  }
-}).$mount();
-var use = vm.$el.querySelector('use');
-var span = vm.$el.querySelector('span');
-var linkText = use.getAttribute("xlink:href");
-var spanText = span.innerText;
-expect(linkText).to.equal('#icon-setting');
-expect(spanText).to.equal('你填错了信息');
-vm.$destroy();
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","./input":"src/input.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -11879,7 +11864,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7834" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6388" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
