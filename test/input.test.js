@@ -1,4 +1,4 @@
-import chai from "chai";
+import chai from "chai"
 import spies  from "chai-spies";
 
 const expect = chai.expect;
@@ -35,18 +35,24 @@ describe('Input', () => {
         }).$mount()
         const use = vm.$el.querySelector('use')
         const span = vm.$el.querySelector('span')
-
         let linkText = use.getAttribute("xlink:href")
         let spanText = span.innerText
-
         expect(linkText).to.equal('#icon-setting')
         expect(spanText).to.equal('你填错了信息')
-
-
         vm.$destroy()
     })
+    it('接受value', ()=>{
+        const Constructor = Vue.extend(Input)
+        const vm = new Constructor({
+            propsData: {
+                value: "123321"
+            }
+        }).$mount()
+        const inputText = vm.$el.querySelector("input").value
+        expect(inputText).to.equal("123321")
+    })
     describe("事件", ()=>{
-        it("支持 change 事件", ()=>{
+        it("支持 change / input / focus / blur  事件", ()=>{
             const Constructor = Vue.extend(Input)
             const vm = new Constructor({}).$mount()
 
@@ -54,14 +60,17 @@ describe('Input', () => {
             function original () {}
             const spy = chai.spy(original);
 
-            vm.$on('inputChange', spy)
+            ["change", "input", "focus", "blur"].forEach((eventString)=>{
+                vm.$on(eventString, spy)
+                // js 模拟触发input事件, 测试自制Input被执行,
+                let event = new Event(eventString)
+                let inputElement = vm.$el.querySelector("input")
+                inputElement.dispatchEvent(event)
+                expect(spy).to.have.been.called().with(event);
+            })
 
-            // js 模拟触发input事件, 测试自制Input被执行,
-            let event = new Event("change")
-            console.log(event);
-            let inputElement = vm.$el.querySelector("input")
-            inputElement.dispatchEvent(event)
-            expect(spy).to.have.been.called().with(event);
         })
     })
 })
+
+

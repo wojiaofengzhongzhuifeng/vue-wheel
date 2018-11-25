@@ -1,7 +1,13 @@
 <template>
     <div class="input">
-        <input type="text" :disabled="disabled === 'true'"
+        <input type="text"
+               :disabled="disabled === 'true'"
                @change="$emit('change', $event)"
+               @input="$emit('input', $event)"
+               @focus="$emit('focus', $event)"
+               @blur="$emit('blur', $event)"
+
+               :value="value"
         >
         <template v-if="icon">
             <w-icon icon-name="setting"></w-icon>
@@ -25,6 +31,8 @@
                 type: Object || null,
                 default: null,
             },
+            value: {
+            }
 
         }
     }

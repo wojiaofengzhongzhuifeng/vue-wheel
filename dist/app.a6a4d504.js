@@ -11720,6 +11720,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default = {
   components: {
     'w-icon': _icon.default
@@ -11732,7 +11738,8 @@ var _default = {
     icon: {
       type: Object || null,
       default: null
-    }
+    },
+    value: {}
   }
 };
 exports.default = _default;
@@ -11754,9 +11761,19 @@ exports.default = _default;
     [
       _c("input", {
         attrs: { type: "text", disabled: _vm.disabled === "true" },
+        domProps: { value: _vm.value },
         on: {
           change: function($event) {
             _vm.$emit("change", $event)
+          },
+          input: function($event) {
+            _vm.$emit("input", $event)
+          },
+          focus: function($event) {
+            _vm.$emit("focus", $event)
+          },
+          blur: function($event) {
+            _vm.$emit("blur", $event)
           }
         }
       }),
@@ -11833,6 +11850,18 @@ new _vue.default({
   methods: {
     inputChange: function inputChange(e) {
       console.log(e);
+    },
+    inputInput: function inputInput(e) {
+      console.log("inputInput");
+      console.log(e);
+    },
+    inputFocus: function inputFocus(e) {
+      console.log("inputFocus");
+      console.log(e);
+    },
+    inputBlur: function inputBlur(e) {
+      console.log("inputBlur");
+      console.log(e);
     }
   }
 });
@@ -11863,7 +11892,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10141" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2531" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
