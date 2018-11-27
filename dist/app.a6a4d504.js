@@ -11902,6 +11902,10 @@ var _default = {
     span: {
       type: String | Number,
       default: "12"
+    },
+    offset: {
+      type: String | Number,
+      default: "0"
     }
   }
 };
@@ -11920,7 +11924,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col", class: "col-" + _vm.span },
+    { staticClass: "col", class: "col-" + _vm.span + " offset-" + _vm.offset },
     [_vm._t("default", [_vm._v(_vm._s(_vm.span))])],
     2
   )
@@ -12036,7 +12040,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9099" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14971" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

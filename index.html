@@ -55,14 +55,31 @@
             @blur="inputBlur"
             value="123321123321"
     ></w-input>
+    <!--<w-row>-->
+        <!--<w-col></w-col>-->
+        <!--<w-col></w-col>-->
+    <!--</w-row>-->
+    <!--<w-row>-->
+        <!--<w-col>1</w-col>-->
+        <!--<w-col>2</w-col>-->
+        <!--<w-col>3</w-col>-->
+    <!--</w-row>-->
+    <!--<w-row>-->
+        <!--<w-col>1</w-col>-->
+        <!--<w-col>2</w-col>-->
+        <!--<w-col>3</w-col>-->
+        <!--<w-col>4</w-col>-->
+    <!--</w-row>-->
     <w-row>
-        <w-col></w-col>
-        <w-col></w-col>
+        <w-col span="4"></w-col>
+        <w-col span="8" offset="5"></w-col>
+        <w-col span="2" offset="5"></w-col>
+
     </w-row>
-    <w-row>
-        <w-col span="1"></w-col>
-        <w-col :span="20"></w-col>
-    </w-row>
+    <!--<w-row>-->
+        <!--<w-col span="4"></w-col>-->
+        <!--<w-col span="20"></w-col>-->
+    <!--</w-row>-->
 </div>
 <script src="src/app.js"></script>
 <!--<script src="//at.alicdn.com/t/font_915202_k9citci0f8j.js"></script>-->

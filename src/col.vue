@@ -1,5 +1,5 @@
 <template>
-    <div :class="`col-${span}`" class="col">
+    <div :class="`col-${span} offset-${offset}`" class="col">
         <slot>{{span}}</slot>
     </div>
 </template>
@@ -10,6 +10,10 @@
             span: {
                 type: String | Number,
                 default: "12",
+            },
+            offset: {
+                type: String | Number,
+                default: "0",
             }
         }
     }
@@ -29,11 +33,19 @@
     }
     */
     $class: col-;
-    @for $i from 1 through 24 {
-
+    @for $i from 0 through 24 {
         // for each $col_#{i}
         .#{$class}#{$i} {
             width: ($i / 24) * 100%;
+        }
+    }
+
+
+    $class: offset-;
+    @for $n from 0 through 24 {
+        // for each $col_#{i}
+        .#{$class}#{$n} {
+            margin-left: ($n / 24) * 100%;
         }
     }
 
