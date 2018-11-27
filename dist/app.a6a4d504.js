@@ -11849,7 +11849,7 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._t("default")], 2)
+  return _c("div", { staticClass: "row" }, [_vm._t("default")], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -11895,7 +11895,13 @@ exports.default = void 0;
 //
 //
 //
-var _default = {};
+//
+//
+var _default = {
+  props: {
+    span: String
+  }
+};
 exports.default = _default;
         var $8a0fe0 = exports.default || module.exports;
       
@@ -11909,7 +11915,12 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    { staticClass: "col", class: "col-" + _vm.span },
+    [_vm._t("default", [_vm._v(_vm._s(_vm.span))])],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
