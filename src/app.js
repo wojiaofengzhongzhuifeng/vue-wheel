@@ -3,10 +3,17 @@ import Vue from "vue"
 import Button from "./button.vue"
 import ButtonGroup from "./button-group"
 import Input from "./input"
+import Row from "./row"
+import Col from "./col"
+
 
 Vue.component("w-button", Button)
 Vue.component("w-group", ButtonGroup)
 Vue.component("w-input", Input)
+Vue.component("w-col", Col)
+Vue.component("w-row", Row)
+
+
 
 new Vue({
     el: "#app",
