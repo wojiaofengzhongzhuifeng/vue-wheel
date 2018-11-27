@@ -7,7 +7,10 @@
 <script>
     export default {
         props: {
-            span: String
+            span: {
+                type: String | Number,
+                default: "12",
+            }
         }
     }
 </script>

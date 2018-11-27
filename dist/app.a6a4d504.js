@@ -11899,7 +11899,10 @@ exports.default = void 0;
 //
 var _default = {
   props: {
-    span: String
+    span: {
+      type: String | Number,
+      default: "12"
+    }
   }
 };
 exports.default = _default;
