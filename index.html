@@ -39,7 +39,7 @@
     </style>
 </head>
 <body>
-<div id="app" style="margin:20px">
+<div id="app">
     <w-button icon-name="cloud-upload" :loading="loading1" @click="loading1 = !loading1">上传文件</w-button>
     <w-button>按钮</w-button>
     <w-group>
@@ -70,11 +70,13 @@
         <!--<w-col>3</w-col>-->
         <!--<w-col>4</w-col>-->
     <!--</w-row>-->
-    <w-row>
-        <w-col span="4"></w-col>
-        <w-col span="8" offset="5"></w-col>
-        <w-col span="2" offset="5"></w-col>
-
+    <w-row gutter="12">
+        <w-col>
+            <div style="border: 1px solid green">1</div>
+        </w-col>
+        <w-col>
+            <div style="border: 1px solid green">2</div>
+        </w-col>
     </w-row>
     <!--<w-row>-->
         <!--<w-col span="4"></w-col>-->

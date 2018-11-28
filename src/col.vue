@@ -1,5 +1,5 @@
 <template>
-    <div :class="`col-${span} offset-${offset}`" class="col">
+    <div :class="`col-${span} offset-${offset}`" class="col" :style="{paddingLeft: (parseInt(gutter / 2)+'px'),paddingRight: (parseInt(gutter / 2)+'px')}">
         <slot>{{span}}</slot>
     </div>
 </template>
@@ -15,13 +15,20 @@
                 type: String | Number,
                 default: "0",
             }
+        },
+        data(){
+            return {
+                gutter: {
+                    type: String | Number,
+                    default: 0,
+                }
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
     .col{
-        border: 1px solid green
     }
 
     /*为了生成以下css
