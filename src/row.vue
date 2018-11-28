@@ -13,12 +13,13 @@
             }
         },
         computed:{
-          rowStyle: function(){
-              return {
-                  marginLeft: (-parseInt(this.gutter / 2)+'px'),
-                  marginRight: (-parseInt(this.gutter / 2)+'px'),
-              }
-          }
+            rowStyle(){
+                const { gutter } = this
+                return {
+                    marginLeft: (-parseInt(gutter / 2)+'px'),
+                    marginRight: (-parseInt(gutter / 2)+'px'),
+                }
+            }
         },
         mounted(){
             this.$children.forEach((vm)=>{

@@ -15,14 +15,16 @@
             }
         },
         computed:{
-            colStyle: function(){
+            colStyle(){
+                const { gutter } = this
                 return {
-                    paddingLeft: (parseInt(this.gutter / 2)+'px'),
-                    paddingRight: (parseInt(this.gutter / 2)+'px'),
+                    paddingLeft: (parseInt(gutter / 2)+'px'),
+                    paddingRight: (parseInt(gutter / 2)+'px'),
                 }
             },
-            colClasses: function(){
-                return [ this.offset && `offset-${this.offset}`, this.span && `span-${this.span}`]
+            colClasses(){
+                const { span, offset } = this
+                return [ offset && `offset-${offset}`, span && `span-${span}`]
             },
         },
         data(){
