@@ -1,5 +1,5 @@
 <template>
-    <div :class="`col-${span} offset-${offset}`" class="col" :style="{paddingLeft: (parseInt(gutter / 2)+'px'),paddingRight: (parseInt(gutter / 2)+'px')}">
+    <div :class="`span-${span} offset-${offset}`" class="col" :style="{paddingLeft: (parseInt(gutter / 2)+'px'),paddingRight: (parseInt(gutter / 2)+'px')}">
         <slot>{{span}}</slot>
     </div>
 </template>
@@ -39,7 +39,7 @@
         width: 8.13%
     }
     */
-    $class: col-;
+    $class: span-;
     @for $i from 0 through 24 {
         // for each $col_#{i}
         .#{$class}#{$i} {
