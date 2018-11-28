@@ -1,5 +1,5 @@
 <template>
-    <div :class="`span-${span} offset-${offset}`" class="col" :style="{paddingLeft: (parseInt(gutter / 2)+'px'),paddingRight: (parseInt(gutter / 2)+'px')}">
+    <div :class="[ offset && `offset-${offset}`, span && `span-${span}`]" class="col" :style="{paddingLeft: (parseInt(gutter / 2)+'px'),paddingRight: (parseInt(gutter / 2)+'px')}">
         <slot>{{span}}</slot>
     </div>
 </template>
@@ -9,11 +9,9 @@
         props: {
             span: {
                 type: String | Number,
-                default: "12",
             },
             offset: {
                 type: String | Number,
-                default: "0",
             }
         },
         data(){
@@ -29,6 +27,7 @@
 
 <style lang="scss" scoped>
     .col{
+        width:50%;
     }
 
     /*为了生成以下css
