@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="{marginLeft: (-parseInt(gutter / 2)+'px'),marginRight: (-parseInt(gutter / 2)+'px')}">
+    <div class="row" :style="rowStyle">
         <slot></slot>
     </div>
 </template>
@@ -11,6 +11,14 @@
                 type: String | Number,
                 default: "0",
             }
+        },
+        computed:{
+          rowStyle: function(){
+              return {
+                  marginLeft: (-parseInt(this.gutter / 2)+'px'),
+                  marginRight: (-parseInt(this.gutter / 2)+'px'),
+              }
+          }
         },
         mounted(){
             this.$children.forEach((vm)=>{
