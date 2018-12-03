@@ -11835,7 +11835,46 @@ exports.default = void 0;
 //
 //
 //
-var _default = {};
+var _default = {
+  props: {
+    gutter: {
+      type: String | Number,
+      default: "0"
+    },
+    align: {
+      type: String,
+      validator: function validator(alignString) {
+        if (["left", "right", "center"].indexOf(alignString) > -1) {
+          return true;
+        } else {
+          console.error("align 在left , right, center选择");
+          return false;
+        }
+      }
+    }
+  },
+  computed: {
+    rowStyle: function rowStyle() {
+      var gutter = this.gutter;
+      return {
+        marginLeft: -parseInt(gutter / 2) + 'px',
+        marginRight: -parseInt(gutter / 2) + 'px'
+      };
+    },
+    alignStyle: function alignStyle() {
+      var align = this.align;
+      return align;
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      vm.gutter = _this.gutter;
+      vm.align = _this.align;
+    });
+  }
+};
 exports.default = _default;
         var $9d0ee6 = exports.default || module.exports;
       
@@ -11849,7 +11888,12 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "row", style: _vm.rowStyle },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -11900,13 +11944,38 @@ exports.default = void 0;
 var _default = {
   props: {
     span: {
-      type: String | Number,
-      default: "12"
+      type: String | Number
     },
     offset: {
-      type: String | Number,
-      default: "0"
+      type: String | Number
     }
+  },
+  computed: {
+    colStyle: function colStyle() {
+      var gutter = this.gutter;
+      return {
+        paddingLeft: parseInt(gutter / 2) + 'px',
+        paddingRight: parseInt(gutter / 2) + 'px'
+      };
+    },
+    colClasses: function colClasses() {
+      var span = this.span,
+          offset = this.offset,
+          align = this.align;
+      return [offset && "offset-".concat(offset), span && "span-".concat(span), align && "align-".concat(align)];
+    }
+  },
+  data: function data() {
+    return {
+      gutter: {
+        type: String | Number,
+        default: 0
+      },
+      align: {
+        type: String,
+        default: "left"
+      }
+    };
   }
 };
 exports.default = _default;
@@ -11924,7 +11993,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col", class: "col-" + _vm.span + " offset-" + _vm.offset },
+    { staticClass: "col", class: _vm.colClasses, style: _vm.colStyle },
     [_vm._t("default", [_vm._v(_vm._s(_vm.span))])],
     2
   )
@@ -12040,7 +12109,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14971" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6076" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

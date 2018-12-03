@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/col.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/col.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/row.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/row.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -82,34 +83,36 @@
     <session id="194699727">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
-          <entry key="project.open.time.0" value="3" />
+          <entry key="project.closed" value="8" />
+          <entry key="project.open.time.0" value="4" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="2" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="6" />
-          <entry key="html" value="1145" />
+          <entry key="html" value="1465" />
           <entry key="js" value="2342" />
           <entry key="json" value="65" />
           <entry key="md" value="95" />
-          <entry key="txt" value="63" />
-          <entry key="vue" value="4733" />
+          <entry key="txt" value="152" />
+          <entry key="vue" value="5963" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1145" />
+          <entry key="HTML" value="1465" />
           <entry key="JSON" value="65" />
           <entry key="JavaScript" value="2342" />
           <entry key="Markdown" value="95" />
-          <entry key="PLAIN_TEXT" value="69" />
-          <entry key="Vue.js" value="4733" />
+          <entry key="PLAIN_TEXT" value="158" />
+          <entry key="Vue.js" value="5963" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -119,7 +122,7 @@
           <entry key="js" value="30" />
           <entry key="json" value="7" />
           <entry key="md" value="4" />
-          <entry key="vue" value="28" />
+          <entry key="vue" value="30" />
           <entry key="yml" value="1" />
         </counts>
       </usages-collector>
@@ -130,7 +133,7 @@
           <entry key="JavaScript" value="30" />
           <entry key="Markdown" value="4" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Vue.js" value="28" />
+          <entry key="Vue.js" value="30" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
@@ -141,11 +144,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="65" column="19" lean-forward="true" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+            <state relative-caret-position="501">
+              <caret line="78" column="36" lean-forward="true" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#w-group#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#2;n#w-row#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#3;n#w-row#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#2;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#3;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#4;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#5;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#6;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#0;n#w-row#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#1;n#w-row#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#w-col#2;n#w-row#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,8 +171,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/row.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="713">
+              <caret line="43" column="37" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -163,8 +180,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/col.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+            <state relative-caret-position="598">
+              <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -203,8 +220,8 @@
         <option value="$PROJECT_DIR$/src/input.vue" />
         <option value="$PROJECT_DIR$/test/input.test.js" />
         <option value="$PROJECT_DIR$/src/app.js" />
-        <option value="$PROJECT_DIR$/src/row.vue" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/row.vue" />
         <option value="$PROJECT_DIR$/src/col.vue" />
       </list>
     </option>
@@ -224,8 +241,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-46" />
-    <option name="y" value="389" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -235,8 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -259,13 +274,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="code style&#9;ACTION&#9;ChangeCodeStyleScheme&#10;setting&#9;ACTION&#9;WelcomeScreen.Settings&#10;set&#9;ACTION&#9;WelcomeScreen.Settings&#10;sett&#9;ACTION&#9;WelcomeScreen.Settings&#10;key&#9;ACTION&#9;ChangeKeymap&#10;keymap&#9;ACTION&#9;ChangeKeymap&#10;vcs&#9;ACTION&#9;Vcs.QuickListPopupAction" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543330982263" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543420826599" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -306,6 +323,9 @@
       <workItem from="1542856669623" duration="18210000" />
       <workItem from="1543118793196" duration="5095000" />
       <workItem from="1543326790592" duration="4103000" />
+      <workItem from="1543464050494" duration="1861000" />
+      <workItem from="1543570074170" duration="1210000" />
+      <workItem from="1543799920664" duration="3611000" />
     </task>
     <task id="LOCAL-00001" summary="npm install vue">
       <created>1541852870994</created>
@@ -335,11 +355,46 @@
       <option name="project" value="LOCAL" />
       <updated>1542034363677</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="功能: grid 组件完成gutter">
+      <created>1543398201538</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1543398201538</updated>
+    </task>
+    <task id="LOCAL-00006" summary="bug: 准备优化代码">
+      <created>1543398887566</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1543398887566</updated>
+    </task>
+    <task id="LOCAL-00007" summary="优化: 优化 class">
+      <created>1543399780091</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1543399780091</updated>
+    </task>
+    <task id="LOCAL-00008" summary="优化: 重构代码">
+      <created>1543418308704</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1543418308704</updated>
+    </task>
+    <task id="LOCAL-00009" summary="优化: 更好的重构代码">
+      <created>1543418649927</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1543418649927</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100914000" />
+    <option name="totallyTimeSpent" value="116465000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -354,7 +409,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15298508" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15938166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -371,10 +426,11 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.26927254" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.27144408" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.12269273" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="GraphQL" order="14" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -424,7 +480,12 @@
     <MESSAGE value="使用 parcel 完成 vue 单页面组件" />
     <MESSAGE value="功能: 完成button组件的 icon 和iconPosition属性" />
     <MESSAGE value="功能: 添加icon组件" />
-    <option name="LAST_COMMIT_MESSAGE" value="功能: 添加icon组件" />
+    <MESSAGE value="功能: grid 组件完成gutter" />
+    <MESSAGE value="bug: 准备优化代码" />
+    <MESSAGE value="优化: 优化 class" />
+    <MESSAGE value="优化: 重构代码" />
+    <MESSAGE value="优化: 更好的重构代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化: 更好的重构代码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -518,13 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/button.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/app.a6a4d504.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -550,9 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -560,10 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#87#108#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -585,34 +632,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-          <folding>
-            <element signature="e#11#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/row.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="65" column="19" lean-forward="true" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+        <state relative-caret-position="501">
+          <caret line="78" column="36" lean-forward="true" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#w-group#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#2;n#w-row#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#3;n#w-row#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#0;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#2;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#3;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#4;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#5;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#6;n#w-row#0;n#div#0;n#w-col#1;n#w-row#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#0;n#w-row#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#1;n#w-row#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#w-col#2;n#w-row#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/button.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/row.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="43" column="37" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/col.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        <state relative-caret-position="598">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
         </state>
       </provider>
     </entry>
