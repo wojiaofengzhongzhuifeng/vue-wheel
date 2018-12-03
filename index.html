@@ -55,62 +55,84 @@
             @blur="inputBlur"
             value="123321123321"
     ></w-input>
+    <!--<w-row>-->
+        <!--<w-col span="6">-->
+            <!--<div style="border:1px solid black">-->
+                <!--<w-row>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 6</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 6</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 6</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 6</div>-->
+                    <!--</w-col>-->
+                <!--</w-row>-->
+            <!--</div>-->
+        <!--</w-col>-->
+        <!--<w-col span="18">-->
+            <!--<div style="border:1px solid black">-->
+                <!--<w-row align="center">-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 18 1</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 18 2</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 18 3</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 18 4</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 18 5</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 18 6</div>-->
+                    <!--</w-col>-->
+                    <!--<w-col>-->
+                        <!--<div  style="border:1px solid black">this is 18 7</div>-->
+                    <!--</w-col>-->
+                <!--</w-row>-->
+            <!--</div>-->
+        <!--</w-col>-->
+    <!--</w-row>-->
+    <!--<w-row>-->
+        <!--<w-col span="4">-->
+            <!--<div style="border:1px solid black">4</div>-->
+        <!--</w-col>-->
+        <!--<w-col span="6">-->
+            <!--<div style="border:1px solid black">6</div>-->
+        <!--</w-col>-->
+        <!--<w-col span="14">-->
+            <!--<div style="border:1px solid black">14</div>-->
+        <!--</w-col>-->
+    <!--</w-row>-->
     <w-row>
-        <w-col span="6">
-            <div style="border:1px solid black">
-                <w-row>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 6</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 6</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 6</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 6</div>
-                    </w-col>
-                </w-row>
-            </div>
+        <w-col
+                span="0"
+                :pad="{span: 24, offset: 12}"
+                :narrow-pc="{span: 16, offset: 24}"
+                :pc="{span: 12, offset: 48}"
+                :width-pc="{span: 6, offset: 0}"
+                :width-width-pc="{span: 0, offset: 0}"
+        >
+            <div style="border:1px solid red">1</div>
         </w-col>
-        <w-col span="18">
-            <div style="border:1px solid black">
-                <w-row align="center">
-                    <w-col>
-                        <div  style="border:1px solid black">this is 18 1</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 18 2</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 18 3</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 18 4</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 18 5</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 18 6</div>
-                    </w-col>
-                    <w-col>
-                        <div  style="border:1px solid black">this is 18 7</div>
-                    </w-col>
-                </w-row>
-            </div>
-        </w-col>
-    </w-row>
-    <w-row>
-        <w-col span="4">
-            <div style="border:1px solid black">4</div>
-        </w-col>
-        <w-col span="6">
-            <div style="border:1px solid black">6</div>
-        </w-col>
-        <w-col span="14">
-            <div style="border:1px solid black">14</div>
+        <w-col
+                span="24"
+                :pad="{span: 0, offset: 12}"
+                :narrow-pc="{span: 8, offset: 24}"
+                :pc="{span: 12, offset: 48}"
+                :width-pc="{span: 18, offset: 0}"
+                :width-width-pc="{span: 24, offset: 0}"
+        >
+            <div style="border:1px solid red">2</div>
         </w-col>
     </w-row>
 </div>

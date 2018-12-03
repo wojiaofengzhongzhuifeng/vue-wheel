@@ -62,7 +62,9 @@
             width: ($i / 24) * 100%;
         }
     }
-
+    .span-0{
+        display: none;
+    }
 
     $class: offset-;
     @for $n from 0 through 24 {
