@@ -12,6 +12,20 @@
             },
             offset: {
                 type: String | Number,
+            },
+            phone: {
+                type: Object,
+                validator(obj){
+                    // 确保obj的key是span或者offset, 否则报错
+                    let valid = true
+                    Object.keys(obj).forEach((key)=>{
+                        if(!(["span", "offset"].indexOf(key) > -1)){
+                            console.error(`col组件错误, 输入了${key}, 只能在span 和offset选择`)
+                            valid = false;
+                        }
+                    });
+                    return valid;
+                }
             }
         },
         computed:{
@@ -23,8 +37,15 @@
                 }
             },
             colClasses(){
-                const { span, offset, align} = this
-                return [ offset && `offset-${offset}`, span && `span-${span}`, align && `align-${align}`]
+                console.log(this.phone);
+                const { span, offset, align, phone} = this
+                return [
+                    offset && `offset-${offset}`,
+                    span && `span-${span}`,
+                    align && `align-${align}`,
+                    phone.span && `span-phone-${phone.span}`,
+                    phone.offset && `offset-phone-${phone.offset}`,
+                ]
             },
         },
         data(){
@@ -85,6 +106,12 @@
         display: flex;
         justify-content: center;
     }
+    @media (max-width: 576px) {
+        .span-phone-11{
+            background: red;
+        }
+    }
+
 
 
 </style>
