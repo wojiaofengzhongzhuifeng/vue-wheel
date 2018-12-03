@@ -78,18 +78,13 @@
     */
     $class: span-;
     @for $i from 0 through 24 {
-        // for each $col_#{i}
         .#{$class}#{$i} {
             width: ($i / 24) * 100%;
         }
     }
-    .span-0{
-        display: none;
-    }
 
     $class: offset-;
     @for $n from 0 through 24 {
-        // for each $col_#{i}
         .#{$class}#{$n} {
             margin-left: ($n / 24) * 100%;
         }
@@ -107,8 +102,11 @@
         justify-content: center;
     }
     @media (max-width: 576px) {
-        .span-phone-11{
-            background: red;
+        $class: span-phone-;
+        @for $i from 1 through 24 {
+            .#{$class}#{$i} {
+                width: ($i / 24) * 100%;
+            }
         }
     }
 
