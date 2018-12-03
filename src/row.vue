@@ -10,6 +10,17 @@
             gutter: {
                 type: String | Number,
                 default: "0",
+            },
+            align: {
+                type: String,
+                validator: function (alignString) {
+                    if(["left", "right", "center"].indexOf(alignString) > -1){
+                        return true
+                    } else {
+                        console.error("align 在left , right, center选择")
+                        return false
+                    }
+                }
             }
         },
         computed:{
@@ -19,11 +30,16 @@
                     marginLeft: (-parseInt(gutter / 2)+'px'),
                     marginRight: (-parseInt(gutter / 2)+'px'),
                 }
+            },
+            alignStyle(){
+                const {align} = this
+                return align
             }
         },
         mounted(){
             this.$children.forEach((vm)=>{
                 vm.gutter = this.gutter
+                vm.align = this.align
             })
         }
     }
@@ -32,6 +48,5 @@
 <style lang="scss" scoped>
     .row{
         display: flex;
-        border:1px solid red;
     }
 </style>

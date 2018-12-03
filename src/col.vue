@@ -23,8 +23,8 @@
                 }
             },
             colClasses(){
-                const { span, offset } = this
-                return [ offset && `offset-${offset}`, span && `span-${span}`]
+                const { span, offset, align} = this
+                return [ offset && `offset-${offset}`, span && `span-${span}`, align && `align-${align}`]
             },
         },
         data(){
@@ -32,6 +32,10 @@
                 gutter: {
                     type: String | Number,
                     default: 0,
+                },
+                align: {
+                    type: String,
+                    default: "left",
                 }
             }
         }
@@ -66,6 +70,18 @@
         .#{$class}#{$n} {
             margin-left: ($n / 24) * 100%;
         }
+    }
+    .col.align-left > div{
+        display: flex;
+        justify-content: left;
+    }
+    .col.align-right > div{
+        display: flex;
+        justify-content: right;
+    }
+    .col.align-center > div{
+        display: flex;
+        justify-content: center;
     }
 
 
