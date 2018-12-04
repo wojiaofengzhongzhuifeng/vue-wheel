@@ -5,6 +5,17 @@
 </template>
 
 <script>
+    let validator = (obj)=>{
+        // 确保obj的key是span或者offset, 否则报错
+        let valid = true
+        Object.keys(obj).forEach((key)=>{
+            if(!(["span", "offset"].indexOf(key) > -1)){
+                console.error(`col组件 ipad 属性错误, 输入了${key}, 只能在 span 和 offset 选择`)
+                valid = false;
+            }
+        });
+        return valid;
+    }
     export default {
         props: {
             span: {
@@ -15,87 +26,27 @@
             },
             phone: {
                 type: Object,
-                validator(obj){
-                    // 确保obj的key是span或者offset, 否则报错
-                    let valid = true
-                    Object.keys(obj).forEach((key)=>{
-                        if(!(["span", "offset"].indexOf(key) > -1)){
-                            console.error(`col组件phone属性错误, 输入了${key}, 只能在span 和offset选择`)
-                            valid = false;
-                        }
-                    });
-                    return valid;
-                }
+                validator,
             },
             ipad: {
                 type: Object,
-                validator(obj){
-                    // 确保obj的key是span或者offset, 否则报错
-                    let valid = true
-                    Object.keys(obj).forEach((key)=>{
-                        if(!(["span", "offset"].indexOf(key) > -1)){
-                            console.error(`col组件ipad属性错误, 输入了${key}, 只能在span 和offset选择`)
-                            valid = false;
-                        }
-                    });
-                    return valid;
-                }
+                validator
             },
             narrowPc: {
                 type: Object,
-                validator(obj){
-                    // 确保obj的key是span或者offset, 否则报错
-                    let valid = true
-                    Object.keys(obj).forEach((key)=>{
-                        if(!(["span", "offset"].indexOf(key) > -1)){
-                            console.error(`col组件narrowPc属性错误, 输入了${key}, 只能在span 和offset选择`)
-                            valid = false;
-                        }
-                    });
-                    return valid;
-                }
+                validator
             },
             pc: {
                 type: Object,
-                validator(obj){
-                    // 确保obj的key是span或者offset, 否则报错
-                    let valid = true
-                    Object.keys(obj).forEach((key)=>{
-                        if(!(["span", "offset"].indexOf(key) > -1)){
-                            console.error(`col组件pc属性错误, 输入了${key}, 只能在span 和offset选择`)
-                            valid = false;
-                        }
-                    });
-                    return valid;
-                }
+                validator
             },
             widthPc: {
                 type: Object,
-                validator(obj){
-                    // 确保obj的key是span或者offset, 否则报错
-                    let valid = true
-                    Object.keys(obj).forEach((key)=>{
-                        if(!(["span", "offset"].indexOf(key) > -1)){
-                            console.error(`col组件widthPc属性错误, 输入了${key}, 只能在span 和offset选择`)
-                            valid = false;
-                        }
-                    });
-                    return valid;
-                }
+                validator
             },
             widthWidthPc: {
                 type: Object,
-                validator(obj){
-                    // 确保obj的key是span或者offset, 否则报错
-                    let valid = true
-                    Object.keys(obj).forEach((key)=>{
-                        if(!(["span", "offset"].indexOf(key) > -1)){
-                            console.error(`col组件widthWidthPc属性错误, 输入了${key}, 只能在span 和offset选择`)
-                            valid = false;
-                        }
-                    });
-                    return valid;
-                }
+                validator
             }
         },
         computed:{
