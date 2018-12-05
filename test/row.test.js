@@ -36,7 +36,7 @@ describe('Row', () => {
             el: div
         })
 
-        // 因为gutter属性的生成是异步的, 所以有所不同
+        // 因为gutter属性的生成是异步的, 所以有所不同, 需要在异步代码的最后执行done函数, done由测试框架提供
         setTimeout(()=>{
             // 测试row
             let row = vm.$el.querySelector(".row")
