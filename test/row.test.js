@@ -18,7 +18,7 @@ describe('Row', () => {
     it('存在.', () => {
         expect(Row).to.be.ok
     })
-    it('可以设置gutter.', (done) => {
+    it('可以设置 gutter.', (done) => {
         // 注册自定义组件
         Vue.component("w-col", Col)
         Vue.component("w-row", Row)
@@ -52,7 +52,42 @@ describe('Row', () => {
             expect(colStyle.paddingRight).to.eq("6px");
             expect(colStyle.marginRight).to.eq(colStyle.marginLeft);
 
+
+            vm.$el.remove()
+            vm.$destroy()
             done()
         }, 0)
+    })
+    it('可以设置 align.', (done) => {
+        // 注册自定义组件
+        Vue.component("w-col", Col)
+        Vue.component("w-row", Row)
+
+        // 生成一个div, 作为vue的实例
+        let div = document.createElement("div")
+        div.innerHTML = `
+            <w-row align="center">
+                <w-col>
+                   <div>1</div>
+                </w-col>
+                <w-col>
+                   <div>2</div>
+                </w-col>
+            </w-row>      
+        `
+        document.body.appendChild(div)
+        const vm = new Vue({
+            el: div
+        })
+        setTimeout(()=>{
+            let col = vm.$el.querySelector(".col");
+            expect(col.classList.contains("align-center")).to.eq(true);
+            vm.$el.remove()
+            vm.$destroy()
+            done()
+        }, 0)
+
+
+
     })
 })
