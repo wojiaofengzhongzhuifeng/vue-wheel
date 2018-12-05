@@ -8,4 +8,7 @@
 </script>
 
 <style lang="scss" scoped>
+    .header{
+        display: flex;
+    }
 </style>

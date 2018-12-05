@@ -5,6 +5,9 @@
 </template>
 
 <script>
+    export default {
+        name: "WheelSider"
+    }
 </script>
 
 <style lang="scss" scoped>
