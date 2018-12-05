@@ -8,4 +8,7 @@
 </script>
 
 <style lang="scss" scoped>
+    .footer{
+        background: #7dbcea;
+    }
 </style>

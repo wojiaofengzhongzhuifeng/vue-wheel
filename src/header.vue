@@ -10,5 +10,6 @@
 <style lang="scss" scoped>
     .header{
         display: flex;
+        background: #7dbcea;
     }
 </style>
