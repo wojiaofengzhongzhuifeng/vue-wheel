@@ -80,8 +80,12 @@ describe('Row', () => {
             el: div
         })
         setTimeout(()=>{
-            let col = vm.$el.querySelector(".col");
-            expect(col.classList.contains("align-center")).to.eq(true);
+            let col = vm.$el.querySelector(".col > div");
+            let colDisplayStyle = getComputedStyle(col).display
+            let colJustTifyContentStyle = getComputedStyle(col).justifyContent
+            expect(colDisplayStyle).to.eq("flex");
+            expect(colJustTifyContentStyle).to.eq("center");
+
             vm.$el.remove()
             vm.$destroy()
             done()
