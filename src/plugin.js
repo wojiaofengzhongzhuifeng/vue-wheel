@@ -1,7 +1,8 @@
 import Toast from "./toast"
 
 
-function createToast(Vue, propsData, showToastMessage){
+function createToast({Vue, propsData, showToastMessage}){
+    console.log(arguments);
     // 动态创建组件
     let Constructor = Vue.extend(Toast); // 生成 Toast 组件构造函数
     let toast = new Constructor({
@@ -20,18 +21,18 @@ export default {
 
         Vue.prototype.$toast = function (showToastMessage) {
             if(!document.body.querySelector(".toast")){
-                createToast(Vue, {
-                    autoClose: false,
-                    closeButton: {
-                        text: "关闭",
-                        callback: (toast)=>{
-                            toast.log();
-                            console.log("plugin");
+                createToast({Vue, propsData: {
+                        autoClose: false,
+                        closeButton: {
+                            text: "关闭",
+                            callback: (toast)=>{
+                                toast.log();
+                                console.log("plugin");
+                            },
                         },
-                    },
-                    enAbleHtml: true,
-                    position: "middle",
-                }, showToastMessage)
+                        enAbleHtml: true,
+                        position: "middle",
+                    }, showToastMessage})
             }
         }
     }
