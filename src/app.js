@@ -33,7 +33,7 @@ new Vue({
     el: "#app",
     methods: {
         showToast(){
-            this.$toast("这是一个信息")
+            this.$toast(`这是一个信息${Math.random()}`)
         }
     }
 })

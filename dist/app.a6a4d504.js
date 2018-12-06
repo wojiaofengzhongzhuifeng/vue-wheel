@@ -12667,16 +12667,48 @@ var _toast = _interopRequireDefault(require("./toast"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function createToast(_ref) {
+  var Vue = _ref.Vue,
+      propsData = _ref.propsData,
+      showToastMessage = _ref.showToastMessage;
+  // 动态创建组件
+  var Constructor = Vue.extend(_toast.default); // 生成 Toast 组件构造函数
+
+  var toast = new Constructor({
+    propsData: propsData
+  }); // 通过构造函数生成一个toast实例
+
+  toast.$slots.default = [showToastMessage]; // 想toast实例中的slot属性传递信息
+
+  toast.$mount(); // toast实例渲染为文档之外的 dom 元素
+
+  document.body.appendChild(toast.$el); // 必须使用原生 DOM API 把它插入文档中
+
+  return toast;
+}
+
+var currentToast;
 var _default = {
   install: function install(Vue) {
-    // 下面的代码原本是在 toast 组件中, 那样侵入性太强(需要手动引入 Vue, 并且会强制在 Vue 中添加 $toast)
-    // 使用 plugin 用户可以不使用 plugin , 这样就不会再 Vue 中添加 $toast
-    // 对应文档 https://cn.vuejs.org/v2/guide/plugins.html 的 "添加 Vue 实例方法，通过把它们添加到 Vue.prototype 上实现" 功能
+    /*
+    * 1. 下面的代码原本是在 toast 组件中, 那样侵入性太强(需要手动引入 Vue, 并且会强制在 Vue 中添加 $toast)
+    *    使用 plugin 用户可以不使用 plugin , 这样就不会再 Vue 中添加 $toast
+    *    对应文档 https://cn.vuejs.org/v2/guide/plugins.html 的 "添加 Vue 实例方法，通过把它们添加到 Vue.prototype 上实现" 功能
+    *
+    * 2. 代码逻辑:
+    *       - createToast 函数返回 toast 实例
+    *       - 声明一个变量currentToast, 用于存储 toast 实例
+    *       - 如果 currentToast 存在, 删除原来的toast + 生成新的 toast 设为currentToast
+    *       - 如果 currentToast 不存在, 生成新的 toast 设为currentToast
+    *
+    * */
     Vue.prototype.$toast = function (showToastMessage) {
-      // 动态创建组件
-      var Constructor = Vue.extend(_toast.default); // 生成 Toast 组件构造函数
+      if (currentToast) {
+        currentToast.closed();
+      }
 
-      var toast = new Constructor({
+      currentToast = createToast({
+        Vue: Vue,
         propsData: {
           autoClose: false,
           closeButton: {
@@ -12688,14 +12720,36 @@ var _default = {
           },
           enAbleHtml: true,
           position: "middle"
-        }
-      }); // 通过构造函数生成一个toast实例
-
-      toast.$slots.default = [showToastMessage]; // 想toast实例中的slot属性传递信息
-
-      toast.$mount(); // toast实例渲染为文档之外的 dom 元素
-
-      document.body.appendChild(toast.$el); // 必须使用原生 DOM API 把它插入文档中
+        },
+        showToastMessage: showToastMessage
+      }); // if(currentToast){
+      //     currentToast.closed()
+      //     currentToast = createToast({Vue, propsData: {
+      //             autoClose: false,
+      //             closeButton: {
+      //                 text: "关闭",
+      //                 callback: (toast)=>{
+      //                     toast.log();
+      //                     console.log("plugin");
+      //                 },
+      //             },
+      //             enAbleHtml: true,
+      //             position: "middle",
+      //         }, showToastMessage})
+      // } else {
+      //     currentToast = createToast({Vue, propsData: {
+      //             autoClose: false,
+      //             closeButton: {
+      //                 text: "关闭",
+      //                 callback: (toast)=>{
+      //                     toast.log();
+      //                     console.log("plugin");
+      //                 },
+      //             },
+      //             enAbleHtml: true,
+      //             position: "middle",
+      //         }, showToastMessage})
+      // }
     };
   }
 };
@@ -12760,7 +12814,7 @@ new _vue.default({
   el: "#app",
   methods: {
     showToast: function showToast() {
-      this.$toast("这是一个信息");
+      this.$toast("\u8FD9\u662F\u4E00\u4E2A\u4FE1\u606F".concat(Math.random()));
     }
   }
 });
