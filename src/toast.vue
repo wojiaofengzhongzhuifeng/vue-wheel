@@ -18,6 +18,7 @@
     *   - 用户点击按钮的时候创建一个 Vue 实例
     *   - 用户点击另一个按钮的时候删除这个 Vue 实例
     *
+    * 2. 组件的 prop 中有一个是回调A, 并且这个回调A可以调用 toast 组件内的函数 log
     * */
 
     // 配置 Vue 实例的对象参数
@@ -57,12 +58,15 @@
                 this.$el.remove(); // this.$el === 原生 dom 元素, dom 元素消失在页面
                 this.$destroy(); // vue 实例消除掉
             },
+            log(){
+                console.log("点击关闭, 能执行 toast 组件的方法, 触发本方法的位置是在 props 中");
+            },
             onClickClose(){
                 this.closed();
                 // 确保你传入的 closeButton.callback 是一个函数
                 // 对参数的验证, 防御性编程
                 if(typeof this.closeButton.callback === "function"){
-                    this.closeButton.callback()
+                    this.closeButton.callback(this)  // prop 的回调函数执行组件内函数, plugin.js 的
                 }
             }
         }

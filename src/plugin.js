@@ -13,7 +13,8 @@ export default {
                     autoClose: false,
                     closeButton: {
                         text: "关闭",
-                        callback: ()=>{
+                        callback: (toast)=>{
+                            toast.log();
                             console.log("plugin");
                         }
                     }
