@@ -10,6 +10,7 @@ import header from "./header"
 import sider from "./sider"
 import content from "./content"
 import footer from "./footer"
+import toast from "./toast"
 
 
 
@@ -23,6 +24,7 @@ Vue.component("w-header", header)
 Vue.component("w-sider", sider)
 Vue.component("w-content", content)
 Vue.component("w-footer", footer)
+Vue.component("w-toast", toast)
 
 
 
