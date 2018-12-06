@@ -1,10 +1,11 @@
 <template>
-    <div class="toast">
+    <div class="toast" ref="toast">
         <span v-if="enAbleHtml" class="showMessage" v-html="$slots.default[0]"></span>
         <span v-else="!enAbleHtml" class="showMessage">
             <slot></slot>
         </span>
-        <span v-if="!autoClose" class="closeButton" @click="onClickClose">{{closeButton.text}}</span>
+        <div class="line"></div>
+        <span v-if="!autoClose" class="closeButton" @click="onClickClose" ref="close">{{closeButton.text}}</span>
     </div>
 </template>
 
@@ -20,6 +21,10 @@
     *   - 用户点击另一个按钮的时候删除这个 Vue 实例
     *
     * 2. 组件的 prop 中有一个是回调A, 并且这个回调A可以调用 toast 组件内的函数 log
+    *
+    * 3. nextTick
+    *
+    * 4. ref
     * */
 
     // 配置 Vue 实例的对象参数
@@ -50,12 +55,25 @@
                 default: false,
             }
         },
-        mounted() {
+        mounted: function () {
             if (this.autoClose) {
                 setTimeout(() => {
                     this.closed()
                 }, parseInt(this.autoCloseDelay) * 1000)
             }
+
+            // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
+
+            // 解决 bug: 输入很多信息,  关闭按钮位置不对
+            // 让 div.close 的 line-height 为 div.toast 的 height 即可
+            this.$nextTick(() => {  // 在这里面, 拿到正常数据
+                // console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
+                const toastHeight = parseInt(getComputedStyle(this.$refs.toast).height, 10) // 获取 dom 所有 css 样式
+                const toastPaddingTop = parseInt(getComputedStyle(this.$refs.toast).paddingTop, 10) // parseInt("115px", 10) 居然可以转成数字 115 !
+                const toastPaddingBottom = parseInt(getComputedStyle(this.$refs.toast).paddingBottom, 10)
+                const computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom
+                this.$refs.close.style.lineHeight = `${computedHeight}px`
+            })
         },
         methods: {
             closed() {
@@ -91,15 +109,16 @@
         border-radius: 4px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
         background: #fff;
-        display: inline-block;
+        display: flex;
         pointer-events: all;
         .closeButton{
-            padding-left: 10px;
-            border-left: 1px solid;
             cursor: pointer;
+            flex-shrink: 0;  /*保证关闭按钮正常显示*/
         }
-        .showMessage{
-            padding-right:10px;
+        .line{
+            padding: 0 5px;
+            border-left: 1px solid;
+            margin-left: 10px;
         }
     }
 </style>
