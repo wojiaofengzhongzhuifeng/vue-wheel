@@ -30,12 +30,9 @@ Vue.component("w-toast", toast)
 
 new Vue({
     el: "#app",
-    data: {
-        loading1: true
-    },
     methods: {
         showToast(){
-            alert("hi")
+            this.$toast("这是展示信息")
         }
     }
 })
