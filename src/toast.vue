@@ -1,5 +1,5 @@
 <template>
-    <div class="toast" ref="toast" :class="toastClass">
+    <div class="toast" ref="toast">
         <span v-if="enAbleHtml" class="showMessage" v-html="$slots.default[0]"></span>
         <span v-else="!enAbleHtml" class="showMessage">
             <slot></slot>
@@ -46,33 +46,53 @@
                 default: () => {
                     return {
                         text: "关闭",
-                        callback: ()=>{
+                        callback: () => {
                             console.log("default");
                         }
                     }
                 }
             },
-            enAbleHtml:{
+            enAbleHtml: {
                 type: Boolean,
                 default: false,
             },
             position: {
                 type: String,
                 default: "top",
-                validator(position){
+                validator(position) {
                     return ["top", "bottom", "middle"].indexOf(position) > 0
                 }
             }
         },
-        computed:{
-            toastClass(){
+        computed: {
+            toastClass() {
                 return [`position-${this.position}`] // 第一种 class 添加方法
 
                 // // 第二种 class 添加方法
                 // return {
                 //     [`position-${this.position}`]: true
                 // }
+            },
+        },
+        mounted: function () {
+            if (this.autoClose) {
+                setTimeout(() => {
+                    this.closed()
+                }, parseInt(this.autoCloseDelay) * 1000)
             }
+
+            // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
+
+            // 解决 bug: 输入很多信息,  关闭按钮位置不对
+            // 让 div.close 的 line-height 为 div.toast 的 height 即可
+            this.$nextTick(() => {  // 在这里面, 拿到正常数据
+                console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
+                const toastHeight = parseInt(getComputedStyle(this.$refs.toast).height, 10) // 获取 dom 所有 css 样式
+                const toastPaddingTop = parseInt(getComputedStyle(this.$refs.toast).paddingTop, 10) // parseInt("115px", 10) 居然可以转成数字 115 !
+                const toastPaddingBottom = parseInt(getComputedStyle(this.$refs.toast).paddingBottom, 10)
+                const computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom
+                this.$refs.close.style.lineHeight = `${computedHeight}px`
+            })
         },
         mounted: function () {
             this.autoCloseToast();
@@ -80,7 +100,7 @@
             this.upDateCloseStyle();
         },
         methods: {
-            upDateCloseStyle(){
+            upDateCloseStyle() {
                 // 解决 bug: 输入很多信息,  关闭按钮位置不对
                 // 让 div.close 的 line-height 为 div.toast 的 height 即可
                 this.$nextTick(() => {  // 在这里面, 拿到正常数据
@@ -92,7 +112,7 @@
                     this.$refs.close.style.lineHeight = `${computedHeight}px`
                 })
             },
-            autoCloseToast(){
+            autoCloseToast() {
                 if (this.autoClose) {
                     setTimeout(() => {
                         this.closed()
@@ -104,14 +124,14 @@
                 this.$el.remove(); // this.$el === 原生 dom 元素, dom 元素消失在页面
                 this.$destroy(); // vue 实例消除掉
             },
-            log(){
+            log() {
                 console.log("点击关闭, 能执行 toast 组件的方法, 触发本方法的位置是在 props 中");
             },
-            onClickClose(){
+            onClickClose() {
                 this.closed();
                 // 确保你传入的 closeButton.callback 是一个函数
                 // 对参数的验证, 防御性编程
-                if(typeof this.closeButton.callback === "function"){
+                if (typeof this.closeButton.callback === "function") {
                     this.closeButton.callback(this)  // prop 的回调函数执行组件内函数, plugin.js 的
                 }
             }
@@ -133,20 +153,20 @@
         background: #fff;
         display: flex;
         pointer-events: all;
-        &.position-top{
+        &.position-top {
             top: 10px;
         }
-        &.position-bottom{
+        &.position-bottom {
             bottom: 10px;
         }
-        &.position-middle{
+        &.position-middle {
             bottom: 50%;
         }
-        .closeButton{
+        .closeButton {
             cursor: pointer;
-            flex-shrink: 0;  /*保证关闭按钮正常显示*/
+            flex-shrink: 0; /*保证关闭按钮正常显示*/
         }
-        .line{
+        .line {
             padding: 0 5px;
             border-left: 1px solid;
             margin-left: 10px;

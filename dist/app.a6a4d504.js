@@ -12432,6 +12432,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _props$computed$mount;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -12463,7 +12468,7 @@ exports.default = void 0;
 * 5. props + computed + :class 生成 className
 * */
 // 配置 Vue 实例的对象参数
-var _default = {
+var _default = (_props$computed$mount = {
   props: {
     autoClose: {
       type: Boolean,
@@ -12507,56 +12512,80 @@ var _default = {
     }
   },
   mounted: function mounted() {
-    this.autoCloseToast(); // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
+    var _this = this;
 
-    this.upDateCloseStyle();
+    if (this.autoClose) {
+      setTimeout(function () {
+        _this.closed();
+      }, parseInt(this.autoCloseDelay) * 1000);
+    } // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
+    // 解决 bug: 输入很多信息,  关闭按钮位置不对
+    // 让 div.close 的 line-height 为 div.toast 的 height 即可
+
+
+    this.$nextTick(function () {
+      // 在这里面, 拿到正常数据
+      console.log(_this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
+
+      var toastHeight = parseInt(getComputedStyle(_this.$refs.toast).height, 10); // 获取 dom 所有 css 样式
+
+      var toastPaddingTop = parseInt(getComputedStyle(_this.$refs.toast).paddingTop, 10); // parseInt("115px", 10) 居然可以转成数字 115 !
+
+      var toastPaddingBottom = parseInt(getComputedStyle(_this.$refs.toast).paddingBottom, 10);
+      var computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom;
+      _this.$refs.close.style.lineHeight = "".concat(computedHeight, "px");
+    });
+  }
+}, _defineProperty(_props$computed$mount, "mounted", function mounted() {
+  this.autoCloseToast(); // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
+
+  this.upDateCloseStyle();
+}), _defineProperty(_props$computed$mount, "methods", {
+  upDateCloseStyle: function upDateCloseStyle() {
+    var _this2 = this;
+
+    // 解决 bug: 输入很多信息,  关闭按钮位置不对
+    // 让 div.close 的 line-height 为 div.toast 的 height 即可
+    this.$nextTick(function () {
+      // 在这里面, 拿到正常数据
+      // console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
+      var toastHeight = parseInt(getComputedStyle(_this2.$refs.toast).height, 10); // 获取 dom 所有 css 样式
+
+      var toastPaddingTop = parseInt(getComputedStyle(_this2.$refs.toast).paddingTop, 10); // parseInt("115px", 10) 居然可以转成数字 115 !
+
+      var toastPaddingBottom = parseInt(getComputedStyle(_this2.$refs.toast).paddingBottom, 10);
+      var computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom;
+      _this2.$refs.close.style.lineHeight = "".concat(computedHeight, "px");
+    });
   },
-  methods: {
-    upDateCloseStyle: function upDateCloseStyle() {
-      var _this = this;
+  autoCloseToast: function autoCloseToast() {
+    var _this3 = this;
 
-      // 解决 bug: 输入很多信息,  关闭按钮位置不对
-      // 让 div.close 的 line-height 为 div.toast 的 height 即可
-      this.$nextTick(function () {
-        // 在这里面, 拿到正常数据
-        // console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
-        var toastHeight = parseInt(getComputedStyle(_this.$refs.toast).height, 10); // 获取 dom 所有 css 样式
+    if (this.autoClose) {
+      setTimeout(function () {
+        _this3.closed();
+      }, parseInt(this.autoCloseDelay) * 1000);
+    }
+  },
+  closed: function closed() {
+    // console.log(this); // this === vue 文档的 vm
+    this.$el.remove(); // this.$el === 原生 dom 元素, dom 元素消失在页面
 
-        var toastPaddingTop = parseInt(getComputedStyle(_this.$refs.toast).paddingTop, 10); // parseInt("115px", 10) 居然可以转成数字 115 !
+    this.$destroy(); // vue 实例消除掉
+  },
+  log: function log() {
+    console.log("点击关闭, 能执行 toast 组件的方法, 触发本方法的位置是在 props 中");
+  },
+  onClickClose: function onClickClose() {
+    this.closed(); // 确保你传入的 closeButton.callback 是一个函数
+    // 对参数的验证, 防御性编程
 
-        var toastPaddingBottom = parseInt(getComputedStyle(_this.$refs.toast).paddingBottom, 10);
-        var computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom;
-        _this.$refs.close.style.lineHeight = "".concat(computedHeight, "px");
-      });
-    },
-    autoCloseToast: function autoCloseToast() {
-      var _this2 = this;
-
-      if (this.autoClose) {
-        setTimeout(function () {
-          _this2.closed();
-        }, parseInt(this.autoCloseDelay) * 1000);
-      }
-    },
-    closed: function closed() {
-      // console.log(this); // this === vue 文档的 vm
-      this.$el.remove(); // this.$el === 原生 dom 元素, dom 元素消失在页面
-
-      this.$destroy(); // vue 实例消除掉
-    },
-    log: function log() {
-      console.log("点击关闭, 能执行 toast 组件的方法, 触发本方法的位置是在 props 中");
-    },
-    onClickClose: function onClickClose() {
-      this.closed(); // 确保你传入的 closeButton.callback 是一个函数
-      // 对参数的验证, 防御性编程
-
-      if (typeof this.closeButton.callback === "function") {
-        this.closeButton.callback(this); // prop 的回调函数执行组件内函数, plugin.js 的
-      }
+    if (typeof this.closeButton.callback === "function") {
+      this.closeButton.callback(this); // prop 的回调函数执行组件内函数, plugin.js 的
     }
   }
-};
+}), _props$computed$mount);
+
 exports.default = _default;
         var $6fc16f = exports.default || module.exports;
       
@@ -12570,32 +12599,28 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { ref: "toast", staticClass: "toast", class: _vm.toastClass },
-    [
-      _vm.enAbleHtml
-        ? _c("span", {
-            staticClass: "showMessage",
-            domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
-          })
-        : _c("span", { staticClass: "showMessage" }, [_vm._t("default")], 2),
-      _vm._v(" "),
-      _c("div", { staticClass: "line" }),
-      _vm._v(" "),
-      !_vm.autoClose
-        ? _c(
-            "span",
-            {
-              ref: "close",
-              staticClass: "closeButton",
-              on: { click: _vm.onClickClose }
-            },
-            [_vm._v(_vm._s(_vm.closeButton.text))]
-          )
-        : _vm._e()
-    ]
-  )
+  return _c("div", { ref: "toast", staticClass: "toast" }, [
+    _vm.enAbleHtml
+      ? _c("span", {
+          staticClass: "showMessage",
+          domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+        })
+      : _c("span", { staticClass: "showMessage" }, [_vm._t("default")], 2),
+    _vm._v(" "),
+    _c("div", { staticClass: "line" }),
+    _vm._v(" "),
+    !_vm.autoClose
+      ? _c(
+          "span",
+          {
+            ref: "close",
+            staticClass: "closeButton",
+            on: { click: _vm.onClickClose }
+          },
+          [_vm._v(_vm._s(_vm.closeButton.text))]
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
