@@ -59,7 +59,11 @@
             },
             onClickClose(){
                 this.closed();
-                this.closeButton.callback()
+                // 确保你传入的 closeButton.callback 是一个函数
+                // 对参数的验证, 防御性编程
+                if(typeof this.closeButton.callback === "function"){
+                    this.closeButton.callback()
+                }
             }
         }
     }
