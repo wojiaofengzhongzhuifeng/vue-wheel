@@ -8,7 +8,14 @@ export default {
 
             // 动态创建组件
             let Constructor = Vue.extend(Toast); // 生成 Toast 组件构造函数
-            let toast = new Constructor(); // 通过构造函数生成一个toast实例
+            let toast = new Constructor({
+                propsData:{
+                    autoClose: false,
+                    closeButton: {
+                        text: "关闭"
+                    }
+                }
+            }); // 通过构造函数生成一个toast实例
             toast.$slots.default = [showToastMessage] // 想toast实例中的slot属性传递信息
             toast.$mount(); // toast实例渲染为文档之外的 dom 元素
             document.body.appendChild(toast.$el) // 必须使用原生 DOM API 把它插入文档中
