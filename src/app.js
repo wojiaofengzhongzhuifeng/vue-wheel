@@ -34,20 +34,8 @@ new Vue({
         loading1: true
     },
     methods: {
-        inputChange(e){
-            console.log(e);
-        },
-        inputInput(e){
-            console.log("inputInput");
-            console.log(e)
-        },
-        inputFocus(e){
-            console.log("inputFocus");
-            console.log(e)
-        },
-        inputBlur(e){
-            console.log("inputBlur");
-            console.log(e);
+        showToast(){
+            alert("hi")
         }
     }
 })
