@@ -16,13 +16,6 @@
     *   - 用户点击另一个按钮的时候删除这个 Vue 实例
     *
     * */
-
-    // 在 Vue 对象中挂载一个方法, 这样在 app.js 通过 this.$toast 即可调用 toast 组件的方法了
-    import Vue from "vue"
-
-    Vue.prototype.$toast = function (showToastMessage) {
-        console.log(showToastMessage)
-    }
 </script>
 
 <style lang="scss" scoped>

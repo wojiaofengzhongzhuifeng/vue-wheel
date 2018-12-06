@@ -11,6 +11,7 @@ import sider from "./sider"
 import content from "./content"
 import footer from "./footer"
 import toast from "./toast"
+import plugin from "./plugin"
 
 
 
@@ -25,7 +26,7 @@ Vue.component("w-sider", sider)
 Vue.component("w-content", content)
 Vue.component("w-footer", footer)
 Vue.component("w-toast", toast)
-
+Vue.use(plugin)
 
 
 new Vue({
