@@ -5,12 +5,12 @@ import ButtonGroup from "./button-group"
 import Input from "./input"
 import Row from "./row"
 import Col from "./col"
-import layout from "./layout"
-import header from "./header"
-import sider from "./sider"
-import content from "./content"
-import footer from "./footer"
-import toast from "./toast"
+import Layout from "./layout"
+import Header from "./header"
+import Sider from "./sider"
+import Content from "./content"
+import Footer from "./footer"
+import Toast from "./toast"
 import plugin from "./plugin"
 
 
@@ -20,12 +20,12 @@ Vue.component("w-group", ButtonGroup)
 Vue.component("w-input", Input)
 Vue.component("w-col", Col)
 Vue.component("w-row", Row)
-Vue.component("w-layout", layout)
-Vue.component("w-header", header)
-Vue.component("w-sider", sider)
-Vue.component("w-content", content)
-Vue.component("w-footer", footer)
-Vue.component("w-toast", toast)
+Vue.component("w-layout", Layout)
+Vue.component("w-header", Header)
+Vue.component("w-sider", Sider)
+Vue.component("w-content", Content)
+Vue.component("w-footer", Footer)
+Vue.component("w-toast", Toast)
 Vue.use(plugin)
 
 
