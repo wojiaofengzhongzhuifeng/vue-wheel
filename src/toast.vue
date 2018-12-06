@@ -19,4 +19,18 @@
 </script>
 
 <style lang="scss" scoped>
+    $font-color: #90a4ae;
+    .toast{
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translate(-50%);
+        color: $font-color;
+        padding: 10px 16px;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0,0,0,.15);
+        background: #fff;
+        display: inline-block;
+        pointer-events: all;
+    }
 </style>
