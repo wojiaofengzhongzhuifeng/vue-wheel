@@ -1,6 +1,7 @@
 <template>
     <div class="toast">
-        <span class="showMessage">
+        <span v-if="enAbleHtml" class="showMessage" v-html="$slots.default[0]"></span>
+        <span v-else="!enAbleHtml" class="showMessage">
             <slot></slot>
         </span>
         <span v-if="!autoClose" class="closeButton" @click="onClickClose">{{closeButton.text}}</span>
@@ -43,6 +44,10 @@
                         }
                     }
                 }
+            },
+            enAbleHtml:{
+                type: Boolean,
+                default: false,
             }
         },
         mounted() {

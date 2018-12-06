@@ -33,7 +33,7 @@ new Vue({
     el: "#app",
     methods: {
         showToast(){
-            this.$toast("这是展示信息")
+            this.$toast("信息信息信息")
         }
     }
 })
