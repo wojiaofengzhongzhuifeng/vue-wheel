@@ -12,7 +12,10 @@ export default {
                 propsData:{
                     autoClose: false,
                     closeButton: {
-                        text: "关闭"
+                        text: "关闭",
+                        callback: ()=>{
+                            console.log("plugin");
+                        }
                     }
                 }
             }); // 通过构造函数生成一个toast实例

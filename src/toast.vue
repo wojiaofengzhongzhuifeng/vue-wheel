@@ -3,7 +3,7 @@
         <span class="showMessage">
             <slot></slot>
         </span>
-        <span v-if="!autoClose" class="closeButton">{{closeButton.text}}</span>
+        <span v-if="!autoClose" class="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
 </template>
 
@@ -36,7 +36,10 @@
                 type: Object,
                 default: () => {
                     return {
-                        text: "关闭"
+                        text: "关闭",
+                        callback: ()=>{
+                            console.log("default");
+                        }
                     }
                 }
             }
@@ -53,6 +56,10 @@
                 console.log(this); // this === vue 文档的 vm
                 this.$el.remove(); // this.$el === 原生 dom 元素, dom 元素消失在页面
                 this.$destroy(); // vue 实例消除掉
+            },
+            onClickClose(){
+                this.closed();
+                this.closeButton.callback()
             }
         }
     }
