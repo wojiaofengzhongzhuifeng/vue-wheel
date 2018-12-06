@@ -1,5 +1,5 @@
 <template>
-    <div class="toast" ref="toast">
+    <div class="toast" ref="toast" :class="toastClass">
         <span v-if="enAbleHtml" class="showMessage" v-html="$slots.default[0]"></span>
         <span v-else="!enAbleHtml" class="showMessage">
             <slot></slot>
@@ -25,6 +25,8 @@
     * 3. nextTick
     *
     * 4. ref
+    *
+    * 5. props + computed + :class 生成 className
     * */
 
     // 配置 Vue 实例的对象参数
@@ -53,6 +55,23 @@
             enAbleHtml:{
                 type: Boolean,
                 default: false,
+            },
+            position: {
+                type: String,
+                default: "top",
+                validator(position){
+                    return ["top", "bottom", "middle"].indexOf(position) > 0
+                }
+            }
+        },
+        computed:{
+            toastClass(){
+                return [`position-${this.position}`] // 第一种 class 添加方法
+
+                // // 第二种 class 添加方法
+                // return {
+                //     [`position-${this.position}`]: true
+                // }
             }
         },
         mounted: function () {
@@ -105,7 +124,6 @@
     .toast {
         font-size: 14px;
         position: fixed;
-        top: 10px;
         left: 50%;
         transform: translate(-50%);
         color: $font-color;
@@ -115,6 +133,15 @@
         background: #fff;
         display: flex;
         pointer-events: all;
+        &.position-top{
+            top: 10px;
+        }
+        &.position-bottom{
+            bottom: 10px;
+        }
+        &.position-middle{
+            bottom: 50%;
+        }
         .closeButton{
             cursor: pointer;
             flex-shrink: 0;  /*保证关闭按钮正常显示*/

@@ -18,7 +18,9 @@ export default {
                             console.log("plugin");
                         },
                     },
-                    enAbleHtml: true
+                    enAbleHtml: true,
+                    position: "middle",
+
                 }
             }); // 通过构造函数生成一个toast实例
             toast.$slots.default = [showToastMessage] // 想toast实例中的slot属性传递信息
