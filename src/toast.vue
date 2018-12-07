@@ -44,15 +44,15 @@
     // 配置 Vue 实例的对象参数
     export default {
         props: {
-            autoCloseDelay: {
-                type: [String, Number],
-                default: 3
+            autoCloseDelay:{
+                type: Number,
+                default: 3,
             },
             // 如果类型是 Object , 那么 default 必须是一个函数, 这个函数返回一个对象, 对象是原 default
             closeButton: {
                 type: Object,
                 validator(closeOption){
-                    return typeof closeOption.text === "string" && typeof closeOption.callback === "function" && typeof closeOption.autoCloseDelay === "number";
+                    return typeof closeOption.text === "string" && typeof closeOption.callback === "function";
                 },
             },
             enAbleHtml: {
@@ -100,7 +100,7 @@
                 })
             },
             autoCloseToast() {
-                if (this.closeButton) {
+                if (!this.closeButton) {
                     setTimeout(() => {
                         this.closed()
                     }, parseInt(this.autoCloseDelay) * 1000)
