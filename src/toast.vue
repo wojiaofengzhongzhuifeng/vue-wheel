@@ -4,9 +4,11 @@
             <span v-if="enAbleHtml" class="showMessage" v-html="$slots.default[0]"></span>
             <span v-else="!enAbleHtml" class="showMessage">
             <slot></slot>
-        </span>
-            <div class="line"></div>
-            <span v-if="!autoClose" class="closeButton" @click="onClickClose" ref="close">{{closeButton.text}}</span>
+        </span >
+            <div v-if="!autoClose" style="display: flex;">
+                <div class="line"></div>
+                <span class="closeButton" @click="onClickClose" ref="close">{{closeButton.text}}</span>
+            </div>
         </div>
     </div>
 </template>
@@ -39,7 +41,7 @@
     export default {
         props: {
             autoClose: {
-                type: Boolean,
+                type: Boolean | Number,
                 default: true,
             },
             autoCloseDelay: {
@@ -93,6 +95,7 @@
             // 让 div.close 的 line-height 为 div.toast 的 height 即可
             this.$nextTick(() => {  // 在这里面, 拿到正常数据
                 console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
+                console.log(this.$refs.toast);
                 const toastHeight = parseInt(getComputedStyle(this.$refs.toast).height, 10) // 获取 dom 所有 css 样式
                 const toastPaddingTop = parseInt(getComputedStyle(this.$refs.toast).paddingTop, 10) // parseInt("115px", 10) 居然可以转成数字 115 !
                 const toastPaddingBottom = parseInt(getComputedStyle(this.$refs.toast).paddingBottom, 10)
