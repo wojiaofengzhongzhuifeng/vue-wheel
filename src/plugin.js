@@ -46,34 +46,15 @@ export default {
                     enAbleHtml: true,
                     position: "middle",
                 }, showToastMessage})
-            // if(currentToast){
-            //     currentToast.closed()
-            //     currentToast = createToast({Vue, propsData: {
-            //             autoClose: false,
-            //             closeButton: {
-            //                 text: "关闭",
-            //                 callback: (toast)=>{
-            //                     toast.log();
-            //                     console.log("plugin");
-            //                 },
-            //             },
-            //             enAbleHtml: true,
-            //             position: "middle",
-            //         }, showToastMessage})
-            // } else {
-            //     currentToast = createToast({Vue, propsData: {
-            //             autoClose: false,
-            //             closeButton: {
-            //                 text: "关闭",
-            //                 callback: (toast)=>{
-            //                     toast.log();
-            //                     console.log("plugin");
-            //                 },
-            //             },
-            //             enAbleHtml: true,
-            //             position: "middle",
-            //         }, showToastMessage})
-            // }
+            /*
+            上面的代码之前是这样的
+            if(currentToast){
+                currentToast.closed()
+                currentToast = createToast(options)
+            } else {
+                currentToast = createToast(options)
+            }
+            */
         }
     }
 }
