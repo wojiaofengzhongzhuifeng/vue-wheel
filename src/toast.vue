@@ -83,27 +83,6 @@
             },
         },
         mounted: function () {
-            if (this.autoClose) {
-                setTimeout(() => {
-                    this.closed()
-                }, parseInt(this.autoCloseDelay) * 1000)
-            }
-
-            // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
-
-            // 解决 bug: 输入很多信息,  关闭按钮位置不对
-            // 让 div.close 的 line-height 为 div.toast 的 height 即可
-            this.$nextTick(() => {  // 在这里面, 拿到正常数据
-                console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
-                console.log(this.$refs.toast);
-                const toastHeight = parseInt(getComputedStyle(this.$refs.toast).height, 10) // 获取 dom 所有 css 样式
-                const toastPaddingTop = parseInt(getComputedStyle(this.$refs.toast).paddingTop, 10) // parseInt("115px", 10) 居然可以转成数字 115 !
-                const toastPaddingBottom = parseInt(getComputedStyle(this.$refs.toast).paddingBottom, 10)
-                const computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom
-                this.$refs.close.style.lineHeight = `${computedHeight}px`
-            })
-        },
-        mounted: function () {
             this.autoCloseToast();
             // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
             this.upDateCloseStyle();
@@ -118,7 +97,9 @@
                     const toastPaddingTop = parseInt(getComputedStyle(this.$refs.toast).paddingTop, 10) // parseInt("115px", 10) 居然可以转成数字 115 !
                     const toastPaddingBottom = parseInt(getComputedStyle(this.$refs.toast).paddingBottom, 10)
                     const computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom
-                    this.$refs.close.style.lineHeight = `${computedHeight}px`
+                    if(!this.autoClose){
+                        this.$refs.close.style.lineHeight = `${computedHeight}px`
+                    }
                 })
             },
             autoCloseToast() {
