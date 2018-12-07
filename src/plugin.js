@@ -30,22 +30,11 @@ export default {
         *       - 如果 currentToast 不存在, 生成新的 toast 设为currentToast
         *
         * */
-        Vue.prototype.$toast = function (showToastMessage) {
+        Vue.prototype.$toast = function (options) {
             if(currentToast){
                 currentToast.closed()
             }
-            currentToast = createToast({Vue, propsData: {
-                    autoClose: false,
-                    closeButton: {
-                        text: "关闭",
-                        callback: (toast)=>{
-                            toast.log();
-                            console.log("plugin");
-                        },
-                    },
-                    enAbleHtml: true,
-                    position: "middle",
-                }, showToastMessage})
+            currentToast = createToast({Vue, propsData: options.propsData, showToastMessage: options.showMessage})
             /*
             上面的代码之前是这样的
             if(currentToast){

@@ -29,11 +29,22 @@ Vue.component("w-toast", Toast)
 Vue.use(plugin)
 
 
+const toastPropsData = {
+    autoClose: false,
+    closeButton: {
+        text: "关闭",
+        callback: (toast) => {
+            toast.log();
+            console.log("plugin");
+        },
+    },
+    position: "middle"
+}
 new Vue({
     el: "#app",
     methods: {
         showToast(){
-            this.$toast(`这是一个信息${Math.random()}`)
+            this.$toast({showMessage: `这是一个信息${Math.random()}`, propsData: toastPropsData})
         }
     }
 })

@@ -1,5 +1,5 @@
 <template>
-    <div class="toast" ref="toast">
+    <div class="toast" ref="toast" :class="toastClass">
         <span v-if="enAbleHtml" class="showMessage" v-html="$slots.default[0]"></span>
         <span v-else="!enAbleHtml" class="showMessage">
             <slot></slot>
@@ -27,6 +27,8 @@
     * 4. ref
     *
     * 5. props + computed + :class 生成 className
+    *
+    * 6. 函数的参数传递
     * */
 
     // 配置 Vue 实例的对象参数
@@ -60,7 +62,7 @@
                 type: String,
                 default: "top",
                 validator(position) {
-                    return ["top", "bottom", "middle"].indexOf(position) > 0
+                    return ["top", "bottom", "middle"].indexOf(position) >= 0
                 }
             }
         },
