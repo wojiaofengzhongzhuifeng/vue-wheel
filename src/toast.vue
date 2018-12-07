@@ -1,11 +1,13 @@
 <template>
-    <div class="toast" ref="toast" :class="toastClass">
-        <span v-if="enAbleHtml" class="showMessage" v-html="$slots.default[0]"></span>
-        <span v-else="!enAbleHtml" class="showMessage">
+    <div class="wrapper" :class="toastClass">
+        <div class="toast" ref="toast">
+            <span v-if="enAbleHtml" class="showMessage" v-html="$slots.default[0]"></span>
+            <span v-else="!enAbleHtml" class="showMessage">
             <slot></slot>
         </span>
-        <div class="line"></div>
-        <span v-if="!autoClose" class="closeButton" @click="onClickClose" ref="close">{{closeButton.text}}</span>
+            <div class="line"></div>
+            <span v-if="!autoClose" class="closeButton" @click="onClickClose" ref="close">{{closeButton.text}}</span>
+        </div>
     </div>
 </template>
 
@@ -29,6 +31,8 @@
     * 5. props + computed + :class 生成 className
     *
     * 6. 函数的参数传递
+    *
+    * 7. 套路: 动画遇到bug, 新增一个div, 只用来居中
     * */
 
     // 配置 Vue 实例的对象参数
@@ -142,36 +146,74 @@
 </script>
 
 <style lang="scss" scoped>
+    @keyframes showMiddle {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+    @keyframes showFromTop {
+        0%{
+            transform: translateY(-100px);
+        }
+        100%{
+            transform: translateY(0);
+        }
+    }
+    @keyframes showFromBottom {
+        0%{
+            transform: translateY(100px);
+        }
+        100%{
+            transform: translateY(0);
+        }
+    }
     $font-color: #90a4ae;
-    .toast {
-        font-size: 14px;
-        position: fixed;
-        left: 50%;
+    .wrapper {
+        /*以下三个属性可以让div水平居中, .wrapper 的作用: 水平居中 + 决定 toast 的展示位置*/
         transform: translate(-50%);
-        color: $font-color;
-        padding: 10px 16px;
-        border-radius: 4px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
-        background: #fff;
-        display: flex;
-        pointer-events: all;
-        &.position-top {
-            top: 10px;
+        left: 50%;
+        position: fixed;
+        .toast {
+            font-size: 14px;
+            color: $font-color;
+            padding: 10px 16px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+            background: #fff;
+            display: flex;
+            pointer-events: all;
+            .closeButton {
+                cursor: pointer;
+                flex-shrink: 0; /*保证关闭按钮正常显示*/
+            }
+            .line {
+                padding: 0 5px;
+                border-left: 1px solid;
+                margin-left: 10px;
+            }
         }
         &.position-bottom {
             bottom: 10px;
+            .toast {
+                animation: showFromBottom 0.3s;
+            }
         }
         &.position-middle {
             bottom: 50%;
+            .toast {
+                animation: showMiddle 0.3s;
+            }
         }
-        .closeButton {
-            cursor: pointer;
-            flex-shrink: 0; /*保证关闭按钮正常显示*/
-        }
-        .line {
-            padding: 0 5px;
-            border-left: 1px solid;
-            margin-left: 10px;
+        &.position-top {
+            top: 10px;
+            .toast {
+                animation: showFromTop 0.3s;
+            }
         }
     }
+
+
 </style>
