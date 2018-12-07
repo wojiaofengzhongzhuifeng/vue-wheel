@@ -35,30 +35,29 @@
     * 6. 函数的参数传递
     *
     * 7. 套路: 动画遇到bug, 新增一个div, 只用来居中
+    *
+    * 8. 规定 props 数据类型:  [Number, String]
+    *
+    * 9. 规定 props 数据是规定的对象A
     * */
 
     // 配置 Vue 实例的对象参数
     export default {
         props: {
             autoClose: {
-                type: Boolean | Number,
+                type: [Boolean, Number],
                 default: true,
             },
             autoCloseDelay: {
-                type: String | Number,
+                type: [String, Number],
                 default: 3
             },
             // 如果类型是 Object , 那么 default 必须是一个函数, 这个函数返回一个对象, 对象是原 default
             closeButton: {
                 type: Object,
-                default: () => {
-                    return {
-                        text: "关闭",
-                        callback: () => {
-                            console.log("default");
-                        }
-                    }
-                }
+                validator(closeOption){
+                    return typeof closeOption.text === "string" && typeof closeOption.callback === "function" && typeof closeOption.autoCloseDelay === "number";
+                },
             },
             enAbleHtml: {
                 type: Boolean,
