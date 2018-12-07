@@ -33,13 +33,14 @@ describe('Toast', () => {
             const Constructor = Vue.extend(Toast)
             const vm = new Constructor({
                 propsData: {
-                    autoClose: false
+                    autoClose: true
                 }
             }).$mount(div)
 
             // 测试
             let toastElement = vm.$el
-            expect(document.body.contains(toastElement)).to.eq(true)
+            let colseButton = toastElement.querySelector(".closeButton")
+            expect(document.body.contains(colseButton)).to.eq(false)
 
             // 删除
             div.remove()
