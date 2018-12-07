@@ -5,7 +5,7 @@
             <span v-else="!enAbleHtml" class="showMessage">
             <slot></slot>
         </span >
-            <div v-if="!autoClose" style="display: flex;">
+            <div v-if="closeButton" style="display: flex;">
                 <div class="line"></div>
                 <span class="closeButton" @click="onClickClose" ref="close">{{closeButton.text}}</span>
             </div>
@@ -44,10 +44,6 @@
     // 配置 Vue 实例的对象参数
     export default {
         props: {
-            autoClose: {
-                type: [Boolean, Number],
-                default: true,
-            },
             autoCloseDelay: {
                 type: [String, Number],
                 default: 3
@@ -75,10 +71,12 @@
             toastClass() {
                 return [`position-${this.position}`] // 第一种 class 添加方法
 
-                // // 第二种 class 添加方法
-                // return {
-                //     [`position-${this.position}`]: true
-                // }
+                /*
+                // 第二种 class 添加方法
+                return {
+                    [`position-${this.position}`]: true
+                }
+                */
             },
         },
         mounted: function () {
@@ -96,13 +94,13 @@
                     const toastPaddingTop = parseInt(getComputedStyle(this.$refs.toast).paddingTop, 10) // parseInt("115px", 10) 居然可以转成数字 115 !
                     const toastPaddingBottom = parseInt(getComputedStyle(this.$refs.toast).paddingBottom, 10)
                     const computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom
-                    if(!this.autoClose){
+                    if(this.closeButton){
                         this.$refs.close.style.lineHeight = `${computedHeight}px`
                     }
                 })
             },
             autoCloseToast() {
-                if (this.autoClose) {
+                if (this.closeButton) {
                     setTimeout(() => {
                         this.closed()
                     }, parseInt(this.autoCloseDelay) * 1000)
