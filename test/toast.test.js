@@ -46,7 +46,6 @@ describe('Toast', () => {
             let toastElement = vm.$el
             setTimeout(()=>{
                 expect(document.body.contains(toastElement)).to.eq(true)
-                done()
             }, 500)
 
             setTimeout(()=>{
