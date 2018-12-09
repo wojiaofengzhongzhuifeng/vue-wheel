@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb0d0d7c-f60a-45fa-893e-fcdf37a84776" name="Default Changelist" comment="bug: 信息很多 通过 nexttick + ref 解决">
+    <list default="true" id="cb0d0d7c-f60a-45fa-893e-fcdf37a84776" name="Default Changelist" comment="样式: 添加三种动画">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/app.a6a4d504.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.a6a4d504.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.a6a4d504.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.a6a4d504.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.a6a4d504.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.a6a4d504.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/toast.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/toast.test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -95,44 +97,44 @@
         <counts>
           <entry key="gitignore" value="11" />
           <entry key="html" value="1506" />
-          <entry key="js" value="4257" />
+          <entry key="js" value="6000" />
           <entry key="json" value="65" />
           <entry key="md" value="95" />
-          <entry key="txt" value="735" />
-          <entry key="vue" value="9371" />
+          <entry key="txt" value="1059" />
+          <entry key="vue" value="10668" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="1506" />
           <entry key="JSON" value="65" />
-          <entry key="JavaScript" value="4257" />
+          <entry key="JavaScript" value="6000" />
           <entry key="Markdown" value="95" />
-          <entry key="PLAIN_TEXT" value="746" />
-          <entry key="Vue.js" value="9371" />
+          <entry key="PLAIN_TEXT" value="1070" />
+          <entry key="Vue.js" value="10668" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="3" />
           <entry key="html" value="10" />
-          <entry key="js" value="50" />
-          <entry key="json" value="7" />
+          <entry key="js" value="66" />
+          <entry key="json" value="8" />
           <entry key="md" value="4" />
-          <entry key="ts" value="1" />
-          <entry key="vue" value="42" />
+          <entry key="ts" value="3" />
+          <entry key="vue" value="43" />
           <entry key="yml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="10" />
-          <entry key="JSON" value="7" />
-          <entry key="JavaScript" value="50" />
+          <entry key="JSON" value="8" />
+          <entry key="JavaScript" value="66" />
           <entry key="Markdown" value="4" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="TypeScript" value="1" />
-          <entry key="Vue.js" value="42" />
+          <entry key="TypeScript" value="3" />
+          <entry key="Vue.js" value="43" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
@@ -143,33 +145,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/toast.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="118" column="55" lean-forward="true" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="55" />
+            <state relative-caret-position="276">
+              <caret line="61" column="20" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="20" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="e#542#981#0" />
-                <element signature="e#1788#1816#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/plugin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
-              <folding>
-                <element signature="e#1265#1702#0" />
+                <element signature="e#2155#2309#0" />
+                <element signature="e#6155#6698#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/plugin.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="27" column="31" lean-forward="true" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+            <state relative-caret-position="344">
+              <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
               <folding>
                 <element signature="e#11#32#0" expanded="true" />
               </folding>
@@ -178,12 +179,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.js">
+        <entry file="file://$PROJECT_DIR$/test/toast.test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="390">
+              <caret line="119" column="24" lean-forward="true" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
               <folding>
-                <element signature="e#0#33#0" expanded="true" />
+                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#87#108#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -203,6 +205,20 @@
       <find>这是</find>
       <find>getCom</find>
       <find>position</find>
+      <find>console</find>
+      <find>style</find>
+      <find>nextTick</find>
+      <find>instanceof</find>
+      <find>click</find>
+      <find>closeButton</find>
+      <find>autoClose</find>
+      <find>autoCloseDelay</find>
+      <find>close</find>
+      <find>CONSOLE</find>
+      <find>getComputedStyle</find>
+      <find>showMessage</find>
+      <find>showToastMessage</find>
+      <find>done</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -230,9 +246,10 @@
         <option value="$PROJECT_DIR$/src/col.vue" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/toast.vue" />
-        <option value="$PROJECT_DIR$/src/app.js" />
         <option value="$PROJECT_DIR$/src/plugin.js" />
+        <option value="$PROJECT_DIR$/src/toast.vue" />
+        <option value="$PROJECT_DIR$/test/toast.test.js" />
+        <option value="$PROJECT_DIR$/src/app.js" />
       </list>
     </option>
   </component>
@@ -276,6 +293,11 @@
               <item name="vue-wheel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="vue-wheel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vue-wheel" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -284,10 +306,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="app&#9;FILE&#9;file://D:/code/vue-wheel/src/app.js&#10;code style&#9;ACTION&#9;ChangeCodeStyleScheme&#10;setting&#9;ACTION&#9;WelcomeScreen.Settings&#10;set&#9;ACTION&#9;WelcomeScreen.Settings&#10;sett&#9;ACTION&#9;WelcomeScreen.Settings&#10;key&#9;ACTION&#9;ChangeKeymap&#10;keymap&#9;ACTION&#9;ChangeKeymap&#10;vcs&#9;ACTION&#9;Vcs.QuickListPopupAction" />
+    <property name="SearchEverywhereHistoryKey" value="vcs&#9;ACTION&#9;VcsGroups&#10;app&#9;FILE&#9;file://D:/code/vue-wheel/src/app.js&#10;code style&#9;ACTION&#9;ChangeCodeStyleScheme&#10;setting&#9;ACTION&#9;WelcomeScreen.Settings&#10;set&#9;ACTION&#9;WelcomeScreen.Settings&#10;sett&#9;ACTION&#9;WelcomeScreen.Settings&#10;key&#9;ACTION&#9;ChangeKeymap&#10;keymap&#9;ACTION&#9;ChangeKeymap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544085918003" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544338873821" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -331,7 +353,7 @@
       <workItem from="1543464050494" duration="1861000" />
       <workItem from="1543570074170" duration="1210000" />
       <workItem from="1543799920664" duration="3611000" />
-      <workItem from="1544086000996" duration="11091000" />
+      <workItem from="1544086000996" duration="36541000" />
     </task>
     <task id="LOCAL-00001" summary="npm install vue">
       <created>1541852870994</created>
@@ -522,11 +544,95 @@
       <option name="project" value="LOCAL" />
       <updated>1544105982634</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="注释: test">
+      <created>1544147419063</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1544147419063</updated>
+    </task>
+    <task id="LOCAL-00029" summary="重构: 改变函数的参数">
+      <created>1544148661037</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1544148661037</updated>
+    </task>
+    <task id="LOCAL-00030" summary="样式: 添加三种动画">
+      <created>1544151494352</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1544151494352</updated>
+    </task>
+    <task id="LOCAL-00031" summary="测试: 添加第一个toast测试">
+      <created>1544152928568</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1544152928568</updated>
+    </task>
+    <task id="LOCAL-00032" summary="test: 修复错的测试用例">
+      <created>1544153324186</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1544153324186</updated>
+    </task>
+    <task id="LOCAL-00033" summary="test: autoCloseDelay">
+      <created>1544153832381</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1544153832381</updated>
+    </task>
+    <task id="LOCAL-00034" summary="bug: 修复自动关闭的bug">
+      <created>1544162947881</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1544162947881</updated>
+    </task>
+    <task id="LOCAL-00035" summary="bug: 消除没有关闭按钮时控制台的报错">
+      <created>1544163282499</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1544163282499</updated>
+    </task>
+    <task id="LOCAL-00036" summary="重构: toast 传入closeButton属性">
+      <created>1544175802511</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1544175802511</updated>
+    </task>
+    <task id="LOCAL-00037" summary="重构: closeButton 代替 autoClose">
+      <created>1544176158398</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1544176158398</updated>
+    </task>
+    <task id="LOCAL-00038" summary="重构: delay 单独设置">
+      <created>1544176714675</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1544176714675</updated>
+    </task>
+    <task id="LOCAL-00039" summary="test: 接受 closeButton 属性">
+      <created>1544336681514</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1544336681514</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141912000" />
+    <option name="totallyTimeSpent" value="167362000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -558,7 +664,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.42345276" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.09663409" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.16395223" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.12269273" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
@@ -607,18 +713,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="功能: 完成button组件的 icon 和iconPosition属性" />
-    <MESSAGE value="功能: grid 组件完成gutter" />
-    <MESSAGE value="bug: 准备优化代码" />
-    <MESSAGE value="优化: 优化 class" />
-    <MESSAGE value="优化: 重构代码" />
-    <MESSAGE value="优化: 更好的重构代码" />
-    <MESSAGE value="功能: 添加icon组件" />
-    <MESSAGE value="注释: 添加toast注释" />
-    <MESSAGE value="功能: 侵入性实现功能" />
-    <MESSAGE value="功能: 将侵入性代码放到 plugin 中, 实现的功能还是一样" />
-    <MESSAGE value="功能: 动态创建组件" />
-    <MESSAGE value="bug: import组件时, 组件名称首字母大写" />
     <MESSAGE value="样式: toast 组件顶部出现 + 美化toast组件" />
     <MESSAGE value="样式: 当不是自动关闭时 添加关闭按钮 美化关闭按钮" />
     <MESSAGE value="功能: coast 组件的 closeButton 属性允许放一个回调函数" />
@@ -632,7 +726,19 @@
     <MESSAGE value="功能: 添加 position 属性" />
     <MESSAGE value="init" />
     <MESSAGE value="重构: 使用愚蠢的方法重构产生toast组件方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="重构: 使用愚蠢的方法重构产生toast组件方法" />
+    <MESSAGE value="注释: test" />
+    <MESSAGE value="重构: 改变函数的参数" />
+    <MESSAGE value="样式: 添加三种动画" />
+    <MESSAGE value="测试: 添加第一个toast测试" />
+    <MESSAGE value="test: 修复错的测试用例" />
+    <MESSAGE value="test: autoCloseDelay" />
+    <MESSAGE value="bug: 修复自动关闭的bug" />
+    <MESSAGE value="bug: 消除没有关闭按钮时控制台的报错" />
+    <MESSAGE value="重构: toast 传入closeButton属性" />
+    <MESSAGE value="重构: closeButton 代替 autoClose" />
+    <MESSAGE value="重构: delay 单独设置" />
+    <MESSAGE value="test: 接受 closeButton 属性" />
+    <option name="LAST_COMMIT_MESSAGE" value="test: 接受 closeButton 属性" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -712,13 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/row.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="713">
@@ -730,27 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="666">
           <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/button.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="19" column="45" selection-start-line="19" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/col.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/button.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -810,23 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="17085" column="31" lean-forward="true" selection-start-line="17085" selection-start-column="31" selection-end-line="17085" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/row.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="84" column="62" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -834,13 +895,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/toast.vue">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="118" column="55" lean-forward="true" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="55" />
+        <state relative-caret-position="345">
+          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/row.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="78" column="28" lean-forward="true" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="28" />
           <folding>
-            <element signature="e#542#981#0" />
-            <element signature="e#1788#1816#0" />
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/col.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-828">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -855,29 +939,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="27" column="31" lean-forward="true" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="-374">
+          <caret line="154" column="22" lean-forward="true" selection-start-line="154" selection-start-column="22" selection-end-line="154" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/button.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/button.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="82" column="28" selection-start-line="82" selection-end-line="83" />
           <folding>
-            <element signature="e#11#32#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#87#108#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        <state relative-caret-position="268">
+          <caret line="17076" column="46" selection-start-line="17076" selection-start-column="39" selection-end-line="17076" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plugin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="47" column="37" selection-start-line="47" selection-start-column="37" selection-end-line="47" selection-end-column="37" />
+        <state relative-caret-position="172">
+          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/toast.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="61" column="20" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="20" />
           <folding>
-            <element signature="e#1265#1702#0" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#542#981#0" />
+            <element signature="e#2155#2309#0" />
+            <element signature="e#6155#6698#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/toast.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="119" column="24" lean-forward="true" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#87#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+          <folding>
+            <element signature="e#11#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

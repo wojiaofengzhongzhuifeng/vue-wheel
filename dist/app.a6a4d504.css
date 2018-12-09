@@ -1213,11 +1213,38 @@ to {
   background: #7dbcea;
 }
 @charset "UTF-8";
-.toast[data-v-6fc16f] {
-  font-size: 14px;
-  position: fixed;
-  left: 50%;
+@keyframes showMiddle-data-v-6fc16f {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+@keyframes showFromTop-data-v-6fc16f {
+0% {
+    transform: translateY(-100px);
+}
+100% {
+    transform: translateY(0);
+}
+}
+@keyframes showFromBottom-data-v-6fc16f {
+0% {
+    transform: translateY(100px);
+}
+100% {
+    transform: translateY(0);
+}
+}
+.wrapper[data-v-6fc16f] {
+  /*以下三个属性可以让div水平居中, .wrapper 的作用: 水平居中 + 决定 toast 的展示位置*/
   transform: translate(-50%);
+  left: 50%;
+  position: fixed;
+}
+.wrapper .toast[data-v-6fc16f] {
+  font-size: 14px;
   color: #90a4ae;
   padding: 10px 16px;
   border-radius: 4px;
@@ -1226,22 +1253,31 @@ to {
   display: flex;
   pointer-events: all;
 }
-.toast.position-top[data-v-6fc16f] {
-  top: 10px;
-}
-.toast.position-bottom[data-v-6fc16f] {
-  bottom: 10px;
-}
-.toast.position-middle[data-v-6fc16f] {
-  bottom: 50%;
-}
-.toast .closeButton[data-v-6fc16f] {
+.wrapper .toast .closeButton[data-v-6fc16f] {
   cursor: pointer;
   flex-shrink: 0;
   /*保证关闭按钮正常显示*/
 }
-.toast .line[data-v-6fc16f] {
+.wrapper .toast .line[data-v-6fc16f] {
   padding: 0 5px;
   border-left: 1px solid;
   margin-left: 10px;
+}
+.wrapper.position-bottom[data-v-6fc16f] {
+  bottom: 10px;
+}
+.wrapper.position-bottom .toast[data-v-6fc16f] {
+  animation: showFromBottom-data-v-6fc16f 0.3s;
+}
+.wrapper.position-middle[data-v-6fc16f] {
+  bottom: 50%;
+}
+.wrapper.position-middle .toast[data-v-6fc16f] {
+  animation: showMiddle-data-v-6fc16f 0.3s;
+}
+.wrapper.position-top[data-v-6fc16f] {
+  top: 10px;
+}
+.wrapper.position-top .toast[data-v-6fc16f] {
+  animation: showFromTop-data-v-6fc16f 0.3s;
 }

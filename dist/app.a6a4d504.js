@@ -12432,11 +12432,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _props$computed$mount;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
+//
+//
+//
 //
 //
 //
@@ -12466,28 +12465,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 * 4. ref
 *
 * 5. props + computed + :class 生成 className
+*
+* 6. 函数的参数传递
+*
+* 7. 套路: 动画遇到bug, 新增一个div, 只用来居中
+*
+* 8. 规定 props 数据类型:  [Number, String]
+*
+* 9. 规定 props 数据是规定的对象A
 * */
 // 配置 Vue 实例的对象参数
-var _default = (_props$computed$mount = {
+var _default = {
   props: {
-    autoClose: {
-      type: Boolean,
-      default: true
-    },
     autoCloseDelay: {
-      type: String | Number,
+      type: Number,
       default: 3
     },
     // 如果类型是 Object , 那么 default 必须是一个函数, 这个函数返回一个对象, 对象是原 default
     closeButton: {
       type: Object,
-      default: function _default() {
-        return {
-          text: "关闭",
-          callback: function callback() {
-            console.log("default");
-          }
-        };
+      validator: function validator(closeOption) {
+        return typeof closeOption.text === "string" && typeof closeOption.callback === "function";
       }
     },
     enAbleHtml: {
@@ -12498,94 +12496,76 @@ var _default = (_props$computed$mount = {
       type: String,
       default: "top",
       validator: function validator(position) {
-        return ["top", "bottom", "middle"].indexOf(position) > 0;
+        return ["top", "bottom", "middle"].indexOf(position) >= 0;
       }
     }
   },
   computed: {
     toastClass: function toastClass() {
       return ["position-".concat(this.position)]; // 第一种 class 添加方法
-      // // 第二种 class 添加方法
-      // return {
-      //     [`position-${this.position}`]: true
-      // }
+
+      /*
+      // 第二种 class 添加方法
+      return {
+          [`position-${this.position}`]: true
+      }
+      */
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    this.autoCloseToast(); // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
 
-    if (this.autoClose) {
-      setTimeout(function () {
-        _this.closed();
-      }, parseInt(this.autoCloseDelay) * 1000);
-    } // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
-    // 解决 bug: 输入很多信息,  关闭按钮位置不对
-    // 让 div.close 的 line-height 为 div.toast 的 height 即可
-
-
-    this.$nextTick(function () {
-      // 在这里面, 拿到正常数据
-      console.log(_this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
-
-      var toastHeight = parseInt(getComputedStyle(_this.$refs.toast).height, 10); // 获取 dom 所有 css 样式
-
-      var toastPaddingTop = parseInt(getComputedStyle(_this.$refs.toast).paddingTop, 10); // parseInt("115px", 10) 居然可以转成数字 115 !
-
-      var toastPaddingBottom = parseInt(getComputedStyle(_this.$refs.toast).paddingBottom, 10);
-      var computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom;
-      _this.$refs.close.style.lineHeight = "".concat(computedHeight, "px");
-    });
-  }
-}, _defineProperty(_props$computed$mount, "mounted", function mounted() {
-  this.autoCloseToast(); // console.log(getComputedStyle(this.$refs.toast).height); // 在 mounted 时, dom 元素没有产生, 所以这里拿不到正常的数据
-
-  this.upDateCloseStyle();
-}), _defineProperty(_props$computed$mount, "methods", {
-  upDateCloseStyle: function upDateCloseStyle() {
-    var _this2 = this;
-
-    // 解决 bug: 输入很多信息,  关闭按钮位置不对
-    // 让 div.close 的 line-height 为 div.toast 的 height 即可
-    this.$nextTick(function () {
-      // 在这里面, 拿到正常数据
-      // console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
-      var toastHeight = parseInt(getComputedStyle(_this2.$refs.toast).height, 10); // 获取 dom 所有 css 样式
-
-      var toastPaddingTop = parseInt(getComputedStyle(_this2.$refs.toast).paddingTop, 10); // parseInt("115px", 10) 居然可以转成数字 115 !
-
-      var toastPaddingBottom = parseInt(getComputedStyle(_this2.$refs.toast).paddingBottom, 10);
-      var computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom;
-      _this2.$refs.close.style.lineHeight = "".concat(computedHeight, "px");
-    });
+    this.upDateCloseStyle();
   },
-  autoCloseToast: function autoCloseToast() {
-    var _this3 = this;
+  methods: {
+    upDateCloseStyle: function upDateCloseStyle() {
+      var _this = this;
 
-    if (this.autoClose) {
-      setTimeout(function () {
-        _this3.closed();
-      }, parseInt(this.autoCloseDelay) * 1000);
-    }
-  },
-  closed: function closed() {
-    // console.log(this); // this === vue 文档的 vm
-    this.$el.remove(); // this.$el === 原生 dom 元素, dom 元素消失在页面
+      // 解决 bug: 输入很多信息,  关闭按钮位置不对
+      // 让 div.close 的 line-height 为 div.toast 的 height 即可
+      this.$nextTick(function () {
+        // 在这里面, 拿到正常数据
+        // console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
+        var toastHeight = parseInt(getComputedStyle(_this.$refs.toast).height, 10); // 获取 dom 所有 css 样式
 
-    this.$destroy(); // vue 实例消除掉
-  },
-  log: function log() {
-    console.log("点击关闭, 能执行 toast 组件的方法, 触发本方法的位置是在 props 中");
-  },
-  onClickClose: function onClickClose() {
-    this.closed(); // 确保你传入的 closeButton.callback 是一个函数
-    // 对参数的验证, 防御性编程
+        var toastPaddingTop = parseInt(getComputedStyle(_this.$refs.toast).paddingTop, 10); // parseInt("115px", 10) 居然可以转成数字 115 !
 
-    if (typeof this.closeButton.callback === "function") {
-      this.closeButton.callback(this); // prop 的回调函数执行组件内函数, plugin.js 的
+        var toastPaddingBottom = parseInt(getComputedStyle(_this.$refs.toast).paddingBottom, 10);
+        var computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom;
+
+        if (_this.closeButton) {
+          _this.$refs.close.style.lineHeight = "".concat(computedHeight, "px");
+        }
+      });
+    },
+    autoCloseToast: function autoCloseToast() {
+      var _this2 = this;
+
+      if (!this.closeButton) {
+        setTimeout(function () {
+          _this2.closed();
+        }, parseInt(this.autoCloseDelay) * 1000);
+      }
+    },
+    closed: function closed() {
+      // console.log(this); // this === vue 文档的 vm
+      this.$el.remove(); // this.$el === 原生 dom 元素, dom 元素消失在页面
+
+      this.$destroy(); // vue 实例消除掉
+    },
+    log: function log() {
+      console.log("点击关闭, 能执行 toast 组件的方法, 触发本方法的位置是在 props 中");
+    },
+    onClickClose: function onClickClose() {
+      this.closed(); // 确保你传入的 closeButton.callback 是一个函数
+      // 对参数的验证, 防御性编程
+
+      if (typeof this.closeButton.callback === "function") {
+        this.closeButton.callback(this); // prop 的回调函数执行组件内函数, plugin.js 的
+      }
     }
   }
-}), _props$computed$mount);
-
+};
 exports.default = _default;
         var $6fc16f = exports.default || module.exports;
       
@@ -12599,27 +12579,31 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { ref: "toast", staticClass: "toast" }, [
-    _vm.enAbleHtml
-      ? _c("span", {
-          staticClass: "showMessage",
-          domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
-        })
-      : _c("span", { staticClass: "showMessage" }, [_vm._t("default")], 2),
-    _vm._v(" "),
-    _c("div", { staticClass: "line" }),
-    _vm._v(" "),
-    !_vm.autoClose
-      ? _c(
-          "span",
-          {
-            ref: "close",
-            staticClass: "closeButton",
-            on: { click: _vm.onClickClose }
-          },
-          [_vm._v(_vm._s(_vm.closeButton.text))]
-        )
-      : _vm._e()
+  return _c("div", { staticClass: "wrapper", class: _vm.toastClass }, [
+    _c("div", { ref: "toast", staticClass: "toast" }, [
+      _vm.enAbleHtml
+        ? _c("span", {
+            staticClass: "showMessage",
+            domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+          })
+        : _c("span", { staticClass: "showMessage" }, [_vm._t("default")], 2),
+      _vm._v(" "),
+      _vm.closeButton
+        ? _c("div", { staticStyle: { display: "flex" } }, [
+            _c("div", { staticClass: "line" }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                ref: "close",
+                staticClass: "closeButton",
+                on: { click: _vm.onClickClose }
+              },
+              [_vm._v(_vm._s(_vm.closeButton.text))]
+            )
+          ])
+        : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = []
@@ -12702,54 +12686,25 @@ var _default = {
     *       - 如果 currentToast 不存在, 生成新的 toast 设为currentToast
     *
     * */
-    Vue.prototype.$toast = function (showToastMessage) {
+    Vue.prototype.$toast = function (options) {
       if (currentToast) {
         currentToast.closed();
       }
 
       currentToast = createToast({
         Vue: Vue,
-        propsData: {
-          autoClose: false,
-          closeButton: {
-            text: "关闭",
-            callback: function callback(toast) {
-              toast.log();
-              console.log("plugin");
-            }
-          },
-          enAbleHtml: true,
-          position: "middle"
-        },
-        showToastMessage: showToastMessage
-      }); // if(currentToast){
-      //     currentToast.closed()
-      //     currentToast = createToast({Vue, propsData: {
-      //             autoClose: false,
-      //             closeButton: {
-      //                 text: "关闭",
-      //                 callback: (toast)=>{
-      //                     toast.log();
-      //                     console.log("plugin");
-      //                 },
-      //             },
-      //             enAbleHtml: true,
-      //             position: "middle",
-      //         }, showToastMessage})
-      // } else {
-      //     currentToast = createToast({Vue, propsData: {
-      //             autoClose: false,
-      //             closeButton: {
-      //                 text: "关闭",
-      //                 callback: (toast)=>{
-      //                     toast.log();
-      //                     console.log("plugin");
-      //                 },
-      //             },
-      //             enAbleHtml: true,
-      //             position: "middle",
-      //         }, showToastMessage})
-      // }
+        propsData: options.propsData,
+        showToastMessage: options.showMessage
+      });
+      /*
+      上面的代码之前是这样的
+      if(currentToast){
+          currentToast.closed()
+          currentToast = createToast(options)
+      } else {
+          currentToast = createToast(options)
+      }
+      */
     };
   }
 };
@@ -12810,11 +12765,19 @@ _vue.default.component("w-toast", _toast.default);
 
 _vue.default.use(_plugin.default);
 
+var toastPropsData = {
+  // enAbleHtml: true
+  position: "middle" // autoCloseDelay: 1
+
+};
 new _vue.default({
   el: "#app",
   methods: {
     showToast: function showToast() {
-      this.$toast("\u8FD9\u662F\u4E00\u4E2A\u4FE1\u606F".concat(Math.random()));
+      this.$toast({
+        showMessage: "<strong>\u8FD9\u662F\u4E00\u4E2A\u4FE1\u606F</strong>",
+        propsData: toastPropsData
+      });
     }
   }
 });
@@ -12845,7 +12808,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11262" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8655" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
