@@ -88,4 +88,43 @@ describe('Toast', () => {
         })
     })
 
+    it("接受 enAbleHtml 属性", ()=>{
+        // 生成包含自定义 toast 的div
+        const div = document.createElement("div");
+        document.body.appendChild(div);
+
+        // 生成配置 toast 组件的配置对象
+        const Constructor = Vue.extend(Toast)
+        const vm = new Constructor({
+            propsData: {
+                autoCloseDelay: 1,
+                enAbleHtml: true
+            }
+        })
+        vm.$slots.default = ["<strong>hi</strong>"]
+
+        // 注意这里, 先将 vue 配置对象写好了, 才能 mounted
+        vm.$mount(div)
+        let toastElement = vm.$el
+        expect(document.body.contains(toastElement.querySelector("strong"))).to.eq(true)
+    })
+
+    it("接受 position 属性", ()=>{
+        // 生成包含自定义 toast 的div
+        const div = document.createElement("div");
+        document.body.appendChild(div);
+
+        // 生成配置 toast 组件的配置对象
+        const Constructor = Vue.extend(Toast)
+        const vm = new Constructor({
+            propsData: {
+                position: "middle",
+            }
+        })
+
+        // 注意这里, 先将 vue 配置对象写好了, 才能 mounted
+        vm.$mount(div)
+        let toastElement = vm.$el
+        expect(toastElement.classList.contains("position-middle")).to.eq(true)
+    })
 })
