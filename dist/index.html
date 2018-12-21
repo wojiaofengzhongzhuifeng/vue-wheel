@@ -34,7 +34,35 @@
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <body>
 <div id="app">
-    <w-button @click="showToast">点我</w-button>
+    <!--使用tab组件方法-->
+    <w-tab selected="woman" direction="horizontal">
+        <w-tab-head>
+            <w-tab-item name="woman">
+                <div>
+                    <h1>美女</h1>
+                </div>
+            </w-tab-item>
+
+            <w-tab-item name="car" disabled="">
+                <div>
+                    <h1>汽车</h1>
+                </div>
+            </w-tab-item>
+        </w-tab-head>
+        <w-tab-body>
+            <w-tab-pane name="woman">
+                <div>
+                    <h1>美女有关的内容</h1>
+                </div>
+            </w-tab-pane>
+
+            <w-tab-pane name="car">
+                <div>
+                    <h1>汽车有关内容</h1>
+                </div>
+            </w-tab-pane>
+        </w-tab-body>
+    </w-tab>
 </div>
 <script src="/app.a6a4d504.js"></script>
 <!--<script src="//at.alicdn.com/t/font_915202_k9citci0f8j.js"></script>-->
