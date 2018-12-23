@@ -40,9 +40,15 @@
 </head>
 <body>
 <div id="app">
-    <!--使用tab组件方法-->
-    <w-tab selected="woman" direction="horizontal">
+    <!--<w-tab :selected="selected" @update:selected="selectedTab = $event"></w-tab>-->
+    <w-tab :selected.sync="selected" direction="horizontal">
         <w-tab-head>
+
+            <!--1插槽-->
+            <template slot="actions">
+                <button>fdsfdsa</button>
+            </template>
+
             <w-tab-item name="woman">
                 <div>
                     <h1>美女</h1>
