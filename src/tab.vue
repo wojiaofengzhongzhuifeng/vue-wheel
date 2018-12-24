@@ -1,5 +1,5 @@
 <template>
-    <div class="tab">
+    <div class="tab" @click="test">
         <slot></slot>
     </div>
 </template>
@@ -44,6 +44,7 @@
             // this.eventHubTest.$emit("update:selectedData", this.selected)
         },
         mounted() {
+            console.log(this.$children);
             // 在页面加载之后，需要把this.selected值对应的dom元素传出去
             this.$children.forEach((vm)=>{
                 if(vm.$options.name === "wheelTabHead"){
@@ -54,6 +55,11 @@
                     })
                 }
             })
+        },
+        methods:{
+            test(){
+                console.log(111123);
+            }
         }
     }
 

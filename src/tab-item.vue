@@ -1,5 +1,5 @@
 <template>
-    <div class="tabItem" @click="xxx" :class="classes">
+    <div class="tabItem" @click="xxx" :class="classes" :data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -36,7 +36,7 @@
                     className += "";
                 }
                 if(this.disabled){
-                    className +=  "disabled"
+                    className +=  " disabled"
                 } else if(this.disabled === false){
                     className += ""
                 }
@@ -52,9 +52,7 @@
             this.eventHi.$on("update:selectedData", (value)=>{
                 this.active = this.name ===value
             });
-            console.log(this.disabled);
             if(this.disabled){
-                console.log(`${this.name}不可以点击`);
             }
         },
 
