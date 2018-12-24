@@ -11443,14 +11443,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $4a4ba0 = exports.default || module.exports;
+        var $e796bb = exports.default || module.exports;
       
-      if (typeof $4a4ba0 === 'function') {
-        $4a4ba0 = $4a4ba0.options;
+      if (typeof $e796bb === 'function') {
+        $e796bb = $e796bb.options;
       }
     
         /* template */
-        Object.assign($4a4ba0, (function () {
+        Object.assign($e796bb, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11481,9 +11481,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$4a4ba0', $4a4ba0);
+            api.createRecord('$e796bb', $e796bb);
           } else {
-            api.reload('$4a4ba0', $4a4ba0);
+            api.reload('$e796bb', $e796bb);
           }
         }
 
@@ -11547,14 +11547,14 @@ var _default = {
   methods: {}
 };
 exports.default = _default;
-        var $7dbf6d = exports.default || module.exports;
+        var $913c07 = exports.default || module.exports;
       
-      if (typeof $7dbf6d === 'function') {
-        $7dbf6d = $7dbf6d.options;
+      if (typeof $913c07 === 'function') {
+        $913c07 = $913c07.options;
       }
     
         /* template */
-        Object.assign($7dbf6d, (function () {
+        Object.assign($913c07, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11608,7 +11608,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-7dbf6d",
+            _scopeId: "data-v-913c07",
             functional: undefined
           };
         })());
@@ -11621,9 +11621,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$7dbf6d', $7dbf6d);
+            api.createRecord('$913c07', $913c07);
           } else {
-            api.reload('$7dbf6d', $7dbf6d);
+            api.reload('$913c07', $913c07);
           }
         }
 
@@ -11649,14 +11649,14 @@ exports.default = void 0;
 //
 var _default = {};
 exports.default = _default;
-        var $b8fbf4 = exports.default || module.exports;
+        var $ce4ed8 = exports.default || module.exports;
       
-      if (typeof $b8fbf4 === 'function') {
-        $b8fbf4 = $b8fbf4.options;
+      if (typeof $ce4ed8 === 'function') {
+        $ce4ed8 = $ce4ed8.options;
       }
     
         /* template */
-        Object.assign($b8fbf4, (function () {
+        Object.assign($ce4ed8, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11683,9 +11683,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$b8fbf4', $b8fbf4);
+            api.createRecord('$ce4ed8', $ce4ed8);
           } else {
-            api.reload('$b8fbf4', $b8fbf4);
+            api.reload('$ce4ed8', $ce4ed8);
           }
         }
 
@@ -11743,14 +11743,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $3dcabc = exports.default || module.exports;
+        var $5738df = exports.default || module.exports;
       
-      if (typeof $3dcabc === 'function') {
-        $3dcabc = $3dcabc.options;
+      if (typeof $5738df === 'function') {
+        $5738df = $5738df.options;
       }
     
         /* template */
-        Object.assign($3dcabc, (function () {
+        Object.assign($5738df, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11796,7 +11796,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-3dcabc",
+            _scopeId: "data-v-5738df",
             functional: undefined
           };
         })());
@@ -11809,9 +11809,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$3dcabc', $3dcabc);
+            api.createRecord('$5738df', $5738df);
           } else {
-            api.reload('$3dcabc', $3dcabc);
+            api.reload('$5738df', $5738df);
           }
         }
 
@@ -11876,14 +11876,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $9d0ee6 = exports.default || module.exports;
+        var $3b67c9 = exports.default || module.exports;
       
-      if (typeof $9d0ee6 === 'function') {
-        $9d0ee6 = $9d0ee6.options;
+      if (typeof $3b67c9 === 'function') {
+        $3b67c9 = $3b67c9.options;
       }
     
         /* template */
-        Object.assign($9d0ee6, (function () {
+        Object.assign($3b67c9, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11902,7 +11902,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-9d0ee6",
+            _scopeId: "data-v-3b67c9",
             functional: undefined
           };
         })());
@@ -11915,9 +11915,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$9d0ee6', $9d0ee6);
+            api.createRecord('$3b67c9', $3b67c9);
           } else {
-            api.reload('$9d0ee6', $9d0ee6);
+            api.reload('$3b67c9', $3b67c9);
           }
         }
 
@@ -12022,14 +12022,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $8a0fe0 = exports.default || module.exports;
+        var $07f68c = exports.default || module.exports;
       
-      if (typeof $8a0fe0 === 'function') {
-        $8a0fe0 = $8a0fe0.options;
+      if (typeof $07f68c === 'function') {
+        $07f68c = $07f68c.options;
       }
     
         /* template */
-        Object.assign($8a0fe0, (function () {
+        Object.assign($07f68c, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12048,7 +12048,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-8a0fe0",
+            _scopeId: "data-v-07f68c",
             functional: undefined
           };
         })());
@@ -12061,9 +12061,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$8a0fe0', $8a0fe0);
+            api.createRecord('$07f68c', $07f68c);
           } else {
-            api.reload('$8a0fe0', $8a0fe0);
+            api.reload('$07f68c', $07f68c);
           }
         }
 
@@ -12118,14 +12118,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $8dc8fc = exports.default || module.exports;
+        var $c55f43 = exports.default || module.exports;
       
-      if (typeof $8dc8fc === 'function') {
-        $8dc8fc = $8dc8fc.options;
+      if (typeof $c55f43 === 'function') {
+        $c55f43 = $c55f43.options;
       }
     
         /* template */
-        Object.assign($8dc8fc, (function () {
+        Object.assign($c55f43, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12144,7 +12144,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-8dc8fc",
+            _scopeId: "data-v-c55f43",
             functional: undefined
           };
         })());
@@ -12157,9 +12157,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$8dc8fc', $8dc8fc);
+            api.createRecord('$c55f43', $c55f43);
           } else {
-            api.reload('$8dc8fc', $8dc8fc);
+            api.reload('$c55f43', $c55f43);
           }
         }
 
@@ -12177,14 +12177,14 @@ render._withStripped = true
 //
 //
 //
-        var $bdc5ef = exports.default || module.exports;
+        var $c848e5 = exports.default || module.exports;
       
-      if (typeof $bdc5ef === 'function') {
-        $bdc5ef = $bdc5ef.options;
+      if (typeof $c848e5 === 'function') {
+        $c848e5 = $c848e5.options;
       }
     
         /* template */
-        Object.assign($bdc5ef, (function () {
+        Object.assign($c848e5, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12198,7 +12198,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-bdc5ef",
+            _scopeId: "data-v-c848e5",
             functional: undefined
           };
         })());
@@ -12211,9 +12211,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$bdc5ef', $bdc5ef);
+            api.createRecord('$c848e5', $c848e5);
           } else {
-            api.reload('$bdc5ef', $bdc5ef);
+            api.reload('$c848e5', $c848e5);
           }
         }
 
@@ -12257,14 +12257,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $5091fe = exports.default || module.exports;
+        var $1ab4fd = exports.default || module.exports;
       
-      if (typeof $5091fe === 'function') {
-        $5091fe = $5091fe.options;
+      if (typeof $1ab4fd === 'function') {
+        $1ab4fd = $1ab4fd.options;
       }
     
         /* template */
-        Object.assign($5091fe, (function () {
+        Object.assign($1ab4fd, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12291,7 +12291,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-5091fe",
+            _scopeId: "data-v-1ab4fd",
             functional: undefined
           };
         })());
@@ -12304,9 +12304,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$5091fe', $5091fe);
+            api.createRecord('$1ab4fd', $1ab4fd);
           } else {
-            api.reload('$5091fe', $5091fe);
+            api.reload('$1ab4fd', $1ab4fd);
           }
         }
 
@@ -12324,14 +12324,14 @@ render._withStripped = true
 //
 //
 //
-        var $8c578a = exports.default || module.exports;
+        var $bc4453 = exports.default || module.exports;
       
-      if (typeof $8c578a === 'function') {
-        $8c578a = $8c578a.options;
+      if (typeof $bc4453 === 'function') {
+        $bc4453 = $bc4453.options;
       }
     
         /* template */
-        Object.assign($8c578a, (function () {
+        Object.assign($bc4453, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12345,7 +12345,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-8c578a",
+            _scopeId: "data-v-bc4453",
             functional: undefined
           };
         })());
@@ -12358,9 +12358,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$8c578a', $8c578a);
+            api.createRecord('$bc4453', $bc4453);
           } else {
-            api.reload('$8c578a', $8c578a);
+            api.reload('$bc4453', $bc4453);
           }
         }
 
@@ -12378,14 +12378,14 @@ render._withStripped = true
 //
 //
 //
-        var $196ee8 = exports.default || module.exports;
+        var $0c0475 = exports.default || module.exports;
       
-      if (typeof $196ee8 === 'function') {
-        $196ee8 = $196ee8.options;
+      if (typeof $0c0475 === 'function') {
+        $0c0475 = $0c0475.options;
       }
     
         /* template */
-        Object.assign($196ee8, (function () {
+        Object.assign($0c0475, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12399,7 +12399,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-196ee8",
+            _scopeId: "data-v-0c0475",
             functional: undefined
           };
         })());
@@ -12412,9 +12412,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$196ee8', $196ee8);
+            api.createRecord('$0c0475', $0c0475);
           } else {
-            api.reload('$196ee8', $196ee8);
+            api.reload('$0c0475', $0c0475);
           }
         }
 
@@ -12567,14 +12567,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $6fc16f = exports.default || module.exports;
+        var $a5f3de = exports.default || module.exports;
       
-      if (typeof $6fc16f === 'function') {
-        $6fc16f = $6fc16f.options;
+      if (typeof $a5f3de === 'function') {
+        $a5f3de = $a5f3de.options;
       }
     
         /* template */
-        Object.assign($6fc16f, (function () {
+        Object.assign($a5f3de, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12613,7 +12613,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-6fc16f",
+            _scopeId: "data-v-a5f3de",
             functional: undefined
           };
         })());
@@ -12626,9 +12626,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$6fc16f', $6fc16f);
+            api.createRecord('$a5f3de', $a5f3de);
           } else {
-            api.reload('$6fc16f', $6fc16f);
+            api.reload('$a5f3de', $a5f3de);
           }
         }
 
@@ -12639,7 +12639,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/plugin.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12647,69 +12647,520 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _toast = _interopRequireDefault(require("./toast"));
+var _vue = _interopRequireDefault(require("vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function createToast(_ref) {
-  var Vue = _ref.Vue,
-      propsData = _ref.propsData,
-      showToastMessage = _ref.showToastMessage;
-  // 动态创建组件
-  var Constructor = Vue.extend(_toast.default); // 生成 Toast 组件构造函数
+//
+//
+//
+//
+//
+//
 
-  var toast = new Constructor({
-    propsData: propsData
-  }); // 通过构造函数生成一个toast实例
-
-  toast.$slots.default = [showToastMessage]; // 想toast实例中的slot属性传递信息
-
-  toast.$mount(); // toast实例渲染为文档之外的 dom 元素
-
-  document.body.appendChild(toast.$el); // 必须使用原生 DOM API 把它插入文档中
-
-  return toast;
-}
-
-var currentToast;
+/**
+ * 笔记
+ * 1. 一个组件如何使用两个插槽 1插槽
+ * 2. tab的selected数据保存在app中， 如何修改selected数据？子组件（tab）不能修改父组件（app）的数据，子组件（tab）只能发出一个事件，通知父组件（app）修改
+ * 3. 只有 class style 属性是追加， 其他属性都是覆盖 3追加
+ * 4. eventHub + 依赖注入： 实现数据通信  4组件通信
+ * 5. margin-left: auto 元素放到父元素右边 定格 http://js.jirengu.com/lozurujili/1/edit
+ * 6.
+ * */
 var _default = {
-  install: function install(Vue) {
-    /*
-    * 1. 下面的代码原本是在 toast 组件中, 那样侵入性太强(需要手动引入 Vue, 并且会强制在 Vue 中添加 $toast)
-    *    使用 plugin 用户可以不使用 plugin , 这样就不会再 Vue 中添加 $toast
-    *    对应文档 https://cn.vuejs.org/v2/guide/plugins.html 的 "添加 Vue 实例方法，通过把它们添加到 Vue.prototype 上实现" 功能
-    *
-    * 2. 代码逻辑:
-    *       - createToast 函数返回 toast 实例
-    *       - 声明一个变量currentToast, 用于存储 toast 实例
-    *       - 如果 currentToast 存在, 删除原来的toast + 生成新的 toast 设为currentToast
-    *       - 如果 currentToast 不存在, 生成新的 toast 设为currentToast
-    *
-    * */
-    Vue.prototype.$toast = function (options) {
-      if (currentToast) {
-        currentToast.closed();
+  props: {
+    selected: {
+      type: String,
+      required: true
+    },
+    direction: {
+      type: String,
+      validator: function validator(value) {
+        return ["horizontal", "vertical"].indexOf(value) >= 0;
       }
-
-      currentToast = createToast({
-        Vue: Vue,
-        propsData: options.propsData,
-        showToastMessage: options.showMessage
-      });
-      /*
-      上面的代码之前是这样的
-      if(currentToast){
-          currentToast.closed()
-          currentToast = createToast(options)
-      } else {
-          currentToast = createToast(options)
-      }
-      */
+    }
+  },
+  // 4组件通信1: 通过new Vue 生成一个vue实例， 目的是使用vue实例的eventHub对象
+  data: function data() {
+    return {
+      eventHubTest: new _vue.default()
     };
+  },
+  // 4组件通信2: 在组件A中使用provide函数，返回数据event， 这样在组件A所有子组件均可拿到数据event
+  provide: function provide() {
+    return {
+      eventHi: this.eventHubTest
+    };
+  },
+  created: function created() {// this.eventHubTest.$emit("update:selectedData", this.selected)
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    console.log(this.$children); // 在页面加载之后，需要把this.selected值对应的dom元素传出去
+
+    this.$children.forEach(function (vm) {
+      if (vm.$options.name === "wheelTabHead") {
+        vm.$children.forEach(function (item) {
+          if (item.$options.name === "wheelTabItem" && item.name === _this.selected) {
+            _this.eventHubTest.$emit("update:selectedData", _this.selected, item.$el);
+          }
+        });
+      }
+    });
+  },
+  methods: {
+    test: function test() {
+      console.log(111123);
+    }
   }
 };
 exports.default = _default;
-},{"./toast":"src/toast.vue"}],"src/app.js":[function(require,module,exports) {
+        var $ec40b0 = exports.default || module.exports;
+      
+      if (typeof $ec40b0 === 'function') {
+        $ec40b0 = $ec40b0.options;
+      }
+    
+        /* template */
+        Object.assign($ec40b0, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "tab", on: { click: _vm.test } },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-ec40b0",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$ec40b0', $ec40b0);
+          } else {
+            api.reload('$ec40b0', $ec40b0);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"vue":"node_modules/vue/dist/vue.common.js","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/tab-head.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "wheelTabHead",
+  inject: ["eventHi"],
+  created: function created() {
+    var _this = this;
+
+    this.eventHi.$on("update:selectedData", function (value, $el) {
+      var _$el$getBoundingClien = $el.getBoundingClientRect(),
+          width = _$el$getBoundingClien.width,
+          height = _$el$getBoundingClien.height,
+          top = _$el$getBoundingClien.top,
+          left = _$el$getBoundingClien.left;
+
+      _this.$refs.xxx.style.left = "".concat(left - 10, "px");
+      _this.$refs.xxx.style.width = "".concat(width, "px");
+    });
+  }
+};
+exports.default = _default;
+        var $71aa21 = exports.default || module.exports;
+      
+      if (typeof $71aa21 === 'function') {
+        $71aa21 = $71aa21.options;
+      }
+    
+        /* template */
+        Object.assign($71aa21, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "tabHead" },
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "xxx", staticClass: "line" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "actions-wrapper" }, [_vm._t("actions")], 2)
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-71aa21",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$71aa21', $71aa21);
+          } else {
+            api.reload('$71aa21', $71aa21);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-body.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "wheelTabBody"
+};
+exports.default = _default;
+        var $e4ee9e = exports.default || module.exports;
+      
+      if (typeof $e4ee9e === 'function') {
+        $e4ee9e = $e4ee9e.options;
+      }
+    
+        /* template */
+        Object.assign($e4ee9e, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "tabBody" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-e4ee9e",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$e4ee9e', $e4ee9e);
+          } else {
+            api.reload('$e4ee9e', $e4ee9e);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-item.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "wheelTabItem",
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    name: {
+      type: [String, Number],
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      active: {
+        type: Boolean,
+        default: false
+      }
+    };
+  },
+  computed: {
+    classes: function classes() {
+      var className = "";
+
+      if (this.active) {
+        className += "active";
+      } else if (this.active === false) {
+        className += "";
+      }
+
+      if (this.disabled) {
+        className += " disabled";
+      } else if (this.disabled === false) {
+        className += "";
+      }
+
+      return className;
+    }
+  },
+  // 4组件通信3: 通过inject属性拿到tab组件注入的数据
+  inject: ["eventHi"],
+  // 4组件通信4: 使用inject的数据
+  created: function created() {
+    var _this = this;
+
+    this.eventHi.$on("update:selectedData", function (value) {
+      _this.active = _this.name === value;
+    });
+
+    if (this.disabled) {}
+  },
+  methods: {
+    xxx: function xxx() {
+      if (this.disabled) {
+        return;
+      }
+
+      this.eventHi.$emit("update:selectedData", this.name, this.$el);
+    }
+  }
+};
+exports.default = _default;
+        var $b3faaa = exports.default || module.exports;
+      
+      if (typeof $b3faaa === 'function') {
+        $b3faaa = $b3faaa.options;
+      }
+    
+        /* template */
+        Object.assign($b3faaa, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "tabItem",
+      class: _vm.classes,
+      attrs: { "data-name": _vm.name },
+      on: { click: _vm.xxx }
+    },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-b3faaa",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$b3faaa', $b3faaa);
+          } else {
+            api.reload('$b3faaa', $b3faaa);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-pane.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  inject: ["eventHi"],
+  data: function data() {
+    return {
+      active: {
+        type: Boolean,
+        default: false
+      }
+    };
+  },
+  props: {
+    name: {
+      type: [String, Number],
+      required: true
+    }
+  },
+  computed: {
+    classes: function classes() {
+      if (this.active) {
+        return "active";
+      } else {
+        return "disActive";
+      }
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    this.eventHi.$on("update:selectedData", function (value) {
+      _this.active = _this.name === value;
+    });
+  }
+};
+exports.default = _default;
+        var $9f3d36 = exports.default || module.exports;
+      
+      if (typeof $9f3d36 === 'function') {
+        $9f3d36 = $9f3d36.options;
+      }
+    
+        /* template */
+        Object.assign($9f3d36, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.active
+    ? _c(
+        "div",
+        { staticClass: "tabPane", class: _vm.classes },
+        [_vm._t("default")],
+        2
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-9f3d36",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$9f3d36', $9f3d36);
+          } else {
+            api.reload('$9f3d36', $9f3d36);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -12736,7 +13187,15 @@ var _footer = _interopRequireDefault(require("./footer"));
 
 var _toast = _interopRequireDefault(require("./toast"));
 
-var _plugin = _interopRequireDefault(require("./plugin"));
+var _tab = _interopRequireDefault(require("./tab"));
+
+var _tabHead = _interopRequireDefault(require("./tab-head"));
+
+var _tabBody = _interopRequireDefault(require("./tab-body"));
+
+var _tabItem = _interopRequireDefault(require("./tab-item"));
+
+var _tabPane = _interopRequireDefault(require("./tab-pane"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12763,25 +13222,31 @@ _vue.default.component("w-footer", _footer.default);
 
 _vue.default.component("w-toast", _toast.default);
 
-_vue.default.use(_plugin.default);
+_vue.default.component("w-tab", _tab.default);
 
-var toastPropsData = {
-  // enAbleHtml: true
-  position: "middle" // autoCloseDelay: 1
+_vue.default.component("w-tab-head", _tabHead.default);
 
-};
+_vue.default.component("w-tab-body", _tabBody.default);
+
+_vue.default.component("w-tab-item", _tabItem.default);
+
+_vue.default.component("w-tab-pane", _tabPane.default);
+
 new _vue.default({
   el: "#app",
+  data: {
+    selectedData: "woman"
+  },
   methods: {
-    showToast: function showToast() {
-      this.$toast({
-        showMessage: "<strong>\u8FD9\u662F\u4E00\u4E2A\u4FE1\u606F</strong>",
-        propsData: toastPropsData
-      });
+    xxx: function xxx() {
+      console.log(1);
     }
+  },
+  created: function created() {
+    this.$emit("xyz", 12);
   }
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./row":"src/row.vue","./col":"src/col.vue","./layout":"src/layout.vue","./header":"src/header.vue","./sider":"src/sider.vue","./content":"src/content.vue","./footer":"src/footer.vue","./toast":"src/toast.vue","./plugin":"src/plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./row":"src/row.vue","./col":"src/col.vue","./layout":"src/layout.vue","./header":"src/header.vue","./sider":"src/sider.vue","./content":"src/content.vue","./footer":"src/footer.vue","./toast":"src/toast.vue","./tab":"src/tab.vue","./tab-head":"src/tab-head.vue","./tab-body":"src/tab-body.vue","./tab-item":"src/tab-item.vue","./tab-pane":"src/tab-pane.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -12808,7 +13273,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8655" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50020" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

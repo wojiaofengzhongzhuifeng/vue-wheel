@@ -6,7 +6,7 @@
   overflow: hidden;
   color: inherit;
 }
-@keyframes loadingCircle-data-v-7dbf6d {
+@keyframes loadingCircle-data-v-913c07 {
 from {
     transform: rotate(0);
 }
@@ -14,7 +14,7 @@ to {
     transform: rotate(360deg);
 }
 }
-.button[data-v-7dbf6d] {
+.button[data-v-913c07] {
   display: flex;
   font-size: var(--font-size);
   line-height: var(--button-height);
@@ -27,16 +27,16 @@ to {
   cursor: pointer;
   transition: all 0.3s;
 }
-.button .icon[data-v-7dbf6d] {
+.button .icon[data-v-913c07] {
   height: var(--button-height);
 }
-.button .icon.right[data-v-7dbf6d] {
+.button .icon.right[data-v-913c07] {
   order: 1;
 }
-.button .icon .loading[data-v-7dbf6d] {
-  animation: loadingCircle-data-v-7dbf6d 1s infinite linear;
+.button .icon .loading[data-v-913c07] {
+  animation: loadingCircle-data-v-913c07 1s infinite linear;
 }
-.button[data-v-7dbf6d]:hover {
+.button[data-v-913c07]:hover {
   border: var(--button-border-active);
   color: var(--color-3);
   z-index: 1;

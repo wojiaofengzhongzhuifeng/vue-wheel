@@ -34,31 +34,36 @@
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <body>
 <div id="app">
-    <!--使用tab组件方法-->
-    <w-tab selected="woman" direction="horizontal">
+    <w-tab :selected="selectedData" @update:selecteddata="selectedData = '123'">
+    <!--<w-tab :selected.sync="selectedData">-->
         <w-tab-head>
-            <w-tab-item name="woman">
+            <!--1插槽-->
+            <template slot="actions">
+                <button>fdsfdsa</button>
+            </template>
+
+            <w-tab-item name="woman" disabled="">
                 <div>
-                    <h1>美女</h1>
+                    <div>美女</div>
                 </div>
             </w-tab-item>
 
-            <w-tab-item name="car" disabled="">
+            <w-tab-item name="car">
                 <div>
-                    <h1>汽车</h1>
+                    <div>汽车</div>
                 </div>
             </w-tab-item>
         </w-tab-head>
         <w-tab-body>
             <w-tab-pane name="woman">
                 <div>
-                    <h1>美女有关的内容</h1>
+                    <div>美女有关的内容</div>
                 </div>
             </w-tab-pane>
 
             <w-tab-pane name="car">
                 <div>
-                    <h1>汽车有关内容</h1>
+                    <div>汽车有关内容</div>
                 </div>
             </w-tab-pane>
         </w-tab-body>
