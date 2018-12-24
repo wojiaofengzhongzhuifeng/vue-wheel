@@ -5,6 +5,9 @@
 </template>
 
 <script>
+    export default {
+        name: "wheelTabBody",
+    }
 </script>
 
 <style lang="scss" scoped>

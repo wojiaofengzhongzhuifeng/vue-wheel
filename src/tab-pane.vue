@@ -45,7 +45,6 @@
 <style lang="scss" scoped>
     .tabPane{
         &.active{
-            background: red;
         }
     }
 </style>

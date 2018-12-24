@@ -1,7 +1,6 @@
 <template>
     <div class="tab">
         <slot></slot>
-        {{selected}}
     </div>
 </template>
 
@@ -32,7 +31,7 @@
         // 4组件通信1: 通过new Vue 生成一个vue实例， 目的是使用vue实例的eventHub对象
         data(){
             return {
-                eventHubTest: new Vue()
+                eventHubTest: new Vue(),
             }
         },
         // 4组件通信2: 在组件A中使用provide函数，返回数据event， 这样在组件A所有子组件均可拿到数据event
@@ -45,7 +44,16 @@
             // this.eventHubTest.$emit("update:selectedData", this.selected)
         },
         mounted() {
-            this.eventHubTest.$emit("update:selectedData", this.selected)
+            // 在页面加载之后，需要把this.selected值对应的dom元素传出去
+            this.$children.forEach((vm)=>{
+                if(vm.$options.name === "wheelTabHead"){
+                    vm.$children.forEach((item)=>{
+                        if(item.$options.name === "wheelTabItem" && item.name === this.selected){
+                            this.eventHubTest.$emit("update:selectedData", this.selected, item.$el)
+                        }
+                    })
+                }
+            })
         }
     }
 
