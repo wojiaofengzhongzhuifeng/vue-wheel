@@ -42,7 +42,7 @@ Vue.component("w-tab-pane", TabPane);
 new Vue({
     el: "#app",
     data: {
-        selectedData: "123321",
+        selectedData: "woman",
     },
     methods:{
         xxx(){

@@ -1,5 +1,5 @@
 <template>
-    <div class="tabPane">
+    <div class="tabPane" :class="classes" v-if="active">
         <slot></slot>
     </div>
 </template>
@@ -8,19 +8,44 @@
     export default {
         inject: ["eventHi"],
 
-        created() {
-            this.eventHi.$on("update:selectedData", (value)=>{
-                console.log("this is pane", value);
-            })
+        data() {
+            return {
+                active: {
+                    type: Boolean,
+                    default: false,
+                }
+            }
         },
 
-        methods: {
-            xxx(){
-                this.eventHi.$emit("update:selectedData", this.name)
+        props:{
+            name: {
+                type: [String, Number],
+                required: true,
             }
-        }
+        },
+
+        computed:{
+            classes(){
+                if(this.active){
+                    return "active"
+                } else {
+                    return "disActive"
+                }
+            }
+        },
+
+        created() {
+            this.eventHi.$on("update:selectedData", (value)=>{
+                this.active = this.name === value
+            })
+        },
     }
 </script>
 
 <style lang="scss" scoped>
+    .tabPane{
+        &.active{
+            background: red;
+        }
+    }
 </style>

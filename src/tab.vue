@@ -42,9 +42,10 @@
             }
         },
         created() {
-            this.eventHubTest.$on("update:selectedData", (value)=>{
-                console.log("tab", value);
-            })
+            // this.eventHubTest.$emit("update:selectedData", this.selected)
+        },
+        mounted() {
+            this.eventHubTest.$emit("update:selectedData", this.selected)
         }
     }
 
