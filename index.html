@@ -40,10 +40,9 @@
 </head>
 <body>
 <div id="app">
-    <!--<w-tab :selected="selected" @update:selected="selectedTab = $event"></w-tab>-->
-    <w-tab :selected.sync="selected" direction="horizontal">
+    <w-tab :selected="selectedData" @update:selectedData="selectedData = '123'">
+    <!--<w-tab :selected.sync="selectedData">-->
         <w-tab-head>
-
             <!--1插槽-->
             <template slot="actions">
                 <button>fdsfdsa</button>

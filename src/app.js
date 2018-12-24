@@ -42,7 +42,15 @@ Vue.component("w-tab-pane", TabPane);
 new Vue({
     el: "#app",
     data: {
-        selected: "woman",
+        selectedData: "123321",
+    },
+    methods:{
+        xxx(){
+            console.log(1)
+        },
+    },
+    created(){
+        this.$emit("xyz", 12)
     }
 });
 
