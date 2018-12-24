@@ -29,12 +29,19 @@
 
         computed:{
             classes(){
+                let className = "";
                 if(this.active){
-                    return "active"
-                } else {
-                    return "disActive"
+                    className +=  "active"
+                } else if(this.active === false){
+                    className += "";
                 }
-            }
+                if(this.disabled){
+                    className +=  "disabled"
+                } else if(this.disabled === false){
+                    className += ""
+                }
+                return className
+            },
         },
 
         // 4组件通信3: 通过inject属性拿到tab组件注入的数据
@@ -44,11 +51,16 @@
         created() {
             this.eventHi.$on("update:selectedData", (value)=>{
                 this.active = this.name ===value
-            })
+            });
+            console.log(this.disabled);
+            if(this.disabled){
+                console.log(`${this.name}不可以点击`);
+            }
         },
 
         methods: {
             xxx(){
+                if(this.disabled){return}
                 this.eventHi.$emit("update:selectedData", this.name, this.$el)
             }
         }
@@ -70,6 +82,10 @@
             color: $color-blue;
         }
         &.active {
+        }
+        &.disabled{
+            color: grey;
+            cursor: not-allowed;
         }
     }
 </style>

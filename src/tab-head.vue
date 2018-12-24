@@ -2,7 +2,7 @@
     <div class="tabHead">
         <slot></slot>
         <!--1插槽-->
-        <div class="line"></div>
+        <div class="line" ref="xxx"></div>
         <div class="actions-wrapper">
             <slot name="actions"></slot>
         </div>
@@ -15,9 +15,10 @@
         inject: ["eventHi"],
         created() {
             this.eventHi.$on("update:selectedData", (value, $el)=>{
-                console.log("head", value, $el);
                 const {width, height, top, left} = $el.getBoundingClientRect();
-                console.log(width, height, top, left);
+                this.$refs.xxx.style.left = `${left - 10}px`
+                this.$refs.xxx.style.width = `${width}px`
+
             })
         }
     }
@@ -42,7 +43,7 @@
             position: absolute;
             border:1px solid $color-blue;
             bottom:0;
-            width:100px;
+            transition: all 0.3s;
         }
         >.actions-wrapper{
             /*定格*/
