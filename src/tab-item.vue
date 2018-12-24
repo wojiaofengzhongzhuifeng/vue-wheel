@@ -36,4 +36,7 @@
 </script>
 
 <style lang="scss" scoped>
+    .tabItem {
+        padding: 0 2em;
+    }
 </style>
