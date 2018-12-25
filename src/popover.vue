@@ -1,7 +1,9 @@
 <template>
-    <div class="popover" @click.stop="sss" >
-        <slot></slot>
-        <div class="popover-wrapper" v-if="showPopover" @click.stop>
+    <div class="popover" @click="xx">
+        <div class="button" ref="button">
+            <slot></slot>
+        </div>
+        <div class="popover-wrapper" v-if="showPopover" ref="content">
             <div class="title">
                 {{title}}
             </div>
@@ -46,27 +48,22 @@
             }
         },
         methods:{
-            sss(){
-                if(this.trigger === "click"){
-                    this.showPopover  = !this.showPopover
+            xx(e){
+                if(e.target.classList.contains("button") || e.target.classList.contains("slot")){
+                    this.showPopover = !this.showPopover;
                     if(this.showPopover){
-                        this.$nextTick(()=>{
-                            // 点击popover以外的地方应该隐藏popover
-
-                            let xx = ()=>{
-                                console.log("你点击了popover以外的地方");
-                                this.showPopover = false;
-                                document.removeEventListener("click", xx)
-
-                            }
-
-                            document.addEventListener("click", xx)
-                        })
+                        setTimeout(()=>{
+                            document.body.appendChild(this.$refs.content);
+                            const {top, left, height, width} = this.$refs.button.getBoundingClientRect();
+                            this.$refs.content.style.left = `${left}px`;
+                            this.$refs.content.style.top = `${top}px`;
+                        },0)
                     }
-                }
-            },
 
-        }
+
+                }
+            }
+        },
     }
 </script>
 
@@ -74,13 +71,13 @@
     .popover{
         display: inline-block;
         position: relative;
-        border:1px solid red;
-        .popover-wrapper{
-            display: inline-block;
-            padding: 5px;
-            border: 1px solid grey;
-            position: absolute;
-        }
+    }
+    .popover-wrapper{
+        display: inline-block;
+        padding: 5px;
+        border: 1px solid grey;
+        position: absolute;
+        transform: translateY(-100%);
         .line{
             width: 100%;
             border: 1px solid grey;

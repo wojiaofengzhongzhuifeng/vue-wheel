@@ -40,11 +40,11 @@
 </head>
 <body>
 <div id="app">
-<w-popover :title="title" trigger="hover" style="padding-top: 100px;padding-left: 100px">
+<w-popover :title="title" trigger="hover">
     <w-button>点击我1</w-button>
 </w-popover>
 
-    <w-popover :title="title">
+    <w-popover :title="title" style="margin:100px;">
         <w-button>点击我2</w-button>
         <template slot="content">
             <p>fdjskfldjsa</p>
