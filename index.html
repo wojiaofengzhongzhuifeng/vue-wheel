@@ -40,40 +40,17 @@
 </head>
 <body>
 <div id="app">
-    <w-tab :selected="selectedData" @update:selectedData="selectedData = '123'">
-    <!--<w-tab :selected.sync="selectedData">-->
-        <w-tab-head>
-            <!--1插槽-->
-            <template slot="actions">
-                <button>fdsfdsa</button>
-            </template>
+<w-popover :title="title" trigger="hover" style="padding-top: 100px;padding-left: 100px">
+    <w-button>点击我1</w-button>
+</w-popover>
 
-            <w-tab-item name="woman" disabled>
-                <div>
-                    <div>美女</div>
-                </div>
-            </w-tab-item>
-
-            <w-tab-item name="car">
-                <div>
-                    <div>汽车</div>
-                </div>
-            </w-tab-item>
-        </w-tab-head>
-        <w-tab-body>
-            <w-tab-pane name="woman">
-                <div>
-                    <div>美女有关的内容</div>
-                </div>
-            </w-tab-pane>
-
-            <w-tab-pane name="car">
-                <div>
-                    <div>汽车有关内容</div>
-                </div>
-            </w-tab-pane>
-        </w-tab-body>
-    </w-tab>
+    <w-popover :title="title">
+        <w-button>点击我2</w-button>
+        <template slot="content">
+            <p>fdjskfldjsa</p>
+            <w-button>test</w-button>
+        </template>
+    </w-popover>
 </div>
 <script src="src/app.js"></script>
 <!--<script src="//at.alicdn.com/t/font_915202_k9citci0f8j.js"></script>-->

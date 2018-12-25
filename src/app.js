@@ -11,11 +11,7 @@ import Sider from "./sider"
 import Content from "./content"
 import Footer from "./footer"
 import Toast from "./toast"
-import Tab from "./tab";
-import TabHead from "./tab-head"
-import TabBody from "./tab-body"
-import TabItem from "./tab-item"
-import TabPane from "./tab-pane"
+import Popover from "./popover"
 
 
 
@@ -32,25 +28,15 @@ Vue.component("w-sider", Sider);
 Vue.component("w-content", Content);
 Vue.component("w-footer", Footer);
 Vue.component("w-toast", Toast);
-Vue.component("w-tab", Tab);
-Vue.component("w-tab-head", TabHead);
-Vue.component("w-tab-body", TabBody);
-Vue.component("w-tab-item", TabItem);
-Vue.component("w-tab-pane", TabPane);
+Vue.component("w-popover", Popover);
+
 
 
 new Vue({
     el: "#app",
     data: {
-        selectedData: "woman",
+        content: `<p>hi</p><w-button>21321</w-button>`,
+        title: "title"
     },
-    methods:{
-        xxx(){
-            console.log(1)
-        },
-    },
-    created(){
-        this.$emit("xyz", 12)
-    }
 });
 
