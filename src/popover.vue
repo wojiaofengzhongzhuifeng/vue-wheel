@@ -49,18 +49,24 @@
         },
         methods:{
             xx(e){
-                if(e.target.classList.contains("button") || e.target.classList.contains("slot")){
+                // 判断点击的是按钮
+                if(this.$refs.button.contains(e.target)){
                     this.showPopover = !this.showPopover;
                     if(this.showPopover){
                         setTimeout(()=>{
                             document.body.appendChild(this.$refs.content);
-                            const {top, left, height, width} = this.$refs.button.getBoundingClientRect();
-                            this.$refs.content.style.left = `${left}px`;
-                            this.$refs.content.style.top = `${top}px`;
+                            const {top, left} = this.$refs.button.getBoundingClientRect();
+                            this.$refs.content.style.left = `${left + window.scrollX}px`;
+                            this.$refs.content.style.top = `${top + window.scrollY}px`;
+                            let ffff = (e)=>{
+                                if(!this.$refs.content.contains(e.target)){
+                                    this.showPopover = false;
+                                    document.body.removeEventListener("click", ffff)
+                                }
+                            }
+                            document.body.addEventListener("click", ffff)
                         },0)
                     }
-
-
                 }
             }
         },
