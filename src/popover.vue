@@ -1,17 +1,35 @@
 <template>
-    <div class="popover" @click="xx">
-        <div class="button" ref="button">
-            <slot></slot>
-        </div>
-        <div class="popover-wrapper" v-if="showPopover" ref="content">
-            <div class="title">
-                {{title}}
+    <div  v-if="!hover">
+        <div class="popover" @click="onClickPopover">
+            <div class="button" ref="button">
+                <slot></slot>
             </div>
-            <div class="line">
+            <div class="popover-wrapper" v-if="clickPopover" ref="content" :class="classes">
+                <div class="title">
+                    {{title}}
+                </div>
+                <div class="line">
+                </div>
+                <slot name="content"></slot>
             </div>
-            <slot name="content"></slot>
         </div>
     </div>
+
+    <!--<div v-else-if="hover">-->
+        <!--<div class="popover" @mouseenter="clickPopover" @mouseleave="gfg">-->
+            <!--<div class="button" ref="button">-->
+                <!--<slot></slot>-->
+            <!--</div>-->
+            <!--<div class="popover-wrapper" v-if="clickPopover" ref="content" :class="classes">-->
+                <!--<div class="title">-->
+                    <!--{{title}}-->
+                <!--</div>-->
+                <!--<div class="line">-->
+                <!--</div>-->
+                <!--<slot name="content"></slot>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 </template>
 
 <script>
@@ -40,54 +58,156 @@
                     return ["click", "hover"].indexOf(value) >= 0
                 },
                 default: "click"
+            },
+            position:{
+                type: String,
+                validator(value){
+                    return ["top", "bottom", "left", "right"].indexOf(value) >= 0
+                },
+                default: "top"
+            },
+            hover: {
+                type: Boolean,
+                default: false,
             }
+
         },
         data(){
             return {
-                showPopover: false
+                clickPopover: false
             }
         },
+        computed:{
+          classes(){
+              return `position-${this.position}`
+          }
+        },
         methods:{
-            xx(e){
+            onClickPopover(e){
                 // 判断点击的是按钮
                 if(this.$refs.button.contains(e.target)){
-                    this.showPopover = !this.showPopover;
-                    if(this.showPopover){
-                        setTimeout(()=>{
-                            document.body.appendChild(this.$refs.content);
-                            const {top, left} = this.$refs.button.getBoundingClientRect();
-                            this.$refs.content.style.left = `${left + window.scrollX}px`;
-                            this.$refs.content.style.top = `${top + window.scrollY}px`;
-                            let ffff = (e)=>{
-                                if(!this.$refs.content.contains(e.target)){
-                                    this.showPopover = false;
-                                    document.body.removeEventListener("click", ffff)
-                                }
-                            }
-                            document.body.addEventListener("click", ffff)
+                    this.clickPopover = !this.clickPopover;
+                    if(this.clickPopover){
+                        this.$nextTick(()=>{
+                            this.createPopover();
+                            document.body.addEventListener("click", this.bindFunToBody)
                         },0)
                     }
                 }
+            },
+            bindFunToBody(e) {
+                if(!this.$refs.content.contains(e.target)){
+                    this.clickPopover = false;
+                    document.body.removeEventListener("click", this.bindFunToBody)
+                }
+            },
+            createPopover(){
+                document.body.appendChild(this.$refs.content);
+                this.$refs.content.querySelector(".popover-wrapper")
+                const {top, left, width} = this.$refs.button.getBoundingClientRect();
+                if(this.position === "top" || this.position === "bottom" || this.position === "left"){
+                    this.$refs.content.style.left = `${left + window.scrollX}px`;
+                    this.$refs.content.style.top = `${top + window.scrollY}px`;
+                } else if (this.position === "right"){
+                    this.$refs.content.style.top = `${top + window.scrollY}px`;
+                    this.$refs.content.style.left = `${left + width + window.scrollX}px`;
+
+                }
+
             }
         },
     }
 </script>
 
 <style lang="scss" scoped>
+    $border-radius: 2px;
     .popover{
         display: inline-block;
         position: relative;
     }
     .popover-wrapper{
+        border-radius: $border-radius;
         display: inline-block;
         padding: 5px;
         border: 1px solid grey;
         position: absolute;
-        transform: translateY(-100%);
+        box-shadow: 0 0 1px grey;
+        max-width: 20em;
+        word-break: break-all;
         .line{
             width: 100%;
             border: 1px solid grey;
             margin-bottom: 10px;
         }
+        &::before, &::after{
+            content: "";
+            display: inline-block;
+            border: 5px solid transparent;
+        }
+        &.position-top{
+            transform: translateY(-100%);
+            margin-top: -10px;
+            &::before{
+                border-top-color: grey;
+                position: absolute;
+                bottom: -11px;
+                left: 10px;
+            }
+            &::after{
+                border-top-color: white;
+                position: absolute;
+                bottom: -9px;
+                left: 10px;
+            }
+        }
+        &.position-bottom{
+            margin-top: 40px;
+            &::before{
+                border-bottom-color: grey;
+                position: absolute;
+                top: -11px;
+                left: 10px;
+            }
+            &::after{
+                border-bottom-color: white;
+                position: absolute;
+                top: -9px;
+                left: 10px;
+            }
+        }
+        &.position-right{
+            margin-left: 5px;
+            &::before{
+                border-right-color: grey;
+                position: absolute;
+                top: 4px;
+                left: -11px;
+            }
+            &::after{
+                border-right-color: white;
+                position: absolute;
+                top: 4px;
+                left: -9px;
+            }
+        }
+        &.position-left{
+            transform: translateX(-100%);
+            margin-left:-10px;
+            &::before{
+                border-left-color: grey;
+                position: absolute;
+                top: 4px;
+                right: -11px;
+            }
+            &::after{
+                border-left-color: white;
+                position: absolute;
+                top: 4px;
+                right: -9px;
+            }
+        }
+
+
+
     }
 </style>
