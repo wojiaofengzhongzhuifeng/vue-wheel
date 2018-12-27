@@ -14,22 +14,6 @@
             </div>
         </div>
     </div>
-
-    <!--<div v-else-if="hover">-->
-        <!--<div class="popover" @mouseenter="clickPopover" @mouseleave="gfg">-->
-            <!--<div class="button" ref="button">-->
-                <!--<slot></slot>-->
-            <!--</div>-->
-            <!--<div class="popover-wrapper" v-if="clickPopover" ref="content" :class="classes">-->
-                <!--<div class="title">-->
-                    <!--{{title}}-->
-                <!--</div>-->
-                <!--<div class="line">-->
-                <!--</div>-->
-                <!--<slot name="content"></slot>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
 </template>
 
 <script>
@@ -86,19 +70,27 @@
             onClickPopover(e){
                 // 判断点击的是按钮
                 if(this.$refs.button.contains(e.target)){
-                    this.clickPopover = !this.clickPopover;
                     if(this.clickPopover){
-                        this.$nextTick(()=>{
-                            this.createPopover();
-                            document.body.addEventListener("click", this.bindFunToBody)
-                        },0)
+                        this.closePopover()
+                    } else {
+                        this.showPopover()
                     }
                 }
             },
-            bindFunToBody(e) {
+            closePopover(){
+                this.clickPopover = false;
+                document.body.removeEventListener("click", this.bindCloseFunToBody)
+            },
+            showPopover(){
+                this.clickPopover = true;
+                this.$nextTick(()=>{
+                    this.createPopover();
+                    document.body.addEventListener("click", this.bindCloseFunToBody)
+                },0)
+            },
+            bindCloseFunToBody(e) {
                 if(!this.$refs.content.contains(e.target)){
-                    this.clickPopover = false;
-                    document.body.removeEventListener("click", this.bindFunToBody)
+                    this.closePopover()
                 }
             },
             createPopover(){
@@ -111,7 +103,6 @@
                 } else if (this.position === "right"){
                     this.$refs.content.style.top = `${top + window.scrollY}px`;
                     this.$refs.content.style.left = `${left + width + window.scrollX}px`;
-
                 }
 
             }
