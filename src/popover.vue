@@ -97,13 +97,26 @@
                 document.body.appendChild(this.$refs.content);
                 this.$refs.content.querySelector(".popover-wrapper")
                 const {top, left, width} = this.$refs.button.getBoundingClientRect();
-                if(this.position === "top" || this.position === "bottom" || this.position === "left"){
-                    this.$refs.content.style.left = `${left + window.scrollX}px`;
-                    this.$refs.content.style.top = `${top + window.scrollY}px`;
-                } else if (this.position === "right"){
-                    this.$refs.content.style.top = `${top + window.scrollY}px`;
-                    this.$refs.content.style.left = `${left + width + window.scrollX}px`;
-                }
+                const activePosition = {
+                    top:{
+                        top:`${top + window.scrollY}px`,
+                        left:`${left + window.scrollX}px`,
+                    },
+                    bottom:{
+                        top:`${top + window.scrollY}px`,
+                        left:`${left + window.scrollX}px`,
+                    },
+                    left:{
+                        top:`${top + window.scrollY}px`,
+                        left:`${left + window.scrollX}px`,
+                    },
+                    right:{
+                        top:`${top + window.scrollY}px`,
+                        left:`${left + width + window.scrollX}px`,
+                    },
+                };
+                this.$refs.content.style.top = activePosition[this.position].top;
+                this.$refs.content.style.left = activePosition[this.position].left;
 
             }
         },
