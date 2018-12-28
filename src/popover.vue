@@ -1,6 +1,19 @@
 <template>
-    <div  v-if="!hover">
-        <div class="popover" @click="onClickPopover">
+        <div class="popover" @click="onClickPopover" v-if="trigger === 'click'">
+            <div class="button" ref="button">
+                <slot></slot>
+            </div>
+            <div class="popover-wrapper" v-if="clickPopover" ref="content" :class="classes" @mouseleave="ddd">
+                <div class="title">
+                    {{title}}
+                </div>
+                <div class="line">
+                </div>
+                <slot name="content"></slot>
+            </div>
+        </div>
+
+        <div class="popover" @mouseenter="showPopover"  @mouseleave="closePopover" v-else-if="trigger === 'hover'">
             <div class="button" ref="button">
                 <slot></slot>
             </div>
@@ -13,7 +26,6 @@
                 <slot name="content"></slot>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -50,11 +62,6 @@
                 },
                 default: "top"
             },
-            hover: {
-                type: Boolean,
-                default: false,
-            }
-
         },
         data(){
             return {
@@ -67,6 +74,9 @@
           }
         },
         methods:{
+            ddd(){
+                console.log("mouse移出去了");
+            },
             onClickPopover(e){
                 // 判断点击的是按钮
                 if(this.$refs.button.contains(e.target)){
@@ -78,10 +88,22 @@
                 }
             },
             closePopover(){
+                // 当trigger设为hover时，如果鼠标移到content上，content不隐藏
+                // hover的时候，什么东西决定隐藏 content？
+                // 1. 当鼠标移出button，可能显示，可能隐藏
+                // 2. 当鼠标移入 content，一定显示 content。
+                // 3. 当鼠标移出 content， 一定隐藏 content。
                 this.clickPopover = false;
                 document.body.removeEventListener("click", this.bindCloseFunToBody)
+                if(this.trigger === "hover"){
+                    setTimeout(()=>{
+                        this.clickPopover = false;
+                        document.body.removeEventListener("click", this.bindCloseFunToBody)
+                    }, 2000)
+                }
             },
             showPopover(){
+                console.log("展示popover");
                 this.clickPopover = true;
                 this.$nextTick(()=>{
                     this.createPopover();
