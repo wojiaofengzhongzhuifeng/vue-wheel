@@ -37,16 +37,15 @@
 </head>
 <body>
 <div id="app">
+    <w-collapse :defaultActiveKey="['1']">
+        <w-collapse-item head="这是标题1" key="1">
+            这是内容1
+        </w-collapse-item>
 
-    <w-popover :title="title" style="margin:100px;" position="top" trigger="hover">
-        <w-button>点击我2</w-button>
-        <!--2暴露2：解构-->
-        <template slot="content" slot-scope="{close}">
-            <!--2暴露3：使用-->
-            <p>fdjskfldjsa</p>
-            <w-button @click="close">关闭</w-button>
-        </template>
-    </w-popover>
+        <w-collapse-item head="这是标题2" key="2">
+            这是内容2
+        </w-collapse-item>
+    </w-collapse>
 </div>
 <script src="src/app.js"></script>
 <!--<script src="//at.alicdn.com/t/font_915202_k9citci0f8j.js"></script>-->

@@ -12,6 +12,8 @@ import Content from "./content"
 import Footer from "./footer"
 import Toast from "./toast"
 import Popover from "./popover"
+import Collapse from "./collapse"
+import CollapseItem from "./collapse-item"
 
 
 
@@ -29,14 +31,14 @@ Vue.component("w-content", Content);
 Vue.component("w-footer", Footer);
 Vue.component("w-toast", Toast);
 Vue.component("w-popover", Popover);
+Vue.component("w-collapse", Collapse);
+Vue.component("w-collapse-item", CollapseItem);
+
+
 
 
 
 new Vue({
     el: "#app",
-    data: {
-        content: `<p>hi</p><w-button>21321</w-button>`,
-        title: "title"
-    },
 });
 
