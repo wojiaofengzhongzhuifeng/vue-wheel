@@ -24,12 +24,12 @@ describe('spies', () => {
         let div = document.createElement("div");
         document.body.appendChild(div);
         div.innerHTML = `
-    <w-popover position="bottom" ref="a">
-        <w-button class="test">点击我2</w-button>
-        <template slot="content">
-            <p>fdjskfldjsa</p>
-        </template>
-    </w-popover>
+            <w-popover position="bottom" ref="a">
+                <w-button class="test">点击我2</w-button>
+                <template slot="content">
+                    <p>fdjskfldjsa</p>
+                </template>
+            </w-popover>
         `
         let vm = new Vue({
             el: div
@@ -38,7 +38,6 @@ describe('spies', () => {
 
         vm.$nextTick(() => {
             let button = vm.$refs.a.$refs.button
-            console.log("44444455", button);
             button.click();
             setTimeout(() => {
                 let contentClass = vm.$refs.a.$refs.content.classList
@@ -74,6 +73,7 @@ describe('spies', () => {
             setTimeout(() => {
                 const {content} = vm.$refs.aaaa.$refs;
                 content.classList.contains(".popover-wrapper")
+                // 通过这种方法验证
                 expect(content.classList.contains("popover-wrapper")).to.be.true
                 done()
             }, 200)

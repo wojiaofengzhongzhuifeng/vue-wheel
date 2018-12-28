@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="popover" v-else-if="trigger === 'hover'" style="border: 1px solid ">
+        <div class="popover" v-else-if="trigger === 'hover'" style="border: 1px solid">
             <div class="button" ref="button"  @mouseenter="showPopover"  @mouseleave="mouseLeaveFromButton"  >
                 <slot></slot>
             </div>

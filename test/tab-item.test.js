@@ -79,6 +79,7 @@ describe('tab-item', () => {
         function original () {}
         const spy = chai.spy(original);
 
+
         vm.$on("click", spy);
         tabItem.click();
         expect(spy).to.have.not.been.called
