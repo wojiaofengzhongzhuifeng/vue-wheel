@@ -32,24 +32,19 @@
             --button-border-active: 1px solid var(--color-3);
             --font-family: PingFangSC-Regular;
         }
-        #app > div{
-            padding:10px;
-        }
 
     </style>
 </head>
 <body>
 <div id="app">
-    <div class="test" style="height:1000px;border:10px solid "></div>
-<w-popover :title="title" trigger="hover">
-    <w-button>点击我1</w-button>
-</w-popover>
 
-    <w-popover :title="title" style="margin:100px;">
+    <w-popover :title="title" style="margin:100px;" position="right" trigger="click">
         <w-button>点击我2</w-button>
-        <template slot="content">
+        <!--2暴露2：解构-->
+        <template slot="content" slot-scope="{close}">
+            <!--2暴露3：使用-->
             <p>fdjskfldjsa</p>
-            <w-button>test</w-button>
+            <w-button @click="close">关闭</w-button>
         </template>
     </w-popover>
 </div>

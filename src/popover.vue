@@ -3,21 +3,27 @@
             <div class="button" ref="button">
                 <slot></slot>
             </div>
-            <div class="popover-wrapper" v-if="clickPopover" ref="content" :class="classes" @mouseleave="ddd">
+            <div class="popover-wrapper" v-if="clickPopover" ref="content" :class="classes">
                 <div class="title">
                     {{title}}
                 </div>
                 <div class="line">
                 </div>
-                <slot name="content"></slot>
+                <!--2暴露1：输出组件内的函数-->
+                <slot name="content" :close="closePopover"></slot>
             </div>
         </div>
 
-        <div class="popover" @mouseenter="showPopover"  @mouseleave="closePopover" v-else-if="trigger === 'hover'">
-            <div class="button" ref="button">
+        <div class="popover" v-else-if="trigger === 'hover'" style="border: 1px solid ">
+            <div class="button" ref="button" @mouseenter="showPopover"  @mouseleave="mouseLeaveFromButton" >
                 <slot></slot>
             </div>
-            <div class="popover-wrapper" v-if="clickPopover" ref="content" :class="classes">
+            <div class="popover-wrapper"
+                 v-if="clickPopover"
+                 ref="content"
+                 :class="classes"
+                 @mouseenter="mouseEnterContent"
+                 @mouseleave="mouseLeaveFromContent" >
                 <div class="title">
                     {{title}}
                 </div>
@@ -39,6 +45,7 @@
     * 1. 点击popover以外的地方需要隐藏popover遇到的bug
     *   - 使用nextTick设置监听函数
     *   - 隐藏popover之后应该删除监听器
+*   * 2. 组件如何给外部暴露组件方法 slot-scope 2暴露
     * */
     export default {
         props:{
@@ -65,7 +72,8 @@
         },
         data(){
             return {
-                clickPopover: false
+                clickPopover: false,
+                mouseInContent: false,
             }
         },
         computed:{
@@ -74,8 +82,20 @@
           }
         },
         methods:{
+            mouseEnterContent(){
+                this.mouseInContent = true;
+            },
+            mouseLeaveFromContent(){
+                this.mouseInContent = false;
+                this.closePopover();
+            },
             ddd(){
                 console.log("mouse移出去了");
+            },
+            mouseLeaveFromButton(e){
+                if(!this.mouseInContent){
+                    this.closePopover()
+                }
             },
             onClickPopover(e){
                 // 判断点击的是按钮
@@ -94,21 +114,29 @@
                 // 2. 当鼠标移入 content，一定显示 content。
                 // 3. 当鼠标移出 content， 一定隐藏 content。
                 this.clickPopover = false;
-                document.body.removeEventListener("click", this.bindCloseFunToBody)
-                if(this.trigger === "hover"){
-                    setTimeout(()=>{
-                        this.clickPopover = false;
-                        document.body.removeEventListener("click", this.bindCloseFunToBody)
-                    }, 2000)
+                if(this.trigger === "click"){
+                    document.body.removeEventListener("click", this.bindCloseFunToBody)
+                } else {
+                    document.body.removeEventListener("hover", this.bindCloseFunToBody)
+
                 }
             },
             showPopover(){
                 console.log("展示popover");
-                this.clickPopover = true;
-                this.$nextTick(()=>{
-                    this.createPopover();
-                    document.body.addEventListener("click", this.bindCloseFunToBody)
-                },0)
+
+                if(this.trigger=== "click"){
+                    this.clickPopover = true;
+                    this.$nextTick(()=>{
+                        this.createPopover();
+                        document.body.addEventListener("click", this.bindCloseFunToBody)
+                    },0)
+                } else {
+                    this.clickPopover = true;
+                    this.$nextTick(()=>{
+                        this.createPopover();
+                        document.body.addEventListener("hover", this.bindCloseFunToBody)
+                    },0)
+                }
             },
             bindCloseFunToBody(e) {
                 if(!this.$refs.content.contains(e.target)){
