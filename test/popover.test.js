@@ -17,37 +17,36 @@ describe('spies', () => {
     it('存在.', () => {
         expect(Popover).to.be.ok
     })
-    // it('接受 position 属性', (done) => {
-    //     Vue.component("w-popover", Popover);
-    //     Vue.component("w-button", Button);
-    //
-    //     let div = document.createElement("div");
-    //     document.body.appendChild(div);
-    //     div.innerHTML = `
-    // <w-popover position="bottom" ref="a">
-    //     <w-button class="test">点击我2</w-button>
-    //     <template slot="content">
-    //         <p>fdjskfldjsa</p>
-    //     </template>
-    // </w-popover>
-    //     `
-    //     let vm = new Vue({
-    //         el: div
-    //     })
-    //
-    //
-    //     vm.$nextTick(() => {
-    //         let button = vm.$refs.a.$refs.button
-    //         button.click();
-    //         setTimeout(() => {
-    //             let contentClass = vm.$refs.a.$refs.content.classList
-    //             expect(contentClass.contains('position-bottom')).to.be.true
-    //             vm.$el.remove()
-    //             vm.$destroy()
-    //             done()
-    //         }, 0)
-    //     })
-    // })
+    it('接受 position 属性', (done) => {
+        Vue.component("w-popover", Popover);
+        Vue.component("w-button", Button);
+
+        let div = document.createElement("div");
+        document.body.appendChild(div);
+        div.innerHTML = `
+    <w-popover position="bottom" ref="a">
+        <w-button class="test">点击我2</w-button>
+        <template slot="content">
+            <p>fdjskfldjsa</p>
+        </template>
+    </w-popover>
+        `
+        let vm = new Vue({
+            el: div
+        })
+
+
+        vm.$nextTick(() => {
+            let button = vm.$refs.a.$refs.button
+            console.log("44444455", button);
+            button.click();
+            setTimeout(() => {
+                let contentClass = vm.$refs.a.$refs.content.classList
+                expect(contentClass.contains('position-bottom')).to.be.true
+                done()
+            }, 0)
+        })
+    })
 
     it('接受 trigger 属性', (done) => {
         Vue.component("w-popover", Popover);
