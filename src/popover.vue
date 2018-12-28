@@ -1,10 +1,16 @@
 <template>
         <div class="popover" @click="onClickPopover" v-if="trigger === 'click'">
-            <div class="button" ref="button">
+            <div class="button" ref="button" >
                 <slot></slot>
             </div>
-            <div class="popover-wrapper" v-if="clickPopover" ref="content" :class="classes">
-                <div class="title">
+            <div class="popover-wrapper"
+                 v-if="clickPopover"
+                 ref="content"
+                 :class="classes"
+            >
+                <div class="title"
+
+                >
                     {{title}}
                 </div>
                 <div class="line">
@@ -15,7 +21,7 @@
         </div>
 
         <div class="popover" v-else-if="trigger === 'hover'" style="border: 1px solid ">
-            <div class="button" ref="button" @mouseenter="showPopover"  @mouseleave="mouseLeaveFromButton" >
+            <div class="button" ref="button"  @mouseenter="showPopover"  @mouseleave="mouseLeaveFromButton"  >
                 <slot></slot>
             </div>
             <div class="popover-wrapper"
@@ -23,13 +29,14 @@
                  ref="content"
                  :class="classes"
                  @mouseenter="mouseEnterContent"
-                 @mouseleave="mouseLeaveFromContent" >
+                 @mouseleave="mouseLeaveFromContent"
+            >
                 <div class="title">
                     {{title}}
                 </div>
                 <div class="line">
                 </div>
-                <slot name="content"></slot>
+                <slot name="content" :close="closePopover"></slot>
             </div>
         </div>
 </template>
@@ -82,17 +89,27 @@
           }
         },
         methods:{
+            tst2(){},
+            test2(){
+                console.log("mouseleavefrombutton");
+            },
             mouseEnterContent(){
+                console.log("mouseEnterContent");
                 this.mouseInContent = true;
             },
             mouseLeaveFromContent(){
-                this.mouseInContent = false;
-                this.closePopover();
+                console.log("mouseLeaveFromContent");
+                // this.closePopover();
+                this.$nextTick(()=>{
+                    this.mouseInContent = false;
+
+                })
             },
             ddd(){
                 console.log("mouse移出去了");
             },
             mouseLeaveFromButton(e){
+                console.log(this.mouseInContent);
                 if(!this.mouseInContent){
                     this.closePopover()
                 }
@@ -122,21 +139,11 @@
                 }
             },
             showPopover(){
-                console.log("展示popover");
-
-                if(this.trigger=== "click"){
-                    this.clickPopover = true;
-                    this.$nextTick(()=>{
-                        this.createPopover();
-                        document.body.addEventListener("click", this.bindCloseFunToBody)
-                    },0)
-                } else {
-                    this.clickPopover = true;
-                    this.$nextTick(()=>{
-                        this.createPopover();
-                        document.body.addEventListener("hover", this.bindCloseFunToBody)
-                    },0)
-                }
+                this.clickPopover = true;
+                this.$nextTick(()=>{
+                    this.createPopover();
+                    document.body.addEventListener(this.trigger, this.bindCloseFunToBody)
+                })
             },
             bindCloseFunToBody(e) {
                 if(!this.$refs.content.contains(e.target)){
