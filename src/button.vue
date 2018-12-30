@@ -1,6 +1,7 @@
 <template>
     <button class="button" @click="$emit('click')">
-        <div class="icon"  :class="{[iconPosition]: 1}" v-if="iconName || loading">
+        <!--1class 2-->
+        <div class="icon"  :class="className" v-if="iconName || loading">
             <w-icon :icon-name="iconName"  class="icon" v-if="iconName && !loading"></w-icon>
             <w-icon icon-name="loading" class="loading" v-if="loading" ></w-icon>
         </div>
@@ -11,6 +12,9 @@
 </template>
 
 <script>
+    /*
+    * 知识点： 如何根据props设置class？ 1class
+    * */
     import Icon from "./icon"
     export default {
         components:{
@@ -38,12 +42,29 @@
                 }
             }
         },
+        computed:{
+            // 1class 1
+            className(){
+                return [`${this.iconPosition}`]
+            }
+        },
         methods:{
         }
     }
 </script>
 
 <style lang="scss" scoped>
+    $font-size: 14px;
+    $color-white: #ffffff;
+    $color-white: #ffffff;
+    $color-1: #fbfbfb;
+    $color-2: #90a4ae;
+    $color-3: rgb(66,133,244);
+    $button-height: 32px;
+    $font-size: 14px;
+    $button-border: 1px solid $color-2;
+    $button-border-active: 1px solid $color-2;
+    $font-family: PingFangSC-Regular;
     @keyframes loadingCircle {
         from{
             transform: rotate(0);
@@ -54,18 +75,18 @@
     }
     .button {
         display: flex;
-        font-size: var(--font-size);
-        line-height: var(--button-height);
-        color: var(--color-2);
-        background: var(--color-white);
-        border: var(--button-border);
+        font-size: $font-size;
+        line-height: $button-height;
+        color: $color-2;
+        background: $color-white;
+        border: $button-border;
         padding: 0 1em;
         border-radius: 6px;
         outline: none;
         cursor: pointer;
         transition: all 0.3s;
         & .icon{
-            height: var(--button-height)
+            height: $button-height
         }
         & .icon.right{
             order: 1
@@ -74,8 +95,8 @@
             animation: loadingCircle 1s infinite linear;
         }
         &:hover {
-            border: var(--button-border-active);
-            color: var(--color-3);
+            border: $button-border-active;
+            color: $color-3;
             z-index: 1;
             position: relative;
         }
