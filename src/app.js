@@ -40,5 +40,11 @@ Vue.component("w-collapse-item", CollapseItem);
 
 new Vue({
     el: "#app",
+    data(){
+        return {
+            selectTab: ['a'],
+            test: "321321"
+        }
+    },
 });
 

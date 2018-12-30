@@ -37,13 +37,21 @@
 </head>
 <body>
 <div id="app">
-    <w-collapse :defaultActiveKey="['1']">
-        <w-collapse-item head="这是标题1" key="1">
+    <w-collapse  :selected.sync="selectTab" single>
+        <w-collapse-item title="这是标题1" :item-key="'a'">
             这是内容1
         </w-collapse-item>
 
-        <w-collapse-item head="这是标题2" key="2">
+        <w-collapse-item title="这是标题2" :item-key="'b'">
             这是内容2
+        </w-collapse-item>
+
+        <w-collapse-item title="这是标题3" :item-key="'c'">
+            这是内容3
+        </w-collapse-item>
+
+        <w-collapse-item title="这是标题4" :item-key="'d'">
+            这是内容4
         </w-collapse-item>
     </w-collapse>
 </div>
