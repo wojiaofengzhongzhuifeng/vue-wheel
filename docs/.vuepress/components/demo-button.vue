@@ -10,7 +10,9 @@
             </w-button-group>
         </div>
         <pre>
-            {{code}}
+            <code>
+                {{code}}
+            </code>
         </pre>
     </div>
 </template>
@@ -34,8 +36,7 @@
     <w-button-group>
         <w-button icon-name="left" icon-position="left">回退</w-button>
         <w-button icon-name="right" icon-position="right">前进</w-button>
-    </w-button-group>
-                `
+    </w-button-group>`
             }
         }
     }
