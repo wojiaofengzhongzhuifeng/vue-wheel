@@ -109,7 +109,6 @@
                 console.log("mouse移出去了");
             },
             mouseLeaveFromButton(e){
-                console.log(this.mouseInContent);
                 if(!this.mouseInContent){
                     this.closePopover()
                 }

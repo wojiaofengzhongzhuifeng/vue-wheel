@@ -44,12 +44,11 @@
         display: flex;
 
         > button {
-            margin: 0 10px;
+            margin-right: 10px;
         }
 
         > div {
-            margin: 0 10px;
-
+            margin-right: 10px;
         }
     }
 </style>

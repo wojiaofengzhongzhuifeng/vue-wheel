@@ -18,7 +18,7 @@ describe('Input', () => {
         const Constructor = Vue.extend(Input)
         const vm = new Constructor({
             propsData: {
-                disabled: 'true'
+                disabled: true
             }
         }).$mount()
         const input = vm.$el.querySelector('input')
@@ -30,7 +30,7 @@ describe('Input', () => {
         const Constructor = Vue.extend(Input)
         const vm = new Constructor({
             propsData: {
-                icon: {iconName: 'setting', iconMsg: '你填错了信息'}
+                icon: {name: 'setting', message: '你填错了信息'}
             }
         }).$mount()
         const use = vm.$el.querySelector('use')

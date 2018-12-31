@@ -4,6 +4,10 @@ sidebarDepth: 2
 
 ---
 
-### input
+### input 文本输入框
 
-#### 如何使用input
+#### 使用input
+
+<ClientOnly>
+<demo-input/>
+</ClientOnly>

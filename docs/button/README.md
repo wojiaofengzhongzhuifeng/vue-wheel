@@ -4,9 +4,9 @@ sidebarDepth: 2
 
 ---
 
-### button
+### button 按钮
 
-#### 如何使用button
+#### 使用 button
 
 <ClientOnly>
 <demo-button/>

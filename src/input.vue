@@ -1,22 +1,28 @@
 <template>
     <div class="input">
         <input type="text"
-               :disabled="disabled === 'true'"
+               :disabled="disabled === true"
                @change="$emit('change', $event)"
                @input="$emit('input', $event)"
                @focus="$emit('focus', $event)"
                @blur="$emit('blur', $event)"
-
                :value="value"
+               :readonly="value"
         >
         <template v-if="icon">
-            <w-icon icon-name="setting"></w-icon>
-            <span>{{icon.iconMsg}}</span>
+            <w-icon :icon-name="icon.name"></w-icon>
+            <span>{{icon.message}}</span>
         </template>
     </div>
 </template>
 
 <script>
+    /*
+    * 1. 知识
+    *   - @change="$emit('change', $event)" 这个为什么要这样写？？
+    *     如果不写，那么在使用 input 组件的时候：<w-input @change="fffff"/> , 是无法监听change事件的。因为你
+    *
+    * */
     import Icon from "./icon"
     export default {
         components:{
@@ -24,8 +30,8 @@
         },
         props: {
             disabled: {
-                type: String,
-                default: "false"
+                type: Boolean,
+                default: false
             },
             icon: {
                 type: Object || null,
