@@ -4,8 +4,8 @@
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
-  color: inherit;
-}
+  color: inherit; }
+
 @keyframes loadingCircle-data-v-913c07 {
 from {
     transform: rotate(0);
@@ -16,11 +16,11 @@ to {
 }
 .button[data-v-913c07] {
   display: flex;
-  font-size: var(--font-size);
-  line-height: var(--button-height);
-  color: var(--color-2);
-  background: var(--color-white);
-  border: var(--button-border);
+  font-size: 14px;
+  line-height: 32px;
+  color: #90a4ae;
+  background: #ffffff;
+  border: 1px solid #90a4ae;
   padding: 0 1em;
   border-radius: 6px;
   outline: none;
@@ -28,17 +28,17 @@ to {
   transition: all 0.3s;
 }
 .button .icon[data-v-913c07] {
-  height: var(--button-height);
+    height: 32px;
 }
 .button .icon.right[data-v-913c07] {
-  order: 1;
+    order: 1;
 }
 .button .icon .loading[data-v-913c07] {
-  animation: loadingCircle-data-v-913c07 1s infinite linear;
+    animation: loadingCircle-data-v-913c07 1s infinite linear;
 }
 .button[data-v-913c07]:hover {
-  border: var(--button-border-active);
-  color: var(--color-3);
-  z-index: 1;
-  position: relative;
+    border: 1px solid #90a4ae;
+    color: #4285f4;
+    z-index: 1;
+    position: relative;
 }

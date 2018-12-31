@@ -11518,6 +11518,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+
+/*
+* 知识点： 如何根据props设置class？ 1class
+* */
 var _default = {
   components: {
     'w-icon': _icon.default
@@ -11544,6 +11549,12 @@ var _default = {
       }
     }
   },
+  computed: {
+    // 1class 1
+    className: function className() {
+      return ["".concat(this.iconPosition)];
+    }
+  },
   methods: {}
 };
 exports.default = _default;
@@ -11565,7 +11576,7 @@ exports.default = _default;
       staticClass: "button",
       on: {
         click: function($event) {
-          _vm.$emit("click")
+          _vm.$emit("click", $event)
         }
       }
     },
@@ -11573,10 +11584,7 @@ exports.default = _default;
       _vm.iconName || _vm.loading
         ? _c(
             "div",
-            {
-              staticClass: "icon",
-              class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj)
-            },
+            { staticClass: "icon", class: _vm.className },
             [
               _vm.iconName && !_vm.loading
                 ? _c("w-icon", {
@@ -11599,7 +11607,6 @@ exports.default = _default;
       _c("div", { staticClass: "slot" }, [_vm._t("default")], 2)
     ]
   )
-  var _obj
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -11726,14 +11733,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+
+/*
+* 1. 知识
+*   - w-input 组件如何监听change事件？ 1监听
+*
+* */
 var _default = {
   components: {
     'w-icon': _icon.default
   },
   props: {
     disabled: {
-      type: String,
-      default: "false"
+      type: Boolean,
+      default: false
     },
     icon: {
       type: Object || null,
@@ -11760,7 +11774,11 @@ exports.default = _default;
     { staticClass: "input" },
     [
       _c("input", {
-        attrs: { type: "text", disabled: _vm.disabled === "true" },
+        attrs: {
+          type: "text",
+          disabled: _vm.disabled === true,
+          readonly: _vm.value
+        },
         domProps: { value: _vm.value },
         on: {
           change: function($event) {
@@ -11780,9 +11798,9 @@ exports.default = _default;
       _vm._v(" "),
       _vm.icon
         ? [
-            _c("w-icon", { attrs: { "icon-name": "setting" } }),
+            _c("w-icon", { attrs: { "icon-name": _vm.icon.name } }),
             _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.icon.iconMsg))])
+            _c("span", [_vm._v(_vm._s(_vm.icon.message))])
           ]
         : _vm._e()
     ],
@@ -11835,11 +11853,17 @@ exports.default = void 0;
 //
 //
 //
+
+/*
+* 1. 知识点
+*   - 父组件传递子组件数据 1传递数据
+*
+* */
 var _default = {
   props: {
     gutter: {
-      type: String | Number,
-      default: "0"
+      type: String,
+      default: "0px"
     },
     align: {
       type: String,
@@ -11856,19 +11880,17 @@ var _default = {
   computed: {
     rowStyle: function rowStyle() {
       var gutter = this.gutter;
+      gutter = parseInt(gutter);
       return {
-        marginLeft: -parseInt(gutter / 2) + 'px',
-        marginRight: -parseInt(gutter / 2) + 'px'
+        marginLeft: -(gutter / 2) + 'px',
+        marginRight: -(gutter / 2) + 'px'
       };
-    },
-    alignStyle: function alignStyle() {
-      var align = this.align;
-      return align;
     }
   },
   mounted: function mounted() {
     var _this = this;
 
+    // 1传递数据1 父组件传递数据给子组件
     this.$children.forEach(function (vm) {
       vm.gutter = _this.gutter;
       vm.align = _this.align;
@@ -11989,10 +12011,12 @@ var _default = {
   },
   computed: {
     colStyle: function colStyle() {
+      // 1传递数据 2子组件通过解构赋值拿到数据
       var gutter = this.gutter;
+      gutter = parseInt(gutter);
       return {
-        paddingLeft: parseInt(gutter / 2) + 'px',
-        paddingRight: parseInt(gutter / 2) + 'px'
+        paddingLeft: gutter / 2 + 'px',
+        paddingRight: gutter / 2 + 'px'
       };
     },
     colClasses: function colClasses() {
@@ -12454,7 +12478,7 @@ exports.default = void 0;
 *   - 提前写好通知类组件在页面, 并且隐藏它
 *   - 在合适的时机通过操作数据显示它
 *
-*   --
+*   --（推荐）
 *   - 用户点击按钮的时候创建一个 Vue 实例
 *   - 用户点击另一个按钮的时候删除这个 Vue 实例
 *
@@ -12464,13 +12488,9 @@ exports.default = void 0;
 *
 * 4. ref
 *
-* 5. props + computed + :class 生成 className
-*
 * 6. 函数的参数传递
 *
 * 7. 套路: 动画遇到bug, 新增一个div, 只用来居中
-*
-* 8. 规定 props 数据类型:  [Number, String]
 *
 * 9. 规定 props 数据是规定的对象A
 * */
@@ -12502,14 +12522,7 @@ var _default = {
   },
   computed: {
     toastClass: function toastClass() {
-      return ["position-".concat(this.position)]; // 第一种 class 添加方法
-
-      /*
-      // 第二种 class 添加方法
-      return {
-          [`position-${this.position}`]: true
-      }
-      */
+      return ["position-".concat(this.position)];
     }
   },
   mounted: function mounted() {
@@ -12639,7 +12652,327 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab.vue":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/popover.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/*
+* 需求
+* 1. 点击之后弹出对话框。
+*
+* */
+
+/*
+* 知识点
+* 1. 点击popover以外的地方需要隐藏popover遇到的bug
+*   - 使用nextTick设置监听函数
+*   - 隐藏popover之后应该删除监听器
+*   * 2. 组件如何给外部暴露组件方法 slot-scope 2暴露
+* */
+var _default = {
+  props: {
+    title: {
+      type: String
+    },
+    content: {
+      type: String
+    },
+    trigger: {
+      type: String,
+      validator: function validator(value) {
+        return ["click", "hover"].indexOf(value) >= 0;
+      },
+      default: "click"
+    },
+    position: {
+      type: String,
+      validator: function validator(value) {
+        return ["top", "bottom", "left", "right"].indexOf(value) >= 0;
+      },
+      default: "top"
+    }
+  },
+  data: function data() {
+    return {
+      clickPopover: false,
+      mouseInContent: false
+    };
+  },
+  computed: {
+    classes: function classes() {
+      return "position-".concat(this.position);
+    }
+  },
+  methods: {
+    tst2: function tst2() {},
+    test2: function test2() {
+      console.log("mouseleavefrombutton");
+    },
+    mouseEnterContent: function mouseEnterContent() {
+      console.log("mouseEnterContent");
+      this.mouseInContent = true;
+    },
+    mouseLeaveFromContent: function mouseLeaveFromContent() {
+      var _this = this;
+
+      console.log("mouseLeaveFromContent"); // this.closePopover();
+
+      this.$nextTick(function () {
+        _this.mouseInContent = false;
+      });
+    },
+    ddd: function ddd() {
+      console.log("mouse移出去了");
+    },
+    mouseLeaveFromButton: function mouseLeaveFromButton(e) {
+      if (!this.mouseInContent) {
+        this.closePopover();
+      }
+    },
+    onClickPopover: function onClickPopover(e) {
+      // 判断点击的是按钮
+      if (this.$refs.button.contains(e.target)) {
+        if (this.clickPopover) {
+          this.closePopover();
+        } else {
+          this.showPopover();
+        }
+      }
+    },
+    closePopover: function closePopover() {
+      // 当trigger设为hover时，如果鼠标移到content上，content不隐藏
+      // hover的时候，什么东西决定隐藏 content？
+      // 1. 当鼠标移出button，可能显示，可能隐藏
+      // 2. 当鼠标移入 content，一定显示 content。
+      // 3. 当鼠标移出 content， 一定隐藏 content。
+      this.clickPopover = false;
+
+      if (this.trigger === "click") {
+        document.body.removeEventListener("click", this.bindCloseFunToBody);
+      } else {
+        document.body.removeEventListener("hover", this.bindCloseFunToBody);
+      }
+    },
+    showPopover: function showPopover() {
+      var _this2 = this;
+
+      this.clickPopover = true;
+      this.$nextTick(function () {
+        _this2.createPopover();
+
+        document.body.addEventListener(_this2.trigger, _this2.bindCloseFunToBody);
+      });
+    },
+    bindCloseFunToBody: function bindCloseFunToBody(e) {
+      if (!this.$refs.content.contains(e.target)) {
+        this.closePopover();
+      }
+    },
+    createPopover: function createPopover() {
+      document.body.appendChild(this.$refs.content);
+      this.$refs.content.querySelector(".popover-wrapper");
+
+      var _this$$refs$button$ge = this.$refs.button.getBoundingClientRect(),
+          top = _this$$refs$button$ge.top,
+          left = _this$$refs$button$ge.left,
+          width = _this$$refs$button$ge.width;
+
+      var activePosition = {
+        top: {
+          top: "".concat(top + window.scrollY, "px"),
+          left: "".concat(left + window.scrollX, "px")
+        },
+        bottom: {
+          top: "".concat(top + window.scrollY, "px"),
+          left: "".concat(left + window.scrollX, "px")
+        },
+        left: {
+          top: "".concat(top + window.scrollY, "px"),
+          left: "".concat(left + window.scrollX, "px")
+        },
+        right: {
+          top: "".concat(top + window.scrollY, "px"),
+          left: "".concat(left + width + window.scrollX, "px")
+        }
+      };
+      this.$refs.content.style.top = activePosition[this.position].top;
+      this.$refs.content.style.left = activePosition[this.position].left;
+    }
+  }
+};
+exports.default = _default;
+        var $ea4007 = exports.default || module.exports;
+      
+      if (typeof $ea4007 === 'function') {
+        $ea4007 = $ea4007.options;
+      }
+    
+        /* template */
+        Object.assign($ea4007, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.trigger === "click"
+    ? _c("div", { staticClass: "popover", on: { click: _vm.onClickPopover } }, [
+        _c(
+          "div",
+          { ref: "button", staticClass: "button" },
+          [_vm._t("default")],
+          2
+        ),
+        _vm._v(" "),
+        _vm.clickPopover
+          ? _c(
+              "div",
+              {
+                ref: "content",
+                staticClass: "popover-wrapper",
+                class: _vm.classes
+              },
+              [
+                _c("div", { staticClass: "title" }, [
+                  _vm._v("\n            " + _vm._s(_vm.title) + "\n        ")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "line" }),
+                _vm._v(" "),
+                _vm._t("content", null, { close: _vm.closePopover })
+              ],
+              2
+            )
+          : _vm._e()
+      ])
+    : _vm.trigger === "hover"
+      ? _c(
+          "div",
+          { staticClass: "popover", staticStyle: { border: "1px solid" } },
+          [
+            _c(
+              "div",
+              {
+                ref: "button",
+                staticClass: "button",
+                on: {
+                  mouseenter: _vm.showPopover,
+                  mouseleave: _vm.mouseLeaveFromButton
+                }
+              },
+              [_vm._t("default")],
+              2
+            ),
+            _vm._v(" "),
+            _vm.clickPopover
+              ? _c(
+                  "div",
+                  {
+                    ref: "content",
+                    staticClass: "popover-wrapper",
+                    class: _vm.classes,
+                    on: {
+                      mouseenter: _vm.mouseEnterContent,
+                      mouseleave: _vm.mouseLeaveFromContent
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "title" }, [
+                      _vm._v(
+                        "\n            " + _vm._s(_vm.title) + "\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "line" }),
+                    _vm._v(" "),
+                    _vm._t("content", null, { close: _vm.closePopover })
+                  ],
+                  2
+                )
+              : _vm._e()
+          ]
+        )
+      : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-ea4007",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$ea4007', $ea4007);
+          } else {
+            api.reload('$ea4007', $ea4007);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/collapse.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12651,481 +12984,79 @@ var _vue = _interopRequireDefault(require("vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
-/**
- * 笔记
- * 1. 一个组件如何使用两个插槽 1插槽
- * 2. tab的selected数据保存在app中， 如何修改selected数据？子组件（tab）不能修改父组件（app）的数据，子组件（tab）只能发出一个事件，通知父组件（app）修改
- * 3. 只有 class style 属性是追加， 其他属性都是覆盖 3追加
- * 4. eventHub + 依赖注入： 实现数据通信  4组件通信
- * 5. margin-left: auto 元素放到父元素右边 定格 http://js.jirengu.com/lozurujili/1/edit
- * 6.
- * */
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var _default = {
   props: {
     selected: {
-      type: String,
-      required: true
+      type: Array
     },
-    direction: {
-      type: String,
-      validator: function validator(value) {
-        return ["horizontal", "vertical"].indexOf(value) >= 0;
-      }
+    single: {
+      type: Boolean
     }
   },
-  // 4组件通信1: 通过new Vue 生成一个vue实例， 目的是使用vue实例的eventHub对象
   data: function data() {
     return {
-      eventHubTest: new _vue.default()
+      eventBus: new _vue.default()
     };
   },
-  // 4组件通信2: 在组件A中使用provide函数，返回数据event， 这样在组件A所有子组件均可拿到数据event
   provide: function provide() {
     return {
-      eventHi: this.eventHubTest
+      eventBus: this.eventBus
     };
-  },
-  created: function created() {// this.eventHubTest.$emit("update:selectedData", this.selected)
   },
   mounted: function mounted() {
     var _this = this;
 
-    console.log(this.$children); // 在页面加载之后，需要把this.selected值对应的dom元素传出去
+    this.eventBus.$emit("toSon", this.selected);
+    this.eventBus.$on("toParent", function (data) {
+      var copyProps = JSON.parse(JSON.stringify(_this.selected)); // 处理数据
 
-    this.$children.forEach(function (vm) {
-      if (vm.$options.name === "wheelTabHead") {
-        vm.$children.forEach(function (item) {
-          if (item.$options.name === "wheelTabItem" && item.name === _this.selected) {
-            _this.eventHubTest.$emit("update:selectedData", _this.selected, item.$el);
-          }
-        });
-      }
-    });
-  },
-  methods: {
-    test: function test() {
-      console.log(111123);
-    }
-  }
-};
-exports.default = _default;
-        var $ec40b0 = exports.default || module.exports;
-      
-      if (typeof $ec40b0 === 'function') {
-        $ec40b0 = $ec40b0.options;
-      }
-    
-        /* template */
-        Object.assign($ec40b0, (function () {
-          var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "tab", on: { click: _vm.test } },
-    [_vm._t("default")],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
+      if (data.visible) {
+        var showArray = [];
 
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: "data-v-ec40b0",
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$ec40b0', $ec40b0);
-          } else {
-            api.reload('$ec40b0', $ec40b0);
-          }
+        if (_this.single) {
+          showArray[0] = data.itemKey;
+        } else {
+          copyProps.push(data.itemKey);
+          showArray = _toConsumableArray(new Set(copyProps));
         }
 
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"vue":"node_modules/vue/dist/vue.common.js","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/tab-head.vue":[function(require,module,exports) {
-"use strict";
+        _this.eventBus.$emit("toSon", showArray);
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = {
-  name: "wheelTabHead",
-  inject: ["eventHi"],
-  created: function created() {
-    var _this = this;
-
-    this.eventHi.$on("update:selectedData", function (value, $el) {
-      var _$el$getBoundingClien = $el.getBoundingClientRect(),
-          width = _$el$getBoundingClien.width,
-          height = _$el$getBoundingClien.height,
-          top = _$el$getBoundingClien.top,
-          left = _$el$getBoundingClien.left;
-
-      _this.$refs.xxx.style.left = "".concat(left - 10, "px");
-      _this.$refs.xxx.style.width = "".concat(width, "px");
-    });
-  }
-};
-exports.default = _default;
-        var $71aa21 = exports.default || module.exports;
-      
-      if (typeof $71aa21 === 'function') {
-        $71aa21 = $71aa21.options;
-      }
-    
-        /* template */
-        Object.assign($71aa21, (function () {
-          var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "tabHead" },
-    [
-      _vm._t("default"),
-      _vm._v(" "),
-      _c("div", { ref: "xxx", staticClass: "line" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "actions-wrapper" }, [_vm._t("actions")], 2)
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: "data-v-71aa21",
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$71aa21', $71aa21);
-          } else {
-            api.reload('$71aa21', $71aa21);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-body.vue":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-//
-//
-//
-//
-//
-//
-var _default = {
-  name: "wheelTabBody"
-};
-exports.default = _default;
-        var $e4ee9e = exports.default || module.exports;
-      
-      if (typeof $e4ee9e === 'function') {
-        $e4ee9e = $e4ee9e.options;
-      }
-    
-        /* template */
-        Object.assign($e4ee9e, (function () {
-          var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabBody" }, [_vm._t("default")], 2)
-}
-var staticRenderFns = []
-render._withStripped = true
-
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: "data-v-e4ee9e",
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$e4ee9e', $e4ee9e);
-          } else {
-            api.reload('$e4ee9e', $e4ee9e);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-item.vue":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-//
-//
-//
-//
-//
-//
-var _default = {
-  name: "wheelTabItem",
-  props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    name: {
-      type: [String, Number],
-      required: true
-    }
-  },
-  data: function data() {
-    return {
-      active: {
-        type: Boolean,
-        default: false
-      }
-    };
-  },
-  computed: {
-    classes: function classes() {
-      var className = "";
-
-      if (this.active) {
-        className += "active";
-      } else if (this.active === false) {
-        className += "";
-      }
-
-      if (this.disabled) {
-        className += " disabled";
-      } else if (this.disabled === false) {
-        className += "";
-      }
-
-      return className;
-    }
-  },
-  // 4组件通信3: 通过inject属性拿到tab组件注入的数据
-  inject: ["eventHi"],
-  // 4组件通信4: 使用inject的数据
-  created: function created() {
-    var _this = this;
-
-    this.eventHi.$on("update:selectedData", function (value) {
-      _this.active = _this.name === value;
-    });
-
-    if (this.disabled) {}
-  },
-  methods: {
-    xxx: function xxx() {
-      if (this.disabled) {
-        return;
-      }
-
-      this.eventHi.$emit("update:selectedData", this.name, this.$el);
-    }
-  }
-};
-exports.default = _default;
-        var $b3faaa = exports.default || module.exports;
-      
-      if (typeof $b3faaa === 'function') {
-        $b3faaa = $b3faaa.options;
-      }
-    
-        /* template */
-        Object.assign($b3faaa, (function () {
-          var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "tabItem",
-      class: _vm.classes,
-      attrs: { "data-name": _vm.name },
-      on: { click: _vm.xxx }
-    },
-    [_vm._t("default")],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: "data-v-b3faaa",
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$b3faaa', $b3faaa);
-          } else {
-            api.reload('$b3faaa', $b3faaa);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-pane.vue":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-//
-//
-//
-//
-//
-//
-var _default = {
-  inject: ["eventHi"],
-  data: function data() {
-    return {
-      active: {
-        type: Boolean,
-        default: false
-      }
-    };
-  },
-  props: {
-    name: {
-      type: [String, Number],
-      required: true
-    }
-  },
-  computed: {
-    classes: function classes() {
-      if (this.active) {
-        return "active";
+        _this.$emit('update:selected', showArray);
       } else {
-        return "disActive";
-      }
-    }
-  },
-  created: function created() {
-    var _this = this;
+        copyProps = copyProps.filter(function (item) {
+          return item !== data.itemKey;
+        });
 
-    this.eventHi.$on("update:selectedData", function (value) {
-      _this.active = _this.name === value;
+        _this.eventBus.$emit("toSon", copyProps);
+
+        _this.$emit('update:selected', copyProps);
+      }
     });
   }
 };
 exports.default = _default;
-        var $9f3d36 = exports.default || module.exports;
+        var $1e8224 = exports.default || module.exports;
       
-      if (typeof $9f3d36 === 'function') {
-        $9f3d36 = $9f3d36.options;
+      if (typeof $1e8224 === 'function') {
+        $1e8224 = $1e8224.options;
       }
     
         /* template */
-        Object.assign($9f3d36, (function () {
+        Object.assign($1e8224, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.active
-    ? _c(
-        "div",
-        { staticClass: "tabPane", class: _vm.classes },
-        [_vm._t("default")],
-        2
-      )
-    : _vm._e()
+  return _c("div", { staticClass: "collapse" }, [_vm._t("default")], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13134,7 +13065,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-9f3d36",
+            _scopeId: "data-v-1e8224",
             functional: undefined
           };
         })());
@@ -13147,9 +13078,116 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$9f3d36', $9f3d36);
+            api.createRecord('$1e8224', $1e8224);
           } else {
-            api.reload('$9f3d36', $9f3d36);
+            api.reload('$1e8224', $1e8224);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"vue":"node_modules/vue/dist/vue.common.js","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/collapse-item.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  props: {
+    title: {
+      type: String
+    },
+    itemKey: {
+      type: [Number, String]
+    }
+  },
+  data: function data() {
+    return {
+      visible: false
+    };
+  },
+  inject: ["eventBus"],
+  mounted: function mounted() {
+    var _this = this;
+
+    this.eventBus.$on("toSon", function (test) {
+      _this.visible = test.indexOf(_this.itemKey) >= 0;
+    });
+  },
+  methods: {
+    toggleShowItem: function toggleShowItem() {
+      // this.visible = !this.visible;
+      var emitObj = {
+        itemKey: this.itemKey,
+        visible: !this.visible
+      };
+      this.eventBus.$emit("toParent", emitObj);
+    }
+  }
+};
+exports.default = _default;
+        var $ad1ff1 = exports.default || module.exports;
+      
+      if (typeof $ad1ff1 === 'function') {
+        $ad1ff1 = $ad1ff1.options;
+      }
+    
+        /* template */
+        Object.assign($ad1ff1, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapseItem" }, [
+    _c("div", { staticClass: "title", on: { click: _vm.toggleShowItem } }, [
+      _vm._v("\n        " + _vm._s(_vm.title) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _vm.visible
+      ? _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-ad1ff1",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$ad1ff1', $ad1ff1);
+          } else {
+            api.reload('$ad1ff1', $ad1ff1);
           }
         }
 
@@ -13187,15 +13225,11 @@ var _footer = _interopRequireDefault(require("./footer"));
 
 var _toast = _interopRequireDefault(require("./toast"));
 
-var _tab = _interopRequireDefault(require("./tab"));
+var _popover = _interopRequireDefault(require("./popover"));
 
-var _tabHead = _interopRequireDefault(require("./tab-head"));
+var _collapse = _interopRequireDefault(require("./collapse"));
 
-var _tabBody = _interopRequireDefault(require("./tab-body"));
-
-var _tabItem = _interopRequireDefault(require("./tab-item"));
-
-var _tabPane = _interopRequireDefault(require("./tab-pane"));
+var _collapseItem = _interopRequireDefault(require("./collapse-item"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13222,31 +13256,33 @@ _vue.default.component("w-footer", _footer.default);
 
 _vue.default.component("w-toast", _toast.default);
 
-_vue.default.component("w-tab", _tab.default);
+_vue.default.component("w-popover", _popover.default);
 
-_vue.default.component("w-tab-head", _tabHead.default);
+_vue.default.component("w-collapse", _collapse.default);
 
-_vue.default.component("w-tab-body", _tabBody.default);
-
-_vue.default.component("w-tab-item", _tabItem.default);
-
-_vue.default.component("w-tab-pane", _tabPane.default);
+_vue.default.component("w-collapse-item", _collapseItem.default);
 
 new _vue.default({
   el: "#app",
-  data: {
-    selectedData: "woman"
+  data: function data() {
+    return {
+      selectTab: ['a'],
+      test: "321321"
+    };
   },
   methods: {
-    xxx: function xxx() {
-      console.log(1);
+    //1监听3 在这里执行change回调
+    listenInputChange: function listenInputChange(e) {
+      console.log(e);
+      console.log("监听到inputchange");
+    },
+    listenButtonClick: function listenButtonClick(e) {
+      console.log(e);
+      console.log("listenButtonClick");
     }
-  },
-  created: function created() {
-    this.$emit("xyz", 12);
   }
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./row":"src/row.vue","./col":"src/col.vue","./layout":"src/layout.vue","./header":"src/header.vue","./sider":"src/sider.vue","./content":"src/content.vue","./footer":"src/footer.vue","./toast":"src/toast.vue","./tab":"src/tab.vue","./tab-head":"src/tab-head.vue","./tab-body":"src/tab-body.vue","./tab-item":"src/tab-item.vue","./tab-pane":"src/tab-pane.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./row":"src/row.vue","./col":"src/col.vue","./layout":"src/layout.vue","./header":"src/header.vue","./sider":"src/sider.vue","./content":"src/content.vue","./footer":"src/footer.vue","./toast":"src/toast.vue","./popover":"src/popover.vue","./collapse":"src/collapse.vue","./collapse-item":"src/collapse-item.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -13273,7 +13309,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50020" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61406" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

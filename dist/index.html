@@ -27,49 +27,69 @@
             --button-border: 1px solid var(--color-2);
             --button-border-active: 1px solid var(--color-3);
             --font-family: PingFangSC-Regular;
-        }
-        #app > div{
-            padding:10px;
         }</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <body>
 <div id="app">
-    <w-tab :selected="selectedData" @update:selecteddata="selectedData = '123'">
-    <!--<w-tab :selected.sync="selectedData">-->
-        <w-tab-head>
-            <!--1插槽-->
-            <template slot="actions">
-                <button>fdsfdsa</button>
-            </template>
+    <!--<w-collapse  :selected.sync="selectTab" single>-->
+        <!--<w-collapse-item title="这是标题1" :item-key="'a'">-->
+            <!--这是内容1-->
+        <!--</w-collapse-item>-->
 
-            <w-tab-item name="woman" disabled="">
-                <div>
-                    <div>美女</div>
-                </div>
-            </w-tab-item>
+        <!--<w-collapse-item title="这是标题2" :item-key="'b'">-->
+            <!--这是内容2-->
+        <!--</w-collapse-item>-->
 
-            <w-tab-item name="car">
-                <div>
-                    <div>汽车</div>
-                </div>
-            </w-tab-item>
-        </w-tab-head>
-        <w-tab-body>
-            <w-tab-pane name="woman">
-                <div>
-                    <div>美女有关的内容</div>
-                </div>
-            </w-tab-pane>
+        <!--<w-collapse-item title="这是标题3" :item-key="'c'">-->
+            <!--这是内容3-->
+        <!--</w-collapse-item>-->
 
-            <w-tab-pane name="car">
-                <div>
-                    <div>汽车有关内容</div>
-                </div>
-            </w-tab-pane>
-        </w-tab-body>
-    </w-tab>
+        <!--<w-collapse-item title="这是标题4" :item-key="'d'">-->
+            <!--这是内容4-->
+        <!--</w-collapse-item>-->
+    <!--</w-collapse>-->
+
+    <w-button icon-name="setting" icon-position="right" @click="listenButtonClick">点我</w-button>
+
+     <!--1监听 在使用w-input的地方，监听change事件-->
+    <w-input @change="listenInputChange"></w-input>
+
+
+
+    <w-row gutter="40px" align="center">
+        <w-col :span="4">
+            <div style="border:1px solid ;">
+                侧边栏
+            </div>
+        </w-col>
+        <w-col :span="15" :offset="5">
+            <div style="border:1px solid ;">
+                主要内容
+            </div>
+
+        </w-col>
+
+    </w-row>
+
+    <w-row gutter="20px">
+        <w-col :span="4" :phone="{span: 8}">
+            <div style="border:1px solid ;">
+                侧边栏
+            </div>
+        </w-col>
+        <w-col :span="15" offset="5" :phone="{span: 8, offset: 8}">
+            <div style="border:1px solid ;">
+                主要内容
+            </div>
+        </w-col>
+    </w-row>
+
+    <w-button>点击我展示 toast</w-button>
+
+
+
 </div>
 <script src="/app.a6a4d504.js"></script>
-<!--<script src="//at.alicdn.com/t/font_915202_k9citci0f8j.js"></script>-->
+<!--<script src="//at.alicdn.com/t/font_915195_3w15j4p99it.js"></script>-->
 </body>
 </html>

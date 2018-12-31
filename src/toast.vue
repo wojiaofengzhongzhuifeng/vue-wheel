@@ -20,7 +20,7 @@
     *   - 提前写好通知类组件在页面, 并且隐藏它
     *   - 在合适的时机通过操作数据显示它
     *
-    *   --
+    *   --（推荐）
     *   - 用户点击按钮的时候创建一个 Vue 实例
     *   - 用户点击另一个按钮的时候删除这个 Vue 实例
     *
@@ -30,13 +30,9 @@
     *
     * 4. ref
     *
-    * 5. props + computed + :class 生成 className
-    *
     * 6. 函数的参数传递
     *
     * 7. 套路: 动画遇到bug, 新增一个div, 只用来居中
-    *
-    * 8. 规定 props 数据类型:  [Number, String]
     *
     * 9. 规定 props 数据是规定的对象A
     * */
@@ -69,14 +65,7 @@
         },
         computed: {
             toastClass() {
-                return [`position-${this.position}`] // 第一种 class 添加方法
-
-                /*
-                // 第二种 class 添加方法
-                return {
-                    [`position-${this.position}`]: true
-                }
-                */
+                return [`position-${this.position}`]
             },
         },
         mounted: function () {

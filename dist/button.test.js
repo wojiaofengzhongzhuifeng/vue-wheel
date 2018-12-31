@@ -22575,6 +22575,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+
+/*
+* 知识点： 如何根据props设置class？ 1class
+* */
 var _default = {
   components: {
     'w-icon': _icon.default
@@ -22601,6 +22606,12 @@ var _default = {
       }
     }
   },
+  computed: {
+    // 1class 1
+    className: function className() {
+      return ["".concat(this.iconPosition)];
+    }
+  },
   methods: {}
 };
 exports.default = _default;
@@ -22622,7 +22633,7 @@ exports.default = _default;
       staticClass: "button",
       on: {
         click: function($event) {
-          _vm.$emit("click")
+          _vm.$emit("click", $event)
         }
       }
     },
@@ -22630,10 +22641,7 @@ exports.default = _default;
       _vm.iconName || _vm.loading
         ? _c(
             "div",
-            {
-              staticClass: "icon",
-              class: ((_obj = {}), (_obj[_vm.iconPosition] = 1), _obj)
-            },
+            { staticClass: "icon", class: _vm.className },
             [
               _vm.iconName && !_vm.loading
                 ? _c("w-icon", {
@@ -22656,7 +22664,6 @@ exports.default = _default;
       _c("div", { staticClass: "slot" }, [_vm._t("default")], 2)
     ]
   )
-  var _obj
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22817,7 +22824,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53821" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54462" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
