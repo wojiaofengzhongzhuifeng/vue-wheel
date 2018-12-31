@@ -46,5 +46,17 @@ new Vue({
             test: "321321"
         }
     },
+    methods:{
+        //1监听3 在这里执行change回调
+        listenInputChange(e){
+            console.log(e);
+            console.log("监听到inputchange");
+        },
+        listenButtonClick(e){
+            console.log(e)
+            console.log("listenButtonClick");
+
+        }
+    }
 });
 

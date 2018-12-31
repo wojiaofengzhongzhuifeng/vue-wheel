@@ -1,5 +1,6 @@
 <template>
     <div class="input">
+        <!--1监听 定义组件时，监听原生的change事件，触发自己的change事件-->
         <input type="text"
                :disabled="disabled === true"
                @change="$emit('change', $event)"
@@ -19,8 +20,7 @@
 <script>
     /*
     * 1. 知识
-    *   - @change="$emit('change', $event)" 这个为什么要这样写？？
-    *     如果不写，那么在使用 input 组件的时候：<w-input @change="fffff"/> , 是无法监听change事件的。因为你
+    *   - w-input 组件如何监听change事件？ 1监听
     *
     * */
     import Icon from "./icon"

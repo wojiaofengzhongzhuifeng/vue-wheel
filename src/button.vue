@@ -1,5 +1,5 @@
 <template>
-    <button class="button" @click="$emit('click')">
+    <button class="button" @click="$emit('click', $event)">
         <!--1class 2-->
         <div class="icon"  :class="className" v-if="iconName || loading">
             <w-icon :icon-name="iconName"  class="icon" v-if="iconName && !loading"></w-icon>
