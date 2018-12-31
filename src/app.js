@@ -42,7 +42,7 @@ new Vue({
     el: "#app",
     data(){
         return {
-            selectTab: ['a'],
+            selectTab: ['b'],
             test: "321321"
         }
     },

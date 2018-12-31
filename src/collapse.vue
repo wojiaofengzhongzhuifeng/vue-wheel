@@ -5,6 +5,9 @@
 </template>
 
 <script>
+    /*
+    * .sync实现：子组件（collapse）修改父组件（app）的数据     其实没有，本质上还是子组件发送一个事件，通知父组件修改自身数据 1双向绑定
+    * */
     import Vue from "vue"
     export default {
         props:{
@@ -41,6 +44,7 @@
                     }
 
                     this.eventBus.$emit("toSon", showArray)
+                    // 1双向绑定1： 触发事件update:selected，将修改后的数据（showArray）传给父组件（app），由父组件修改
                     this.$emit('update:selected', showArray)
 
                 } else {
