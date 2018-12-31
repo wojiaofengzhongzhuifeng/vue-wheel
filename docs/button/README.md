@@ -8,4 +8,6 @@ sidebarDepth: 2
 
 #### 如何使用button
 
+<ClientOnly>
 <demo-button/>
+</ClientOnly>

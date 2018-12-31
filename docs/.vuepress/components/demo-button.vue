@@ -9,18 +9,14 @@
                 <w-button icon-name="right" icon-position="right">前进</w-button>
             </w-button-group>
         </div>
-        <pre>
-            <code>
-                {{code}}
-            </code>
-        </pre>
+        <pre><code>{{code}}</code></pre>
     </div>
 </template>
 
 <script>
     import button from "../../../src/button"
     import buttonGroup from "../../../src/button-group"
-
+    //
     export default {
         components: {
             "w-button": button,

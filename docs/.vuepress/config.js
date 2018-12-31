@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/vue-wheel/',
     title: 'Hello VuePress',
     description: 'Just playing around',
     themeConfig: {
