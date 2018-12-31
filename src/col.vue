@@ -51,10 +51,12 @@
         },
         computed:{
             colStyle(){
-                const { gutter } = this
+                // 1传递数据 2子组件通过解构赋值拿到数据
+                let { gutter } = this
+                gutter = parseInt(gutter)
                 return {
-                    paddingLeft: (parseInt(gutter / 2)+'px'),
-                    paddingRight: (parseInt(gutter / 2)+'px'),
+                    paddingLeft: (gutter / 2)+'px',
+                    paddingRight: (gutter / 2)+'px',
                 }
             },
             colClasses(){
