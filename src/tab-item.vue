@@ -1,5 +1,5 @@
 <template>
-    <div class="tabItem" @click="clickTabItem" :class="classes">
+    <div class="tabItem" @click="clickTabItem" :class="classes" ref="item">
         <slot></slot>
     </div>
 </template>
@@ -32,7 +32,7 @@
         methods:{
             clickTabItem(){
                 const itemName = this.name;
-                this.eventBus.$emit("toTab", itemName);
+                this.eventBus.$emit("toParent", itemName, this.$refs.item);
             }
         },
 

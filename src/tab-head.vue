@@ -1,7 +1,7 @@
 <template>
     <div class="tabHead">
         <slot></slot>
-        <div class="line">
+        <div class="line" ref="line">
 
         </div>
     </div>
@@ -9,9 +9,14 @@
 
 <script>
 export default {
+    name: "wheelTabHead",
     inject:["eventBus"],
     mounted() {
-        // this.eventBus.$on("toSon", )
+        this.eventBus.$on("toParent", (selectTab, el)=>{
+            const {width, height, top, left, right, } = el.getBoundingClientRect()
+            console.log(left);
+            this.$refs.line.style.left = (left - 100) + "px";
+        })
     }
 }
 </script>
@@ -25,8 +30,7 @@ export default {
         .line{
             position: absolute;
             width:100px;
-            height:2px;
-            border:1px solid red;
+            border:1px solid #1890ff;
             bottom: 0;
         }
     }
