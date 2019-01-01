@@ -12484,15 +12484,15 @@ exports.default = void 0;
 *
 * 2. 组件的 prop 中有一个是回调A, 并且这个回调A可以调用 toast 组件内的函数 log
 *
-* 3. nextTick
-*
-* 4. ref
-*
 * 6. 函数的参数传递
 *
 * 7. 套路: 动画遇到bug, 新增一个div, 只用来居中
 *
 * 9. 规定 props 数据是规定的对象A
+* */
+
+/*
+* 实现思路  1思路
 * */
 // 配置 Vue 实例的对象参数
 var _default = {
@@ -12538,12 +12538,14 @@ var _default = {
       // 让 div.close 的 line-height 为 div.toast 的 height 即可
       this.$nextTick(function () {
         // 在这里面, 拿到正常数据
-        // console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
-        var toastHeight = parseInt(getComputedStyle(_this.$refs.toast).height, 10); // 获取 dom 所有 css 样式
+        var divStyle = _this.$refs.toast.getBoundingClientRect(); // console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
 
+
+        var toastHeight = divStyle.height;
         var toastPaddingTop = parseInt(getComputedStyle(_this.$refs.toast).paddingTop, 10); // parseInt("115px", 10) 居然可以转成数字 115 !
 
-        var toastPaddingBottom = parseInt(getComputedStyle(_this.$refs.toast).paddingBottom, 10);
+        var toastPaddingBottom = parseInt(getComputedStyle(_this.$refs.toast).paddingBottom, 10); // 获取 dom 所有 css 样式
+
         var computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom;
 
         if (_this.closeButton) {
@@ -12574,7 +12576,7 @@ var _default = {
       // 对参数的验证, 防御性编程
 
       if (typeof this.closeButton.callback === "function") {
-        this.closeButton.callback(this); // prop 的回调函数执行组件内函数, plugin.js 的
+        this.closeButton.callback(this); // prop 的回调函数执行组件内函数, toastPlugin.js 的
       }
     }
   }
@@ -12699,15 +12701,6 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
-
-/*
-* 需求
-* 1. 点击之后弹出对话框。
-*
-* */
 
 /*
 * 知识点
@@ -12715,6 +12708,7 @@ exports.default = void 0;
 *   - 使用nextTick设置监听函数
 *   - 隐藏popover之后应该删除监听器
 *   * 2. 组件如何给外部暴露组件方法 slot-scope 2暴露
+*   * 3. 多个 slot 3多slot
 * */
 var _default = {
   props: {
@@ -13028,7 +13022,8 @@ var _default = {
           showArray = _toConsumableArray(new Set(copyProps));
         }
 
-        _this.eventBus.$emit("toSon", showArray);
+        _this.eventBus.$emit("toSon", showArray); // 1双向绑定1： 触发事件update:selected，将修改后的数据（showArray）传给父组件（app），由父组件修改
+
 
         _this.$emit('update:selected', showArray);
       } else {
@@ -13198,7 +13193,568 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+var _default = {
+  props: {
+    selected: {
+      type: [Number, String]
+    }
+  },
+  data: function data() {
+    return {
+      eventBus: new _vue.default(),
+      tabLeft: 0
+    };
+  },
+  provide: function provide() {
+    return {
+      eventBus: this.eventBus
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    setTimeout(function () {
+      _this.eventBus.$emit("toSon", _this.selected);
+    }, 10);
+
+    var _this$$refs$tab$getBo = this.$refs.tab.getBoundingClientRect(),
+        left = _this$$refs$tab$getBo.left;
+
+    this.tabLeft = left;
+    this.eventBus.$on("toParent", function (selectedTab) {
+      // 通知app修改数据  +  传输新的数据给pane
+      _this.$emit("update:selected", selectedTab);
+
+      _this.eventBus.$emit("toSon", selectedTab);
+    });
+  }
+};
+exports.default = _default;
+        var $ec40b0 = exports.default || module.exports;
+      
+      if (typeof $ec40b0 === 'function') {
+        $ec40b0 = $ec40b0.options;
+      }
+    
+        /* template */
+        Object.assign($ec40b0, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { ref: "tab", staticClass: "tab" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-ec40b0",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$ec40b0', $ec40b0);
+          } else {
+            api.reload('$ec40b0', $ec40b0);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"vue":"node_modules/vue/dist/vue.common.js","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/tab-head.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "wheelTabHead",
+  inject: ["eventBus"],
+  mounted: function mounted() {
+    var _this = this;
+
+    setTimeout(function () {
+      // 拿到tab组件距离视口left的数据， 不然 line 位置会错
+      var tabLeft = _this.$parent.tabLeft; // 初始状态
+
+      _this.eventBus.$on("toSon", function (selectTab) {
+        _this.$children.forEach(function (vm) {
+          if (vm.name === selectTab) {
+            _this.addLinkStyle(vm.$el, tabLeft);
+          }
+        });
+      });
+
+      _this.eventBus.$on("toParent", function (selectTab, el) {
+        _this.addLinkStyle(el, tabLeft);
+      });
+    }, 0);
+  },
+  methods: {
+    addLinkStyle: function addLinkStyle(el, tabLeft) {
+      var _el$getBoundingClient = el.getBoundingClientRect(),
+          width = _el$getBoundingClient.width,
+          left = _el$getBoundingClient.left;
+
+      this.$refs.line.style.left = left - tabLeft + "px";
+      this.$refs.line.style.width = width + "px";
+    }
+  }
+};
+exports.default = _default;
+        var $71aa21 = exports.default || module.exports;
+      
+      if (typeof $71aa21 === 'function') {
+        $71aa21 = $71aa21.options;
+      }
+    
+        /* template */
+        Object.assign($71aa21, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "tabHead" },
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-71aa21",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$71aa21', $71aa21);
+          } else {
+            api.reload('$71aa21', $71aa21);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-body.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "wheelTabBody"
+};
+exports.default = _default;
+        var $e4ee9e = exports.default || module.exports;
+      
+      if (typeof $e4ee9e === 'function') {
+        $e4ee9e = $e4ee9e.options;
+      }
+    
+        /* template */
+        Object.assign($e4ee9e, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "tabBody" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-e4ee9e",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$e4ee9e', $e4ee9e);
+          } else {
+            api.reload('$e4ee9e', $e4ee9e);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-pane.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  props: {
+    name: {
+      type: [String, Number]
+    }
+  },
+  data: function data() {
+    return {
+      visible: false
+    };
+  },
+  inject: ["eventBus"],
+  mounted: function mounted() {
+    var _this = this;
+
+    // 监听selectedTab事件
+    this.eventBus.$on("toSon", function (selectTab) {
+      if (selectTab === _this.name) {
+        _this.visible = true;
+      } else {
+        _this.visible = false;
+      }
+    });
+  }
+};
+exports.default = _default;
+        var $9f3d36 = exports.default || module.exports;
+      
+      if (typeof $9f3d36 === 'function') {
+        $9f3d36 = $9f3d36.options;
+      }
+    
+        /* template */
+        Object.assign($9f3d36, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.visible
+    ? _c("div", { staticClass: "tabPane" }, [_vm._t("default")], 2)
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-9f3d36",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$9f3d36', $9f3d36);
+          } else {
+            api.reload('$9f3d36', $9f3d36);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tab-item.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "wheelTabItem",
+  inject: ["eventBus"],
+  props: {
+    name: {
+      type: [Number, String]
+    }
+  },
+  data: function data() {
+    return {
+      activeClass: false
+    };
+  },
+  computed: {
+    classes: function classes() {
+      if (this.activeClass) {
+        return "active";
+      } else {
+        return "";
+      }
+    }
+  },
+  methods: {
+    clickTabItem: function clickTabItem() {
+      var itemName = this.name;
+      this.eventBus.$emit("toParent", itemName, this.$refs.item);
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    // 监听selectedTab事件
+    this.eventBus.$on("toSon", function (selectTab) {
+      if (selectTab === _this.name) {
+        _this.activeClass = true;
+      } else {
+        _this.activeClass = false;
+      }
+    });
+  }
+};
+exports.default = _default;
+        var $b3faaa = exports.default || module.exports;
+      
+      if (typeof $b3faaa === 'function') {
+        $b3faaa = $b3faaa.options;
+      }
+    
+        /* template */
+        Object.assign($b3faaa, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      ref: "item",
+      staticClass: "tabItem",
+      class: _vm.classes,
+      attrs: { "data-name": _vm.name },
+      on: { click: _vm.clickTabItem }
+    },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-b3faaa",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$b3faaa', $b3faaa);
+          } else {
+            api.reload('$b3faaa', $b3faaa);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/toastPlugin.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _toast = _interopRequireDefault(require("./toast"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function createToast(options) {
+  var autoCloseDelay = options.autoCloseDelay,
+      closeButton = options.closeButton,
+      enAbleHtml = options.enAbleHtml,
+      position = options.position,
+      Vue = options.Vue,
+      showToastMessage = options.showToastMessage; // 动态创建组件
+
+  var Constructor = Vue.extend(_toast.default); // 生成 Toast 组件构造函数
+
+  var toast = new Constructor({
+    propsData: {
+      autoCloseDelay: autoCloseDelay,
+      closeButton: closeButton,
+      enAbleHtml: enAbleHtml,
+      position: position
+    }
+  }); // 通过构造函数生成一个toast实例
+
+  toast.$slots.default = [showToastMessage]; // 想toast实例中的slot属性传递信息
+
+  toast.$mount(); // toast实例渲染为文档之外的 dom 元素
+
+  document.body.appendChild(toast.$el); // 必须使用原生 DOM API 把它插入文档中
+
+  return toast;
+}
+
+var currentToast;
+var _default = {
+  install: function install(Vue) {
+    /*
+    * 1. 下面的代码原本是在 toast 组件中, 那样侵入性太强(需要手动引入 Vue, 并且会强制在 Vue 中添加 $showToast)
+    *    使用 plugin 用户可以不使用 plugin , 这样就不会再 Vue 中添加 $showToast
+    *    对应文档 https://cn.vuejs.org/v2/guide/plugins.html 的 "添加 Vue 实例方法，通过把它们添加到 Vue.prototype 上实现" 功能
+    *
+    * 2. 代码逻辑:
+    *       - createToast 函数返回 toast 实例
+    *       - 声明一个变量currentToast, 用于存储 toast 实例
+    *       - 如果 currentToast 存在, 删除原来的toast + 生成新的 toast 设为currentToast
+    *       - 如果 currentToast 不存在, 生成新的 toast 设为currentToast
+    *
+    * */
+    Vue.prototype.$showToast = function (options) {
+      if (currentToast) {
+        currentToast.closed();
+      }
+
+      currentToast = createToast(_objectSpread({
+        Vue: Vue
+      }, options));
+      /*
+      上面的代码之前是这样的
+      if(currentToast){
+          currentToast.closed()
+          currentToast = createToast(options)
+      } else {
+          currentToast = createToast(options)
+      }
+      */
+
+      /*
+      // 1思路1： 新建一个文件，该文件导出一个对象，对象有一个方法 install， 该方法的第一个参数是Vue对象
+      Vue.prototype.$showToast = function (options) {
+          alert(options)
+      }
+      */
+    };
+  }
+};
+exports.default = _default;
+},{"./toast":"src/toast.vue"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -13231,6 +13787,18 @@ var _collapse = _interopRequireDefault(require("./collapse"));
 
 var _collapseItem = _interopRequireDefault(require("./collapse-item"));
 
+var _tab = _interopRequireDefault(require("./tab"));
+
+var _tabHead = _interopRequireDefault(require("./tab-head"));
+
+var _tabBody = _interopRequireDefault(require("./tab-body"));
+
+var _tabPane = _interopRequireDefault(require("./tab-pane"));
+
+var _tabItem = _interopRequireDefault(require("./tab-item"));
+
+var _toastPlugin = _interopRequireDefault(require("./toastPlugin"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // 所有组件的入口
@@ -13262,13 +13830,30 @@ _vue.default.component("w-collapse", _collapse.default);
 
 _vue.default.component("w-collapse-item", _collapseItem.default);
 
+_vue.default.component("w-tab", _tab.default);
+
+_vue.default.component("w-tab-head", _tabHead.default);
+
+_vue.default.component("w-tab-body", _tabBody.default);
+
+_vue.default.component("w-tab-pane", _tabPane.default);
+
+_vue.default.component("w-tab-item", _tabItem.default); // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
+
+
+_vue.default.use(_toastPlugin.default);
+
 new _vue.default({
   el: "#app",
   data: function data() {
     return {
-      selectTab: ['a'],
-      test: "321321"
+      selectCollapse: ['b'],
+      test: "321321",
+      selectedTab: "2"
     };
+  },
+  create: function create() {
+    this.$showToast();
   },
   methods: {
     //1监听3 在这里执行change回调
@@ -13279,10 +13864,23 @@ new _vue.default({
     listenButtonClick: function listenButtonClick(e) {
       console.log(e);
       console.log("listenButtonClick");
+    },
+    // 1思路3: 在恰当的时机，执行this.$showToast()即可
+    showToast: function showToast() {
+      this.$showToast({
+        position: "bottom",
+        showToastMessage: "我觉得不行",
+        closeButton: {
+          text: "关闭",
+          callback: function callback() {
+            console.log(123);
+          }
+        }
+      });
     }
   }
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./row":"src/row.vue","./col":"src/col.vue","./layout":"src/layout.vue","./header":"src/header.vue","./sider":"src/sider.vue","./content":"src/content.vue","./footer":"src/footer.vue","./toast":"src/toast.vue","./popover":"src/popover.vue","./collapse":"src/collapse.vue","./collapse-item":"src/collapse-item.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./row":"src/row.vue","./col":"src/col.vue","./layout":"src/layout.vue","./header":"src/header.vue","./sider":"src/sider.vue","./content":"src/content.vue","./footer":"src/footer.vue","./toast":"src/toast.vue","./popover":"src/popover.vue","./collapse":"src/collapse.vue","./collapse-item":"src/collapse-item.vue","./tab":"src/tab.vue","./tab-head":"src/tab-head.vue","./tab-body":"src/tab-body.vue","./tab-pane":"src/tab-pane.vue","./tab-item":"src/tab-item.vue","./toastPlugin":"src/toastPlugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -13309,7 +13907,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61406" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50687" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
