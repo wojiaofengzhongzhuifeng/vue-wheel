@@ -11,4 +11,8 @@
 </script>
 
 <style lang="scss" scoped>
+    .tabBody{
+        margin-top: 16px;
+        display: flex;
+    }
 </style>

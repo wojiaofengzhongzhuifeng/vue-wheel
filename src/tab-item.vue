@@ -1,89 +1,64 @@
 <template>
-    <div class="tabItem" @click="xxx" :class="classes" :data-name="name">
+    <div class="tabItem" @click="clickTabItem" :class="classes">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: "wheelTabItem",
-        props: {
-            disabled: {
-                type: Boolean,
-                default: false,
-            },
-            name: {
-                type: [String, Number],
-                required: true,
+
+        inject: ["eventBus"],
+
+        props:{
+            name:{
+                type: [Number, String]
             }
         },
 
-        data() {
+        data(){
             return {
-                active: {
-                    type: Boolean,
-                    default: false,
-                }
+                activeClass: false
             }
         },
 
         computed:{
             classes(){
-                let className = "";
-                if(this.active){
-                    className +=  "active"
-                } else if(this.active === false){
-                    className += "";
+                if(this.activeClass){
+                    return "active"
                 }
-                if(this.disabled){
-                    className +=  " disabled"
-                } else if(this.disabled === false){
-                    className += ""
-                }
-                return className
-            },
-        },
-
-        // 4组件通信3: 通过inject属性拿到tab组件注入的数据
-        inject: ["eventHi"],
-
-        // 4组件通信4: 使用inject的数据
-        created() {
-            this.eventHi.$on("update:selectedData", (value)=>{
-                this.active = this.name ===value
-            });
-            if(this.disabled){
             }
         },
 
-        methods: {
-            xxx(){
-                if(this.disabled){return}
-                this.eventHi.$emit("update:selectedData", this.name, this.$el)
+        methods:{
+            clickTabItem(){
+                const itemName = this.name;
+                this.eventBus.$emit("toTab", itemName);
             }
+        },
+
+        mounted() {
+            // 监听selectedTab事件
+            this.eventBus.$on("toSon", (selectTab)=>{
+                if(selectTab ===  this.name){
+                    this.activeClass = true
+                } else {
+                    this.activeClass = false
+                }
+            })
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    $line-height: 40px;
-    $font-color: #90a4ae;
-    $grey: #666666;
-    $color-blue: rgb(66, 133, 244);
-    $color-red: rgb(219, 68, 55);
-    $color-yellow: rgb(244, 160, 0);
-    $color-green: rgb(15, 157, 88);
-    .tabItem {
-        padding: 0 2em;
+    $font-color-active: #1890ff;
+    $font-weight: 500;
+    .tabItem{
+        padding: 12px 16px;
+        margin-right:20px;
+        font-weight: $font-weight;
         cursor: pointer;
-        :hover{
-            color: $color-blue;
-        }
-        &.active {
-        }
-        &.disabled{
-            color: grey;
-            cursor: not-allowed;
+        &.active{
+            color: $font-color-active;
         }
     }
 </style>

@@ -1,50 +1,37 @@
 <template>
-    <div class="tabPane" :class="classes" v-if="active">
+    <div class="tabPane" v-if="visible">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        inject: ["eventHi"],
-
-        data() {
-            return {
-                active: {
-                    type: Boolean,
-                    default: false,
-                }
-            }
-        },
-
         props:{
             name: {
-                type: [String, Number],
-                required: true,
+                type: [String, Number]
             }
         },
-
-        computed:{
-            classes(){
-                if(this.active){
-                    return "active"
+        data(){
+            return {
+                visible: false
+            }
+        },
+        inject: ["eventBus"],
+        mounted() {
+            // 监听selectedTab事件
+            this.eventBus.$on("toSon", (selectTab)=>{
+                if(selectTab ===  this.name){
+                    this.visible = true
                 } else {
-                    return "disActive"
+                    this.visible = false
                 }
-            }
-        },
-
-        created() {
-            this.eventHi.$on("update:selectedData", (value)=>{
-                this.active = this.name === value
             })
-        },
+        }
     }
 </script>
 
 <style lang="scss" scoped>
-    .tabPane{
-        &.active{
-        }
+    .tabItem{
+        margin-right:20px;
     }
 </style>

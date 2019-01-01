@@ -53,8 +53,9 @@ new Vue({
     el: "#app",
     data(){
         return {
-            selectTab: ['b'],
-            test: "321321"
+            selectCollapse: ['b'],
+            test: "321321",
+            selectedTab: "1"
         }
     },
     methods:{
