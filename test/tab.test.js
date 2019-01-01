@@ -30,7 +30,7 @@ describe('Tab', () => {
         let div = document.createElement("div");
         document.body.appendChild(div);
         div.innerHTML = `
-        <w-tab :selected="'1'">
+        <w-tab selected="1">
             <w-tab-head>
                 <w-tab-item name="1">标题1</w-tab-item>
                 <w-tab-item name="2">标题2</w-tab-item>
@@ -51,12 +51,8 @@ describe('Tab', () => {
             let tab = vm.$el.querySelector(".tabItem[data-name='1']");
             console.log(321);
             console.log(tab);
-            vm.$nextTick(()=>{
-                console.log(tab.classList.contains('active'));
-                expect(tab.classList.contains('active')).to.be.true
-                done()
-
-            })
+            expect(tab.classList.contains('active')).to.be.true;
+            done();
         })
 
     })

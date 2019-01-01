@@ -25,6 +25,8 @@
             classes(){
                 if(this.activeClass){
                     return "active"
+                } else {
+                    return ""
                 }
             }
         },
