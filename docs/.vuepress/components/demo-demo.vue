@@ -1,13 +1,7 @@
 <template>
-    <div class="popover-wrapper">
+    <div class="xxx-wrapper">
         <div class="example">
-            <w-popover title="这是popover的标题" position="right" trigger="click">
-                <w-button class="button">点击我2</w-button>
-                <template slot="content" slot-scope="{close}">
-                    <p>fdjskfldjsa</p>
-                    <w-button @click="close">关闭</w-button>
-                </template>
-            </w-popover>
+            <!--组件-->
             <pre><code>{{code}}</code></pre>
         </div>
     </div>
@@ -15,7 +9,8 @@
 
 <script>
     import Popover from "../../../src/popover";
-    import Button from "../../../src/button"
+    import Button from "../../../src/button";
+
     export default {
         components: {
             "w-popover": Popover,
@@ -38,7 +33,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .popover-wrapper{
+    .xxx-wrapper{
         margin-top: 10px;
         .example{
             margin: 10px 0;
@@ -46,9 +41,6 @@
             padding: 15px;
             > p{
                 font-size: 12px;
-            }
-            .button{
-                margin-bottom: 100px;
             }
         }
     }
