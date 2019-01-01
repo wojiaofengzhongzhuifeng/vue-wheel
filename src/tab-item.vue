@@ -38,7 +38,7 @@
             }
         },
 
-        mounted() {
+        created() {
             // 监听selectedTab事件
             this.eventBus.$on("toSon", (selectTab)=>{
                 if(selectTab ===  this.name){

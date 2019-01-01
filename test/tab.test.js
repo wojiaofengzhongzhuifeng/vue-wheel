@@ -47,13 +47,11 @@ describe('Tab', () => {
             el: div
         })
 
-        vm.$nextTick(()=>{
+        setTimeout(()=>{
             let tab = vm.$el.querySelector(".tabItem[data-name='1']");
-            console.log(321);
-            console.log(tab);
             expect(tab.classList.contains('active')).to.be.true;
             done();
-        })
+        }, 1500)
 
     })
 })
