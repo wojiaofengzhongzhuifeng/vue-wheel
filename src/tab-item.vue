@@ -6,7 +6,7 @@
 
 <script>
     export default {
-
+        name:"wheelTabItem",
         inject: ["eventBus"],
 
         props:{

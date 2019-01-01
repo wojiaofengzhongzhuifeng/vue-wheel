@@ -37,23 +37,7 @@
 </head>
 <body>
 <div id="app">
-    <!--<w-collapse  :selected.sync="selectTab" single>-->
-        <!--<w-collapse-item title="这是标题1" :item-key="'a'">-->
-            <!--这是内容1-->
-        <!--</w-collapse-item>-->
 
-        <!--<w-collapse-item title="这是标题2" :item-key="'b'">-->
-            <!--这是内容2-->
-        <!--</w-collapse-item>-->
-
-        <!--<w-collapse-item title="这是标题3" :item-key="'c'">-->
-            <!--这是内容3-->
-        <!--</w-collapse-item>-->
-
-        <!--<w-collapse-item title="这是标题4" :item-key="'d'">-->
-            <!--这是内容4-->
-        <!--</w-collapse-item>-->
-    <!--</w-collapse>-->
 
     <w-button icon-name="setting" icon-position="right" @click="listenButtonClick">点我</w-button>
 
@@ -90,10 +74,61 @@
         </w-col>
     </w-row>
 
-    <w-button>点击我展示 toast</w-button>
+
+    <div style="margin:100px;">
+        <w-popover title="这是popover的标题" position="right" trigger="click">
+            <w-button>点击我2</w-button>
+            <!--2暴露2：解构-->
+            <!--3多slot2-->
+            <template slot="content" slot-scope="{close}">
+                <p>fdjskfldjsa</p>
+                <!--2暴露3：使用-->
+                <w-button @click="close">关闭</w-button>
+            </template>
+        </w-popover>
+    </div>
+
+    <div class="tab-wrapper" style="margin: 100px">
+        app组件知道目前的selectedtab是{{selectedTab}}
+        <w-tab :selected="selectedTab" @update:selected="selectedTab = $event">
+            <w-tab-head>
+                <w-tab-item name="1">标题1</w-tab-item>
+                <w-tab-item name="2">标题2</w-tab-item>
+                <w-tab-item name="3">标题3</w-tab-item>
+                <!--1插槽2-->
+                <template slot="actions">
+                    <w-button>添加tab</w-button>
+                </template>
+            </w-tab-head>
+            <w-tab-body>
+                <w-tab-pane  name="1">内容1</w-tab-pane>
+                <w-tab-pane  name="2">内容2</w-tab-pane>
+                <w-tab-pane  name="3">内容3</w-tab-pane>
+            </w-tab-body>
+        </w-tab>
+    </div>
 
 
 
+    <!--1双向绑定2：在使用collapse的地方使用sync-->
+    <!--<w-collapse  :selected = "selectTab" @update:selected="selectTab = $event" single>-->
+    <w-collapse  :selected.sync="selectCollapse" single>
+        <w-collapse-item title="这是标题1" :item-key="'a'">
+        这是内容1
+        </w-collapse-item>
+
+        <w-collapse-item title="这是标题2" :item-key="'b'">
+        这是内容2
+        </w-collapse-item>
+
+        <w-collapse-item title="这是标题3" :item-key="'c'">
+        这是内容3
+        </w-collapse-item>
+
+        <w-collapse-item title="这是标题4" :item-key="'d'">
+        这是内容4
+        </w-collapse-item>
+    </w-collapse>
 </div>
 <script src="src/app.js"></script>
 <!--<script src="//at.alicdn.com/t/font_915195_3w15j4p99it.js"></script>-->

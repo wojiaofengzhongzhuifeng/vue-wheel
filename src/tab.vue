@@ -14,7 +14,8 @@
         },
         data(){
             return {
-                eventBus: new Vue()
+                eventBus: new Vue(),
+                tabLeft: 0,
             }
         },
         provide(){
@@ -23,9 +24,15 @@
             }
         },
         mounted() {
-            this.eventBus.$emit("toSon", this.selected)
+
+            setTimeout(()=>{
+                this.eventBus.$emit("toSon", this.selected)
+            }, 10);
+
             const {left} = this.$refs.tab.getBoundingClientRect();
-            console.log(this.$children);
+            this.tabLeft = left;
+
+
             this.eventBus.$on("toParent", (selectedTab)=>{
                 // 通知app修改数据  +  传输新的数据给pane
                 this.$emit("update:selected", selectedTab)

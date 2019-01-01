@@ -55,7 +55,7 @@ new Vue({
         return {
             selectCollapse: ['b'],
             test: "321321",
-            selectedTab: "1"
+            selectedTab: "2"
         }
     },
     methods:{
