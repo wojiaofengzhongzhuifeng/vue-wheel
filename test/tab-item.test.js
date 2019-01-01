@@ -46,42 +46,44 @@ describe('tab-item', () => {
             el: div
         })
         let tab = vm.$el.querySelector(".tabItem[data-name='car']");
+        console.log(123);
+        console.log(tab);
         assert(tab !== null);
     })
 
-    it('接受disabled', ()=>{
-        Vue.component("w-tab", Tab);
-        Vue.component("w-tab-head", TabHead);
-        Vue.component("w-tab-body", TabBody);
-        Vue.component("w-tab-item", TabItem);
-        Vue.component("w-tab-pane", TabPane);
-        let div = document.createElement("div");
-        document.body.appendChild(div);
-        div.innerHTML = `
-                <w-tab selected="car">
-                    <w-tab-head>
-                        <w-tab-item name="car" disabled>
-                            <div>
-                                <div>汽车</div>
-                            </div>
-                        </w-tab-item>
-                    </w-tab-head>
-                </w-tab>
-            `
-        let vm = new Vue({
-            el: div
-        })
-        let tabItem = vm.$el.querySelector(".tabItem[data-name='car']");
-        assert(tabItem.classList.contains("disabled") === true);
-
-        // 测试点击之后，回调函数不执行
-        // 生成 spy 函数
-        function original () {}
-        const spy = chai.spy(original);
-
-
-        vm.$on("click", spy);
-        tabItem.click();
-        expect(spy).to.have.not.been.called
-    })
+    // it('接受disabled', ()=>{
+    //     Vue.component("w-tab", Tab);
+    //     Vue.component("w-tab-head", TabHead);
+    //     Vue.component("w-tab-body", TabBody);
+    //     Vue.component("w-tab-item", TabItem);
+    //     Vue.component("w-tab-pane", TabPane);
+    //     let div = document.createElement("div");
+    //     document.body.appendChild(div);
+    //     div.innerHTML = `
+    //             <w-tab selected="car">
+    //                 <w-tab-head>
+    //                     <w-tab-item name="car" disabled>
+    //                         <div>
+    //                             <div>汽车</div>
+    //                         </div>
+    //                     </w-tab-item>
+    //                 </w-tab-head>
+    //             </w-tab>
+    //         `
+    //     let vm = new Vue({
+    //         el: div
+    //     })
+    //     let tabItem = vm.$el.querySelector(".tabItem[data-name='car']");
+    //     assert(tabItem.classList.contains("disabled") === true);
+    //
+    //     // 测试点击之后，回调函数不执行
+    //     // 生成 spy 函数
+    //     function original () {}
+    //     const spy = chai.spy(original);
+    //
+    //
+    //     vm.$on("click", spy);
+    //     tabItem.click();
+    //     expect(spy).to.have.not.been.called
+    // })
 });

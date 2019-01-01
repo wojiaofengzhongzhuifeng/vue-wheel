@@ -30,42 +30,33 @@ describe('Tab', () => {
         let div = document.createElement("div");
         document.body.appendChild(div);
         div.innerHTML = `
-            <w-tab selected="woman">
-                <w-tab-head>
-                    <w-tab-item name="woman">
-                        <div>
-                            <div>美女</div>
-                        </div>
-                    </w-tab-item>
-
-                    <w-tab-item name="car">
-                        <div>
-                            <div>汽车</div>
-                        </div>
-                    </w-tab-item>
-                </w-tab-head>
-                <w-tab-body>
-                    <w-tab-pane name="woman">
-                        <div>
-                            <div>美女有关的内容</div>
-                        </div>
-                    </w-tab-pane>
-                    <w-tab-pane name="car">
-                        <div>
-                            <div>汽车有关内容</div>
-                        </div>
-                    </w-tab-pane>
-                </w-tab-body>
-            </w-tab>
+        <w-tab :selected="'1'">
+            <w-tab-head>
+                <w-tab-item name="1">标题1</w-tab-item>
+                <w-tab-item name="2">标题2</w-tab-item>
+                <w-tab-item name="3">标题3</w-tab-item>
+            </w-tab-head>
+            <w-tab-body>
+                <w-tab-pane  name="1">内容1</w-tab-pane>
+                <w-tab-pane  name="2">内容2</w-tab-pane>
+                <w-tab-pane  name="3">内容3</w-tab-pane>
+            </w-tab-body>
+        </w-tab>
         `
         let vm = new Vue({
             el: div
         })
 
         vm.$nextTick(()=>{
-            let tab = vm.$el.querySelector(".tabItem[data-name='woman']");
-            expect(tab.classList.contains('active')).to.be.true
-            done()
+            let tab = vm.$el.querySelector(".tabItem[data-name='1']");
+            console.log(321);
+            console.log(tab);
+            vm.$nextTick(()=>{
+                console.log(tab.classList.contains('active'));
+                expect(tab.classList.contains('active')).to.be.true
+                done()
+
+            })
         })
 
     })
