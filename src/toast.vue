@@ -26,15 +26,15 @@
     *
     * 2. 组件的 prop 中有一个是回调A, 并且这个回调A可以调用 toast 组件内的函数 log
     *
-    * 3. nextTick
-    *
-    * 4. ref
-    *
     * 6. 函数的参数传递
     *
     * 7. 套路: 动画遇到bug, 新增一个div, 只用来居中
     *
     * 9. 规定 props 数据是规定的对象A
+    * */
+
+    /*
+    * 实现思路  1思路
     * */
 
     // 配置 Vue 实例的对象参数
@@ -78,10 +78,11 @@
                 // 解决 bug: 输入很多信息,  关闭按钮位置不对
                 // 让 div.close 的 line-height 为 div.toast 的 height 即可
                 this.$nextTick(() => {  // 在这里面, 拿到正常数据
+                    const divStyle = this.$refs.toast.getBoundingClientRect();
                     // console.log(this.$refs.toast.style.height); // dom.style.height 拿的是内联样式, 而 toast 组件的 height 是内容填充而成的
-                    const toastHeight = parseInt(getComputedStyle(this.$refs.toast).height, 10) // 获取 dom 所有 css 样式
+                    const toastHeight = divStyle.height
                     const toastPaddingTop = parseInt(getComputedStyle(this.$refs.toast).paddingTop, 10) // parseInt("115px", 10) 居然可以转成数字 115 !
-                    const toastPaddingBottom = parseInt(getComputedStyle(this.$refs.toast).paddingBottom, 10)
+                    const toastPaddingBottom = parseInt(getComputedStyle(this.$refs.toast).paddingBottom, 10) // 获取 dom 所有 css 样式
                     const computedHeight = toastHeight - toastPaddingTop - toastPaddingBottom
                     if(this.closeButton){
                         this.$refs.close.style.lineHeight = `${computedHeight}px`
@@ -108,7 +109,7 @@
                 // 确保你传入的 closeButton.callback 是一个函数
                 // 对参数的验证, 防御性编程
                 if (typeof this.closeButton.callback === "function") {
-                    this.closeButton.callback(this)  // prop 的回调函数执行组件内函数, plugin.js 的
+                    this.closeButton.callback(this)  // prop 的回调函数执行组件内函数, toastPlugin.js 的
                 }
             }
         }
@@ -146,6 +147,7 @@
         transform: translate(-50%);
         left: 50%;
         position: fixed;
+        z-index: 100;
         .toast {
             font-size: 14px;
             color: $font-color;

@@ -1,59 +1,71 @@
 <template>
     <div class="toast-wrapper">
         <div class="example">
-            <w-collapse  :selected.sync="selectTab" single>
-                <w-collapse-item title="这是标题1" :item-key="'a'">
-                    这是内容1
-                </w-collapse-item>
-
-                <w-collapse-item title="这是标题2" :item-key="'b'">
-                    这是内容2
-                </w-collapse-item>
-
-                <w-collapse-item title="这是标题3" :item-key="'c'">
-                    这是内容3
-                </w-collapse-item>
-
-                <w-collapse-item title="这是标题4" :item-key="'d'">
-                    这是内容4
-                </w-collapse-item>
-            </w-collapse>
+            <w-button @click="showToast">
+                显示toast
+            </w-button>
             <pre><code>{{code}}</code></pre>
         </div>
+
     </div>
 </template>
 
 <script>
-    import Collapse from "../../../src/collapse"
-    import CollapseItem from "../../../src/collapse-item"
+    import Button from "../../../src/button"
+    import toastPlugin from "../../../src/toastPlugin"
+
+    import Vue from "vue"
+    Vue.use(toastPlugin);
+
+
 
     export default {
         components: {
-            "w-collapse": Collapse,
-            "w-collapse-item": CollapseItem
+            "w-button": Button,
         },
         data() {
             return {
                 code: `
-<w-collapse  :selected.sync="selectTab" single>
-    <w-collapse-item title="这是标题1" :item-key="'a'">
-        这是内容1
-    </w-collapse-item>
+// 第一步， 在合适的位置添加插件
+Vue.use(toastPlugin);
 
-    <w-collapse-item title="这是标题2" :item-key="'b'">
-        这是内容2
-    </w-collapse-item>
+// 第二步， 在合适的位置添加一个函数
+function showToast(){
+    this.$showToast(
+        {
+            position: "bottom",
+            showToastMessage: "我觉得不行",
+            closeButton:{
+                text: "关闭",
+                callback(){
+                    console.log(123);
+                }
+            }
+        }
+    )
+}
 
-    <w-collapse-item title="这是标题3" :item-key="'c'">
-        这是内容3
-    </w-collapse-item>
-
-    <w-collapse-item title="这是标题4" :item-key="'d'">
-        这是内容4
-    </w-collapse-item>
-</w-collapse>
+// 第三步， 在合适的地方触发上一步的函数
+<w-button @click="showToast">
+    显示toast
+</w-button>
                 `,
-                selectTab: ["a"]
+            }
+        },
+        methods:{
+            showToast(){
+                this.$showToast(
+                    {
+                        position: "bottom",
+                        showToastMessage: "我觉得不行",
+                        closeButton:{
+                            text: "关闭",
+                            callback(){
+                                console.log(123);
+                            }
+                        }
+                    }
+                )
             }
         }
     }

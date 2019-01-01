@@ -19,7 +19,7 @@ import TabHead from "./tab-head"
 import TabBody from "./tab-body"
 import TabPane from "./tab-pane"
 import TabItem from "./tab-item"
-
+import toastPlugin from "./toastPlugin"
 
 
 
@@ -44,6 +44,8 @@ Vue.component("w-tab-body", TabBody);
 Vue.component("w-tab-pane", TabPane);
 Vue.component("w-tab-item", TabItem);
 
+// 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
+Vue.use(toastPlugin);
 
 
 
@@ -58,6 +60,9 @@ new Vue({
             selectedTab: "2"
         }
     },
+    create(){
+        this.$showToast()
+    },
     methods:{
         //1监听3 在这里执行change回调
         listenInputChange(e){
@@ -67,7 +72,19 @@ new Vue({
         listenButtonClick(e){
             console.log(e)
             console.log("listenButtonClick");
-
+        },
+        // 1思路3: 在恰当的时机，执行this.$showToast()即可
+        showToast(){
+            this.$showToast(
+                {
+                    position: "bottom",
+                    showToastMessage: "我觉得不行",
+                    closeButton:{
+                        text: "关闭", callback: function(){
+                            console.log(123);}
+                    }
+                }
+            )
         }
     }
 });
