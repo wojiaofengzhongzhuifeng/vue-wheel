@@ -14,6 +14,11 @@ import Toast from "./toast"
 import Popover from "./popover"
 import Collapse from "./collapse"
 import CollapseItem from "./collapse-item"
+import Tab from "./tab"
+import TabHead from "./tab-head"
+import TabBody from "./tab-body"
+import TabPane from "./tab-pane"
+import TabItem from "./tab-item"
 
 
 
@@ -33,6 +38,12 @@ Vue.component("w-toast", Toast);
 Vue.component("w-popover", Popover);
 Vue.component("w-collapse", Collapse);
 Vue.component("w-collapse-item", CollapseItem);
+Vue.component("w-tab", Tab);
+Vue.component("w-tab-head", TabHead);
+Vue.component("w-tab-body", TabBody);
+Vue.component("w-tab-pane", TabPane);
+Vue.component("w-tab-item", TabItem);
+
 
 
 

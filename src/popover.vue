@@ -6,16 +6,14 @@
             <div class="popover-wrapper"
                  v-if="clickPopover"
                  ref="content"
-                 :class="classes"
-            >
-                <div class="title"
-
-                >
+                 :class="classes">
+                <div class="title">
                     {{title}}
                 </div>
                 <div class="line">
                 </div>
                 <!--2暴露1：输出组件内的函数-->
+                <!--3多slot1-->
                 <slot name="content" :close="closePopover"></slot>
             </div>
         </div>
@@ -29,8 +27,7 @@
                  ref="content"
                  :class="classes"
                  @mouseenter="mouseEnterContent"
-                 @mouseleave="mouseLeaveFromContent"
-            >
+                 @mouseleave="mouseLeaveFromContent">
                 <div class="title">
                     {{title}}
                 </div>
@@ -43,16 +40,12 @@
 
 <script>
     /*
-    * 需求
-    * 1. 点击之后弹出对话框。
-    *
-    * */
-    /*
     * 知识点
     * 1. 点击popover以外的地方需要隐藏popover遇到的bug
     *   - 使用nextTick设置监听函数
     *   - 隐藏popover之后应该删除监听器
 *   * 2. 组件如何给外部暴露组件方法 slot-scope 2暴露
+*   * 3. 多个 slot 3多slot
     * */
     export default {
         props:{

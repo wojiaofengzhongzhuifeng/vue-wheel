@@ -1,8 +1,8 @@
 <template>
     <div class="tabHead">
         <slot></slot>
-        <!--1插槽-->
         <div class="line" ref="xxx"></div>
+        <!--1插槽1-->
         <div class="actions-wrapper">
             <slot name="actions"></slot>
         </div>
