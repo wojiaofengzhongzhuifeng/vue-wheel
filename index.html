@@ -75,6 +75,10 @@
     </w-row>
 
 
+    <div style="margin:100px">
+        <w-button @click="showToast">展示toast</w-button>
+    </div>
+
     <div style="margin:100px;">
         <w-popover title="这是popover的标题" position="right" trigger="click">
             <w-button>点击我2</w-button>
@@ -129,6 +133,10 @@
         这是内容4
         </w-collapse-item>
     </w-collapse>
+
+    <div>
+        <w-cascader :source="cascaderData"></w-cascader>
+    </div>
 </div>
 <script src="src/app.js"></script>
 <!--<script src="//at.alicdn.com/t/font_915195_3w15j4p99it.js"></script>-->

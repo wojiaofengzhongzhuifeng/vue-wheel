@@ -20,6 +20,7 @@ import TabBody from "./tab-body"
 import TabPane from "./tab-pane"
 import TabItem from "./tab-item"
 import toastPlugin from "./toastPlugin"
+import Cascader from "./cascader"
 
 
 
@@ -43,6 +44,7 @@ Vue.component("w-tab-head", TabHead);
 Vue.component("w-tab-body", TabBody);
 Vue.component("w-tab-pane", TabPane);
 Vue.component("w-tab-item", TabItem);
+Vue.component("w-cascader", Cascader)
 
 // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
 Vue.use(toastPlugin);
@@ -57,11 +59,41 @@ new Vue({
         return {
             selectCollapse: ['b'],
             test: "321321",
-            selectedTab: "2"
+            selectedTab: "2",
+            cascaderData: [
+                {
+                    value: '广东',
+                    children: [
+                        {
+                            value: '深圳',
+                            children: [
+                                {value: '福田'},
+                                {value: '罗湖'},
+                            ],
+                        },
+                        {
+                            value: '广州',
+                            children: [
+                                {value: '越秀'},
+                                {value: '黄埔'},
+                            ],
+                        }
+                    ]
+                },
+                {
+                    value: '广西',
+                    children: [
+                        {
+                            value: '柳州',
+                            children: [
+                                {value: '柳上'},
+                                {value: '柳下'},
+                            ],
+                        }
+                    ]
+                }
+            ]
         }
-    },
-    create(){
-        this.$showToast()
     },
     methods:{
         //1监听3 在这里执行change回调
