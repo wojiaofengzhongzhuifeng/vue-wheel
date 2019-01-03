@@ -62,32 +62,32 @@ new Vue({
             selectedTab: "2",
             cascaderData: [
                 {
-                    value: '广东',
+                    name: '广东',
                     children: [
                         {
-                            value: '深圳',
+                            name: '深圳',
                             children: [
-                                {value: '福田'},
-                                {value: '罗湖'},
+                                {name: '福田'},
+                                {name: '罗湖'},
                             ],
                         },
                         {
-                            value: '广州',
+                            name: '广州',
                             children: [
-                                {value: '越秀'},
-                                {value: '黄埔'},
+                                {name: '越秀'},
+                                {name: '黄埔'},
                             ],
                         }
                     ]
                 },
                 {
-                    value: '广西',
+                    name: '广西',
                     children: [
                         {
-                            value: '柳州',
+                            name: '柳州',
                             children: [
-                                {value: '柳上'},
-                                {value: '柳下'},
+                                {name: '柳上'},
+                                {name: '柳下'},
                             ],
                         }
                     ]
