@@ -173,7 +173,7 @@
 </script>
 
 <style lang="scss" scoped>
-    $border-radius: 2px;
+    @import "./var";
     .popover{
         display: inline-block;
         position: relative;

@@ -54,17 +54,7 @@
 </script>
 
 <style lang="scss" scoped>
-    $font-size: 14px;
-    $color-white: #ffffff;
-    $color-white: #ffffff;
-    $color-1: #fbfbfb;
-    $color-2: #90a4ae;
-    $color-3: rgb(66,133,244);
-    $button-height: 32px;
-    $font-size: 14px;
-    $button-border: 1px solid $color-2;
-    $button-border-active: 1px solid $color-2;
-    $font-family: PingFangSC-Regular;
+    @import "./var";
     @keyframes loadingCircle {
         from{
             transform: rotate(0);
@@ -77,7 +67,7 @@
         display: flex;
         font-size: $font-size;
         line-height: $button-height;
-        color: $color-2;
+        color: $font-color;
         background: $color-white;
         border: $button-border;
         padding: 0 1em;
@@ -96,7 +86,7 @@
         }
         &:hover {
             border: $button-border-active;
-            color: $color-3;
+            color: $color-blue;
             z-index: 1;
             position: relative;
         }
