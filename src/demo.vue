@@ -98,7 +98,7 @@
         </w-collapse>
 
         <div style="margin:100px;">
-            <w-cascader :source="cascaderData" height="80px"></w-cascader>
+            <w-cascader :source="cascaderData" height="80px" :selected="selectedCascader" @update:selected="changeSelectcascader"></w-cascader>
         </div>
         <div>12332</div>
     </div>
@@ -193,7 +193,8 @@
                             }
                         ]
                     }
-                ]
+                ],
+                selectedCascader: [],
             }
         },
         methods:{
@@ -218,8 +219,12 @@
                         }
                     }
                 )
+            },
+            changeSelectcascader($event){
+                this.selectedCascader = $event
             }
-        }
+        },
+
     }
 
 </script>

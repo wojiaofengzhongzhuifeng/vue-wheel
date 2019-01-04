@@ -67,11 +67,11 @@ describe('spies', () => {
 
 
         vm.$nextTick(() => {
-            let button = vm.$refs.aaaa.$refs.button
+            let button = vm.$refs.changeSelectcascader.$refs.button
             const event = new Event("mouseenter");
             button.dispatchEvent(event);
             setTimeout(() => {
-                const {content} = vm.$refs.aaaa.$refs;
+                const {content} = vm.$refs.changeSelectcascader.$refs;
                 content.classList.contains(".popover-wrapper")
                 // 通过这种方法验证
                 expect(content.classList.contains("popover-wrapper")).to.be.true
