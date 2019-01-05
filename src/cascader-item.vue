@@ -89,7 +89,7 @@
             padding: 0.5em 1em;
             cursor: pointer;
             margin-right:1px;
-
+            overflow: auto;
             .label{
                 padding:0.2em 0;
             }

@@ -98,7 +98,7 @@
         </w-collapse>
 
         <div style="margin:100px;">
-            <w-cascader :source="cascaderData" height="80px" :selected="selectedCascader" @update:selected="changeSelectcascader"></w-cascader>
+            <w-cascader :source="cascaderData" height="200px" :selected="selectedCascader" @update:selected="changeSelectcascader"></w-cascader>
         </div>
         <div>12332</div>
     </div>
@@ -131,6 +131,8 @@
     import toastPlugin from "./toastPlugin"
     import Cascader from "./cascader"
 
+    import dbArray from "./db"
+
     // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
     Vue.use(toastPlugin);
 
@@ -155,45 +157,25 @@
     Vue.component("w-tab-item", TabItem);
     Vue.component("w-cascader", Cascader);
 
+
+
+    // cascader动态获取内容
+    function ajax(parent_id = 0){
+        return dbArray.filter((obj)=>{
+            if(obj.parent_id === parent_id){
+                return obj
+            }
+        })
+    }
+
+
     export default {
         data(){
             return {
                 selectCollapse: ['b'],
                 test: "321321",
                 selectedTab: "2",
-                cascaderData: [
-                    {
-                        name: '广东',
-                        children: [
-                            {
-                                name: '深圳',
-                                children: [
-                                    {name: '福田'},
-                                    {name: '罗湖'},
-                                ],
-                            },
-                            {
-                                name: '广州',
-                                children: [
-                                    {name: '越秀'},
-                                    {name: '黄埔'},
-                                ],
-                            }
-                        ]
-                    },
-                    {
-                        name: '广西',
-                        children: [
-                            {
-                                name: '柳州',
-                                children: [
-                                    {name: '柳上'},
-                                    {name: '柳下'},
-                                ],
-                            }
-                        ]
-                    }
-                ],
+                cascaderData: ajax(),
                 selectedCascader: [],
             }
         },
