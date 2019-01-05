@@ -14,6 +14,7 @@
     * 1. 什么时候用递归？ 不知道需要循环几次
     * 2. 给递归的组件添加style  2添加
     * 3. vue 数组进行修改需要注意到的地方 3地方
+    * 4. 使用异步获取cascader的数据 4数据
     * */
     import CascaderItem from "./cascader-item"
     export default {
@@ -35,10 +36,18 @@
             selected:{
                 type: Array,
                 default: [],
+            },
+            loadData:{
+                type: Function,
             }
         },
         methods: {
             onUpdateSelected (newSelected) {
+                const last = newSelected[newSelected.length - 1]
+                let updateSource = (xxx)=>{
+                    console.log(xxx);
+                }
+                this.loadData(last, updateSource)
                 this.$emit('update:selected', newSelected)
             }
         },

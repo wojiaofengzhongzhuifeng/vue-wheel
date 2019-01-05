@@ -43,7 +43,6 @@
         // },
         computed: {
             rightItems () {
-                console.log(this.selected);
                 let currentSelected = this.selected[this.level]
                 if (currentSelected && currentSelected.children) {
                     return currentSelected.children
@@ -63,12 +62,10 @@
                 copySelected[level] = item;
                 copySelected.splice(level + 1);
                 const test2 = copySelected
-                console.log(1);
                 this.$emit("update:selected", test2);
                 this.leftSelected=item
             },
             onUpdateSelected (newSelected) {
-                console.log(2);
                 this.$emit('update:selected', newSelected)
             }
         }

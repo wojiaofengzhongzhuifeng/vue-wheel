@@ -98,7 +98,7 @@
         </w-collapse>
 
         <div style="margin:100px;">
-            <w-cascader :source="cascaderData" height="200px" :selected="selectedCascader" @update:selected="changeSelectcascader"></w-cascader>
+            <w-cascader :source="cascaderData" height="200px" :selected="selectedCascader" @update:selected="changeSelectcascader" :load-data="loadData"></w-cascader>
         </div>
         <div>12332</div>
     </div>
@@ -158,13 +158,33 @@
     Vue.component("w-cascader", Cascader);
 
 
+    //4数据2
+    // cascader动态获取内容, 异步, 回调方式
+    function ajax(parent_id = 0, resolve ,reject){
+        let id = setTimeout(()=>{
+            const result = dbArray.filter((obj)=>{
+                if(obj.parent_id === parent_id){
+                    return obj
+                }
+            })
+            resolve(result)
+        }, 2000)
+        return id
+    }
 
-    // cascader动态获取内容
-    function ajax(parent_id = 0){
-        return dbArray.filter((obj)=>{
-            if(obj.parent_id === parent_id){
-                return obj
-            }
+    //4数据2
+    // promise
+    function ajax2(parent_id = 0, resolve ,reject){
+        return new Promise((resolve, reject)=>{
+            let id = setTimeout(()=>{
+                const result = dbArray.filter((obj)=>{
+                    if(obj.parent_id === parent_id){
+                        return obj
+                    }
+                })
+                resolve(result)
+            }, 1000)
+            return id
         })
     }
 
@@ -175,9 +195,17 @@
                 selectCollapse: ['b'],
                 test: "321321",
                 selectedTab: "2",
-                cascaderData: ajax(),
+                //4数据1
+                cascaderData: [],
                 selectedCascader: [],
             }
+        },
+
+        //4数据3
+        created(){
+            ajax2(0).then((resolve)=>{
+                this.cascaderData = resolve;
+            })
         },
         methods:{
             //1监听3 在这里执行change回调
@@ -197,13 +225,21 @@
                         showToastMessage: "我觉得不行",
                         closeButton:{
                             text: "关闭", callback: function(){
-                                console.log(123);}
+                                console.log(123);
+                            }
                         }
                     }
                 )
             },
             changeSelectcascader($event){
+                const clickId = $event[0].id;
                 this.selectedCascader = $event
+            },
+            loadData(node, fn){
+                const {id}  = node;
+                ajax2(id).then((result)=>{
+                    fn(result)
+                })
             }
         },
 
