@@ -4,7 +4,7 @@
         <div class="left">
             <div class="label" v-for="itemLeft in items" @click="onClickItem(itemLeft, level)">
                 {{itemLeft.name}}
-                <w-icon iconName="right" v-if="itemLeft.children"></w-icon>
+                <w-icon iconName="right" v-if="!itemLeft.isLeaf"></w-icon>
             </div>
         </div>
         <div class="right" v-if='rightItems'>

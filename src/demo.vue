@@ -177,11 +177,23 @@
     function ajax2(parent_id = 0){
         return new Promise((resolve, reject)=>{
             let id = setTimeout(()=>{
-                const result = dbArray.filter((obj)=>{
+                let result = dbArray.filter((obj)=>{
                     if(obj.parent_id === parent_id){
                         return obj
                     }
                 })
+
+
+                result.forEach((obj)=>{
+                    const childrenNode = dbArray.filter((item)=>{
+                        if(item.parent_id === obj.id){
+                            return item
+                        }
+                    })
+                    obj.isLeaf = childrenNode.length <= 0;
+                })
+
+
                 resolve(result)
             }, 1000)
             return id

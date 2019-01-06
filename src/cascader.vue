@@ -85,10 +85,10 @@
                     // this.$set(toUpdate, "children", xxx)
                     toUpdate.children = xxx
                     this.$emit("update:source", copy)
-
-
                 }
-                this.loadData(last, updateSource)
+                if(!last.isLeaf){
+                    this.loadData(last, updateSource)
+                }
             }
         },
         computed:{
