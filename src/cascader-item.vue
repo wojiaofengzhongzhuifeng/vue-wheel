@@ -3,13 +3,15 @@
     <div class="cascader-item-wrapper" ref="cascaderItemWrapper" :style="{height: height}">
         <div class="left">
             <div class="label" v-for="itemLeft in items" @click="onClickItem(itemLeft, level)">
-                {{itemLeft.name}}
-                <w-icon iconName="right" v-if="!itemLeft.isLeaf"></w-icon>
+                <span>
+                                    {{itemLeft.name}}
+                </span>
+                <w-icon iconName="right" v-if="loadData? !itemLeft.isLeaf : itemLeft.children"></w-icon>
             </div>
         </div>
         <div class="right" v-if='rightItems'>
             <!--2添加3-->
-            <cascader-item :items="rightItems"  :height="height" :selected="selected" :level="level+ 1" @update:selected="onUpdateSelected"></cascader-item>
+            <cascader-item :items="rightItems"  :height="height" :selected="selected" :level="level+ 1" @update:selected="onUpdateSelected" :load-data="loadData"></cascader-item>
         </div>
     </div>
 </template>
@@ -36,6 +38,9 @@
                 type:Number,
                 default: 0
             },
+            loadData:{
+                type: Function,
+            }
         },
         // 2添加2
         // mounted(){
@@ -52,6 +57,8 @@
 
                 if (this.selected[this.level]) {
                     let selected = this.items.filter((item) => item.name === this.selected[this.level].name)
+                    console.log(selected);
+
                     if (selected && selected[0].children && selected[0].children.length > 0) {
                         return selected[0].children
                     }
@@ -92,16 +99,24 @@
         height:100px;
         .left{
             box-shadow: $box-shadow;
-            padding: 0.5em 1em;
             cursor: pointer;
             margin-right:1px;
             overflow: auto;
             .label{
-                padding:0.2em 0;
+                display: flex;
+                align-items: center;
+                user-select: none;
+                padding:0.5em;
+                padding-left:1em;
+                &:hover{
+                    background: $hover-background;
+                }
+                .w-icon{
+                    margin-left: auto;
+                    transform: scale(0.5);
+                }
             }
         }
-        .w-icon{
-            transform: scale(0.5);
-        }
+
     }
 </style>

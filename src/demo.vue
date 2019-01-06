@@ -215,9 +215,30 @@
 
         //4数据3
         created(){
+
+            // 动态获取数据
             ajax2(0).then((resolve)=>{
                 this.cascaderData = resolve;
             })
+
+            //静态获取数据
+            // this.cascaderData = [{
+            //     name: 'zhejiang',
+            //     children: [{
+            //         name: 'hangzhou',
+            //         children: [{
+            //             name: 'xihu',
+            //         }],
+            //     }],
+            // }, {
+            //     name: 'jiangsu',
+            //     children: [{
+            //         name: 'Nanjing',
+            //         children: [{
+            //             name: 'zhonghuamen',
+            //         }],
+            //     }],
+            // }];
         },
         methods:{
             //1监听3 在这里执行change回调

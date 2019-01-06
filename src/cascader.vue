@@ -4,7 +4,7 @@
             {{showCascader}}
 
         </div>
-        <cascader-item :items="source" v-if="visibleCascader" :height="height" :selected="selected" @update:selected="onUpdateSelected"></cascader-item>
+        <cascader-item :load-data="loadData" :items="source" v-if="visibleCascader" :height="height" :selected="selected" @update:selected="onUpdateSelected"></cascader-item>
 
     </div>
 </template>
@@ -87,7 +87,7 @@
                     this.$emit("update:source", copy)
                 }
                 if(!last.isLeaf){
-                    this.loadData(last, updateSource)
+                    this.loadData && this.loadData(last, updateSource)
                 }
             }
         },
