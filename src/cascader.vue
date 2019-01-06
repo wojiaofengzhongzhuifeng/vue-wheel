@@ -44,8 +44,46 @@
         methods: {
             onUpdateSelected (newSelected) {
                 const last = newSelected[newSelected.length - 1]
+
+                let simplest = (children, id) => {
+                    return children.filter(item => item.id === id)[0]
+                }
+
+
+                let complex = (children, id) => {
+                    let noChildren = []
+                    let hasChildren = []
+                    children.forEach(item => {
+                        if (item.children) {
+                            hasChildren.push(item)
+                        } else {
+                            noChildren.push(item)
+                        }
+                    })
+                    let found = simplest(noChildren, id)
+                    if (found) {
+                        return found
+                    } else {
+                        found = simplest(hasChildren, id)
+                        if (found) { return found }
+                        else {
+                            for (let i = 0; i < hasChildren.length; i++) {
+                                found = complex(hasChildren[i].children, id)
+                                if (found) {
+                                    return found
+                                }
+                            }
+                            return undefined
+                        }
+                    }
+                }
+
                 let updateSource = (xxx)=>{
-                    console.log(xxx);
+                    let  toUpdate = complex(this.source, last.id)
+                    this.$set(toUpdate, "children", xxx)
+                    // toUpdate.children = xxx
+
+
                 }
                 this.loadData(last, updateSource)
                 this.$emit('update:selected', newSelected)
@@ -58,7 +96,7 @@
                     text +=  obj.name + "/"
                 })
                 return text.slice(0, text.length- 1)
-            }
+            },
         }
     }
 </script>

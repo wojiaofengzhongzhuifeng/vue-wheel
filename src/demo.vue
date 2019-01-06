@@ -174,7 +174,7 @@
 
     //4数据2
     // promise
-    function ajax2(parent_id = 0, resolve ,reject){
+    function ajax2(parent_id = 0){
         return new Promise((resolve, reject)=>{
             let id = setTimeout(()=>{
                 const result = dbArray.filter((obj)=>{
@@ -235,6 +235,8 @@
                 const clickId = $event[0].id;
                 this.selectedCascader = $event
             },
+
+            // 根据点击的省份， 通过ajax获取省份城市，将省份城市通过回调传出去
             loadData(node, fn){
                 const {id}  = node;
                 ajax2(id).then((result)=>{
