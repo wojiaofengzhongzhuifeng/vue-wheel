@@ -97,7 +97,7 @@
             </w-collapse-item>
         </w-collapse>
 
-        <div style="margin:100px;">
+        <div >
             <w-cascader :source.sync="cascaderData" height="200px" :selected="selectedCascader" @update:selected="changeSelectcascader" :load-data="loadData"></w-cascader>
         </div>
         <div>12332</div>

@@ -1,7 +1,7 @@
 <template>
-    <div class="cascader-wrapper">
-        <div class="popover" @click="visibleCascader = !visibleCascader">
-            {{showCascader}}
+    <div class="cascader-wrapper" ref="cascader" >
+        <div class="popover" @click="toggleCascater">
+            {{showCascaderText}}
 
         </div>
         <cascader-item :load-data="loadData" :items="source" v-if="visibleCascader" :height="height" :selected="selected" @update:selected="onUpdateSelected"></cascader-item>
@@ -89,10 +89,37 @@
                 if(!last.isLeaf){
                     this.loadData && this.loadData(last, updateSource)
                 }
+            },
+
+            bindEventTodocument(e){
+                const {cascader} = this.$refs
+                console.log(e.target.contains(cascader));
+                if(e.target.contains(cascader)){
+                    this.closeCascader()
+                }
+            },
+            showCascater(){
+                this.visibleCascader = true
+                this.$nextTick(()=>{
+                    document.addEventListener("click", this.bindEventTodocument)
+                })
+            },
+            closeCascader(){
+                this.visibleCascader = false
+                this.$nextTick(()=>{
+                    document.removeEventListener("click", this.bindEventTodocument)
+                })
+            },
+            toggleCascater(e){
+                if(this.visibleCascader){
+                    this.closeCascader()
+                } else {
+                    this.showCascater()
+                }
             }
         },
         computed:{
-            showCascader(){
+            showCascaderText(){
                 let text = ""
                 this&& this.selected&& this.selected.forEach((obj)=>{
                     text +=  obj.name + "/"
@@ -115,6 +142,9 @@
         }
         .selectArea{
             display: flex;
+        }
+        .cascader-item-wrapper{
+            position: absolute;
         }
 
     }
