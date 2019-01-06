@@ -43,6 +43,7 @@
         },
         methods: {
             onUpdateSelected (newSelected) {
+                this.$emit('update:selected', newSelected)
                 const last = newSelected[newSelected.length - 1]
 
                 let simplest = (children, id) => {
@@ -79,14 +80,15 @@
                 }
 
                 let updateSource = (xxx)=>{
-                    let  toUpdate = complex(this.source, last.id)
-                    this.$set(toUpdate, "children", xxx)
-                    // toUpdate.children = xxx
+                    const copy = JSON.parse(JSON.stringify(this.source))
+                    let  toUpdate = complex(copy, last.id)
+                    // this.$set(toUpdate, "children", xxx)
+                    toUpdate.children = xxx
+                    this.$emit("update:source", copy)
 
 
                 }
                 this.loadData(last, updateSource)
-                this.$emit('update:selected', newSelected)
             }
         },
         computed:{
