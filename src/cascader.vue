@@ -1,8 +1,7 @@
 <template>
-    <div class="cascader-wrapper" ref="cascader" >
+    <div class="cascader-wrapper" ref="cascader" v-click-out-side="closeCascader">
         <div class="popover" @click="toggleCascater">
             {{showCascaderText}}
-
         </div>
         <cascader-item :load-data="loadData" :items="source" v-if="visibleCascader" :height="height" :selected="selected" @update:selected="onUpdateSelected"></cascader-item>
 
@@ -17,9 +16,13 @@
     * 4. 使用异步获取cascader的数据 4数据
     * */
     import CascaderItem from "./cascader-item"
+    import ClickOutSide from "./clickoutSide"
     export default {
         components:{
             "cascader-item":CascaderItem,
+        },
+        directives:{
+            ClickOutSide
         },
         data(){
             return {
@@ -91,24 +94,23 @@
                 }
             },
 
-            bindEventTodocument(e){
-                const {cascader} = this.$refs
-                console.log(e.target.contains(cascader));
-                if(e.target.contains(cascader)){
-                    this.closeCascader()
-                }
-            },
+            // bindEventTodocument(e){
+            //     const {cascader} = this.$refs
+            //     if(e.target.contains(cascader)){
+            //         this.closeCascader()
+            //     }
+            // },
             showCascater(){
                 this.visibleCascader = true
-                this.$nextTick(()=>{
-                    document.addEventListener("click", this.bindEventTodocument)
-                })
+                // this.$nextTick(()=>{
+                //     document.addEventListener("click", this.bindEventTodocument)
+                // })
             },
             closeCascader(){
                 this.visibleCascader = false
-                this.$nextTick(()=>{
-                    document.removeEventListener("click", this.bindEventTodocument)
-                })
+                // this.$nextTick(()=>{
+                //     document.removeEventListener("click", this.bindEventTodocument)
+                // })
             },
             toggleCascater(e){
                 if(this.visibleCascader){
@@ -134,6 +136,8 @@
     @import "var";
     .cascader-wrapper{
         position: relative;
+        width:300px;
+        display: inline-block;
         .popover{
             max-width:300px;
             height:32px;
