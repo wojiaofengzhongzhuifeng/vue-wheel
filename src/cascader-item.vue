@@ -6,7 +6,10 @@
                 <span>
                                     {{itemLeft.name}}
                 </span>
-                <w-icon iconName="right" v-if="loadData? !itemLeft.isLeaf : itemLeft.children"></w-icon>
+                <div class="icon-wrapper">
+                    <w-icon icon-name="right" v-if="loadData? !itemLeft.isLeaf : itemLeft.children"></w-icon>
+                    <w-icon icon-name="loading" class="loading"></w-icon>
+                </div>
             </div>
         </div>
         <div class="right" v-if='rightItems'>
@@ -96,6 +99,10 @@
         background: white;
         min-width:100px;
         height:100px;
+        .loading{
+            animation: loadingCircle 1s infinite linear;
+
+        }
         .left{
             box-shadow: $box-shadow;
             cursor: pointer;

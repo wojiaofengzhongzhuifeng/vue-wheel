@@ -55,14 +55,7 @@
 
 <style lang="scss" scoped>
     @import "./var";
-    @keyframes loadingCircle {
-        from{
-            transform: rotate(0);
-        }
-        to{
-            transform: rotate(360deg);
-        }
-    }
+
     .button {
         display: flex;
         font-size: $font-size;
