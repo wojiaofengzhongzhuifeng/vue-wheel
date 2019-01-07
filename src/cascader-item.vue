@@ -7,7 +7,7 @@
                                     {{itemLeft.name}}
                 </span>
                 <div class="icon-wrapper">
-                    <w-icon icon-name="right" v-if="loadData? !itemLeft.isLeaf : itemLeft.children"></w-icon>
+                    <w-icon icon-name="right" v-if="conditionalShowArrow(itemLeft)"></w-icon>
                     <w-icon icon-name="loading" class="loading"></w-icon>
                 </div>
             </div>
@@ -85,6 +85,9 @@
             },
             onUpdateSelected (newSelected) {
                 this.$emit('update:selected', newSelected)
+            },
+            conditionalShowArrow(itemLeft){
+                return this.loadData? !itemLeft.isLeaf : itemLeft.children
             }
         }
     }
