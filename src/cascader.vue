@@ -3,7 +3,7 @@
         <div class="popover" @click="toggleCascater">
             {{showCascaderText}}
         </div>
-        <cascader-item :load-data="loadData" :items="source" v-if="visibleCascader" :height="height" :selected="selected" @update:selected="onUpdateSelected"></cascader-item>
+        <cascader-item :load-data-item="loadDataItem" :load-data="loadData" :items="source" v-if="visibleCascader" :height="height" :selected="selected" @update:selected="onUpdateSelected"></cascader-item>
 
     </div>
 </template>
@@ -26,7 +26,8 @@
         },
         data(){
             return {
-                visibleCascader: false
+                visibleCascader: false,
+                loadDataItem:{},
             }
         },
         props:{
@@ -83,6 +84,8 @@
                 }
 
                 let updateSource = (xxx)=>{
+                    console.log("请求数据完成");
+                    this.loadDataItem = {}
                     const copy = JSON.parse(JSON.stringify(this.source))
                     let  toUpdate = complex(copy, last.id)
                     // this.$set(toUpdate, "children", xxx)
@@ -90,6 +93,9 @@
                     this.$emit("update:source", copy)
                 }
                 if(!last.isLeaf){
+                    console.log("这里请求数据");
+                    console.log(last);
+                    this.loadDataItem = last
                     this.loadData && this.loadData(last, updateSource)
                 }
             },

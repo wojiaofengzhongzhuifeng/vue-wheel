@@ -7,14 +7,18 @@
                                     {{itemLeft.name}}
                 </span>
                 <div class="icon-wrapper">
-                    <w-icon icon-name="right" v-if="conditionalShowArrow(itemLeft)"></w-icon>
-                    <w-icon icon-name="loading" class="loading"></w-icon>
+                    <div v-if="itemLeft.name === loadDataItem.name">
+                        <w-icon icon-name="loading" class="loading" ></w-icon>
+                    </div>
+                    <div v-else>
+                        <w-icon icon-name="right" v-if="loadData? !itemLeft.isLeaf : itemLeft.children"></w-icon>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="right" v-if='rightItems'>
             <!--2添加3-->
-            <cascader-item :items="rightItems"  :height="height" :selected="selected" :level="level+ 1" @update:selected="onUpdateSelected" :load-data="loadData"></cascader-item>
+            <cascader-item  :load-data-item="loadDataItem"  :items="rightItems"  :height="height" :selected="selected" :level="level+ 1" @update:selected="onUpdateSelected" :load-data="loadData"></cascader-item>
         </div>
     </div>
 </template>
@@ -43,6 +47,10 @@
             },
             loadData:{
                 type: Function,
+            },
+            loadDataItem:{
+                type: Object,
+                default: ()=>({}),
             }
         },
         // 2添加2
@@ -86,9 +94,11 @@
             onUpdateSelected (newSelected) {
                 this.$emit('update:selected', newSelected)
             },
-            conditionalShowArrow(itemLeft){
-                return this.loadData? !itemLeft.isLeaf : itemLeft.children
-            }
+            // conditionalShowArrow(itemLeft){
+            //     console.log(this.loadData);
+            //
+            //     return this.
+            // }
         }
     }
 </script>
