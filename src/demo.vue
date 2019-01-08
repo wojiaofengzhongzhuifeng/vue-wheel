@@ -101,6 +101,21 @@
             <w-cascader :source.sync="cascaderData" height="200px" :selected="selectedCascader" @update:selected="changeSelectcascader" :load-data="loadData"></w-cascader>
         </div>
         <div>12332</div>
+
+
+        <w-slide>
+            <w-slide-item>
+                <div style="width:200px;height: 100px;border: 1px solid red">1</div>
+            </w-slide-item>
+            <w-slide-item>
+                <div style="width:200px;height: 100px;border: 1px solid red">2</div>
+            </w-slide-item>
+            <w-slide-item>
+                <div style="width:200px;height: 100px;border: 1px solid red">3</div>
+            </w-slide-item>
+        </w-slide>
+
+
     </div>
 </template>
 
@@ -130,7 +145,8 @@
     import TabItem from "./tab-item"
     import toastPlugin from "./toastPlugin"
     import Cascader from "./cascader"
-
+    import Slide from "./slide"
+    import SlideItem from "./slideItem"
     import dbArray from "./db"
 
     // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
@@ -156,6 +172,9 @@
     Vue.component("w-tab-pane", TabPane);
     Vue.component("w-tab-item", TabItem);
     Vue.component("w-cascader", Cascader);
+    Vue.component("w-slide", Slide);
+    Vue.component("w-slide-item", SlideItem);
+
 
 
     //4数据2
