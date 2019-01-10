@@ -54,7 +54,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../var";
+    @import "../../styles/var";
 
     .button {
         display: flex;

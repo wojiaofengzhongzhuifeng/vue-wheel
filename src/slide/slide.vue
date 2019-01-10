@@ -151,7 +151,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../var";
+    @import "../../styles/var";
     .slide-wrapper{
         .slide-wrapper-window{
             /*3切换1： 设置window position*/

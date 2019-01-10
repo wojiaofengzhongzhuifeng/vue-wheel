@@ -52,7 +52,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../var";
+    @import "../../styles/var";
     .tabItem{
         padding: 12px 16px;
         margin-right:20px;

@@ -31,7 +31,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../var";
+    @import "../../styles/var";
     .slide-wrapper{
         .slide-wrapper.reverse{
         }

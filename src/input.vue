@@ -45,7 +45,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "./var";
+    @import "../styles/var";
 
     .input {
         font-size: $font-size;
