@@ -148,8 +148,8 @@
     import TabItem from "./tab/tab-item"
     import toastPlugin from "./toastPlugin"
     import Cascader from "./cascader/cascader"
-    import Slide from "./slide"
-    import SlideItem from "./slideItem"
+    import Slide from "./slide/slide"
+    import SlideItem from "./slide/slideItem"
     import dbArray from "../test/fixtures/db"
 
     // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
