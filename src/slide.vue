@@ -17,7 +17,7 @@
     * - 父组件传值给子组件：最简单的是在html中传props， 还有就是通过子组件的data 2传值
     * - 使用css 完成slide动画切换 3切换
     * - demo slide slideitem 组件如何建立数据流通
-    *
+    * - 动画暂停，继续的思路只有一个 === 关闭计时器 5暂停
     * */
     export default {
         props:{
@@ -33,6 +33,8 @@
             return {
                 allItemName: [],
                 lastSelectItem: undefined,
+                //5暂停1: 保存计时器的id
+                timeId: undefined,
             }
         },
         computed:{
@@ -57,6 +59,7 @@
         },
         methods:{
             playAuto(){
+                // if(this.timeId){return }
                 let showIndex = this.allItemName.indexOf(this.select)
 
                 let run = ()=>{
@@ -65,7 +68,8 @@
                         showIndex = 0
                     }
                     this.updateSelect(this.allItemName[showIndex])
-                    setTimeout(run, 3000)
+                    // 5暂停2： 保存每一个计时器
+                    this.timeId = setTimeout(run, 3000)
                 }
                 run()
             },
@@ -75,23 +79,32 @@
 
             },
             pauseAutoPlay(){
-                console.log("pause");
-                this.$emit("update:autoPlay", false)
+                // 5暂停4：在鼠标进入，暂停动画
+                this.pause()
             },
             startAutoPlay(){
-                console.log("start");
-                this.$emit("update:autoPlay", true)
-
+                // 5暂停5：在鼠标离开，开始动画
+                this.playAuto()
+            },
+            pause(){
+                // 5暂停3：暂停计时器
+                window.clearTimeout(this.timeId)
+                this.timeId = undefined
             },
             updateChildrenSelect(){
                 this.$children.forEach((vm)=>{
 
                     let reverse
-                    if(this.selectItem > this.lastSelectItem){
-                        reverse = false
-                    } else {
-                        reverse = true
+                    reverse = this.selectItem <= this.lastSelectItem;
+
+                    if(this.timeId){
+                        //自动播放，需要判断
+                        if(this.lastSelectItem === this.allItemName.length - 1 && this.selectItem === 0){
+                            reverse = false
+                        }
                     }
+
+
                     vm.reverse = reverse
                     this.$nextTick(()=>{
                         vm.select = this.select || this.$children[0].name
@@ -115,10 +128,18 @@
             position: relative;
         }
         .dots{
+            display: flex;
+            justify-content: center;
+            padding-top:1em;
             .dot{
-                width:1em;
-                height:1em;
-                border:1px solid red;
+                margin:0 1em;
+                width:1.2em;
+                height:1.2em;
+                display: inline-flex;
+                justify-content: center;
+                align-content: center;
+                border:1px solid black;
+                border-radius: 50%;
                 &.active{
                     background: red;
                 }

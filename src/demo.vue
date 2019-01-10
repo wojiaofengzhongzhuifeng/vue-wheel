@@ -105,13 +105,13 @@
         <div style="margin: 100px">
             <w-slide :select.sync="select" :autoPlay.sync="autoPlay" class="slide-wrapper">
                 <!--1代替1-->
-                <w-slide-item name="1">
+                <w-slide-item name="a">
                     <div class="box">1</div>
                 </w-slide-item>
-                <w-slide-item name="2">
+                <w-slide-item name="b">
                     <div  class="box">2</div>
                 </w-slide-item>
-                <w-slide-item name="3">
+                <w-slide-item name="c">
                     <div  class="box">3</div>
                 </w-slide-item>
             </w-slide>
@@ -232,8 +232,8 @@
                 //4数据1
                 cascaderData: [],
                 selectedCascader: [],
-                select: "3",
-                autoPlay:true,
+                select: "a",
+                autoPlay:false,
             }
         },
 
