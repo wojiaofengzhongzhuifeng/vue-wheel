@@ -127,8 +127,8 @@
     // 所有组件的入口
 
     import Vue from "vue";
-    import Button from "./button.vue"
-    import ButtonGroup from "./button-group"
+    import Button from "./button/button.vue"
+    import ButtonGroup from "./button/button-group"
     import Input from "./input"
     import Row from "./row"
     import Col from "./col"

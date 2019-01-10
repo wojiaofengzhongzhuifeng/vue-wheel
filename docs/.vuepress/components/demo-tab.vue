@@ -32,7 +32,7 @@
     import TabBody from "../../../src/tab-body"
     import TabPane from "../../../src/tab-pane"
     import TabItem from "../../../src/tab-item"
-    import Button from "../../../src/button"
+    import Button from "../../../src/button/button"
     export default {
         components: {
             "w-tab": Tab,

@@ -15,7 +15,7 @@
     /*
     * 知识点： 如何根据props设置class？ 1class
     * */
-    import Icon from "./icon"
+    import Icon from "../icon"
     export default {
         components:{
             'w-icon': Icon,
@@ -54,7 +54,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "./var";
+    @import "../var";
 
     .button {
         display: flex;
