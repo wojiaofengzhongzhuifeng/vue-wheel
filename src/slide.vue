@@ -1,6 +1,6 @@
 <template>
     <div class="slide-wrapper" @mouseenter="pauseAutoPlay" @mouseleave="startAutoPlay">
-        <div class="slide-wrapper-window">
+        <div class="slide-wrapper-window" @touchstart="onTouchStart" @touchend="onTouchEnd">
             <slot></slot>
         </div>
         <div class="dots">
@@ -18,6 +18,7 @@
     * - 使用css 完成slide动画切换 3切换
     * - demo slide slideitem 组件如何建立数据流通
     * - 动画暂停，继续的思路只有一个 === 关闭计时器 5暂停
+    * - 移动端触摸 6移动
     * */
     export default {
         props:{
@@ -35,6 +36,10 @@
                 lastSelectItem: undefined,
                 //5暂停1: 保存计时器的id
                 timeId: undefined,
+                startTouchX: undefined,
+                startTouchY: undefined,
+                endTouchX: undefined,
+                endTouchY: undefined,
             }
         },
         computed:{
@@ -112,6 +117,31 @@
                     })
                 })
 
+            },
+            onTouchEnd(e){
+                console.log(e);
+                this.pause()
+                console.log("抹完了");
+                this.endTouchX = e.changedTouches[0].clientX
+                this.endTouchY = e.changedTouches[0].clientY
+                if(this.endTouchX > this.startTouchX){
+
+
+                    console.log("shang");
+                    console.log(this.select);
+                    let index = this.allItemName.indexOf(this.select)
+                    this.updateSelect(this.allItemName[index - 1])
+                } else {
+                    console.log("xia");
+                    let index = this.allItemName.indexOf(this.select)
+                    this.updateSelect(this.allItemName[index + 1])
+                }
+            },
+            onTouchStart(e){
+                this.pause()
+                this.startTouchX  = e.touches[0].clientX
+                this.startTouchY  = e.touches[0].clientY
+                console.log("开始摸");
             },
             clickUpdateSelect(name){
                 this.updateSelect(name)
