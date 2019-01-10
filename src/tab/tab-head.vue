@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "./var";
+    @import "../var";
     .tabHead{
         border-bottom:1px solid $border-color;
         display: flex;

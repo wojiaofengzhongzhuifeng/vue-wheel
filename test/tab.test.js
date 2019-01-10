@@ -3,11 +3,11 @@ import spies from "chai-spies";
 
 const expect = chai.expect;
 import Vue from 'vue'
-import Tab from '../src/tab'
-import TabHead from "../src/tab-head"
-import TabBody from "../src/tab-body"
-import TabItem from "../src/tab-item"
-import TabPane from "../src/tab-pane"
+import Tab from '../src/tab/tab'
+import TabHead from "../src/tab/tab-head"
+import TabBody from "../src/tab/tab-body"
+import TabItem from "../src/tab/tab-item"
+import TabPane from "../src/tab/tab-pane"
 
 chai.use(spies);
 

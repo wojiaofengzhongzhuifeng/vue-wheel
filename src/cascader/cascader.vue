@@ -16,7 +16,7 @@
     * 4. 使用异步获取cascader的数据 4数据
     * */
     import CascaderItem from "./cascader-item"
-    import ClickOutSide from "./clickoutSide"
+    import ClickOutSide from "../clickoutSide"
     export default {
         components:{
             "cascader-item":CascaderItem,
@@ -139,7 +139,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "var";
+    @import "../var";
     .cascader-wrapper{
         position: relative;
         width:300px;

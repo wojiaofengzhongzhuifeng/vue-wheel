@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import Icon from "./icon"
+    import Icon from "../icon"
     export default {
         components:{
             "w-icon": Icon,
@@ -104,7 +104,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "./var";
+    @import "../var";
     .cascader-item-wrapper{
         display: flex;
         /*position: absolute;*/
