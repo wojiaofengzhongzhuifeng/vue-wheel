@@ -102,18 +102,21 @@
         </div>
         <div>12332</div>
 
+        <div style="margin: 100px">
+            <w-slide :select.sync="select" :autoPlay.sync="autoPlay" class="slide-wrapper">
+                <!--1代替1-->
+                <w-slide-item name="1">
+                    <div class="box">1</div>
+                </w-slide-item>
+                <w-slide-item name="2">
+                    <div  class="box">2</div>
+                </w-slide-item>
+                <w-slide-item name="3">
+                    <div  class="box">3</div>
+                </w-slide-item>
+            </w-slide>
 
-        <w-slide>
-            <w-slide-item>
-                <div style="width:200px;height: 100px;border: 1px solid red">1</div>
-            </w-slide-item>
-            <w-slide-item>
-                <div style="width:200px;height: 100px;border: 1px solid red">2</div>
-            </w-slide-item>
-            <w-slide-item>
-                <div style="width:200px;height: 100px;border: 1px solid red">3</div>
-            </w-slide-item>
-        </w-slide>
+        </div>
 
 
     </div>
@@ -229,6 +232,8 @@
                 //4数据1
                 cascaderData: [],
                 selectedCascader: [],
+                select: "3",
+                autoPlay:true,
             }
         },
 
@@ -302,4 +307,15 @@
 </script>
 
 <style lang="scss" scoped>
+    .slide-wrapper{
+        width:100%;
+        .box{
+            border: 1px solid green;
+            width:100%;
+            height:350px;
+
+
+        }
+    }
+
 </style>
