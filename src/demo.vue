@@ -119,13 +119,22 @@
         <!--</div>-->
 
 
-        <div>
+        <div style="margin: 100px;">
             <w-nav :selected.sync="selectNav">
                 <w-nav-item name="header">
                     首页
                 </w-nav-item>
                 <w-nav-item name="contact">
-                    联系方式
+                    <w-nav-sub>
+                        <!--4slot2： 注意等价关系-->
+                        <template slot="title">关于</template>
+                        <!--<template>-->
+                            <!--<w-nav-item name="online">线上</w-nav-item>-->
+                            <!--<w-nav-item name="offline">线下</w-nav-item>-->
+                        <!--</template>-->
+                        <w-nav-item name="online">线上</w-nav-item>
+                        <w-nav-item name="offline">线下</w-nav-item>
+                    </w-nav-sub>
                 </w-nav-item>
                 <w-nav-item name="hire">
                     招聘
@@ -256,7 +265,7 @@
                 selectedCascader: [],
                 select: "a",
                 autoPlay:false,
-                selectNav: ["contact"]
+                selectNav: ["hire"]
             }
         },
 
