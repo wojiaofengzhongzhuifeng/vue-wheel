@@ -102,32 +102,32 @@
         </div>
         <div>12332</div>
 
-        <div style="margin: 100px">
-            <w-slide :select.sync="select" :autoPlay.sync="autoPlay" class="slide-wrapper">
-                <!--1代替1-->
-                <w-slide-item name="a">
-                    <div class="box">1</div>
-                </w-slide-item>
-                <w-slide-item name="b">
-                    <div  class="box">2</div>
-                </w-slide-item>
-                <w-slide-item name="c">
-                    <div  class="box">3</div>
-                </w-slide-item>
-            </w-slide>
+        <!--<div style="margin: 100px">-->
+            <!--<w-slide :select.sync="select" :autoPlay.sync="autoPlay" class="slide-wrapper">-->
+                <!--&lt;!&ndash;1代替1&ndash;&gt;-->
+                <!--<w-slide-item name="a">-->
+                    <!--<div class="box">1</div>-->
+                <!--</w-slide-item>-->
+                <!--<w-slide-item name="b">-->
+                    <!--<div  class="box">2</div>-->
+                <!--</w-slide-item>-->
+                <!--<w-slide-item name="c">-->
+                    <!--<div  class="box">3</div>-->
+                <!--</w-slide-item>-->
+            <!--</w-slide>-->
 
-        </div>
+        <!--</div>-->
 
 
         <div>
-            <w-nav>
-                <w-nav-item>
+            <w-nav :selected.sync="selectNav">
+                <w-nav-item name="header">
                     首页
                 </w-nav-item>
-                <w-nav-item>
+                <w-nav-item name="contact">
                     联系方式
                 </w-nav-item>
-                <w-nav-item>
+                <w-nav-item name="hire">
                     招聘
                 </w-nav-item>
             </w-nav>
@@ -256,6 +256,7 @@
                 selectedCascader: [],
                 select: "a",
                 autoPlay:false,
+                selectNav: ["contact"]
             }
         },
 
