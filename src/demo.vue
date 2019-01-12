@@ -119,6 +119,21 @@
         </div>
 
 
+        <div>
+            <w-nav>
+                <w-nav-item>
+                    首页
+                </w-nav-item>
+                <w-nav-item>
+                    联系方式
+                </w-nav-item>
+                <w-nav-item>
+                    招聘
+                </w-nav-item>
+            </w-nav>
+        </div>
+
+
     </div>
 </template>
 
@@ -151,6 +166,9 @@
     import Slide from "./slide/slide"
     import SlideItem from "./slide/slideItem"
     import dbArray from "../test/fixtures/db"
+    import WNav from "./nav/nav"
+    import WNavSub from "./nav/nav-sub"
+    import WNavItem from "./nav/nav-item"
 
     // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
     Vue.use(toastPlugin);
@@ -177,6 +195,10 @@
     Vue.component("w-cascader", Cascader);
     Vue.component("w-slide", Slide);
     Vue.component("w-slide-item", SlideItem);
+    Vue.component("w-nav", WNav);
+    Vue.component("w-nav-sub", WNavSub);
+    Vue.component("w-nav-item", WNavItem);
+
 
 
 
