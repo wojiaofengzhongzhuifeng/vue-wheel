@@ -1,21 +1,27 @@
 <template>
-    <div class="w-nav-sub">
+    <!--8class2：通过computed计算得出-->
+    <div class="w-nav-sub" :class="activeBorderBottom" v-click-out-side="close">
         <!--4slot1: 定义-->
         <span  @click="togglePopover" :class="{ffff: active}">
             <slot name="title"></slot>
-            <w-icon icon-name="right" v-if="iconVisible"></w-icon>
+            <!--8class1：通过data或者props的数据（boolean类型）确定有没有 "expanded" 类名-->
+            <w-icon icon-name="right" v-if="iconVisible" :class="{expanded}"></w-icon>
         </span>
         <!--6区别1 v-if 与 v-show 替换-->
-        <div class="w-nav-sub-popover" v-show="visible">
+        <div class="w-nav-sub-popover" v-show="visible" :class="{vertical}">
             <slot></slot>
         </div>
     </div>
 </template>
 
 <script>
+    import ClickOutSide from "../clickoutSide"
     import Icon from "../icon"
     export default {
-        inject:["root"],
+        directives:{
+            ClickOutSide
+        },
+        inject:["root", "vertical"],
         computed:{
             iconVisible(){
                 if(this.$parent.$options.name === "WheelNav"){
@@ -24,6 +30,13 @@
                     return true
                 }
             },
+            activeBorderBottom(){
+                if(this.root.namePath.indexOf(this.name) >= 0){
+                    return "active"
+                } else {
+                    return ""
+                }
+            }
         },
         components:{
             "w-icon": Icon,
@@ -39,20 +52,23 @@
             return {
                 visible: false,
                 active: false,
+                expanded: false,
             }
         },
         methods:{
             togglePopover(){
                 this.visible = !this.visible
+                this.expanded = !this.expanded
             },
             // 8子组件1： 父组件定义方法
             updateNamePath(){
-                console.log("updateNamePath");
-                // this.active = true;
-                // this.root.namePath.unshift(this.name)
                 this.$parent.updateNamePath && this.$parent.updateNamePath()
                 this.root.namePath.push(this.name)
             },
+            close(){
+                console.log("close");
+                this.visible = false
+            }
 
         }
     }
@@ -99,6 +115,10 @@
                 .w-nav-item.active::after{
                 }
             }
+            &.vertical{
+                position: static;
+                box-shadow: none ;
+            }
         }
     }
     .w-nav-sub .w-nav-sub {
@@ -127,4 +147,8 @@
         }
     }
 
+    .w-icon.expanded    {
+        transform: rotate(90deg);
+        transition: all 0.3s;
+    }
 </style>

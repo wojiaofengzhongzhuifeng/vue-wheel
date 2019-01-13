@@ -1,5 +1,5 @@
 <template>
-    <div class="w-nav-item" :class="activeClass" @click.stop="onClickItem">
+    <div class="w-nav-item" :class="activeClass" @click="onClickItem">
         <slot></slot>
     </div>
 </template>
@@ -44,7 +44,6 @@
         },
         methods:{
             onClickItem(){
-                this.$emit("add:selected" ,this.name)
                 this.root.namePath = []
                 // 8子组件2： 子组件调用父组件的方法
                 if(this.$parent.$options.name === "WheelNav"){
@@ -53,6 +52,8 @@
                     this.$parent.updateNamePath()
                     this.root.namePath.push(this.name)
                 }
+                this.$emit("add:selected" ,this.name)
+
             }
         }
     }

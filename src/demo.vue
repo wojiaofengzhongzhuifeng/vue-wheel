@@ -120,27 +120,29 @@
 
 
         <div style="margin: 100px;">
-            <w-nav :selected.sync="selectNav">
-                <w-nav-item name="header">
-                    首页
-                </w-nav-item>
-                <w-nav-item name="contact">
-                    <w-nav-sub>
-                        <!--4slot2： 注意等价关系-->
-                        <template slot="title">关于</template>
-                        <!--<template>-->
-                            <!--<w-nav-item name="online">线上</w-nav-item>-->
-                            <!--<w-nav-item name="offline">线下</w-nav-item>-->
-                        <!--</template>-->
-                        <w-nav-item name="online">线上</w-nav-item>
-                        <w-nav-item name="offline">线下</w-nav-item>
+            <w-nav :selected.sync="selectNav" vertical style="width: 200px">
+                <w-nav-item name="home">首页</w-nav-item>
+                <w-nav-sub name="about">
+                    <template slot="title">关于</template>
+                    <w-nav-item name="culture">企业文化</w-nav-item>
+                    <w-nav-item name="developers">开发团队</w-nav-item>
+                    <w-nav-sub name="contact">
+                        <template slot="title">联系方式</template>
+                        <w-nav-item name="wechat">微信</w-nav-item>
+                        <w-nav-item name="qq">QQ</w-nav-item>
+                        <w-nav-sub name="phone">
+                            <template slot="title">手机</template>
+                            <w-nav-item name="cm">移动</w-nav-item>
+                            <w-nav-item name="cu">联通</w-nav-item>
+                            <w-nav-item name="cn">电信</w-nav-item>
+                        </w-nav-sub>
                     </w-nav-sub>
-                </w-nav-item>
-                <w-nav-item name="hire">
-                    招聘
-                </w-nav-item>
+
+                </w-nav-sub>
+                <w-nav-item name="hire">招聘</w-nav-item>
             </w-nav>
         </div>
+
 
 
     </div>

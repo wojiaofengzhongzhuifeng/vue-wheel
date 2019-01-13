@@ -16,3 +16,4 @@ export default {
         callbacks.push({el, callback: binding.value})
     }
 }
+

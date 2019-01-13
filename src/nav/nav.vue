@@ -1,5 +1,5 @@
 <template>
-    <div class="w-nav">
+    <div class="w-nav" :class="{vertical}">
         <slot></slot>
     </div>
 </template>
@@ -13,14 +13,16 @@
     * 5。 子组件调用父组件的方法or子组件修改父组件的数据 5依赖注入 / 8子组件
     * 6。 v-if 和v-show 6区别
     * 7。 可触面积 7面积
-    *
+    * 8。 添加class的两种方式 8class
+    * 9。 添加动画 9动画
     * */
     export default {
         name: "WheelNav",
         // 5依赖注入1:
         provide(){
             return {
-                root: this
+                root: this,
+                vertical: this.vertical
             }
         },
         data(){
@@ -35,6 +37,10 @@
             },
             multiple:{
                 type: Boolean,
+            },
+            vertical:{
+                type:Boolean,
+                default: false,
             }
         },
         computed:{
@@ -91,6 +97,8 @@
         border-bottom: 1px solid $grey;
         cursor: default;
         user-select: none;
-
+        &.vertical{
+            flex-direction: column;
+        }
     }
 </style>
