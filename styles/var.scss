@@ -34,7 +34,7 @@ $box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 
 $hover-background:#e6f7ff;
 
-
+$line-grey: #ebedf0;
 @keyframes loadingCircle {
   from{
     transform: rotate(0);
@@ -43,4 +43,7 @@ $hover-background:#e6f7ff;
     transform: rotate(360deg);
   }
 }
+
+$box-shadow: 0 0 3px rgba(0,0,0,0.8);
+$backgroud-light: #e6f7ff;
 

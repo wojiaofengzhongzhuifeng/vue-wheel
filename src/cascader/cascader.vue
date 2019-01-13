@@ -88,7 +88,7 @@
                     this.loadDataItem = {}
                     const copy = JSON.parse(JSON.stringify(this.source))
                     let  toUpdate = complex(copy, last.id)
-                    // this.$set(toUpdate, "children", xxx)
+                    // this.$set(toUpdate, "children", updateNamePath)
                     toUpdate.children = xxx
                     this.$emit("update:source", copy)
                 }

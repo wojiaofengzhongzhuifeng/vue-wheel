@@ -10,7 +10,7 @@
     * 2。 子传父数据(响应式) 2子数据 =》 通过computed
     * 3。 父监听子组件 3监听
     * 4。 nav-sub slot 4slot
-    * 5。 子组件调用父组件的方法 5依赖注入
+    * 5。 子组件调用父组件的方法or子组件修改父组件的数据 5依赖注入 / 8子组件
     * 6。 v-if 和v-show 6区别
     * 7。 可触面积 7面积
     *
@@ -25,7 +25,8 @@
         },
         data(){
             return {
-                selectedItems: []
+                selectedItems: [],
+                namePath: [],
             }
         },
         props:{
@@ -84,8 +85,12 @@
 </script>
 
 <style lang="scss">
-    .w-nav{
+    @import "../../styles/var";
+    .w-nav {
         display: flex;
-        border:1px solid red;
+        border-bottom: 1px solid $grey;
+        cursor: default;
+        user-select: none;
+
     }
 </style>
