@@ -7,10 +7,13 @@
             <!--8class1：通过data或者props的数据（boolean类型）确定有没有 "expanded" 类名-->
             <w-icon icon-name="right" v-if="iconVisible" :class="{expanded}"></w-icon>
         </span>
-        <!--6区别1 v-if 与 v-show 替换-->
-        <div class="w-nav-sub-popover" v-show="visible" :class="{vertical}">
-            <slot></slot>
-        </div>
+        <transition @enter="enter">
+            <!--6区别1 v-if 与 v-show 替换-->
+            <div class="w-nav-sub-popover" v-show="visible" :class="{vertical}">
+                <slot></slot>
+            </div>
+        </transition>
+
     </div>
 </template>
 
@@ -68,7 +71,37 @@
             close(){
                 console.log("close");
                 this.visible = false
-            }
+            },
+            enter (el, done) {
+                console.log("enter");
+                let {height} = el.getBoundingClientRect()
+                el.style.height = 0
+                el.getBoundingClientRect()
+                el.style.height = `${height}px`
+                el.addEventListener('transitionend', () => {
+                    done()
+                })
+            },
+            afterEnter (el) {
+                console.log(el);
+                console.log("afterenter");
+                el.color = "red"
+                el.style.height = 'auto'
+            },
+            leave: function (el, done) {
+                console.log("leave");
+                let {height} = el.getBoundingClientRect()
+                el.style.height = `${height}px`
+                el.getBoundingClientRect()
+                el.style.height = 0
+                el.addEventListener('transitionend', () => {
+                    done()
+                })
+            },
+            afterLeave: function (el) {
+                console.log("afterleave");
+                el.style.height = 'auto'
+            },
 
         }
     }
@@ -93,6 +126,7 @@
         &-label { padding: 10px 20px; display: block; }
         &-icon { display: none; }
         &-popover {
+            transition: height 250ms;
             background: white;
             position: absolute;
             top: 100%;

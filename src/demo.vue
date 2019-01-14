@@ -176,7 +176,7 @@
     import Cascader from "./cascader/cascader"
     import Slide from "./slide/slide"
     import SlideItem from "./slide/slideItem"
-    import dbArray from "../test/fixtures/db"
+    import dbArray from "../tests/fixtures/db"
     import WNav from "./nav/nav"
     import WNavSub from "./nav/nav-sub"
     import WNavItem from "./nav/nav-item"

@@ -55,6 +55,7 @@
             this.listenToChildren()
         },
         updated() {
+            console.log("update");
             this.updateChildren()
         },
         methods:{

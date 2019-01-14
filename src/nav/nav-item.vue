@@ -29,7 +29,7 @@
         },
         data(){
             return {
-                // 1父数据1: 在子组件的data中
+                // 1父数据1: 在子组件的data中初始化
                 propSelected: false
             }
         },
