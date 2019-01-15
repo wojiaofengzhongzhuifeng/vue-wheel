@@ -32,5 +32,24 @@ describe('validator', () => {
         }
         expect(fn).to.throw();
     })
+
+    it("自定义规则， 不应该报错", () => {
+        let xxx = {email: "123123"}
+        let yyy = [{key: "email", required: true, hasNumber: true}]
+        validator.hasNumber = (rule,validationData, error)=>{
+            if(!/\d/.test(validationData)){
+                error[rule.key].hasNumber = "没有数字"
+            } else {
+                error[rule.key].hasNumber = undefined
+
+            }
+        }
+        let fn = ()=>{
+            validator(xxx, yyy)
+
+        }
+        expect(fn).to.not.throw();
+    })
+
 })
 

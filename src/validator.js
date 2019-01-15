@@ -50,14 +50,6 @@ return error
 }
 
 //1挂函数2
-validator.required = (rule,validationData, error)=>{
-    if(!validationData && validationData !== 0){
-        error[rule.key].required = "必填"
-        return
-    } else {
-        error[rule.key].required = undefined
-    }
-}
 validator.pattern = (rule,validationData, error)=>{
     if(rule.pattern === "email"){
         let reg = /^.+@.+$/
