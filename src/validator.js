@@ -5,7 +5,7 @@
 
 let xxx = {email: "22@.com", phone: 15702097950}
 
-let yyy = [{key: "email", required: true, pattern: "email"}, {key:"phone", required: true, pattern: "phone"}]
+let yyy = [{key: "email", required: true, pattern: "email", fdsfdas:"fdsa"}, {key:"phone", required: true, pattern: "phone"}]
 
 // 期待返回以下数据
 // let error = {
@@ -39,7 +39,11 @@ rules.forEach((rule)=>{
     let validators = Object.keys(rule).filter((key)=>key !== "key" && key !== "required")
 
     validators.forEach((validationKey)=>{
-        validator[validationKey](rule, validationData, error)
+        if(validator[validationKey]){
+            validator[validationKey](rule, validationData, error)
+        } else {
+            throw "匹配方法找不到"
+        }
     })
 })
 return error
@@ -71,5 +75,3 @@ validator.pattern = (rule,validationData, error)=>{
         }
     }
 }
-let showError= validator(xxx, yyy)
-console.log(showError)

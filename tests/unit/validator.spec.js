@@ -22,5 +22,15 @@ describe('validator', () => {
         let error= validator(xxx, yyy)
         expect(error.email.pattern).to.equal("邮箱出错")
     })
+
+    it("没有相应规则，应该报错", () => {
+        let xxx = {email: "123123"}
+        let yyy = [{key: "email", required: true, fdsfdsa: "fdsfdas"}]
+        let fn = ()=>{
+            validator(xxx, yyy)
+
+        }
+        expect(fn).to.throw();
+    })
 })
 
