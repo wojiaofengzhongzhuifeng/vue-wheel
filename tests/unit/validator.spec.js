@@ -1,4 +1,4 @@
-import validator from "../../src/validator"
+import Validator from "../../src/validator"
 
 import {expect} from 'chai'
 
@@ -7,19 +7,22 @@ import {expect} from 'chai'
 
 describe('validator', () => {
     it('存在.', () => {
-        expect(validator).to.be.ok
+        expect(Validator).to.be.ok
     })
     it("测试 required", () => {
         let xxx = {}
         let yyy = [{key: "email", required: true}]
-        let error= validator(xxx, yyy)
+        let validator = new Validator()
+        let error = validator.validate(xxx,yyy)
+        console.log(error);
         expect(error.email.required).to.equal("必填")
     })
 
     it("测试 pattern", () => {
         let xxx = {email: "123123"}
         let yyy = [{key: "email", required: true, pattern: "email"}]
-        let error= validator(xxx, yyy)
+        let validator = new Validator()
+        let error = validator.validate(xxx,yyy)
         expect(error.email.pattern).to.equal("邮箱出错")
     })
 
@@ -27,15 +30,16 @@ describe('validator', () => {
         let xxx = {email: "123123"}
         let yyy = [{key: "email", required: true, fdsfdsa: "fdsfdas"}]
         let fn = ()=>{
-            validator(xxx, yyy)
-
+            let validator = new Validator()
+            validator.validate(xxx,yyy)
         }
         expect(fn).to.throw();
     })
-
+    //
     it("自定义规则， 不应该报错", () => {
         let xxx = {email: "123123"}
         let yyy = [{key: "email", required: true, hasNumber: true}]
+        let validator = new Validator()
         validator.hasNumber = (rule,validationData, error)=>{
             if(!/\d/.test(validationData)){
                 error[rule.key].hasNumber = "没有数字"
@@ -45,8 +49,7 @@ describe('validator', () => {
             }
         }
         let fn = ()=>{
-            validator(xxx, yyy)
-
+            validator.validate(xxx,yyy)
         }
         expect(fn).to.not.throw();
     })
