@@ -105,13 +105,14 @@
             cursor: pointer;
             border: $border;
             border-radius: 4px;
-            display: inline-flex;
-            justify-content: center;
-            align-content: center;
             margin: 0 5px;
+
+            display: inline-block;
+            vertical-align: middle;
             min-width: 32px;
             height: 32px;
             line-height: 30px;
+            text-align: center;
             &:hover{
                 border-color: $font-color-active;
             }
