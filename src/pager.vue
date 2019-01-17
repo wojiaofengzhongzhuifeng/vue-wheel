@@ -1,12 +1,12 @@
 <template>
     <div class="pager-wrapper">
-        <span class="left item" @click="prePage">
+        <span class="left item" @click="prePage" :class="{minPage: currentPage === 1}">
             <icon icon-name="left"></icon>
         </span>
         <span v-for="page in pageArray" class="item" :class="{active: currentPage=== page}" @click="changePage(page)">
             {{page}}
         </span>
-        <span class="right item" @click="nextPage">
+        <span class="right item" @click="nextPage"  :class="{maxPage: currentPage === totalPage}">
             <icon icon-name="right"></icon>
         </span>
     </div>
@@ -33,34 +33,39 @@
         },
         computed:{
             pageArray(){
-                // currentPage 只能是【1，20】
-                let currentPage
-                if(this.currentPage < 1){
-                    currentPage = 1
-                } else if (this.currentPage > this.totalPage){
-                    currentPage = this.totalPage
+                if(this.totalPage <=10){
+                    return [1,2,3,4,5,6,7,8,9,10]
                 } else {
-                    currentPage = this.currentPage
+                    // currentPage 只能是【1，20】
+                    let currentPage
+                    if(this.currentPage < 1){
+                        currentPage = 1
+                    } else if (this.currentPage > this.totalPage){
+                        currentPage = this.totalPage
+                    } else {
+                        currentPage = this.currentPage
+                    }
+
+                    //
+                    const result = [1,currentPage - 2,currentPage - 1 , currentPage,currentPage + 1 ,currentPage + 2,this.totalPage]
+                    const result1 = this.unique(result)
+                    const reuslt2 = result1.filter((number)=>{
+                        if(number >= 1 && number <= this.totalPage){
+                            return true
+                        } else {
+                            return false
+                        }
+                    })
+                    const result3 = reuslt2.reduce((pre, current, index)=>{
+                        pre.push(current)
+                        if(reuslt2[index + 1] - reuslt2[index] > 1){
+                            pre.push("...")
+                        }
+                        return pre
+                    }, [])
+                    return result3
                 }
 
-                //
-                const result = [1,currentPage - 2,currentPage - 1 , currentPage,currentPage + 1 ,currentPage + 2,this.totalPage]
-                const result1 = this.unique(result)
-                const reuslt2 = result1.filter((number)=>{
-                    if(number >= 1 && number <= this.totalPage){
-                        return true
-                    } else {
-                        return false
-                    }
-                })
-                const result3 = reuslt2.reduce((pre, current, index)=>{
-                    pre.push(current)
-                    if(reuslt2[index + 1] - reuslt2[index] > 1){
-                        pre.push("...")
-                    }
-                    return pre
-                }, [])
-                return result3
             }
         },
         methods:{
@@ -82,7 +87,9 @@
                 return [...new Set(array)]
             },
             changePage(number){
-                this.$emit("update:currentPage", number)
+                if(typeof(number) === "number"){
+                    this.$emit("update:currentPage", number)
+                }
 
             }
         }
@@ -92,18 +99,36 @@
 <style lang="scss" scoped>
     @import "../styles/var";
     .pager-wrapper{
+        display: flex;
         .item{
             user-select: none;
             cursor: pointer;
-            border: 1px solid red;
+            border: $border;
+            border-radius: 4px;
             display: inline-flex;
             justify-content: center;
             align-content: center;
             margin: 0 5px;
-            min-width: 20px;
-            height:20px;
+            min-width: 32px;
+            height: 32px;
+            line-height: 30px;
+            &:hover{
+                border-color: $font-color-active;
+            }
             &.active{
-                background: red;
+                border-color: $font-color-active;
+                color: $font-color-active;
+            }
+            &.minPage{
+                pointer-events: none;
+                cursor: not-allowed;
+                color: rgba(0,0,0,0.25);
+
+            }
+            &.maxPage{
+                pointer-events: none;
+                cursor: not-allowed;
+                color: rgba(0,0,0,0.25);
             }
         }
     }
