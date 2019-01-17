@@ -144,7 +144,7 @@
         <!--</div>-->
 
         <div style="margin: 100px">
-            <w-pager :total-page="10" :current-page.sync="page"/>
+            <w-pager :total-page="20" :current-page.sync="page"/>
         </div>
     </div>
 </template>
