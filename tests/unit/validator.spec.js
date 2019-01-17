@@ -14,7 +14,6 @@ describe('validator', () => {
         let yyy = [{key: "email", required: true}]
         let validator = new Validator()
         let error = validator.validate(xxx,yyy)
-        console.log(error);
         expect(error.email.required).to.equal("必填")
     })
 
@@ -52,6 +51,26 @@ describe('validator', () => {
             validator.validate(xxx,yyy)
         }
         expect(fn).to.not.throw();
+    })
+    it("允许添加公共验证规则",() => {
+        let xxx = {email: "fdsfd@qq.com"}
+        let yyy = [{key: "email", required: true, hasNumber: true}]
+        Validator.add("hasNumber", (rule, validationData, error)=>{
+            if(!/\d/.test(validationData)){
+                error[rule.key].hasNumber = "没有数字"
+            } else {
+                error[rule.key].hasNumber = undefined
+            }
+        })
+        let validation1 = new Validator()
+        let validation2 = new Validator()
+        let error1 = validation1.validate(xxx,yyy)
+        let error2 = validation2.validate(xxx,yyy)
+
+        expect(error1.email.hasNumber).to.equal("没有数字")
+        expect(error2.email.hasNumber).to.equal("没有数字")
+
+
     })
 
 })

@@ -4,7 +4,9 @@
 * */
 export default class Validator{
     constructor(){}
-
+    static add(name, fn){
+        Validator.prototype[name] = fn
+    }
     validate(data, rules){
         let error = {}
         rules.forEach((rule)=>{
