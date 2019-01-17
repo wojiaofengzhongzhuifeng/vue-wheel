@@ -28,7 +28,8 @@ export default class Validator{
             let validators = Object.keys(rule).filter((key)=>key !== "key" && key !== "required")
             validators.forEach((validationKey)=>{
                 if(this[validationKey]){
-                    this[validationKey](rule, validationData, error)
+                    const result = this[validationKey](rule, validationData)
+                    error[rule.key][validationKey] = result
                 } else {
                     throw "匹配方法找不到"
                 }
@@ -39,23 +40,24 @@ export default class Validator{
     }
 
 
-    pattern(rule,validationData, error){
+    pattern(rule,validationData){
         if(rule.pattern === "email"){
             let reg = /^.+@.+$/
             if(!reg.test(validationData)){
-                error[rule.key].pattern = "邮箱出错"
-            } else{
-                error[rule.key].pattern = undefined
+                return "邮箱出错"
             }
         } else if(rule.pattern === "phone"){
             let reg = /^\d{11}$/
             if(!reg.test(validationData)){
-                error[rule.key].pattern = "手机出错"
-            } else{
-                error[rule.key].pattern = undefined
+                return "手机出错"
             }
         }
     }
 
 }
 
+// let xxx = {email: "123123"}
+// let yyy = [{key: "email", required: true, pattern: "phone"}]
+// let validator = new Validator()
+// let error = validator.validate(xxx,yyy)
+// console.log(error)

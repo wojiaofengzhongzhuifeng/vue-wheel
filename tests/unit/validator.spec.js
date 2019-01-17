@@ -39,12 +39,9 @@ describe('validator', () => {
         let xxx = {email: "123123"}
         let yyy = [{key: "email", required: true, hasNumber: true}]
         let validator = new Validator()
-        validator.hasNumber = (rule,validationData, error)=>{
-            if(!/\d/.test(validationData)){
-                error[rule.key].hasNumber = "没有数字"
-            } else {
-                error[rule.key].hasNumber = undefined
-
+        validator.hasNumber = (rule,validationData)=>{
+            if(!/\d/.test(validationData)) {
+                return "没有数字"
             }
         }
         let fn = ()=>{
@@ -55,11 +52,9 @@ describe('validator', () => {
     it("允许添加公共验证规则",() => {
         let xxx = {email: "fdsfd@qq.com"}
         let yyy = [{key: "email", required: true, hasNumber: true}]
-        Validator.add("hasNumber", (rule, validationData, error)=>{
+        Validator.add("hasNumber", (rule, validationData)=>{
             if(!/\d/.test(validationData)){
-                error[rule.key].hasNumber = "没有数字"
-            } else {
-                error[rule.key].hasNumber = undefined
+                return "没有数字"
             }
         })
         let validation1 = new Validator()
