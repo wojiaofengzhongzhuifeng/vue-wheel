@@ -148,7 +148,8 @@
         </div>
 
         <div style="margin: 10px;">
-            <w-table :columns="columns" :data-source="dataSource"></w-table>
+            <!--5步骤2：添加bordered-->
+            <w-table :columns="columns" :data-source="dataSource" bordered compacted></w-table>
         </div>
     </div>
 </template>
