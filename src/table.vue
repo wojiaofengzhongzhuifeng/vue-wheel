@@ -1,12 +1,11 @@
 <template>
     <div class="table-wrapper">
         <!--5步骤3：如果bordered为true， 那么有 bordered class-->
-        {{selectItem}}
         <table :class="{bordered, compacted}">
             <thead>
                 <tr>
                     <th>
-                        <input type="checkbox">
+                        <input type="checkbox" ref="selectAllCheckbox" @change="selectAll($event)">
                     </th>
                     <th v-for="head in columns">
                         {{head.name}}
@@ -80,7 +79,15 @@
                 } else {
                     return false
                 }
-            }
+            },
+            selectAll($event){
+                if($event.target.checked){
+                    this.$emit("update:selectItem", this.dataSource)
+                } else {
+                    this.$emit("update:selectItem", [])
+                }
+
+            },
         }
     }
 </script>
