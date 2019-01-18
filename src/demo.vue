@@ -146,6 +146,10 @@
         <div style="margin: 100px">
             <w-pager :total-page="15" :current-page.sync="page"/>
         </div>
+
+        <div style="margin: 10px;">
+            <w-table :columns="columns" :data-source="dataSource"></w-table>
+        </div>
     </div>
 </template>
 
@@ -182,6 +186,7 @@
     import WNavSub from "./nav/nav-sub"
     import WNavItem from "./nav/nav-item"
     import Pager from "./pager"
+    import Table from "./table"
 
     // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
     Vue.use(toastPlugin);
@@ -212,6 +217,7 @@
     Vue.component("w-nav-sub", WNavSub);
     Vue.component("w-nav-item", WNavItem);
     Vue.component("w-pager", Pager);
+    Vue.component("w-table", Table);
 
 
 
@@ -273,6 +279,8 @@
                 autoPlay:false,
                 selectNav: ["hire"],
                 page:3,
+                columns:[{name: "姓名", dataIndex: "userName"}, {name: "分数", dataIndex: "score"}],
+                dataSource: [{userName: "饶家俊", score: "100"}, {userName: "xx", score: "33"},{userName: "rr", score: "3333"}]
             }
         },
 
