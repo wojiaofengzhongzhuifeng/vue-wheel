@@ -1,6 +1,7 @@
 <template>
     <div class="table-wrapper">
         <!--5步骤3：如果bordered为true， 那么有 bordered class-->
+        {{selectItem}}
         <table :class="{bordered, compacted}">
             <thead>
                 <tr>
@@ -16,7 +17,7 @@
             <!--3循环1-->
                 <tr v-for="data in dataSource">
                     <td>
-                        <input type="checkbox">
+                        <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
                     </td>
                     <td v-for="column in columns">
                         {{data[column.dataIndex]}}
@@ -34,6 +35,7 @@
     *3. v-for 重复的标签是什么？ 重复的次数取决什么数据？ 3循环
     *4。 防止两列之间空隙 4空隙
     *5. 添加class步骤 5步骤
+    *6. 一次完整的单向数据流 6数据
     * */
     export default {
         props:{
@@ -52,6 +54,32 @@
             compacted:{
                 type: Boolean,
                 default: false,
+            },
+            selectItem:{
+                type: Array,
+            }
+        },
+        methods:{
+            //6数据1: 子组件将数据传出去
+            clickCheckBox(data, $event){
+                let copy = JSON.parse(JSON.stringify(this.selectItem))
+                if($event.target.checked){
+                    copy.push(data)
+                    this.$emit("update:selectItem", copy)
+                } else {
+                    let filterSelectItems = copy.filter((obj)=>obj.id !== data.id)
+                    this.$emit("update:selectItem", filterSelectItems)
+
+                }
+            },
+            // 6数据3： 重点！为了能让 需求："父组件传给子组件的数据发生变化，子组件更新ui" 实现（数据与ui同步）
+            // 本来应该把 checkboxIfchecked 作为 computed ，但是computed不支持传入参数，所以这个计算属性放到methods，也是可以实现同步的
+            checkboxIfchecked(data){
+                if(this.selectItem.filter((obj)=>obj.id === data.id).length >= 1){
+                    return true
+                } else {
+                    return false
+                }
             }
         }
     }
