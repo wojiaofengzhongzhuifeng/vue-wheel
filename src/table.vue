@@ -5,7 +5,7 @@
             <thead>
                 <tr>
                     <th>
-                        <input type="checkbox" ref="selectAllCheckbox" @change="selectAll($event)">
+                        <input type="checkbox" ref="selectAllCheckbox" @change="selectAll($event)" :checked="allSelect">
                     </th>
                     <th v-for="head in columns">
                         {{head.name}}
@@ -35,8 +35,17 @@
     *4。 防止两列之间空隙 4空隙
     *5. 添加class步骤 5步骤
     *6. 一次完整的单向数据流 6数据
+    *7. watch 与 computed 区别
+    *  - 相同点：观测数据
+    *  - 不同点：watch 观测数据变化后，   执行代码
+    *          computed 观测数据变化后， 改变数据
     * */
     export default {
+        data(){
+            return {
+                allSelect: false,
+            }
+        },
         props:{
             columns: {
                 type: Array,
@@ -56,6 +65,18 @@
             },
             selectItem:{
                 type: Array,
+            }
+        },
+        watch:{
+            selectItem(){
+                if(this.selectItem.length === 0){
+                    this.$refs.selectAllCheckbox.indeterminate = false
+                } else if (this.selectItem.length >=1 && this.selectItem.length < this.dataSource.length){
+                    this.$refs.selectAllCheckbox.indeterminate = true
+                } else {
+                    this.$refs.selectAllCheckbox.indeterminate = false
+                    this.allSelect = true
+                }
             }
         },
         methods:{
@@ -81,6 +102,7 @@
                 }
             },
             selectAll($event){
+                this.allSelect = !this.allSelect
                 if($event.target.checked){
                     this.$emit("update:selectItem", this.dataSource)
                 } else {

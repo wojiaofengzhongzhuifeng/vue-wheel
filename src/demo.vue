@@ -283,7 +283,7 @@
                 columns:[{name: "姓名", dataIndex: "userName"}, {name: "分数", dataIndex: "score"}],
                 dataSource: [{userName: "饶家俊", score: "100", id: 1}, {userName: "xx", score: "33", id: 2},{userName: "rr", score: "3333", id:3}],
                 //6数据2：父组件传给子组件数据，要求子组件根据数据更新ui
-                selectItem:[{userName: "饶家俊", score: "100", id:1}]
+                selectItem:[]
             }
         },
 
@@ -353,9 +353,9 @@
         },
         mounted() {
             //6数据4： 测试数据变了，UI是否跟着变化
-            setTimeout(()=>{
-                this.selectItem = []
-            }, 3000)
+            // setTimeout(()=>{
+            //     this.selectItem = []
+            // }, 3000)
         }
 
     }
