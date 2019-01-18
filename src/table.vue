@@ -41,11 +41,6 @@
     *          computed 观测数据变化后， 改变数据
     * */
     export default {
-        data(){
-            return {
-                allSelect: false,
-            }
-        },
         props:{
             columns: {
                 type: Array,
@@ -75,7 +70,16 @@
                     this.$refs.selectAllCheckbox.indeterminate = true
                 } else {
                     this.$refs.selectAllCheckbox.indeterminate = false
-                    this.allSelect = true
+                }
+            },
+
+        },
+        computed:{
+            allSelect(){
+                if(this.selectItem.length===this.dataSource.length){
+                    return true
+                } else {
+                    return false
                 }
             }
         },
@@ -102,7 +106,6 @@
                 }
             },
             selectAll($event){
-                this.allSelect = !this.allSelect
                 if($event.target.checked){
                     this.$emit("update:selectItem", this.dataSource)
                 } else {
