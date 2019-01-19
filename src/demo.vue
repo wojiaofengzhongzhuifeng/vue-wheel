@@ -286,7 +286,7 @@
                 selectItem:[],
                 sorter: {
                     score: "desc",
-                    age: "asc"
+                    age: ""
                 }
             }
         },

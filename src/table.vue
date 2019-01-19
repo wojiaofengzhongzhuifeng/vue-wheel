@@ -149,7 +149,11 @@
             },
             onchangeSort(dataIndex, sort){
                 let copy = JSON.parse(JSON.stringify(this.sorter))
-                copy[dataIndex] = sort
+                if(copy[dataIndex] === sort){
+                    copy[dataIndex] = ""
+                } else {
+                    copy[dataIndex] = sort
+                }
                 this.$emit("update:sorter", copy)
             },
         }
