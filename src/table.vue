@@ -9,9 +9,9 @@
                     </th>
                     <th v-for="head in columns">
                         {{head.name}}
-                        <span class="icon-wrapper">
-                            <icon icon-name="caret-up"></icon>
-                            <icon icon-name="caret-down"></icon>
+                        <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
+                            <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')"></icon>
+                            <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')"></icon>
                         </span>
                     </th>
                 </tr>
@@ -69,6 +69,9 @@
             },
             selectItem:{
                 type: Array,
+            },
+            sorter:{
+                type: Object,
             }
         },
         watch:{
@@ -95,7 +98,7 @@
                     }
                 }
                 return equal
-            }
+            },
         },
         methods:{
             //6数据1: 子组件将数据传出去
@@ -128,6 +131,20 @@
                 }
 
             },
+            sortIconStyle(dataIndex, sort){
+                let allSortIndexes = Object.keys(this.sorter)
+                if(allSortIndexes.indexOf(dataIndex) >=0){
+                    if(this.sorter[dataIndex] === ""){
+                        return "nosort"
+                    } else if (this.sorter[dataIndex] === sort){
+                        return "active"
+                    } else {
+                        return true
+                    }
+                } else {
+                    return false
+                }
+            }
         }
     }
 </script>
