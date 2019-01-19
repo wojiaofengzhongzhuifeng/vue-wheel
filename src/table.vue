@@ -5,7 +5,7 @@
             <table :class="{bordered, compacted}" ref="table">
                 <thead>
                 <tr>
-                    <th style="width:50px">
+                    <th>
                         <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
                     </th>
                     <th v-for="head in columns" @click="changeSort(head.dataIndex)">
@@ -31,7 +31,7 @@
                 <tbody>
                 <!--3循环1-->
                 <tr v-for="data in dataSource">
-                    <td  style="width:50px">
+                    <td>
                         <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
                     </td>
                     <td v-for="column in columns">
@@ -128,23 +128,40 @@
             },
         },
         mounted(){
-            // 克隆 node
             let copyTable = this.$refs.table.cloneNode(true)
+            let tableChildren = Array.from(this.$refs.table.childNodes)
 
-            // 只要thead节点
-            let copyTableChildren = Array.prototype.slice.call(copyTable.childNodes)
+
+            // 获取原table的head的每一列的宽度
+            let tdWidth = []
+            tableChildren.forEach((dom)=>{
+                if(dom.tagName === "THEAD"){
+                    let trChildren = Array.from(dom.childNodes[0].childNodes)
+                    trChildren.forEach((dom)=>{
+                        let domPaddingLeft = parseInt(window.getComputedStyle(dom).paddingLeft);
+                        const {width} = dom.getBoundingClientRect()
+                        let widthNumber = width - 2 * domPaddingLeft + "px"
+                        tdWidth.push(widthNumber)
+                    })
+                }
+            })
+
+
+            let copyTableChildren = Array.from(copyTable.childNodes)
             copyTableChildren.forEach((dom)=>{
-                console.log(dom.tagName);
                 if(dom.tagName !== "THEAD"){
                     dom.remove()
+                } else {
+                    let trChildren = Array.from(dom.childNodes[0].childNodes)
+                    trChildren.forEach((dom, index)=>{
+                        dom.style.width = tdWidth[index]
+                    })
                 }
             })
             copyTable.classList.add("copyTableHead")
             this.$refs.wrapper.appendChild(copyTable)
 
-            // const dom = document.createElement("div")
-            // dom.innerText = "test"
-            // this.$refs.tableWrapper.appendChild(dom)
+
         },
         methods:{
             //6数据1: 子组件将数据传出去
