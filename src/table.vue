@@ -5,7 +5,7 @@
             <thead>
                 <tr>
                     <th>
-                        <input type="checkbox" ref="selectAllCheckbox" @change="selectAll($event)" :checked="allSelect">
+                        <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
                     </th>
                     <th v-for="head in columns">
                         {{head.name}}
@@ -34,11 +34,12 @@
     *3. v-for 重复的标签是什么？ 重复的次数取决什么数据？ 3循环
     *4。 防止两列之间空隙 4空隙
     *5. 添加class步骤 5步骤
-    *6. 一次完整的单向数据流 6数据
-    *7. watch 与 computed 区别
+    *6. 一次完整的单向数computed据流 6数据
+    *7. watch 与  computed 区别
     *  - 相同点：观测数据
     *  - 不同点：watch 观测数据变化后，   执行代码
     *          computed 观测数据变化后， 改变数据
+    *8。 selectAllCheckbox 的ui展示思路很重要 8思路
     * */
     export default {
         props:{
@@ -64,9 +65,7 @@
         },
         watch:{
             selectItem(){
-                if(this.selectItem.length === 0){
-                    this.$refs.selectAllCheckbox.indeterminate = false
-                } else if (this.selectItem.length >=1 && this.selectItem.length < this.dataSource.length){
+                if(this.selectItem.length >=1 && this.selectItem.length < this.dataSource.length){
                     this.$refs.selectAllCheckbox.indeterminate = true
                 } else {
                     this.$refs.selectAllCheckbox.indeterminate = false
@@ -75,12 +74,19 @@
 
         },
         computed:{
+            //8思路1： 建立ui与数据的联系
             allSelect(){
-                if(this.selectItem.length===this.dataSource.length){
-                    return true
-                } else {
-                    return false
+                let allItems = this.dataSource.map(obj=>obj.id).sort((a, b)=>a- b)
+                let selectItems = this.selectItem.map(obj=>obj.id).sort((a, b)=>a- b)
+                let equal = true
+
+                for(let i=0;i<=allItems.length - 1;i++){
+                    if(allItems[i] !== selectItems[i]){
+                        equal = false
+                        break
+                    }
                 }
+                return equal
             }
         },
         methods:{
@@ -105,7 +111,8 @@
                     return false
                 }
             },
-            selectAll($event){
+            selectAllItems($event){
+                //8思路2：有了1步骤之后， 只需关心数据的变化
                 if($event.target.checked){
                     this.$emit("update:selectItem", this.dataSource)
                 } else {
