@@ -5,7 +5,7 @@
             <table :class="{bordered, compacted}" ref="table">
                 <thead>
                 <tr>
-                    <th>
+                    <th style="width:50px">
                         <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
                     </th>
                     <th v-for="head in columns" @click="changeSort(head.dataIndex)">
@@ -31,7 +31,7 @@
                 <tbody>
                 <!--3循环1-->
                 <tr v-for="data in dataSource">
-                    <td>
+                    <td  style="width:50px">
                         <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
                     </td>
                     <td v-for="column in columns">
