@@ -1,8 +1,9 @@
 <template>
-    <div class="table-wrapper">
-        <!--5步骤3：如果bordered为true， 那么有 bordered class-->
-        <table :class="{bordered, compacted}">
-            <thead>
+    <div class="table-wrapper" ref="wrapper">
+        <div class="table-container" :style="{height: height+'px', overflow:'auto'}">
+            <!--5步骤3：如果bordered为true， 那么有 bordered class-->
+            <table :class="{bordered, compacted}" ref="table">
+                <thead>
                 <tr>
                     <th>
                         <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
@@ -26,9 +27,9 @@
                         <!--</span>-->
                     </th>
                 </tr>
-            </thead>
-            <tbody>
-            <!--3循环1-->
+                </thead>
+                <tbody>
+                <!--3循环1-->
                 <tr v-for="data in dataSource">
                     <td>
                         <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
@@ -37,8 +38,9 @@
                         {{data[column.dataIndex]}}
                     </td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
         <div class="loading" v-if="loading">
             <icon icon-name="reload"></icon>
         </div>
@@ -61,6 +63,7 @@
     *9。 为什么监听不了icon的click事件？？ 9监听
     *10. div垂直居中  http://js.jirengu.com/riduvakare/1/edit?html,css,js,console,output
     *11。不要尝试对齐一个span标签（display:inline-xxx）和一段文字 11对齐
+    *12.
     * */
     import Icon from "./icon"
     export default {
@@ -93,6 +96,9 @@
             loading:{
                 type: Boolean,
                 default: false,
+            },
+            height:{
+                type: Number,
             }
         },
         watch:{
@@ -120,6 +126,25 @@
                 }
                 return equal
             },
+        },
+        mounted(){
+            // 克隆 node
+            let copyTable = this.$refs.table.cloneNode(true)
+
+            // 只要thead节点
+            let copyTableChildren = Array.prototype.slice.call(copyTable.childNodes)
+            copyTableChildren.forEach((dom)=>{
+                console.log(dom.tagName);
+                if(dom.tagName !== "THEAD"){
+                    dom.remove()
+                }
+            })
+            copyTable.classList.add("copyTableHead")
+            this.$refs.wrapper.appendChild(copyTable)
+
+            // const dom = document.createElement("div")
+            // dom.innerText = "test"
+            // this.$refs.tableWrapper.appendChild(dom)
         },
         methods:{
             //6数据1: 子组件将数据传出去
@@ -191,6 +216,7 @@
 <style lang="scss" scoped>
     @import "../styles/var";
     .table-wrapper{
+        position: relative;
         table{
             width:100%;
             text-align: left;
@@ -269,6 +295,12 @@
                 height:3em;
                 animation: loadingCircle 1s infinite linear;
             }
+        }
+        .copyTableHead{
+            position: absolute;
+            top: 0;
+            left:0;
+            background: white;
         }
 
     }

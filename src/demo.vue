@@ -156,6 +156,7 @@
                     :sorter.sync="sorter"
                     @update:sorter="getNewSort"
                     :loading="loading"
+                    :height="400"
             />
         </div>
     </div>
