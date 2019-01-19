@@ -154,7 +154,7 @@
                 } else {
                     copy[dataIndex] = sort
                 }
-                this.$emit("update:sorter", copy)
+                this.$emit("update:sorter", copy, dataIndex, sort)
             },
         }
     }

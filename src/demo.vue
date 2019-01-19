@@ -149,7 +149,13 @@
 
         <div style="margin: 10px;">
             <!--5步骤2：添加bordered-->
-            <w-table :columns="columns" :data-source="dataSource" :selectItem.sync="selectItem" :sorter.sync="sorter"></w-table>
+            <w-table
+                    :columns="columns"
+                    :data-source="dataSource"
+                    :selectItem.sync="selectItem"
+                    :sorter.sync="sorter"
+                    @update:sorter="getNewSort"
+            />
         </div>
     </div>
 </template>
@@ -285,7 +291,7 @@
                 //6数据2：父组件传给子组件数据，要求子组件根据数据更新ui
                 selectItem:[],
                 sorter: {
-                    score: "desc",
+                    score: "",
                     age: ""
                 }
             }
@@ -353,6 +359,21 @@
                 ajax2(id).then((result)=>{
                     fn(result)
                 })
+            },
+            getNewSort(a, b, c){
+                const dataIndex = arguments[1]
+                const sort = arguments[2]
+                console.log("dsata");
+                // 发送ajax请求， 我这里只做模拟
+                setTimeout(()=>{
+                    this.dataSource.sort((obj1, obj2)=>{
+                        if(sort === "desc"){
+                            return obj1[dataIndex] - obj2[dataIndex]
+                        } else {
+                            return obj2[dataIndex] - obj1[dataIndex]
+                        }
+                    })
+                }, 2000)
             }
         },
         mounted() {
