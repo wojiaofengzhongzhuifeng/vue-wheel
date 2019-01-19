@@ -288,7 +288,22 @@
                 selectNav: ["hire"],
                 page:3,
                 columns:[{name: "姓名", dataIndex: "userName"}, {name: "分数", dataIndex: "score"},{name: "年龄", dataIndex: "age"}],
-                dataSource: [{userName: "饶家俊", score: "100", id: 1, age: 12}, {userName: "xx", score: "33", id: 2, age: 12},{userName: "rr", score: "3333", id:3, age: 12}],
+                dataSource: [
+                    {userName: "饶家俊", score: "100", id: 1, age: 1},
+                    {userName: "xx", score: "33", id: 2, age: 3},
+                    {userName: "rr", score: "1", id:3, age: 5},
+                    {userName: "r", score: "2", id:4, age: 6},
+                    {userName: "d", score: "3", id:5, age: 12},
+                    {userName: "f", score: "4", id:6, age: 7},
+                    {userName: "v", score: "5", id:7, age: 5},
+                    {userName: "x", score: "6", id:8, age: 77},
+                    {userName: "a", score: "12", id:9, age: 8},
+                    {userName: "f", score: "33", id:10, age: 12},
+                    {userName: "g", score: "4", id:11, age: 333},
+                    {userName: "b", score: "5", id:12, age: 4},
+                    {userName: "v", score: "6", id:13, age: 6},
+                    {userName: "z", score: "88", id:14, age: 7},
+                ],
                 //6数据2：父组件传给子组件数据，要求子组件根据数据更新ui
                 selectItem:[],
                 sorter: {

@@ -13,8 +13,8 @@
                             {{head.name}}
                             <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
                                 <!--9监听1-->
-                                <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')" @click="onchangeSort(head.dataIndex, 'asc')"></icon>
-                                <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')" @click="onchangeSort(head.dataIndex, 'desc')"></icon>
+                                <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')"></icon>
+                                <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')"></icon>
                             </span>
                         </div>
                         <!--11对齐1： 之前-->
