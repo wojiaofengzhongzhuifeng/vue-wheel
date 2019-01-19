@@ -9,6 +9,10 @@
                     </th>
                     <th v-for="head in columns">
                         {{head.name}}
+                        <span class="icon-wrapper">
+                            <icon icon-name="caret-up"></icon>
+                            <icon icon-name="caret-down"></icon>
+                        </span>
                     </th>
                 </tr>
             </thead>
@@ -41,7 +45,11 @@
     *          computed 观测数据变化后， 改变数据
     *8。 selectAllCheckbox 的ui展示思路很重要 8思路
     * */
+    import Icon from "./icon"
     export default {
+        components:{
+            Icon
+        },
         props:{
             columns: {
                 type: Array,
@@ -150,6 +158,27 @@
             &.compacted{
                 td, th{
                     padding: 3px 5px;
+                }
+            }
+            .icon-wrapper{
+                display: inline-flex;
+                flex-direction: column;
+                svg{
+                    width:1em;
+                    height:1em;
+                    color: $line-grey;
+                }
+                svg:first-child{
+                    position: relative;
+                    bottom:1px;
+
+                }
+                svg:last-child{
+                    position: relative;
+                    bottom:7px;
+                }
+                svg.active{
+                    color: $color-blue;
                 }
             }
         }
