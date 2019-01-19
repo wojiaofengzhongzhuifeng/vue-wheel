@@ -368,7 +368,6 @@
                 this.loading = true
                 // 发送ajax请求， 我这里只做模拟
                 setTimeout(()=>{
-                    this.loading = false
                     this.dataSource.sort((obj1, obj2)=>{
                         if(sort === "desc"){
                             return obj1[dataIndex] - obj2[dataIndex]
@@ -376,6 +375,8 @@
                             return obj2[dataIndex] - obj1[dataIndex]
                         }
                     })
+                    this.loading = false
+
                 }, 2000)
             }
         },

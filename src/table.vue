@@ -7,13 +7,23 @@
                     <th>
                         <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
                     </th>
-                    <th v-for="head in columns">
-                        {{head.name}}
-                        <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
-                            <!--9监听1-->
-                            <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')" @click="onchangeSort(head.dataIndex, 'asc')"></icon>
-                            <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')" @click="onchangeSort(head.dataIndex, 'desc')"></icon>
-                        </span>
+                    <th v-for="head in columns" @click="changeSort(head.dataIndex)">
+                        <!--11对齐2： 在这两个（span 和 inline-xxx）使用新的div包裹-->
+                        <div class="table-wrapper-header">
+                            {{head.name}}
+                            <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
+                                <!--9监听1-->
+                                <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')" @click="onchangeSort(head.dataIndex, 'asc')"></icon>
+                                <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')" @click="onchangeSort(head.dataIndex, 'desc')"></icon>
+                            </span>
+                        </div>
+                        <!--11对齐1： 之前-->
+                        <!--{{head.name}}-->
+                        <!--<span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">-->
+                        <!--&lt;!&ndash;9监听1&ndash;&gt;-->
+                        <!--<icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')" @click="onchangeSort(head.dataIndex, 'asc')"></icon>-->
+                        <!--<icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')" @click="onchangeSort(head.dataIndex, 'desc')"></icon>-->
+                        <!--</span>-->
                     </th>
                 </tr>
             </thead>
@@ -50,6 +60,7 @@
     *8。 selectAllCheckbox 的ui展示思路很重要 8思路
     *9。 为什么监听不了icon的click事件？？ 9监听
     *10. div垂直居中  http://js.jirengu.com/riduvakare/1/edit?html,css,js,console,output
+    *11。不要尝试对齐一个span标签（display:inline-xxx）和一段文字 11对齐
     * */
     import Icon from "./icon"
     export default {
@@ -164,6 +175,15 @@
                 }
                 this.$emit("update:sorter", copy, dataIndex, sort)
             },
+            changeSort(dataIndex){
+                if(this.sorter[dataIndex] === ""){
+                    this.onchangeSort(dataIndex, "asc")
+                } else if (this.sorter[dataIndex] === "asc"){
+                    this.onchangeSort(dataIndex, "desc")
+                } else if (this.sorter[dataIndex] === "desc"){
+                    this.onchangeSort(dataIndex, "")
+                }
+            }
         }
     }
 </script>
@@ -180,6 +200,20 @@
             td, th{
                 padding: 8px 10px;
                 border-bottom: $border ;
+                &:hover{
+                    background: $backgroud-light;
+                    cursor: pointer;
+                }
+
+            }
+            /*11对齐3： 包裹div中添加*/
+            th > .table-wrapper-header{
+                display: flex;
+                align-items: center;
+                .icon-wrapper{
+                    position: relative;
+                    top: 4px;
+                }
             }
             tbody > tr:nth-child(even){
                 background: $line-grey;
