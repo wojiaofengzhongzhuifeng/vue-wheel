@@ -10,8 +10,9 @@
                     <th v-for="head in columns">
                         {{head.name}}
                         <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
-                            <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')"></icon>
-                            <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')"></icon>
+                            <!--9监听1-->
+                            <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')" @click="onchangeSort(head.dataIndex, 'asc')"></icon>
+                            <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')" @click="onchangeSort(head.dataIndex, 'desc')"></icon>
                         </span>
                     </th>
                 </tr>
@@ -44,6 +45,7 @@
     *  - 不同点：watch 观测数据变化后，   执行代码
     *          computed 观测数据变化后， 改变数据
     *8。 selectAllCheckbox 的ui展示思路很重要 8思路
+    *9。 为什么监听不了icon的click事件？？ 9监听
     * */
     import Icon from "./icon"
     export default {
@@ -144,7 +146,12 @@
                 } else {
                     return false
                 }
-            }
+            },
+            onchangeSort(dataIndex, sort){
+                let copy = JSON.parse(JSON.stringify(this.sorter))
+                copy[dataIndex] = sort
+                this.$emit("update:sorter", copy)
+            },
         }
     }
 </script>
@@ -181,9 +188,10 @@
                 display: inline-flex;
                 flex-direction: column;
                 svg{
-                    width:1em;
-                    height:1em;
+                    width:1.2em;
+                    height:1.2em;
                     color: $line-grey;
+                    cursor: pointer;
                 }
                 svg:first-child{
                     position: relative;

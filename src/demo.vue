@@ -149,7 +149,7 @@
 
         <div style="margin: 10px;">
             <!--5步骤2：添加bordered-->
-            <w-table :columns="columns" :data-source="dataSource" :selectItem.sync="selectItem" :sorter="sorter"></w-table>
+            <w-table :columns="columns" :data-source="dataSource" :selectItem.sync="selectItem" :sorter.sync="sorter"></w-table>
         </div>
     </div>
 </template>
@@ -280,12 +280,13 @@
                 autoPlay:false,
                 selectNav: ["hire"],
                 page:3,
-                columns:[{name: "姓名", dataIndex: "userName"}, {name: "分数", dataIndex: "score"}],
-                dataSource: [{userName: "饶家俊", score: "100", id: 1}, {userName: "xx", score: "33", id: 2},{userName: "rr", score: "3333", id:3}],
+                columns:[{name: "姓名", dataIndex: "userName"}, {name: "分数", dataIndex: "score"},{name: "年龄", dataIndex: "age"}],
+                dataSource: [{userName: "饶家俊", score: "100", id: 1, age: 12}, {userName: "xx", score: "33", id: 2, age: 12},{userName: "rr", score: "3333", id:3, age: 12}],
                 //6数据2：父组件传给子组件数据，要求子组件根据数据更新ui
                 selectItem:[],
                 sorter: {
                     score: "desc",
+                    age: "asc"
                 }
             }
         },
