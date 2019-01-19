@@ -29,6 +29,9 @@
                 </tr>
             </tbody>
         </table>
+        <div class="loading" v-if="loading">
+            <icon icon-name="reload"></icon>
+        </div>
     </div>
 </template>
 
@@ -46,6 +49,7 @@
     *          computed 观测数据变化后， 改变数据
     *8。 selectAllCheckbox 的ui展示思路很重要 8思路
     *9。 为什么监听不了icon的click事件？？ 9监听
+    *10. div垂直居中  http://js.jirengu.com/riduvakare/1/edit?html,css,js,console,output
     * */
     import Icon from "./icon"
     export default {
@@ -74,6 +78,10 @@
             },
             sorter:{
                 type: Object,
+            },
+            loading:{
+                type: Boolean,
+                default: false,
             }
         },
         watch:{
@@ -209,6 +217,23 @@
                 svg.active{
                     color: $color-blue;
                 }
+            }
+        }
+        position: relative;
+        .loading{
+            position: absolute;
+            top: 0;
+            left:0;
+            width:100%;
+            height:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.1);
+            svg{
+                width:3em;
+                height:3em;
+                animation: loadingCircle 1s infinite linear;
             }
         }
 

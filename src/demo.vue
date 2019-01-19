@@ -155,6 +155,7 @@
                     :selectItem.sync="selectItem"
                     :sorter.sync="sorter"
                     @update:sorter="getNewSort"
+                    :loading="loading"
             />
         </div>
     </div>
@@ -293,7 +294,8 @@
                 sorter: {
                     score: "",
                     age: ""
-                }
+                },
+                loading: false
             }
         },
 
@@ -363,9 +365,10 @@
             getNewSort(a, b, c){
                 const dataIndex = arguments[1]
                 const sort = arguments[2]
-                console.log("dsata");
+                this.loading = true
                 // 发送ajax请求， 我这里只做模拟
                 setTimeout(()=>{
+                    this.loading = false
                     this.dataSource.sort((obj1, obj2)=>{
                         if(sort === "desc"){
                             return obj1[dataIndex] - obj2[dataIndex]
