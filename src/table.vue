@@ -5,6 +5,7 @@
             <table :class="{bordered, compacted}" ref="table">
                 <thead ref="head">
                 <tr>
+                    <th style="width: 3em" v-if="showExpandCol"></th>
                     <th style="width: 3em">
                         <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
                     </th>
@@ -31,6 +32,9 @@
                 <tbody>
                 <!--3循环1-->
                 <tr v-for="data in dataSource">
+                    <td style="width: 3em" v-if="showExpandCol">
+                        <icon icon-name="plus-square" v-if="data.description"></icon>
+                    </td>
                     <td style="width: 3em">
                         <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
                     </td>
@@ -129,6 +133,16 @@
                 }
                 return equal
             },
+            showExpandCol(){
+                let show = false
+                for(let i=0;i<=this.dataSource.length -1;i++){
+                    if(this.dataSource[i].description){
+                        show = true
+                        break
+                    }
+                }
+                return show
+            }
         },
         mounted(){
             // 13参数2： 现在将copyTable放到this上

@@ -291,9 +291,9 @@
                 page:3,
                 columns:[{name: "姓名", dataIndex: "userName", width:100}, {name: "分数", dataIndex: "score", width:100},{name: "年龄", dataIndex: "age"}],
                 dataSource: [
-                    {userName: "饶家俊", score: "100", id: 1, age: 1},
+                    {userName: "饶家俊", score: "100", id: 1, age: 1,},
                     {userName: "xx", score: "33", id: 2, age: 3},
-                    {userName: "rr", score: "1", id:3, age: 5},
+                    {userName: "rr", score: "1", id:3, age: 5, },
                     {userName: "r", score: "2", id:4, age: 6},
                     {userName: "d", score: "3", id:5, age: 12},
                     {userName: "f", score: "4", id:6, age: 7},
