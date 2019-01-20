@@ -157,6 +157,7 @@
                     @update:sorter="getNewSort"
                     :loading="loading"
                     :height="400"
+                    bordered
             />
         </div>
     </div>

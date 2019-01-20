@@ -63,7 +63,9 @@
     *9。 为什么监听不了icon的click事件？？ 9监听
     *10. div垂直居中  http://js.jirengu.com/riduvakare/1/edit?html,css,js,console,output
     *11。不要尝试对齐一个span标签（display:inline-xxx）和一段文字 11对齐
-    *12.
+    *12. 要移除事件监听 12监听
+    *13。 封装函数时， 尽量不要带参数 13参数
+    *14. 善后工作 14善后
     * */
     import Icon from "./icon"
     export default {
@@ -128,40 +130,25 @@
             },
         },
         mounted(){
-            let copyTable = this.$refs.table.cloneNode(true)
-            let tableChildren = Array.from(this.$refs.table.childNodes)
+            // 13参数2： 现在将copyTable放到this上
+            this.copyTable = this.$refs.table.cloneNode(true)
+            this.updateCopyTableWidth()
+            this.copyTable.classList.add("copyTableHead")
+            this.$refs.wrapper.appendChild(this.copyTable)
 
+            // 12监听1： 本能会这样写
+            // window.onresize = ()=>{
+            //     this.updateCopyTableWidth()
+            // }
 
-            // 获取原table的head的每一列的宽度
-            let tdWidth = []
-            tableChildren.forEach((dom)=>{
-                if(dom.tagName === "THEAD"){
-                    let trChildren = Array.from(dom.childNodes[0].childNodes)
-                    trChildren.forEach((dom)=>{
-                        let domPaddingLeft = parseInt(window.getComputedStyle(dom).paddingLeft);
-                        const {width} = dom.getBoundingClientRect()
-                        let widthNumber = width - 2 * domPaddingLeft + "px"
-                        tdWidth.push(widthNumber)
-                    })
-                }
-            })
+            window.addEventListener("resize", this.updateCopyTableWidth)
 
+        },
 
-            let copyTableChildren = Array.from(copyTable.childNodes)
-            copyTableChildren.forEach((dom)=>{
-                if(dom.tagName !== "THEAD"){
-                    dom.remove()
-                } else {
-                    let trChildren = Array.from(dom.childNodes[0].childNodes)
-                    trChildren.forEach((dom, index)=>{
-                        dom.style.width = tdWidth[index]
-                    })
-                }
-            })
-            copyTable.classList.add("copyTableHead")
-            this.$refs.wrapper.appendChild(copyTable)
-
-
+        // 14善后
+        beforeDestroy(){
+            window.removeEventListener("resize", this.updateCopyTableWidth)
+            this.copyTable.remove()
         },
         methods:{
             //6数据1: 子组件将数据传出去
@@ -225,6 +212,38 @@
                 } else if (this.sorter[dataIndex] === "desc"){
                     this.onchangeSort(dataIndex, "")
                 }
+            },
+            updateCopyTableWidth(){
+                console.log("upd1ata");
+                let tableChildren = Array.from(this.$refs.table.childNodes)
+
+
+                // 获取原table的head的每一列的宽度
+                let tdWidth = []
+                tableChildren.forEach((dom)=>{
+                    if(dom.tagName === "THEAD"){
+                        let trChildren = Array.from(dom.childNodes[0].childNodes)
+                        trChildren.forEach((dom)=>{
+                            let domPaddingLeft = parseInt(window.getComputedStyle(dom).paddingLeft);
+                            const {width} = dom.getBoundingClientRect()
+                            let widthNumber = width - 2 * domPaddingLeft + "px"
+                            tdWidth.push(widthNumber)
+                        })
+                    }
+                })
+
+                // 13参数1 原本copyTable是通过参数传过来的
+                let copyTableChildren = Array.from(this.copyTable.childNodes)
+                copyTableChildren.forEach((dom)=>{
+                    if(dom.tagName !== "THEAD"){
+                        dom.remove()
+                    } else {
+                        let trChildren = Array.from(dom.childNodes[0].childNodes)
+                        trChildren.forEach((dom, index)=>{
+                            dom.style.width = tdWidth[index]
+                        })
+                    }
+                })
             }
         }
     }
