@@ -31,17 +31,35 @@
                 </thead>
                 <tbody>
                 <!--3循环1-->
-                <tr v-for="data in dataSource">
-                    <td style="width: 3em" v-if="showExpandCol">
-                        <icon icon-name="plus-square" v-if="data.description"></icon>
-                    </td>
-                    <td style="width: 3em">
-                        <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
-                    </td>
-                    <td v-for="column in columns" :style="{width: column.width + 'px'}">
-                        {{data[column.dataIndex]}}
-                    </td>
-                </tr>
+                <template v-for="data in dataSource">
+                    <tr>
+                        <td style="width: 3em" v-if="showExpandCol">
+                            <icon icon-name="plus-square" v-if="data.description" @click="toggleExpand(data.id)"></icon>
+                        </td>
+                        <td style="width: 3em">
+                            <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
+                        </td>
+                        <td v-for="column in columns" :style="{width: column.width + 'px'}">
+                            {{data[column.dataIndex]}}
+                        </td>
+                    </tr>
+                    <tr v-if="data.description && inExpendedIds(data.id)">
+                        <td :colspan="5" style="background: #ebedf0">
+                            {{data.description}}
+                        </td>
+                    </tr>
+                </template>
+                <!--<tr v-for="data in dataSource">-->
+                    <!--<td style="width: 3em" v-if="showExpandCol">-->
+                        <!--<icon icon-name="plus-square" v-if="data.description"></icon>-->
+                    <!--</td>-->
+                    <!--<td style="width: 3em">-->
+                        <!--<input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">-->
+                    <!--</td>-->
+                    <!--<td v-for="column in columns" :style="{width: column.width + 'px'}">-->
+                        <!--{{data[column.dataIndex]}}-->
+                    <!--</td>-->
+                <!--</tr>-->
                 </tbody>
             </table>
         </div>
@@ -74,6 +92,11 @@
     * */
     import Icon from "./icon"
     export default {
+        data(){
+            return {
+                expandItems:[1]
+            }
+        },
         components:{
             Icon
         },
@@ -233,6 +256,16 @@
                     console.log("这里");
                 }
             },
+            inExpendedIds (id) {
+                return this.expandItems.indexOf(id) >= 0
+            },
+            toggleExpand (id) {
+                if (this.inExpendedIds(id)) {
+                    this.expandItems.splice(this.expandItems.indexOf(id), 1)
+                } else {
+                    this.expandItems.push(id)
+                }
+            },
             /*
             updateCopyTableWidth(){
                 console.log("upd1ata");
@@ -301,7 +334,6 @@
                 }
             }
             tbody > tr:nth-child(even){
-                background: $line-grey;
             }
             /*5步骤4：bordered 添加合适的style*/
             &.bordered{
