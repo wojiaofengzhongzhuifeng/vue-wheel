@@ -3,7 +3,7 @@
         <div class="table-container" :style="{height: height+'px', overflow:'auto'}">
             <!--5步骤3：如果bordered为true， 那么有 bordered class-->
             <table :class="{bordered, compacted}" ref="table">
-                <thead>
+                <thead ref="head">
                 <tr>
                     <th>
                         <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
@@ -131,9 +131,10 @@
         },
         mounted(){
             // 13参数2： 现在将copyTable放到this上
-            this.copyTable = this.$refs.table.cloneNode(true)
-            this.updateCopyTableWidth()
+            this.copyTable = this.$refs.table.cloneNode(false)
+            // this.updateCopyTableWidth()
             this.copyTable.classList.add("copyTableHead")
+            this.copyTable.appendChild(this.$refs.head)
             this.$refs.wrapper.appendChild(this.copyTable)
 
             // 12监听1： 本能会这样写
@@ -141,13 +142,13 @@
             //     this.updateCopyTableWidth()
             // }
 
-            window.addEventListener("resize", this.updateCopyTableWidth)
+            // window.addEventListener("resize", this.updateCopyTableWidth)
 
         },
 
         // 14善后
         beforeDestroy(){
-            window.removeEventListener("resize", this.updateCopyTableWidth)
+            // window.removeEventListener("resize", this.updateCopyTableWidth)
             this.copyTable.remove()
         },
         methods:{
@@ -211,8 +212,11 @@
                     this.onchangeSort(dataIndex, "desc")
                 } else if (this.sorter[dataIndex] === "desc"){
                     this.onchangeSort(dataIndex, "")
+                } else {
+                    console.log("这里");
                 }
             },
+            /*
             updateCopyTableWidth(){
                 console.log("upd1ata");
                 let tableChildren = Array.from(this.$refs.table.childNodes)
@@ -245,6 +249,7 @@
                     }
                 })
             }
+            */
         }
     }
 </script>
@@ -296,19 +301,19 @@
                 display: inline-flex;
                 flex-direction: column;
                 svg{
-                    width:1.2em;
-                    height:1.2em;
+                    width:1em;
+                    height:1em;
                     color: $line-grey;
                     cursor: pointer;
                 }
                 svg:first-child{
-                    position: relative;
-                    bottom:1px;
+                    position: absolute;
+                    bottom:0px;
 
                 }
                 svg:last-child{
-                    position: relative;
-                    bottom:7px;
+                    position: absolute;
+                    bottom:-10px;
                 }
                 svg.active{
                     color: $color-blue;

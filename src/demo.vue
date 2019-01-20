@@ -309,8 +309,7 @@
                 //6数据2：父组件传给子组件数据，要求子组件根据数据更新ui
                 selectItem:[],
                 sorter: {
-                    score: "",
-                    age: ""
+                    score: ""
                 },
                 loading: false
             }
