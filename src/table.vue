@@ -1,6 +1,6 @@
 <template>
     <div class="table-wrapper" ref="wrapper">
-        <div class="table-container" :style="{height: height+'px', overflow:'auto'}">
+        <div class="table-container" :style="{overflow:'auto'}" ref="container">
             <!--5步骤3：如果bordered为true， 那么有 bordered class-->
             <table :class="{bordered, compacted}" ref="table">
                 <thead ref="head">
@@ -66,6 +66,7 @@
     *12. 要移除事件监听 12监听
     *13。 封装函数时， 尽量不要带参数 13参数
     *14. 善后工作 14善后
+    *15.
     * */
     import Icon from "./icon"
     export default {
@@ -137,7 +138,8 @@
             this.copyTable.appendChild(this.$refs.head)
             this.$refs.wrapper.appendChild(this.copyTable)
             const {height} = this.$refs.head.getBoundingClientRect()
-            this.$refs.table.style.marginTop = height + "px"
+            this.$refs.container.style.height = this.height - height + "px"
+            this.$refs.container.style.marginTop = height + "px"
             // 12监听1： 本能会这样写
             // window.onresize = ()=>{
             //     this.updateCopyTableWidth()
@@ -259,6 +261,7 @@
     @import "../styles/var";
     .table-wrapper{
         position: relative;
+        overflow: auto;
         table{
             width:100%;
             text-align: left;
