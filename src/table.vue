@@ -5,12 +5,12 @@
             <table :class="{bordered, compacted}" ref="table">
                 <thead ref="head">
                 <tr>
-                    <th>
+                    <th style="width: 3em">
                         <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
                     </th>
-                    <th v-for="head in columns" @click="changeSort(head.dataIndex)">
+                    <th v-for="head in columns" @click="changeSort(head.dataIndex)" :style="{width: head.width + 'px'}">
                         <!--11对齐2： 在这两个（span 和 inline-xxx）使用新的div包裹-->
-                        <div class="table-wrapper-header">
+                        <div class="table-wrapper-header" >
                             {{head.name}}
                             <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
                                 <!--9监听1-->
@@ -31,10 +31,10 @@
                 <tbody>
                 <!--3循环1-->
                 <tr v-for="data in dataSource">
-                    <td>
+                    <td style="width: 3em">
                         <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
                     </td>
-                    <td v-for="column in columns">
+                    <td v-for="column in columns" :style="{width: column.width + 'px'}">
                         {{data[column.dataIndex]}}
                     </td>
                 </tr>
@@ -136,7 +136,8 @@
             this.copyTable.classList.add("copyTableHead")
             this.copyTable.appendChild(this.$refs.head)
             this.$refs.wrapper.appendChild(this.copyTable)
-
+            const {height} = this.$refs.head.getBoundingClientRect()
+            this.$refs.table.style.marginTop = height + "px"
             // 12监听1： 本能会这样写
             // window.onresize = ()=>{
             //     this.updateCopyTableWidth()

@@ -289,7 +289,7 @@
                 autoPlay:false,
                 selectNav: ["hire"],
                 page:3,
-                columns:[{name: "姓名", dataIndex: "userName"}, {name: "分数", dataIndex: "score"},{name: "年龄", dataIndex: "age"}],
+                columns:[{name: "姓名", dataIndex: "userName", width:100}, {name: "分数", dataIndex: "score", width:100},{name: "年龄", dataIndex: "age"}],
                 dataSource: [
                     {userName: "饶家俊", score: "100", id: 1, age: 1},
                     {userName: "xx", score: "33", id: 2, age: 3},
