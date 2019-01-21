@@ -45,9 +45,17 @@
                             <td style="width: 3em"  v-if="checkAble">
                                 <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
                             </td>
-                            <td v-for="column in columns" :style="{width: column.width + 'px'}">
-                                {{data[column.dataIndex]}}
-                            </td>
+                            <!--18按钮3.1： 使用template， 这里的template相当于固定v-if的作用域，用于展示正常数据或者dom-->
+                            <template>
+                                <td v-for="column in columns" :style="{width: column.width + 'px'}" v-if="column.dataIndex !== 'actions'">
+                                    {{data[column.dataIndex]}}
+                                </td>
+                                <td v-else style="display: flex;">
+                                    <!--18按钮4： table组件在slot添加任何属性, -->
+                                    <!--18按钮3：将 dom 节点传入table组件-->
+                                    <slot :item="data"></slot>
+                                </td>
+                            </template>
                         </tr>
                         <!--16展示5 inExpendedIds 判断该数据的description是否展示-->
                         <tr v-if="data.description && inExpendedIds(data.id)">
@@ -98,6 +106,7 @@
     *15. 给事件绑定事件，需要这样处理 15处理
     *16。 展开栏 ui 展示 16展示
     *17。 template 标签使用 17标签
+    *18. 添加操作按钮 18按钮
     * */
     import Icon from "./icon"
     export default {
@@ -334,8 +343,8 @@
         }
     }
 </script>
-
 <style lang="scss" scoped>
+
     @import "../styles/var";
     .table-wrapper{
         position: relative;

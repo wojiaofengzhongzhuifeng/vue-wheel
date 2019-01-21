@@ -158,7 +158,15 @@
                     :loading="loading"
                     :height="400"
                     bordered
-            />
+            >
+                <!--18按钮2: 使用table的地方添加tempalte，这是vue的缺陷，如果想给组件添加dom节点，必须通过template-->
+                <!--18按钮5: 通过 slot-scope 拿到组件传出来的数据-->
+                <template slot-scope="xxx">
+                    <!--18按钮6： 使用组件传出来的数据-->
+                    <w-button @click="ViewCol(xxx.item)">查看</w-button>
+                    <w-button @click="deleteCol(xxx.item)">删除</w-button>
+                </template>
+            </w-table>
         </div>
     </div>
 </template>
@@ -289,7 +297,8 @@
                 autoPlay:false,
                 selectNav: ["hire"],
                 page:3,
-                columns:[{name: "姓名", dataIndex: "userName", width:100}, {name: "分数", dataIndex: "score", width:100},{name: "年龄", dataIndex: "age"}],
+                // 18按钮1： 添加  {name: "操作", dataIndex: "actions"} 其中 dataIndex: "actions" 只能这样写
+                columns:[{name: "姓名", dataIndex: "userName", width:100}, {name: "分数", dataIndex: "score", width:100},{name: "年龄", dataIndex: "age"},{name: "操作", dataIndex: "actions"}],
                 dataSource: [
                     // 16展示1： 传入参数添加description
                     {userName: "饶家俊", score: "100", id: 1, age: 1,description: "我是饶家俊"},
@@ -344,6 +353,14 @@
             // }];
         },
         methods:{
+            ViewCol(data){
+                console.log(data);
+                console.log("view");
+            },
+            deleteCol(data){
+                console.log(data);
+                console.log("dele");
+            },
             //1监听3 在这里执行change回调
             listenInputChange(e){
                 console.log(e);
