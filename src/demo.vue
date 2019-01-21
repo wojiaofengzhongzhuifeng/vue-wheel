@@ -291,6 +291,7 @@
                 page:3,
                 columns:[{name: "姓名", dataIndex: "userName", width:100}, {name: "分数", dataIndex: "score", width:100},{name: "年龄", dataIndex: "age"}],
                 dataSource: [
+                    // 16展示1： 传入参数添加description
                     {userName: "饶家俊", score: "100", id: 1, age: 1,description: "我是饶家俊"},
                     {userName: "xx", score: "33", id: 2, age: 3},
                     {userName: "rr", score: "1", id:3, age: 5, description: "我是饶家俊1"},

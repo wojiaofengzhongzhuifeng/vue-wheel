@@ -4,62 +4,69 @@
             <!--5步骤3：如果bordered为true， 那么有 bordered class-->
             <table :class="{bordered, compacted}" ref="table">
                 <thead ref="head">
-                <tr>
-                    <th style="width: 3em" v-if="showExpandCol"></th>
-                    <th style="width: 3em">
-                        <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
-                    </th>
-                    <th v-for="head in columns" @click="changeSort(head.dataIndex)" :style="{width: head.width + 'px'}">
-                        <!--11对齐2： 在这两个（span 和 inline-xxx）使用新的div包裹-->
-                        <div class="table-wrapper-header" >
-                            {{head.name}}
-                            <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
-                                <!--9监听1-->
-                                <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')"></icon>
-                                <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')"></icon>
-                            </span>
-                        </div>
-                        <!--11对齐1： 之前-->
-                        <!--{{head.name}}-->
-                        <!--<span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">-->
-                        <!--&lt;!&ndash;9监听1&ndash;&gt;-->
-                        <!--<icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')" @click="onchangeSort(head.dataIndex, 'asc')"></icon>-->
-                        <!--<icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')" @click="onchangeSort(head.dataIndex, 'desc')"></icon>-->
-                        <!--</span>-->
-                    </th>
-                </tr>
+                    <tr ref="tableTr">
+                        <th style="width: 3em" v-if="showExpandCol"></th>
+                        <th style="width: 3em" v-if="checkAble">
+                            <input type="checkbox" ref="selectAllCheckbox" @change="selectAllItems($event)" :checked="allSelect">
+                        </th>
+                        <th v-for="head in columns" @click="changeSort(head.dataIndex)" :style="{width: head.width + 'px'}">
+                            <!--11对齐2： 在这两个（span 和 inline-xxx）使用新的div包裹-->
+                            <div class="table-wrapper-header" >
+                                {{head.name}}
+                                <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
+                                    <!--9监听1-->
+                                    <icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')"></icon>
+                                    <icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')"></icon>
+                                </span>
+                            </div>
+                            <!--11对齐1： 之前-->
+                            <!--{{head.name}}-->
+                            <!--<span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">-->
+                            <!--&lt;!&ndash;9监听1&ndash;&gt;-->
+                            <!--<icon icon-name="caret-up" :class="sortIconStyle(head.dataIndex,'asc')" @click="onchangeSort(head.dataIndex, 'asc')"></icon>-->
+                            <!--<icon icon-name="caret-down" :class="sortIconStyle(head.dataIndex,'desc')" @click="onchangeSort(head.dataIndex, 'desc')"></icon>-->
+                            <!--</span>-->
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
-                <!--3循环1-->
-                <template v-for="data in dataSource">
-                    <tr>
-                        <td style="width: 3em" v-if="showExpandCol">
-                            <icon icon-name="plus-square" v-if="data.description" @click="toggleExpand(data.id)"></icon>
-                        </td>
-                        <td style="width: 3em">
-                            <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
-                        </td>
-                        <td v-for="column in columns" :style="{width: column.width + 'px'}">
-                            {{data[column.dataIndex]}}
-                        </td>
-                    </tr>
-                    <tr v-if="data.description && inExpendedIds(data.id)">
-                        <td :colspan="5" style="background: #ebedf0">
-                            {{data.description}}
-                        </td>
-                    </tr>
-                </template>
-                <!--<tr v-for="data in dataSource">-->
-                    <!--<td style="width: 3em" v-if="showExpandCol">-->
-                        <!--<icon icon-name="plus-square" v-if="data.description"></icon>-->
-                    <!--</td>-->
-                    <!--<td style="width: 3em">-->
-                        <!--<input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">-->
-                    <!--</td>-->
-                    <!--<td v-for="column in columns" :style="{width: column.width + 'px'}">-->
-                        <!--{{data[column.dataIndex]}}-->
-                    <!--</td>-->
-                <!--</tr>-->
+                    <!--3循环1-->
+                    <!--17标签1 ：之前只有tr标签，现在又有一个tr，且两个tr都使用data数据，所以使用template-->
+                    <template v-for="data in dataSource">
+                        <tr>
+                            <td style="width: 3em" v-if="showExpandCol">
+                                <!--16展示3： 有 description 才展示 + 号-->
+                                <span v-if="data.description">
+                                    <icon icon-name="minus-square" v-if="inExpendedIds(data.id)" @click="toggleExpand(data.id)"></icon>
+                                    <icon icon-name="plus-square" v-else @click="toggleExpand(data.id)"></icon>
+                                </span>
+
+                            </td>
+                            <td style="width: 3em"  v-if="checkAble">
+                                <input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">
+                            </td>
+                            <td v-for="column in columns" :style="{width: column.width + 'px'}">
+                                {{data[column.dataIndex]}}
+                            </td>
+                        </tr>
+                        <!--16展示5 inExpendedIds 判断该数据的description是否展示-->
+                        <tr v-if="data.description && inExpendedIds(data.id)">
+                            <td :colspan="descriptionColSpan" style="background: #ebedf0">
+                                {{data.description}}
+                            </td>
+                        </tr>
+                    </template>
+                    <!--<tr v-for="data in dataSource">-->
+                        <!--<td style="width: 3em" v-if="showExpandCol">-->
+                            <!--<icon icon-name="plus-square" v-if="data.description"></icon>-->
+                        <!--</td>-->
+                        <!--<td style="width: 3em">-->
+                            <!--<input type="checkbox" @change="clickCheckBox(data, $event)" :checked="checkboxIfchecked(data)">-->
+                        <!--</td>-->
+                        <!--<td v-for="column in columns" :style="{width: column.width + 'px'}">-->
+                            <!--{{data[column.dataIndex]}}-->
+                        <!--</td>-->
+                    <!--</tr>-->
                 </tbody>
             </table>
         </div>
@@ -88,12 +95,15 @@
     *12. 要移除事件监听 12监听
     *13。 封装函数时， 尽量不要带参数 13参数
     *14. 善后工作 14善后
-    *15.
+    *15. 给事件绑定事件，需要这样处理 15处理
+    *16。 展开栏 ui 展示 16展示
+    *17。 template 标签使用 17标签
     * */
     import Icon from "./icon"
     export default {
         data(){
             return {
+                //16展示4： 数组内是 id ,表示的是展开的数据
                 expandItems:[1]
             }
         },
@@ -129,6 +139,10 @@
             },
             height:{
                 type: Number,
+            },
+            checkAble:{
+                type: Boolean,
+                default: true,
             }
         },
         watch:{
@@ -156,6 +170,7 @@
                 }
                 return equal
             },
+            // 16展示2： 只要数据有一个 description 就要展示第一列
             showExpandCol(){
                 let show = false
                 for(let i=0;i<=this.dataSource.length -1;i++){
@@ -165,6 +180,12 @@
                     }
                 }
                 return show
+            },
+            descriptionColSpan(){
+                let length = this.columns.length
+                if(this.checkAble){length += 1}
+                if(this.showExpandCol){length += 1}
+                return length
             }
         },
         mounted(){
@@ -182,13 +203,22 @@
             //     this.updateCopyTableWidth()
             // }
 
+            // 15处理1: 本能会这样写
             // window.addEventListener("resize", this.updateCopyTableWidth)
 
-        },
+            // 15处理2：应该这样写
+            // this.onWindowResize = () => this.updateCopyTableWidth()
+            // window.addEventListener('resize', this.onWindowResize)
 
+        },
         // 14善后
         beforeDestroy(){
+            // 15处理1
             // window.removeEventListener("resize", this.updateCopyTableWidth)
+
+            // 15处理2
+            // window.removeEventListener('resize', this.onWindowResize)
+
             this.copyTable.remove()
         },
         methods:{
@@ -259,6 +289,7 @@
             inExpendedIds (id) {
                 return this.expandItems.indexOf(id) >= 0
             },
+            // 16展示6： 如果点击的id在 expandItems 内， 删除。如果点击的 id不在 expandItems 内，添加
             toggleExpand (id) {
                 if (this.inExpendedIds(id)) {
                     this.expandItems.splice(this.expandItems.indexOf(id), 1)
