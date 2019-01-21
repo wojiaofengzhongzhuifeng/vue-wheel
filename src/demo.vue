@@ -161,10 +161,11 @@
             >
                 <!--18按钮2: 使用table的地方添加tempalte，这是vue的缺陷，如果想给组件添加dom节点，必须通过template-->
                 <!--18按钮5: 通过 slot-scope 拿到组件传出来的数据-->
-                <template slot-scope="xxx">
+                <template slot-scope="item">
                     <!--18按钮6： 使用组件传出来的数据-->
-                    <w-button @click="ViewCol(xxx.item)">查看</w-button>
-                    <w-button @click="deleteCol(xxx.item)">删除</w-button>
+                    <!--19检查2：确认table组件内部有没有使用template  -->
+                    <w-button @click="ViewCol(item.item)">查看</w-button>
+                    <w-button @click="deleteCol(item.item)">删除</w-button>
                 </template>
             </w-table>
         </div>

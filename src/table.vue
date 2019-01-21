@@ -11,7 +11,8 @@
                         </th>
                         <th v-for="head in columns" @click="changeSort(head.dataIndex)" :style="{width: head.width + 'px'}">
                             <!--11对齐2： 在这两个（span 和 inline-xxx）使用新的div包裹-->
-                            <div class="table-wrapper-header" >
+                            <!--20ref: ref 还可以是通过判断得到的-->
+                            <div class="table-wrapper-header" :ref="head.dataIndex === 'actions' ? 'test' : ''">
                                 {{head.name}}
                                 <span class="icon-wrapper" v-if="sortIconStyle(head.dataIndex)">
                                     <!--9监听1-->
@@ -50,10 +51,12 @@
                                 <td v-for="column in columns" :style="{width: column.width + 'px'}" v-if="column.dataIndex !== 'actions'">
                                     {{data[column.dataIndex]}}
                                 </td>
-                                <td v-else style="display: flex;">
+                                <td v-else >
                                     <!--18按钮4： table组件在slot添加任何属性, -->
                                     <!--18按钮3：将 dom 节点传入table组件-->
-                                    <slot :item="data"></slot>
+                                    <div style="display: inline-flex;" ref="actions">
+                                        <slot :item="data"></slot>
+                                    </div>
                                 </td>
                             </template>
                         </tr>
@@ -107,6 +110,8 @@
     *16。 展开栏 ui 展示 16展示
     *17。 template 标签使用 17标签
     *18. 添加操作按钮 18按钮
+    *19。 检查使用table组件时有没有添加 template 19检查
+    *20. ref 20ref
     * */
     import Icon from "./icon"
     export default {
@@ -218,6 +223,17 @@
             // 15处理2：应该这样写
             // this.onWindowResize = () => this.updateCopyTableWidth()
             // window.addEventListener('resize', this.onWindowResize)
+
+            //19检查1
+            if(this.$scopedSlots.default()){
+                // js获取按钮的总宽度
+                let actionsWidth = getComputedStyle(this.$refs.actions[0]).getPropertyValue("width")
+                this.$refs.test[0].parentNode.style.width = actionsWidth
+                this.$refs.actions[0].parentNode.style.width = actionsWidth
+            } else {
+                console.log("table标签内没有template");
+
+            }
 
         },
         // 14善后
