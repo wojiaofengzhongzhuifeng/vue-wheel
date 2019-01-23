@@ -1,6 +1,6 @@
 <template>
-    <div class="sticky-wrapper">
-        <div class="sticky" ref="sticky">
+    <div class="sticky-wrapper" ref="stickyWrapper">
+        <div class="sticky" ref="sticky" >
             <slot></slot>
         </div>
     </div>
@@ -17,21 +17,19 @@
             }
         },
         mounted() {
-            let domTop = this.offsetTop(this.$refs.sticky)
+            let {height, top} = this.$refs.sticky.getBoundingClientRect()
+            let offsetTop = top + window.scrollY
+
             window.addEventListener("scroll", ()=>{
-                if(window.scrollY > domTop){
+                if(window.scrollY > offsetTop){
                     this.$refs.sticky.classList.add("fixed")
+                    this.$refs.stickyWrapper.style.height = height + "px"
                 } else {
                     this.$refs.sticky.classList.remove("fixed")
                 }
             })
         },
         methods:{
-            offsetTop(dom){
-                let xx = dom.getBoundingClientRect()
-
-                return xx.top + window.scrollY
-            }
         },
     }
 </script>
