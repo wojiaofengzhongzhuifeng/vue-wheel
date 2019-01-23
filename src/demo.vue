@@ -171,7 +171,7 @@
 
         <div  style="display:flex;justify-content: center;">
             <div style="width:600px;">
-                <w-sticky>
+                <w-sticky :top="100">
                     <template>
                         <button>test</button>
                     </template>

@@ -26,9 +26,6 @@
                 type: Number,
                 default: 0
             },
-            bottom:{
-                type: Number
-            }
         },
         mounted() {
             let {top} = this.$refs.sticky.getBoundingClientRect()
@@ -62,7 +59,8 @@
                 } else {
                     this.$refs.sticky.classList.remove("fixed")
                 }
-            }
+            },
+
         },
     }
 </script>
