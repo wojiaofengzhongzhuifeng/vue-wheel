@@ -172,7 +172,8 @@
 
         <w-sticky>
             <template>
-                <w-button>sticky button</w-button>
+                <img src="https://upload-images.jianshu.io/upload_images/5529438-47a5ff50b54a7505.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+                     alt="">
             </template>
         </w-sticky>
 
