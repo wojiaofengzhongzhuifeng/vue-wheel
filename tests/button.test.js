@@ -3,7 +3,7 @@ import spies  from "chai-spies";
 
 const expect = chai.expect;
 import Vue from 'vue'
-import Button from '../src/button'
+import Button from '../src/button/button'
 chai.use(spies);
 
 

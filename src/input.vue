@@ -45,14 +45,8 @@
 </script>
 
 <style lang="scss" scoped>
-    $height: 32px;
-    $font-size: 12px;
-    $font-color: #90a4ae;
-    $color-blue: rgb(66, 133, 244);
-    $color-red: rgb(219, 68, 55);
-    $color-yellow: rgb(244, 160, 0);
-    $color-green: rgb(15, 157, 88);
-    $border-radius: 5px;
+    @import "../styles/var";
+
     .input {
         font-size: $font-size;
         color: $font-color;

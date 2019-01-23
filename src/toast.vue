@@ -117,6 +117,7 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "../styles/var";
     @keyframes showMiddle {
         0%{
             opacity: 0;
@@ -141,7 +142,6 @@
             transform: translateY(0);
         }
     }
-    $font-color: #90a4ae;
     .wrapper {
         /*以下三个属性可以让div水平居中, .wrapper 的作用: 水平居中 + 决定 toast 的展示位置*/
         transform: translate(-50%);

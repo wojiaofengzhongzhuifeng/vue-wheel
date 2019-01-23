@@ -14,8 +14,8 @@
 </template>
 
 <script>
-    import button from "../../../src/button"
-    import buttonGroup from "../../../src/button-group"
+    import button from "../../../src/button/button"
+    import buttonGroup from "../../../src/button/button-group"
     //
     export default {
         components: {

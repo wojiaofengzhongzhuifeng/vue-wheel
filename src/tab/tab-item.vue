@@ -52,8 +52,7 @@
 </script>
 
 <style lang="scss" scoped>
-    $font-color-active: #1890ff;
-    $font-weight: 500;
+    @import "../../styles/var";
     .tabItem{
         padding: 12px 16px;
         margin-right:20px;
