@@ -1,106 +1,125 @@
 <template>
     <div>
 
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+        <p>11</p>
+        <p>12</p>
+        <p>13</p>
+        <p>14</p>
+        <p>15</p>
+        <p>16</p>
+        <p>17</p>
+        <p>18</p>
+        <p>19</p>
+        <p>20</p>
+        <!--<w-button icon-name="setting" icon-position="right" @click="listenButtonClick">点我</w-button>-->
 
-        <w-button icon-name="setting" icon-position="right" @click="listenButtonClick">点我</w-button>
-
-        <!--1监听 在使用w-input的地方，监听change事件-->
-        <w-input @change="listenInputChange"></w-input>
-
-
-
-        <w-row gutter="40px"   align="center" >
-            <w-col :span="4">
-                <div style="border:1px solid ;">
-                    侧边栏
-                </div>
-            </w-col>
-            <w-col :span="15" :offset="5">
-                <div style="border:1px solid ;">
-                    主要内容
-                </div>
-
-            </w-col>
-
-        </w-row>
-
-        <w-row gutter="20px">
-            <w-col :span="4" :phone="{span: 8}">
-                <div style="border:1px solid ;">
-                    侧边栏
-                </div>
-            </w-col>
-            <w-col :span="15" offset="5"  :phone="{span: 8, offset: 8}">
-                <div style="border:1px solid ;">
-                    主要内容
-                </div>
-            </w-col>
-        </w-row>
-
-
-        <div style="margin:100px">
-            <w-button @click="showToast">展示toast</w-button>
-        </div>
-
-        <div style="margin:100px;">
-            <w-popover title="这是popover的标题" position="right" trigger="click">
-                <w-button>点击我2</w-button>
-                <!--2暴露2：解构-->
-                <!--3多slot2-->
-                <template slot="content" slot-scope="{close}">
-                    <p>fdjskfldjsa</p>
-                    <!--2暴露3：使用-->
-                    <w-button @click="close">关闭</w-button>
-                </template>
-            </w-popover>
-        </div>
-
-        <div class="tab-wrapper" style="margin: 100px">
-            app组件知道目前的selectedtab是{{selectedTab}}
-            <w-tab :selected="selectedTab" @update:selected="selectedTab = $event">
-                <w-tab-head>
-                    <w-tab-item name="1">标题1</w-tab-item>
-                    <w-tab-item name="2">标题2</w-tab-item>
-                    <w-tab-item name="3">标题3</w-tab-item>
-                    <!--1插槽2-->
-                    <template slot="actions">
-                        <w-button>添加tab</w-button>
-                    </template>
-                </w-tab-head>
-                <w-tab-body>
-                    <w-tab-pane  name="1">内容1</w-tab-pane>
-                    <w-tab-pane  name="2">内容2</w-tab-pane>
-                    <w-tab-pane  name="3">内容3</w-tab-pane>
-                </w-tab-body>
-            </w-tab>
-        </div>
+        <!--&lt;!&ndash;1监听 在使用w-input的地方，监听change事件&ndash;&gt;-->
+        <!--<w-input @change="listenInputChange"></w-input>-->
 
 
 
-        <!--1双向绑定2：在使用collapse的地方使用sync-->
-        <!--<w-collapse  :selected = "selectTab" @update:selected="selectTab = $event" single>-->
-        <w-collapse  :selected.sync="selectCollapse" single>
-            <w-collapse-item title="这是标题1" :item-key="'a'">
-                这是内容1
-            </w-collapse-item>
+        <!--<w-row gutter="40px"   align="center" >-->
+            <!--<w-col :span="4">-->
+                <!--<div style="border:1px solid ;">-->
+                    <!--侧边栏-->
+                <!--</div>-->
+            <!--</w-col>-->
+            <!--<w-col :span="15" :offset="5">-->
+                <!--<div style="border:1px solid ;">-->
+                    <!--主要内容-->
+                <!--</div>-->
 
-            <w-collapse-item title="这是标题2" :item-key="'b'">
-                这是内容2
-            </w-collapse-item>
+            <!--</w-col>-->
 
-            <w-collapse-item title="这是标题3" :item-key="'c'">
-                这是内容3
-            </w-collapse-item>
+        <!--</w-row>-->
 
-            <w-collapse-item title="这是标题4" :item-key="'d'">
-                这是内容4
-            </w-collapse-item>
-        </w-collapse>
+        <!--<w-row gutter="20px">-->
+            <!--<w-col :span="4" :phone="{span: 8}">-->
+                <!--<div style="border:1px solid ;">-->
+                    <!--侧边栏-->
+                <!--</div>-->
+            <!--</w-col>-->
+            <!--<w-col :span="15" offset="5"  :phone="{span: 8, offset: 8}">-->
+                <!--<div style="border:1px solid ;">-->
+                    <!--主要内容-->
+                <!--</div>-->
+            <!--</w-col>-->
+        <!--</w-row>-->
 
-        <div >
-            <w-cascader :source.sync="cascaderData" height="200px" :selected="selectedCascader" @update:selected="changeSelectcascader" :load-data="loadData"></w-cascader>
-        </div>
-        <div>12332</div>
+
+        <!--<div style="margin:100px">-->
+            <!--<w-button @click="showToast">展示toast</w-button>-->
+        <!--</div>-->
+
+        <!--<div style="margin:100px;">-->
+            <!--<w-popover title="这是popover的标题" position="right" trigger="click">-->
+                <!--<w-button>点击我2</w-button>-->
+                <!--&lt;!&ndash;2暴露2：解构&ndash;&gt;-->
+                <!--&lt;!&ndash;3多slot2&ndash;&gt;-->
+                <!--<template slot="content" slot-scope="{close}">-->
+                    <!--<p>fdjskfldjsa</p>-->
+                    <!--&lt;!&ndash;2暴露3：使用&ndash;&gt;-->
+                    <!--<w-button @click="close">关闭</w-button>-->
+                <!--</template>-->
+            <!--</w-popover>-->
+        <!--</div>-->
+
+        <!--<div class="tab-wrapper" style="margin: 100px">-->
+            <!--app组件知道目前的selectedtab是{{selectedTab}}-->
+            <!--<w-tab :selected="selectedTab" @update:selected="selectedTab = $event">-->
+                <!--<w-tab-head>-->
+                    <!--<w-tab-item name="1">标题1</w-tab-item>-->
+                    <!--<w-tab-item name="2">标题2</w-tab-item>-->
+                    <!--<w-tab-item name="3">标题3</w-tab-item>-->
+                    <!--&lt;!&ndash;1插槽2&ndash;&gt;-->
+                    <!--<template slot="actions">-->
+                        <!--<w-button>添加tab</w-button>-->
+                    <!--</template>-->
+                <!--</w-tab-head>-->
+                <!--<w-tab-body>-->
+                    <!--<w-tab-pane  name="1">内容1</w-tab-pane>-->
+                    <!--<w-tab-pane  name="2">内容2</w-tab-pane>-->
+                    <!--<w-tab-pane  name="3">内容3</w-tab-pane>-->
+                <!--</w-tab-body>-->
+            <!--</w-tab>-->
+        <!--</div>-->
+
+
+
+        <!--&lt;!&ndash;1双向绑定2：在使用collapse的地方使用sync&ndash;&gt;-->
+        <!--&lt;!&ndash;<w-collapse  :selected = "selectTab" @update:selected="selectTab = $event" single>&ndash;&gt;-->
+        <!--<w-collapse  :selected.sync="selectCollapse" single>-->
+            <!--<w-collapse-item title="这是标题1" :item-key="'a'">-->
+                <!--这是内容1-->
+            <!--</w-collapse-item>-->
+
+            <!--<w-collapse-item title="这是标题2" :item-key="'b'">-->
+                <!--这是内容2-->
+            <!--</w-collapse-item>-->
+
+            <!--<w-collapse-item title="这是标题3" :item-key="'c'">-->
+                <!--这是内容3-->
+            <!--</w-collapse-item>-->
+
+            <!--<w-collapse-item title="这是标题4" :item-key="'d'">-->
+                <!--这是内容4-->
+            <!--</w-collapse-item>-->
+        <!--</w-collapse>-->
+
+        <!--<div >-->
+            <!--<w-cascader :source.sync="cascaderData" height="200px" :selected="selectedCascader" @update:selected="changeSelectcascader" :load-data="loadData"></w-cascader>-->
+        <!--</div>-->
+        <!--<div>12332</div>-->
 
         <!--<div style="margin: 100px">-->
             <!--<w-slide :select.sync="select" :autoPlay.sync="autoPlay" class="slide-wrapper">-->
@@ -143,40 +162,96 @@
             <!--</w-nav>-->
         <!--</div>-->
 
-        <div style="margin: 100px">
-            <w-pager :total-page="15" :current-page.sync="page"/>
-        </div>
+        <!--<div style="margin: 100px">-->
+            <!--<w-pager :total-page="15" :current-page.sync="page"/>-->
+        <!--</div>-->
 
-        <div style="margin: 10px;">
-            <!--5步骤2：添加bordered-->
-            <w-table
-                    :columns="columns"
-                    :data-source="dataSource"
-                    :selectItem.sync="selectItem"
-                    :sorter.sync="sorter"
-                    @update:sorter="getNewSort"
-                    :loading="loading"
-                    :height="400"
-                    bordered
-            >
-                <!--18按钮2: 使用table的地方添加tempalte，这是vue的缺陷，如果想给组件添加dom节点，必须通过template-->
-                <!--18按钮5: 通过 slot-scope 拿到组件传出来的数据-->
-                <template slot-scope="item">
-                    <!--18按钮6： 使用组件传出来的数据-->
-                    <!--19检查2：确认table组件内部有没有使用template  -->
-                    <w-button @click="ViewCol(item.item)">查看</w-button>
-                    <w-button @click="deleteCol(item.item)">删除</w-button>
-                </template>
-            </w-table>
-        </div>
+        <!--<div style="margin: 10px;">-->
+            <!--&lt;!&ndash;5步骤2：添加bordered&ndash;&gt;-->
+            <!--<w-table-->
+                    <!--:columns="columns"-->
+                    <!--:data-source="dataSource"-->
+                    <!--:selectItem.sync="selectItem"-->
+                    <!--:sorter.sync="sorter"-->
+                    <!--@update:sorter="getNewSort"-->
+                    <!--:loading="loading"-->
+                    <!--:height="400"-->
+                    <!--bordered-->
+            <!--&gt;-->
+                <!--&lt;!&ndash;18按钮2: 使用table的地方添加tempalte，这是vue的缺陷，如果想给组件添加dom节点，必须通过template&ndash;&gt;-->
+                <!--&lt;!&ndash;18按钮5: 通过 slot-scope 拿到组件传出来的数据&ndash;&gt;-->
+                <!--<template slot-scope="item">-->
+                    <!--&lt;!&ndash;18按钮6： 使用组件传出来的数据&ndash;&gt;-->
+                    <!--&lt;!&ndash;19检查2：确认table组件内部有没有使用template  &ndash;&gt;-->
+                    <!--<w-button @click="ViewCol(item.item)">查看</w-button>-->
+                    <!--<w-button @click="deleteCol(item.item)">删除</w-button>-->
+                <!--</template>-->
+            <!--</w-table>-->
+        <!--</div>-->
 
 
 
         <w-sticky>
             <template>
-                <button></button>
+                <w-button>sticky button</w-button>
             </template>
         </w-sticky>
+
+        <div>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+            <p>10</p>
+            <p>11</p>
+            <p>12</p>
+            <p>13</p>
+            <p>14</p>
+            <p>15</p>
+            <p>16</p>
+            <p>17</p>
+            <p>18</p>
+            <p>19</p>
+            <p>20</p>
+            <p>21</p>
+            <p>22</p>
+            <p>23</p>
+            <p>24</p>
+            <p>25</p>
+            <p>26</p>
+            <p>27</p>
+            <p>28</p>
+            <p>29</p>
+            <p>30</p>
+            <p>31</p>
+            <p>32</p>
+            <p>33</p>
+            <p>34</p>
+            <p>35</p>
+            <p>36</p>
+            <p>37</p>
+            <p>38</p>
+            <p>39</p>
+            <p>40</p>
+            <p>41</p>
+            <p>42</p>
+            <p>43</p>
+            <p>44</p>
+            <p>45</p>
+            <p>46</p>
+            <p>47</p>
+            <p>48</p>
+            <p>49</p>
+            <p>50</p>
+
+        </div>
+
+
     </div>
 </template>
 
