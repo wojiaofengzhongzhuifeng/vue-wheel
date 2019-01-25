@@ -58,21 +58,21 @@ describe('Button', () => {
         const classes = useElement.attributes()["class"]
         expect(classes).to.equal("icon left")
     })
-    // it('设置 iconPosition 可以改变 order', () => {
-    //     const Constructor = Vue.extend(Button)
-    //     const vm = new Constructor({
-    //         propsData: {
-    //             iconName: 'setting',
-    //             iconPosition: "right",
-    //         }
-    //     })
-    //     vm.$mount()
-    //     let useElement = vm.$el.querySelector('.icon')
-    //     let className = useElement.getAttribute('class')
-    //     expect(className).to.eq('icon right')
-    //     vm.$el.remove()
-    //     vm.$destroy()
-    // })
+    it('设置 iconPosition 可以改变 order', () => {
+        const Constructor = Vue.extend(Button)
+        const vm = new Constructor({
+            propsData: {
+                iconName: 'setting',
+                iconPosition: "right",
+            }
+        })
+        vm.$mount()
+        let useElement = vm.$el.querySelector('.icon')
+        let className = useElement.getAttribute('class')
+        expect(className).to.eq('icon right')
+        vm.$el.remove()
+        vm.$destroy()
+    })
     // it('点击 button 触发 click 事件', () => {
     //     const Constructor = Vue.extend(Button)
     //     const vm = new Constructor({
