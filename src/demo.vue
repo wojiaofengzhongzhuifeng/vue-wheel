@@ -230,6 +230,10 @@
         </div>
 
 
+        <div style="margin: 100px;">
+            <w-data-picker />
+        </div>
+
 
     </div>
 </template>
@@ -269,6 +273,7 @@
     import Pager from "./pager"
     import Table from "./table"
     import Sticky from "./sticky"
+    import DataPicker from "./data-picker/data-picker"
 
     // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
     Vue.use(toastPlugin);
@@ -301,6 +306,7 @@
     Vue.component("w-pager", Pager);
     Vue.component("w-table", Table);
     Vue.component("w-sticky", Sticky)
+    Vue.component("w-data-picker", DataPicker)
 
 
 
