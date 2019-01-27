@@ -1,5 +1,5 @@
 <template>
-        <div class="popover" @click="onClickPopover" v-if="trigger === 'click'">
+        <div class="popover" @click="onClickPopover" v-if="trigger === 'click'" ref="popover">
             <div class="button" ref="button" >
                 <slot></slot>
             </div>
@@ -107,6 +107,7 @@
                 }
             },
             onClickPopover(e){
+                console.log("onClickPopover");
                 // 判断点击的是按钮
                 if(this.$refs.button.contains(e.target)){
                     if(this.clickPopover){
@@ -134,13 +135,22 @@
                 this.clickPopover = true;
                 this.$nextTick(()=>{
                     this.createPopover();
-                    document.body.addEventListener(this.trigger, this.bindCloseFunToBody)
+                    document.body.addEventListener("click", this.bindCloseFunToBody)
                 })
             },
             bindCloseFunToBody(e) {
-                if(!this.$refs.content.contains(e.target)){
-                    this.closePopover()
-                }
+                console.log("this.$refs.popover",this.$refs.popover);
+                console.log("e.target",e.target);
+                console.log("this.$refs.content",this.$refs.content);
+                console.log(this.$refs.popover === e.target);
+                console.log(this.$refs.popover.contains(e.target));
+                if (this.$refs.popover &&
+                    (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))
+                ) { return }
+                if (this.$refs.content &&
+                    (this.$refs.content === e.target || this.$refs.content.contains(e.target))
+                ) { return }
+                this.closePopover()
             },
             createPopover(){
                 document.body.appendChild(this.$refs.content);
@@ -177,6 +187,7 @@
     .popover{
         display: inline-block;
         position: relative;
+        border:1px solid red;
     }
     .popover-wrapper{
         border-radius: $border-radius;

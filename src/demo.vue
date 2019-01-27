@@ -40,18 +40,18 @@
             <!--<w-button @click="showToast">展示toast</w-button>-->
         <!--</div>-->
 
-        <!--<div style="margin:100px;">-->
-            <!--<w-popover title="这是popover的标题" position="right" trigger="click">-->
-                <!--<w-button>点击我2</w-button>-->
-                <!--&lt;!&ndash;2暴露2：解构&ndash;&gt;-->
-                <!--&lt;!&ndash;3多slot2&ndash;&gt;-->
-                <!--<template slot="content" slot-scope="{close}">-->
-                    <!--<p>fdjskfldjsa</p>-->
-                    <!--&lt;!&ndash;2暴露3：使用&ndash;&gt;-->
-                    <!--<w-button @click="close">关闭</w-button>-->
-                <!--</template>-->
-            <!--</w-popover>-->
-        <!--</div>-->
+        <div style="margin:100px;">
+            <w-popover title="这是popover的标题" position="right" trigger="click">
+                <w-button>点击我2</w-button>
+                <!--2暴露2：解构-->
+                <!--3多slot2-->
+                <template slot="content" slot-scope="{close}">
+                    <p>fdjskfldjsa</p>
+                    <!--2暴露3：使用-->
+                    <w-button @click="close">关闭</w-button>
+                </template>
+            </w-popover>
+        </div>
 
         <!--<div class="tab-wrapper" style="margin: 100px">-->
             <!--app组件知道目前的selectedtab是{{selectedTab}}-->
@@ -230,7 +230,7 @@
         <!--</div>-->
 
 
-        <div style="margin: 100px;">
+        <div style="margin: 100px; height:100px;">
             <w-data-picker />
         </div>
 
