@@ -189,7 +189,6 @@
         word-break: break-all;
         .line{
             width: 100%;
-            border: 1px solid grey;
             margin-bottom: 10px;
         }
         &::before, &::after{
