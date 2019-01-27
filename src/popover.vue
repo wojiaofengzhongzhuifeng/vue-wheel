@@ -16,6 +16,8 @@
     * 2。 经验bug： 如果出现滚动条，popover content 内容位置出错
     * 3。 给 popover 添加监听click事件，为什么要这样？ 3监听
     * 4。 改成 v-if 会报错， 怎么解决？？？ 4报错
+    * 5。 好习惯： addeventlistener之后，需要removeeventlistener，需要思考时机
+    * 6。 问题： onClickDocument 函数需要参数 e ，但是我并没有传
     * */
     export default {
         data(){
@@ -36,18 +38,27 @@
         },
         mounted() {
             // 3监听： 为什么这样监听，为什么监听 popover 不是 toggleWrapper？？
-            this.$refs.toggleWrapper.addEventListener('click', (e)=>{
+            this.$refs.toggleWrapper.addEventListener('click', this.onClickToggle.bind)
+        },
+        beforeDestroy(){
+            this.$refs.toggleWrapper.removeEventListener('click', this.onClickToggle)
+        },
+        methods:{
+            onClickToggle(){
                 if(this.visible){
                     this.hideContent()
                 } else {
                     this.showContent()
                 }
-            })
-
-        },
-        methods:{
+            },
+            onClickDocument(e){
+                if(this.$refs.toggleWrapper === e.target || this.$refs.toggleWrapper.contains(e.target)){ return }
+                if(this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target)){return }
+                this.hideContent()
+            },
             hideContent(){
                 this.visible = false
+                document.body.removeEventListener("click", this.onClickDocument)
 
             },
             showContent(){
@@ -55,11 +66,7 @@
 
                 this.positionContent()
 
-                document.body.addEventListener("click", (e)=>{
-                    if(this.$refs.toggleWrapper === e.target || this.$refs.toggleWrapper.contains(e.target)){ return }
-                    if(this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target)){return }
-                    this.hideContent()
-                })
+                document.body.addEventListener("click", this.onClickDocument)
 
             },
             positionContent(){
