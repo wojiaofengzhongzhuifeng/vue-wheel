@@ -1,9 +1,9 @@
 <template>
-    <div class="popover">
-        <div @click="tr">
+    <div class="popover" ref="popover">
+        <div ref="toggleWrapper">
             <slot></slot>
         </div>
-        <div class="popover-content" :class="classes" v-if="visible" ref="contentWrapper">
+        <div class="popover-content" :class="classes" v-show="visible" ref="contentWrapper">
             <slot name="content"></slot>
         </div>
     </div>
@@ -13,12 +13,12 @@
     /*
     * 1。 经验bug： 组件上级元素有overflow：hidden，popover content展示不了 => 解决方法： content 放到docuemnt.body，通过css来定位
     * 2。 经验bug： 如果出现滚动条，popover content 内容位置出错
-    *
+    * 3。 给 popover 添加监听click事件，为什么要这样？ 3监听
     * */
     export default {
         data(){
             return {
-                visible: true
+                visible: false
             }
         },
         props:{
@@ -33,7 +33,23 @@
             }
         },
         mounted() {
-            document.body.appendChild(this.$refs.contentWrapper)
+            // 3监听： 为什么这样监听，为什么监听 popover 不是 toggleWrapper？？
+            this.$refs.toggleWrapper.addEventListener('click', ()=>{
+                if(this.visible){
+                    this.hideContent()
+                } else {
+                    this.showContent()
+                }
+            })
+
+        },
+        methods:{
+            hideContent(){
+                this.visible = false
+            },
+            showContent(){
+                this.visible = true
+            }
         }
     }
 </script>
