@@ -38,7 +38,7 @@
         },
         mounted() {
             // 3监听： 为什么这样监听，为什么监听 popover 不是 toggleWrapper？？
-            this.$refs.toggleWrapper.addEventListener('click', this.onClickToggle.bind)
+            this.$refs.toggleWrapper.addEventListener('click', this.onClickToggle)
         },
         beforeDestroy(){
             this.$refs.toggleWrapper.removeEventListener('click', this.onClickToggle)
