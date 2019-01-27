@@ -55,6 +55,12 @@
 
                 this.positionContent()
 
+                document.body.addEventListener("click", (e)=>{
+                    if(this.$refs.toggleWrapper === e.target || this.$refs.toggleWrapper.contains(e.target)){ return }
+                    if(this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target)){return }
+                    this.hideContent()
+                })
+
             },
             positionContent(){
                 document.body.appendChild(this.$refs.contentWrapper)
