@@ -20,7 +20,7 @@
     * 6。 问题： onClickDocument 函数需要参数 e ，但是我并没有传
     * 7。 问题：7next
     * 8.  优化： 使用对象来代替重复的if 8优化
-    * 9.  需求： 使用防抖，可以让用户的鼠标达到content
+    * 9.  需求： 使用防抖，可以让用户的鼠标达到content 9防抖
     * */
     export default {
         data(){
@@ -48,8 +48,11 @@
                 // 3监听： 为什么这样监听，为什么监听 popover 不是 toggleWrapper？？
                 this.$refs.toggleWrapper.addEventListener('click', this.onClickToggle)
             } else {
-                this.$refs.toggleWrapper.addEventListener('mouseenter', this.showContent)
-                this.$refs.toggleWrapper.addEventListener('mouseleave', this.hideContent)
+                this.$refs.toggleWrapper.addEventListener('mouseenter', this.onEnterToggle)
+                this.$refs.toggleWrapper.addEventListener('mouseleave', this.onLeaveToggle)
+
+                this.$refs.contentWrapper.addEventListener('mouseenter', this.onEnterContent)
+                this.$refs.contentWrapper.addEventListener('mouseleave', this.onLeaveContent)
             }
         },
         beforeDestroy(){
@@ -58,9 +61,30 @@
             } else {
                 this.$refs.toggleWrapper.removeEventListener('mouseenter', this.showContent)
                 this.$refs.toggleWrapper.removeEventListener('mouseleave', this.hideContent)
+
+                this.$refs.contentWrapper.removeEventListener('mouseenter', this.onEnterContent)
+                this.$refs.contentWrapper.removeEventListener('mouseleave', this.onLeaveContent)
             }
         },
         methods:{
+            onEnterToggle(){
+                this.showContent()
+            },
+            // 9防抖1： 当进入 button 时，设置100ms后隐藏content
+            onLeaveToggle(){
+                this.timeId = setTimeout(()=>{
+                    this.hideContent()
+                }, 100)
+            },
+            // 9防抖2： 如果在100ms内进入 content，删除计时器（也就是不执行隐藏content）
+            // 9防抖3： 如果在100ms外还没有进入 content（将鼠标移除button且不进入content，执行隐藏content）
+            onEnterContent(){
+                clearTimeout(this.timeId)
+            },
+            onLeaveContent(){
+                this.hideContent()
+            },
+
             onClickToggle(){
                 if(this.visible){
                     this.hideContent()
