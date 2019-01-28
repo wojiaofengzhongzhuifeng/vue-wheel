@@ -79,7 +79,6 @@
                 const {toggleWrapper,contentWrapper} = this.$refs
                 const {top, left,height, width} = toggleWrapper.getBoundingClientRect()
                 const {width:contentWidth} = contentWrapper.getBoundingClientRect()
-
                 // 8优化前
                 /*
                 if(contentWrapper.classList.contains("top")){
@@ -100,20 +99,20 @@
                 // 8优化后
                 const positionObj = {
                     top: {
-                        top: top - height +"px",
-                        left: left + "px"
+                        top: top - height + window.scrollY +"px",
+                        left: left + window.scrollX +"px"
                     },
                     bottom: {
-                        top: top + height +"px",
-                        left: left + "px"
+                        top: top + height + window.scrollY +"px",
+                        left: left +  window.scrollX + "px"
                     },
                     right: {
-                        top: top + "px",
-                        left: left + width + "px"
+                        top: top + window.scrollY + "px",
+                        left: left +  window.scrollX + width + "px"
                     },
                     left: {
-                        top: top + "px",
-                        left: left  - contentWidth + "px"
+                        top: top + window.scrollY + "px",
+                        left: left  - contentWidth + window.scrollX + "px"
                     },
                 }
                 contentWrapper.style.top = positionObj[this.position].top
