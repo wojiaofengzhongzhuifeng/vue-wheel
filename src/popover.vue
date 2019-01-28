@@ -172,7 +172,6 @@
             background: white;
             display: inline-flex;
             box-shadow: $box-shadow;
-            min-width:150px;
             border-radius: 4px;
             padding: 5px 16px;
             position: absolute;
