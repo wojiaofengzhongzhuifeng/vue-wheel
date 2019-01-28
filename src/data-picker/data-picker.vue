@@ -43,7 +43,24 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="month-content" v-else>月</div>
+                        <div class="month-content" v-else>
+                            <div class="year-selection">
+                                <select @change="selectYear">
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -55,6 +72,7 @@
     /*
     * 1. 使用 date 值，注意使用赋值之后的 date 1赋值
     * 2. table 上下 左右格子的距离 cellspacing cellpadding 2距离
+    * 3. 数据响应式 1.showDate -> 2.showArray -> 3.ui    其中 2和3 已经保持了数据响应，但是 1和2 还没有 3响应
     * */
     import Input from "../input"
     import Popover from "../popover"
@@ -73,6 +91,12 @@
             Input,
             Popover,
             Icon,
+        },
+        watch: {
+            // 3响应：如果 showDate 变化，就执行更新 showArray 函数
+            showDate(){
+                this.updateShowArray()
+            }
         },
         methods:{
             initDate(dateObj){
@@ -136,13 +160,18 @@
                 if(itemMonth !== standardMonth){
                     return "greyColor"
                 }
+            },
+            updateShowArray(){
+                this.showArray = this.sliceArray(this.initDate(this.showDate), 7)
+            },
+            selectYear(e){
+                let selectYear = e.target.value - 0
+                let oldMonth = this.showDate.getMonth()
+                this.showDate = new Date(selectYear, oldMonth)
             }
         },
         mounted() {
             this.showDate = new Date()
-            console.log(this.showDate);
-            this.showArray = this.sliceArray(this.initDate(new Date()), 7)
-
         }
     }
 </script>
