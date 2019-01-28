@@ -20,6 +20,7 @@
     * 6。 问题： onClickDocument 函数需要参数 e ，但是我并没有传
     * 7。 问题：7next
     * 8.  优化： 使用对象来代替重复的if 8优化
+    * 9.  需求： 使用防抖，可以让用户的鼠标达到content
     * */
     export default {
         data(){
@@ -31,6 +32,10 @@
             position:{
                 type: String,
                 default: "bottom"
+            },
+            trigger:{
+                type: String,
+                default: "click",
             }
         },
         computed:{
@@ -39,11 +44,21 @@
             }
         },
         mounted() {
-            // 3监听： 为什么这样监听，为什么监听 popover 不是 toggleWrapper？？
-            this.$refs.toggleWrapper.addEventListener('click', this.onClickToggle)
+            if(this.trigger === "click"){
+                // 3监听： 为什么这样监听，为什么监听 popover 不是 toggleWrapper？？
+                this.$refs.toggleWrapper.addEventListener('click', this.onClickToggle)
+            } else {
+                this.$refs.toggleWrapper.addEventListener('mouseenter', this.showContent)
+                this.$refs.toggleWrapper.addEventListener('mouseleave', this.hideContent)
+            }
         },
         beforeDestroy(){
-            this.$refs.toggleWrapper.removeEventListener('click', this.onClickToggle)
+            if(this.trigger === "click"){
+                this.$refs.toggleWrapper.removeEventListener('click', this.onClickToggle)
+            } else {
+                this.$refs.toggleWrapper.removeEventListener('mouseenter', this.showContent)
+                this.$refs.toggleWrapper.removeEventListener('mouseleave', this.hideContent)
+            }
         },
         methods:{
             onClickToggle(){

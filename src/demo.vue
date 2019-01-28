@@ -236,7 +236,7 @@
 
 
         <div style="margin:300px">
-            <w-popover position="left">
+            <w-popover position="right" trigger="hover">
                 <w-button>popover</w-button>
                 <template slot="content">
                     <div>
