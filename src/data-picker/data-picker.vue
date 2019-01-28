@@ -10,7 +10,7 @@
                             <Icon icon-name="left"></Icon>
                         </span>
 
-                        <span class="date-container">
+                        <span class="date-container" @click="changeModel">
                             <!--1赋值2： 当 showDate 不为 null时才去获取年-->
                             <span class="year">{{showDate !== null && showDate.getFullYear()}}年</span>
                             <span class="month">{{showDate !== null && showDate.getMonth() + 1}}月</span>
@@ -20,22 +20,30 @@
                             <Icon icon-name="doubleright"></Icon>
                             <Icon icon-name="right"></Icon>
                         </span>
-                    </div>
+                    </div >
                     <div class="content-container">
-                        <div class="date-content">
-                            <div class="dateHeader">
-                                <span v-for="i in [0,1,2,3,4,5,6]">
-                                    {{chineseWeekName[i]}}
-                                </span>
-                            </div>
-                            <div class="date">
-                                <div v-for="array in showArray">
-                                    <span v-for="item in array">
-                                        {{item.getDate()}}
-                                    </span>
-                                </div>
-                            </div>
+                        <div class="date-content" v-if="showDay === true">
+                            <!--2距离-->
+                            <table cellspacing="10px">
+                                <thead>
+                                    <tr>
+                                        <th v-for="i in [0,1,2,3,4,5,6]">
+                                            {{chineseWeekName[i]}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="array in showArray">
+                                        <td v-for="item in array" :class="greyColor(item)">
+                                            <div>
+                                                {{item.getDate()}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <div class="month-content" v-else>月</div>
                     </div>
                 </div>
             </template>
@@ -46,6 +54,7 @@
 <script>
     /*
     * 1. 使用 date 值，注意使用赋值之后的 date 1赋值
+    * 2. table 上下 左右格子的距离 cellspacing cellpadding 2距离
     * */
     import Input from "../input"
     import Popover from "../popover"
@@ -56,7 +65,8 @@
                 showArray:[],
                 chineseWeekName: ["一", "二", "三", "四", "五", "六","日"],
                 // 1赋值1
-                showDate: null
+                showDate: null,
+                showDay: true  // year, month, day
             }
         },
         components:{
@@ -116,6 +126,16 @@
                     end += number
                 }
                 return newArray
+            },
+            changeModel(){
+                this.showDay = !this.showDay
+            },
+            greyColor(item){
+                let itemMonth = item.getMonth()
+                let standardMonth = this.showDate.getMonth()
+                if(itemMonth !== standardMonth){
+                    return "greyColor"
+                }
             }
         },
         mounted() {
@@ -132,18 +152,31 @@
     .header{
         display: flex;
         justify-content: space-between;
+        .left-container, .right-container{
+            svg{
+                cursor: pointer;
+                &:hover{
+                    color:$font-color-active;
+                }
+            }
+        }
+        .date-container{
+            cursor: pointer;
+            &:hover{
+                color:$font-color-active;
+            }
+        }
     }
     .content-container{
         .date-content{
-            .dateHeader{
-                display: flex;
-                justify-content: space-between;
-                span{
-                    padding: 2px 5px;
+            table tbody tr td{
+                text-align: center;
+                &:hover{
+                    cursor: pointer;
+                    background: $line-blue;
                 }
-            }
-            .date{
-                >div{
+                &.greyColor{
+                    color: rgba(0,0,0,0.25);;
                 }
             }
         }
