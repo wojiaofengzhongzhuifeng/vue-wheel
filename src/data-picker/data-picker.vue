@@ -11,8 +11,9 @@
                         </span>
 
                         <span class="date-container">
-                            <span class="year">xxx年</span>
-                            <span class="month">xx月</span>
+                            <!--1赋值2： 当 showDate 不为 null时才去获取年-->
+                            <span class="year">{{showDate !== null && showDate.getFullYear()}}年</span>
+                            <span class="month">{{showDate !== null && showDate.getMonth() + 1}}月</span>
                         </span>
 
                         <span class="right-container">
@@ -23,15 +24,16 @@
                     <div class="content-container">
                         <div class="date-content">
                             <div class="dateHeader">
-                                <span>一</span>
-                                <span>二</span>
-                                <span>三</span>
-                                <span>四</span>
-                                <span>五</span>
-                                <span>六</span>
-                                <span>日</span>
+                                <span v-for="i in [0,1,2,3,4,5,6]">
+                                    {{chineseWeekName[i]}}
+                                </span>
                             </div>
                             <div class="date">
+                                <div v-for="array in showArray">
+                                    <span v-for="item in array">
+                                        {{item.getDate()}}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -42,13 +44,19 @@
 </template>
 
 <script>
+    /*
+    * 1. 使用 date 值，注意使用赋值之后的 date 1赋值
+    * */
     import Input from "../input"
     import Popover from "../popover"
     import Icon from "../icon"
     export default {
         data(){
             return {
-                showDate:[]
+                showArray:[],
+                chineseWeekName: ["一", "二", "三", "四", "五", "六","日"],
+                // 1赋值1
+                showDate: null
             }
         },
         components:{
@@ -100,7 +108,6 @@
             sliceArray(array, number){
                 let newArray = []
                 let items = array.length / number
-                console.log(items)
                 let start = 0
                 let end = number
                 for(let i=0;i<items;i++){
@@ -112,10 +119,10 @@
             }
         },
         mounted() {
-            console.log(new Date());
-            this.showDate = this.initDate(new Date())
-            let test = this.sliceArray(this.showDate, 7)
-            console.log(test);
+            this.showDate = new Date()
+            console.log(this.showDate);
+            this.showArray = this.sliceArray(this.initDate(new Date()), 7)
+
         }
     }
 </script>
@@ -133,6 +140,10 @@
                 justify-content: space-between;
                 span{
                     padding: 2px 5px;
+                }
+            }
+            .date{
+                >div{
                 }
             }
         }
