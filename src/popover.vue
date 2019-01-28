@@ -18,6 +18,8 @@
     * 4。 改成 v-if 会报错， 怎么解决？？？ 4报错
     * 5。 好习惯： addeventlistener之后，需要removeeventlistener，需要思考时机
     * 6。 问题： onClickDocument 函数需要参数 e ，但是我并没有传
+    * 7。 问题：7next
+    * 8.  优化： 使用对象来代替重复的if 8优化
     * */
     export default {
         data(){
@@ -63,18 +65,59 @@
             },
             showContent(){
                 this.visible = true
-
-                this.positionContent()
-
-                document.body.addEventListener("click", this.onClickDocument)
+                // 7next： 为什么这里要next？？ 如果不next，
+                // const {width:contentWidth} = contentWrapper.getBoundingClientRect()
+                // width 是 0
+                this.$nextTick(()=>{
+                    this.positionContent()
+                    document.body.addEventListener("click", this.onClickDocument)
+                })
 
             },
             positionContent(){
                 document.body.appendChild(this.$refs.contentWrapper)
                 const {toggleWrapper,contentWrapper} = this.$refs
-                const {top, left,height} = toggleWrapper.getBoundingClientRect()
-                contentWrapper.style.top = top + height + "px"
-                contentWrapper.style.left = left + "px"
+                const {top, left,height, width} = toggleWrapper.getBoundingClientRect()
+                const {width:contentWidth} = contentWrapper.getBoundingClientRect()
+
+                // 8优化前
+                /*
+                if(contentWrapper.classList.contains("top")){
+                    contentWrapper.style.top = top - height +"px"
+                    contentWrapper.style.left = left + "px"
+                } else if (contentWrapper.classList.contains("bottom")){
+                    contentWrapper.style.top = top + height +"px"
+                    contentWrapper.style.left = left + "px"
+                } else if (contentWrapper.classList.contains("right")){
+                    contentWrapper.style.top = top + "px"
+                    contentWrapper.style.left = left + width + "px"
+                } else if (contentWrapper.classList.contains("left")){
+                    contentWrapper.style.top = top + "px"
+                    contentWrapper.style.left = left  - contentWidth + "px"
+                }
+                */
+
+                // 8优化后
+                const positionObj = {
+                    top: {
+                        top: top - height +"px",
+                        left: left + "px"
+                    },
+                    bottom: {
+                        top: top + height +"px",
+                        left: left + "px"
+                    },
+                    right: {
+                        top: top + "px",
+                        left: left + width + "px"
+                    },
+                    left: {
+                        top: top + "px",
+                        left: left  - contentWidth + "px"
+                    },
+                }
+                contentWrapper.style.top = positionObj[this.position].top
+                contentWrapper.style.left = positionObj[this.position].left
             }
         }
     }
@@ -93,33 +136,72 @@
             border-radius: 4px;
             padding: 5px 16px;
             position: absolute;
-            margin-top: 10px;
-        }
-        &-content::before{
-            content: '';
-            display: block;
-            border-top: 7px solid transparent;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-bottom: 7px solid rgba(0, 0, 0, 0.15);
-            position: absolute;
-        }
-        &-content::after{
-            content: '';
-            display: block;
-            border-top: 7px solid transparent;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-bottom: 7px solid white;
-            position: absolute;
-        }
-        &-content.bottom::before{
-            top: -13px;
-            left: 23px;
-        }
-        &-content.bottom::after{
-            top: -13px;
-            left: 23px;
+            &::before{
+                content: '';
+                display: block;
+                border-top: 7px solid transparent;
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 7px solid rgba(0, 0, 0, 0.15);
+                position: absolute;
+            }
+            &::after{
+                content: '';
+                display: block;
+                border-top: 7px solid transparent;
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 7px solid white;
+                position: absolute;
+            }
+            &.bottom{
+                margin-top: 10px;
+            }
+            &.bottom::after{
+                bottom: 100%
+            }
+            &.bottom::before{
+                bottom: 100%
+            }
+            &.top{
+                margin-top: -10px;
+            }
+            &.top::after{
+                border-top: 7px solid white;
+                border-bottom: 7px solid transparent;
+                top: 100%;
+            }
+            &.top::before{
+                border-top: 7px solid rgba(0, 0, 0, 0.15);
+                border-bottom: 7px solid transparent;
+                top: 100%;
+            }
+            &.right{
+                margin-left: 10px;
+            }
+            &.right::after{
+                border-right: 7px solid white;
+                border-bottom: 7px solid transparent;
+                right:100%
+            }
+            &.right::before{
+                border-right: 7px solid rgba(0, 0, 0, 0.15);
+                border-bottom: 7px solid transparent;
+                right:100%;
+            }
+            &.left{
+                margin-left: -10px;
+            }
+            &.left::after{
+                border-left: 7px solid white;
+                border-bottom: 7px solid transparent;
+                left:100%
+            }
+            &.left::before{
+                border-left: 7px solid rgba(0, 0, 0, 0.15);
+                border-bottom: 7px solid transparent;
+                left:100%;
+            }
         }
     }
 </style>

@@ -235,8 +235,8 @@
         <!--</div>-->
 
 
-        <div style="margin:100px">
-            <w-popover position="bottom">
+        <div style="margin:300px">
+            <w-popover position="right">
                 <w-button>popover</w-button>
                 <template slot="content">
                     <div>
