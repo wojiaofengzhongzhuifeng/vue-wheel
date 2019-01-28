@@ -5,7 +5,8 @@
         </div>
         <!--4报错-->
         <div class="popover-content" :class="classes" v-show="visible" ref="contentWrapper">
-            <slot name="content"></slot>
+            <!--10获取1： 在slot添加数据-->
+            <slot name="content" :close="hideContent"></slot>
         </div>
     </div>
 </template>
@@ -21,6 +22,7 @@
     * 7。 问题：7next
     * 8.  优化： 使用对象来代替重复的if 8优化
     * 9.  需求： 使用防抖，可以让用户的鼠标达到content 9防抖
+    * 10。 想从子组件获取数据 10获取
     * */
     export default {
         data(){

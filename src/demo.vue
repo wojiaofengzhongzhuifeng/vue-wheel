@@ -236,6 +236,14 @@
 
 
         <div style="margin:300px">
+            <w-popover position="top" trigger="hover">
+                <w-button>popover</w-button>
+                <template slot="content">
+                    <div>
+                        这里是popover的内容
+                    </div>
+                </template>
+            </w-popover>
             <w-popover position="right" trigger="hover">
                 <w-button>popover</w-button>
                 <template slot="content">
@@ -244,7 +252,26 @@
                     </div>
                 </template>
             </w-popover>
+            <w-popover position="left" trigger="hover">
+                <w-button>popover</w-button>
+                <template slot="content">
+                    <div>
+                        这里是popover的内容
+                    </div>
+                </template>
+            </w-popover>
+            <w-popover position="bottom" trigger="hover">
+                <w-button>popover</w-button>
+                <!--10获取2: 在template中写slot-scope="slotProps"-->
+                <template slot="content" slot-scope="slotProps">
+                    <div>
+                        这里是popover的内容
+                        <w-button @click="slotProps.close">关闭</w-button>
+                    </div>
+                </template>
+            </w-popover>
         </div>
+
 
     </div>
 </template>
@@ -494,6 +521,9 @@
                     this.loading = false
 
                 }, 2000)
+            },
+            onClosePopoverContent(){
+                console.log("onClosePopoverContent");
             }
         },
         mounted() {
