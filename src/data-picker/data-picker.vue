@@ -66,7 +66,7 @@
                 chineseWeekName: ["一", "二", "三", "四", "五", "六","日"],
                 // 1赋值1
                 showDate: null,
-                showDay: true  // year, month, day
+                showDay: true,  // year, month, day
             }
         },
         components:{
@@ -179,6 +179,10 @@
                     color: rgba(0,0,0,0.25);;
                 }
             }
+        }
+        .month-content{
+            width:234px;
+            height:248px;
         }
     }
 </style>
