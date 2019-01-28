@@ -96,12 +96,26 @@
                     thisMonthDate.push(new Date(nextMonthFirstDateObjYear, nextMonthFirstDateObjMonth, i))
                 }
                 return thisMonthDate
+            },
+            sliceArray(array, number){
+                let newArray = []
+                let items = array.length / number
+                console.log(items)
+                let start = 0
+                let end = number
+                for(let i=0;i<items;i++){
+                    newArray.push(array.slice(start, end))
+                    start = end
+                    end += number
+                }
+                return newArray
             }
         },
         mounted() {
             console.log(new Date());
             this.showDate = this.initDate(new Date())
-            console.log(this.showDate);
+            let test = this.sliceArray(this.showDate, 7)
+            console.log(test);
         }
     }
 </script>
