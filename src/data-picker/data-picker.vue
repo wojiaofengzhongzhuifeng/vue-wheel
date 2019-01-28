@@ -45,19 +45,16 @@
                         </div>
                         <div class="month-content" v-else>
                             <div class="year-selection">
-                                <select @change="selectYear">
-                                    <option value="2011">2011</option>
-                                    <option value="2012">2012</option>
-                                    <option value="2013">2013</option>
-                                    <option value="2014">2014</option>
-                                    <option value="2015">2015</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
+                                <select @change="onSelectYear">
+                                    <option :value="year" v-for="year in selectYear(this.showDate.getFullYear())">
+                                        {{year}}
+                                    </option>
+                                </select>
+
+                                <select @change="onSelectMonth">
+                                    <option :value="month" v-for="month in monthItems">
+                                        {{month + 1}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -85,6 +82,7 @@
                 // 1赋值1
                 showDate: null,
                 showDay: true,  // year, month, day
+                monthItems: [0,1,2,3,4,5,6,7,8,9,10,11]
             }
         },
         components:{
@@ -164,10 +162,27 @@
             updateShowArray(){
                 this.showArray = this.sliceArray(this.initDate(this.showDate), 7)
             },
-            selectYear(e){
+            onSelectYear(e){
                 let selectYear = e.target.value - 0
                 let oldMonth = this.showDate.getMonth()
                 this.showDate = new Date(selectYear, oldMonth)
+                this.showDay = true
+
+            },
+            onSelectMonth(e){
+                let selectMonth = e.target.value - 0
+                let oldYear = this.showDate.getFullYear()
+                this.showDate = new Date(oldYear, selectMonth)
+                this.showDay = true
+            },
+            selectYear(year){
+                let start = year - 5
+                let end = year + 5
+                let yearItems = []
+                for(let i = start;i<=end;i++){
+                    yearItems.push(i)
+                }
+                return yearItems
             }
         },
         mounted() {
