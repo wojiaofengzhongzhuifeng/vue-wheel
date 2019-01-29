@@ -8,7 +8,6 @@
                @focus="$emit('focus', $event)"
                @blur="$emit('blur', $event)"
                :value="value"
-               :readonly="value"
         >
         <template v-if="icon">
             <w-icon :icon-name="icon.name"></w-icon>

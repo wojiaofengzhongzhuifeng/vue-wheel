@@ -1,7 +1,7 @@
 <template>
     <div class="dataPickerWrapper" style="border:1px solid red">
         <Popover position="bottom" trigger="click" @openContent="openContent">
-            <Input :value="dateString"/>
+            <Input :value="dateString" @input="onInputDate"/>
             <template slot="content" slot-scope="slotProps">
                 <div class="popover-container">
                     <div class="header">
@@ -125,11 +125,22 @@
                 }
             },
             dateString(){
-
                 return this.selectDate && `${this.selectDate.getFullYear()}-${this.selectDate.getMonth() + 1}-${this.selectDate.getDate()}`
             }
         },
         methods:{
+            onInputDate(e){
+                console.log(e.target.value);
+                let value = e.target.value
+                let reg = /^\d{4}-\d{1,2}-\d{1,2}$/g
+                if(value.match(reg)){
+                    let dateArray = value.split("-")
+                    let year = dateArray[0] - 0
+                    let month = dateArray[1] - 1
+                    let day = dateArray[2] - 0
+                    this.selectDate = new Date(year, month, day)
+                }
+            },
             generateContinuousArray(start, end){
                 let monthItems = []
                 for(let i = start;i<=end;i++){
