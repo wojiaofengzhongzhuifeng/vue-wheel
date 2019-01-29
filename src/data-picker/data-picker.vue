@@ -46,13 +46,13 @@
                         <div class="month-content" v-else>
                             <div class="year-selection">
                                 <select @change="onSelectYear">
-                                    <option :value="year" v-for="year in selectYear(this.showDate.getFullYear())">
+                                    <option :value="year" v-for="year in selectYear(this.showDate.getFullYear())" :selected="defaultYear(year)">
                                         {{year}}
                                     </option>
                                 </select>
 
                                 <select @change="onSelectMonth">
-                                    <option :value="month" v-for="month in monthItems">
+                                    <option :value="month" v-for="month in monthItems" :selected="defaultMonth(month)">
                                         {{month + 1}}
                                     </option>
                                 </select>
@@ -183,6 +183,16 @@
                     yearItems.push(i)
                 }
                 return yearItems
+            },
+            defaultYear(yearItem){
+                if(yearItem === this.showDate.getFullYear()){
+                    return true
+                }
+            },
+            defaultMonth(monthItem){
+                if(monthItem === this.showDate.getMonth()){
+                    return true
+                }
             }
         },
         mounted() {
