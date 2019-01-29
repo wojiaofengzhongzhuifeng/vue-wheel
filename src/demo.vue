@@ -231,7 +231,7 @@
 
 
         <div style="margin: 100px; height:100px;">
-            <w-data-picker />
+            <w-data-picker :scope="[new Date(2000,3), new Date(2020, 4)]"/>
         </div>
 
 

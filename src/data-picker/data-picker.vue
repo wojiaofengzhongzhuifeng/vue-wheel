@@ -52,7 +52,7 @@
                                 </select>
 
                                 <select @change="onSelectMonth">
-                                    <option :value="month" v-for="month in monthItems" :selected="defaultMonth(month)">
+                                    <option :value="month" v-for="month in selectMonth" :selected="defaultMonth(month)">
                                         {{month + 1}}
                                     </option>
                                 </select>
@@ -75,6 +75,12 @@
     import Popover from "../popover"
     import Icon from "../icon"
     export default {
+        props:{
+            scope:{
+                type: Array,
+                default: ()=>[],
+            }
+        },
         data(){
             return {
                 showArray:[],
@@ -82,7 +88,6 @@
                 // 1赋值1
                 showDate: null,
                 showDay: true,  // year, month, day
-                monthItems: [0,1,2,3,4,5,6,7,8,9,10,11]
             }
         },
         components:{
@@ -96,7 +101,32 @@
                 this.updateShowArray()
             }
         },
+        computed:{
+            selectMonth(){
+                let thisYear = this.showDate.getFullYear()
+                let startDate =  this.scope[0]
+                let endDate =  this.scope[1]
+                if(thisYear === startDate.getFullYear()){
+                    let start = startDate.getMonth()
+                    let end = 11
+                    return this.generateContinuousArray(start, end)
+                } else if (thisYear === endDate.getFullYear()){
+                    let start = 1
+                    let end = endDate.getMonth()
+                    return this.generateContinuousArray(start, end)
+                } else {
+                    return [0,1,2,3,4,5,6,7,8,9,10,11]
+                }
+            },
+        },
         methods:{
+            generateContinuousArray(start, end){
+                let monthItems = []
+                for(let i = start;i<=end;i++){
+                    monthItems.push(i)
+                }
+                return monthItems
+            },
             initDate(dateObj){
                 // 获取目前的年月
                 let nowDate = dateObj ||new Date()
@@ -164,7 +194,19 @@
             },
             onSelectYear(e){
                 let selectYear = e.target.value - 0
-                let oldMonth = this.showDate.getMonth()
+                let oldMonth
+                if(this.scope.length === 0){
+                    oldMonth = this.showDate.getMonth()
+                } else {
+                    // 有年月限制
+                    if(selectYear === this.scope[0].getFullYear()){
+                        oldMonth = this.scope[0].getMonth()
+                    } else if (selectYear === this.scope[1].getFullYear()){
+                        oldMonth = this.scope[1].getMonth()
+                    } else {
+                        oldMonth = this.showDate.getMonth()
+                    }
+                }
                 this.showDate = new Date(selectYear, oldMonth)
                 this.showDay = true
 
@@ -176,13 +218,15 @@
                 this.showDay = true
             },
             selectYear(year){
-                let start = year - 5
-                let end = year + 5
-                let yearItems = []
-                for(let i = start;i<=end;i++){
-                    yearItems.push(i)
+                if(this.scope.length === 0){
+                    let start = year - 5
+                    let end = year + 5
+                    return this.generateContinuousArray(start, end)
+                } else {
+                    let start = this.scope[0].getFullYear()
+                    let end = this.scope[1].getFullYear()
+                    return this.generateContinuousArray(start, end)
                 }
-                return yearItems
             },
             defaultYear(yearItem){
                 if(yearItem === this.showDate.getFullYear()){
