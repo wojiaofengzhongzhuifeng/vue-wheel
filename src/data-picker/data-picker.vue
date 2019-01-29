@@ -46,7 +46,7 @@
                         <div class="month-content" v-else>
                             <div class="year-selection">
                                 <select @change="onSelectYear">
-                                    <option :value="year" v-for="year in selectYear(this.showMonthAllDate.getFullYear())" :selected="defaultYear(year)">
+                                    <option :value="year" v-for="year in selectYear(showMonthAllDate.getFullYear())" :selected="defaultYear(year)">
                                         {{year}}
                                     </option>
                                 </select>
@@ -104,19 +104,23 @@
         },
         computed:{
             selectMonth(){
-                let thisYear = this.showMonthAllDate.getFullYear()
-                let startDate =  this.scope[0]
-                let endDate =  this.scope[1]
-                if(thisYear === startDate.getFullYear()){
-                    let start = startDate.getMonth()
-                    let end = 11
-                    return this.generateContinuousArray(start, end)
-                } else if (thisYear === endDate.getFullYear()){
-                    let start = 1
-                    let end = endDate.getMonth()
-                    return this.generateContinuousArray(start, end)
-                } else {
+                if(this.scope.length === 0){
                     return [0,1,2,3,4,5,6,7,8,9,10,11]
+                } else {
+                    let thisYear = this.showMonthAllDate && this.showMonthAllDate.getFullYear()
+                    let startDate =  this.scope[0]
+                    let endDate =  this.scope[1]
+                    if(thisYear === startDate.getFullYear()){
+                        let start = startDate.getMonth()
+                        let end = 11
+                        return this.generateContinuousArray(start, end)
+                    } else if (thisYear === endDate.getFullYear()){
+                        let start = 1
+                        let end = endDate.getMonth()
+                        return this.generateContinuousArray(start, end)
+                    } else {
+                        return [0,1,2,3,4,5,6,7,8,9,10,11]
+                    }
                 }
             },
             dateString(){
