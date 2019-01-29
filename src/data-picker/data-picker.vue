@@ -6,19 +6,19 @@
                 <div class="popover-container">
                     <div class="header">
                         <span class="left-container">
-                            <Icon icon-name="doubleleft"></Icon>
-                            <Icon icon-name="left"></Icon>
+                            <Icon icon-name="doubleleft" @click="changeMonthAllDate('before', 'year')"></Icon>
+                            <Icon icon-name="left"  @click="changeMonthAllDate('before', 'month')"></Icon>
                         </span>
 
                         <span class="date-container" @click="changeModel">
                             <!--1赋值2： 当 selectDate 不为 null时才去获取年-->
-                            <span class="year">{{selectDate !== null && selectDate.getFullYear()}}年</span>
-                            <span class="month">{{selectDate !== null && selectDate.getMonth() + 1}}月</span>
+                            <span class="year">{{showMonthAllDate !== null && showMonthAllDate.getFullYear()}}年</span>
+                            <span class="month">{{showMonthAllDate !== null && showMonthAllDate.getMonth() + 1}}月</span>
                         </span>
 
                         <span class="right-container">
-                            <Icon icon-name="doubleright"></Icon>
-                            <Icon icon-name="right"></Icon>
+                            <Icon icon-name="right" @click="changeMonthAllDate('next', 'month')"></Icon>
+                            <Icon icon-name="doubleright" @click="changeMonthAllDate('next', 'year')"></Icon>
                         </span>
                     </div >
                     <div class="content-container">
@@ -46,7 +46,7 @@
                         <div class="month-content" v-else>
                             <div class="year-selection">
                                 <select @change="onSelectYear">
-                                    <option :value="year" v-for="year in selectYear(this.selectDate.getFullYear())" :selected="defaultYear(year)">
+                                    <option :value="year" v-for="year in selectYear(this.showMonthAllDate.getFullYear())" :selected="defaultYear(year)">
                                         {{year}}
                                     </option>
                                 </select>
@@ -88,6 +88,7 @@
                 // 1赋值1
                 selectDate: null,
                 showDay: true,  // year, month, day
+                showMonthAllDate: null,
             }
         },
         components:{
@@ -97,13 +98,13 @@
         },
         watch: {
             // 3响应：如果 selectDate 变化，就执行更新 showArray 函数
-            selectDate(){
+            showMonthAllDate(){
                 this.updateShowArray()
             }
         },
         computed:{
             selectMonth(){
-                let thisYear = this.selectDate.getFullYear()
+                let thisYear = this.showMonthAllDate.getFullYear()
                 let startDate =  this.scope[0]
                 let endDate =  this.scope[1]
                 if(thisYear === startDate.getFullYear()){
@@ -188,19 +189,19 @@
             },
             greyColor(item){
                 let itemMonth = item.getMonth()
-                let standardMonth = this.selectDate.getMonth()
+                let standardMonth = this.showMonthAllDate.getMonth()
                 if(itemMonth !== standardMonth){
                     return "greyColor"
                 }
             },
             updateShowArray(){
-                this.showArray = this.sliceArray(this.initDate(this.selectDate), 7)
+                this.showArray = this.sliceArray(this.initDate(this.showMonthAllDate), 7)
             },
             onSelectYear(e){
                 let selectYear = e.target.value - 0
                 let oldMonth
                 if(this.scope.length === 0){
-                    oldMonth = this.selectDate.getMonth()
+                    oldMonth = this.showMonthAllDate.getMonth()
                 } else {
                     // 有年月限制
                     if(selectYear === this.scope[0].getFullYear()){
@@ -208,17 +209,17 @@
                     } else if (selectYear === this.scope[1].getFullYear()){
                         oldMonth = this.scope[1].getMonth()
                     } else {
-                        oldMonth = this.selectDate.getMonth()
+                        oldMonth = this.showMonthAllDate.getMonth()
                     }
                 }
-                this.selectDate = new Date(selectYear, oldMonth)
+                this.showMonthAllDate = new Date(selectYear, oldMonth)
                 this.showDay = true
 
             },
             onSelectMonth(e){
                 let selectMonth = e.target.value - 0
-                let oldYear = this.selectDate.getFullYear()
-                this.selectDate = new Date(oldYear, selectMonth)
+                let oldYear = this.showMonthAllDate.getFullYear()
+                this.showMonthAllDate = new Date(oldYear, selectMonth)
                 this.showDay = true
             },
             selectYear(year){
@@ -233,12 +234,12 @@
                 }
             },
             defaultYear(yearItem){
-                if(yearItem === this.selectDate.getFullYear()){
+                if(yearItem === this.showMonthAllDate.getFullYear()){
                     return true
                 }
             },
             defaultMonth(monthItem){
-                if(monthItem === this.selectDate.getMonth()){
+                if(monthItem === this.showMonthAllDate.getMonth()){
                     return true
                 }
             },
@@ -255,10 +256,25 @@
                 ){
                     return "selected"
                 }
+            },
+            changeMonthAllDate(action, format){
+                const nowShowMonthAllDate = this.showMonthAllDate
+                const nowShowMonth = nowShowMonthAllDate.getMonth()
+                const nowShowYear = nowShowMonthAllDate.getFullYear()
+                if(format === 'month' && action === 'next'){
+                    this.showMonthAllDate = new Date(nowShowYear, nowShowMonth + 1)
+                } else if (format === 'month' && action === 'before'){
+                    this.showMonthAllDate = new Date(nowShowYear, nowShowMonth - 1)
+                } else if (format === 'year' && action === 'before'){
+                    this.showMonthAllDate = new Date(nowShowYear - 1, nowShowMonth)
+                } else if (format === 'year' && action === 'next'){
+                    this.showMonthAllDate = new Date(nowShowYear + 1, nowShowMonth)
+                }
             }
         },
         mounted() {
             this.selectDate = new Date()
+            this.showMonthAllDate = new Date()
         }
     }
 </script>
