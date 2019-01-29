@@ -23,6 +23,7 @@
     * 8.  优化： 使用对象来代替重复的if 8优化
     * 9.  需求： 使用防抖，可以让用户的鼠标达到content 9防抖
     * 10。 想从子组件获取数据 10获取
+    * 11。 当popover浮层打开的时候，使用组件的地方要知道浮层打开了 11浮层
     * */
     export default {
         data(){
@@ -106,6 +107,8 @@
             },
             showContent(){
                 this.visible = true
+                //11浮层1
+                this.$emit("openContent")
                 // 7next： 为什么这里要next？？ 如果不next，
                 // const {width:contentWidth} = contentWrapper.getBoundingClientRect()
                 // width 是 0

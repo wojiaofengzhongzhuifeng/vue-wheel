@@ -1,6 +1,6 @@
 <template>
     <div class="dataPickerWrapper" style="border:1px solid red">
-        <Popover position="bottom" trigger="click">
+        <Popover position="bottom" trigger="click" @openContent="openContent">
             <Input :value="dateString"/>
             <template slot="content" slot-scope="slotProps">
                 <div class="popover-container">
@@ -70,6 +70,7 @@
     * 1. 使用 date 值，注意使用赋值之后的 date 1赋值
     * 2. table 上下 左右格子的距离 cellspacing cellpadding 2距离
     * 3. 数据响应式 1.selectDate -> 2.showArray -> 3.ui    其中 2和3 已经保持了数据响应，但是 1和2 还没有 3响应
+    * 4.
     * */
     import Input from "../input"
     import Popover from "../popover"
@@ -274,6 +275,10 @@
                 } else if (format === 'year' && action === 'next'){
                     this.showMonthAllDate = new Date(nowShowYear + 1, nowShowMonth)
                 }
+            },
+            //11浮层2： data-pick组件需要知道popover的content是否打开
+            openContent(){
+                this.showDay = true
             }
         },
         mounted() {
@@ -310,12 +315,15 @@
                 &:hover{
                     cursor: pointer;
                     background: $line-blue;
+                    color:white;
                 }
                 &.greyColor{
                     color: rgba(0,0,0,0.25);;
                 }
                 &.selected{
                     background: $line-blue;
+                    color:white;
+
                 }
             }
         }
