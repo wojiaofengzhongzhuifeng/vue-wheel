@@ -408,7 +408,7 @@
                     score: ""
                 },
                 loading: false,
-                selectDate: null,
+                selectDate: "",
             }
         },
 
@@ -505,7 +505,8 @@
             },
             getSelectDate(date){
                 console.log(date);
-                this.selectDate = date
+                const selectDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+                this.selectDate = selectDate
             }
         },
         mounted() {
