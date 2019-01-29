@@ -231,7 +231,8 @@
 
 
         <div style="margin: 100px; height:100px;">
-            <w-data-picker :scope="[new Date(2000,3), new Date(2020, 4)]"/>
+            <div> picker 组件外部知道picker选择的是{{this.selectDate}} </div>
+            <w-data-picker :scope="[new Date(2000,3), new Date(2020, 4)]" @change="getSelectDate"/>
         </div>
 
 
@@ -406,7 +407,8 @@
                 sorter: {
                     score: ""
                 },
-                loading: false
+                loading: false,
+                selectDate: null,
             }
         },
 
@@ -500,6 +502,10 @@
             },
             onClosePopoverContent(){
                 console.log("onClosePopoverContent");
+            },
+            getSelectDate(date){
+                console.log(date);
+                this.selectDate = date
             }
         },
         mounted() {
