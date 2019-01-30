@@ -130,7 +130,6 @@
         },
         methods:{
             onInputDate(e){
-                console.log(e.target.value);
                 let value = e.target.value
                 let reg = /^\d{4}-\d{1,2}-\d{1,2}$/g
                 if(value.match(reg)){
