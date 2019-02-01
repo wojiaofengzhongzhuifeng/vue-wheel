@@ -230,10 +230,10 @@
         <!--</div>-->
 
 
-        <div style="margin: 100px; height:100px;">
-            <div> picker 组件外部知道picker选择的是{{this.selectDate}} </div>
-            <w-data-picker :scope="[new Date(2000,3), new Date(2020, 4)]" @change="getSelectDate"/>
-        </div>
+        <!--<div style="margin: 100px; height:100px;">-->
+            <!--<div> picker 组件外部知道picker选择的是{{this.selectDate}} </div>-->
+            <!--<w-data-picker :scope="[new Date(2000,3), new Date(2020, 4)]" @change="getSelectDate"/>-->
+        <!--</div>-->
 
 
         <!--<div style="margin:300px">-->
@@ -248,6 +248,10 @@
                 <!--</template>-->
             <!--</w-popover>-->
         <!--</div>-->
+
+
+
+        <w-upload></w-upload>
 
 
     </div>
@@ -289,6 +293,7 @@
     import Table from "./table"
     import Sticky from "./sticky"
     import DataPicker from "./data-picker/data-picker"
+    import UpLoad from "./upload"
 
     // 1思路2： 如果使用use方法， 会执行 Plugin 导出对象的 install 函数，该函数为 vue 追加一个$toast方法， 以便后续可以调用。
     Vue.use(toastPlugin);
@@ -322,6 +327,7 @@
     Vue.component("w-table", Table);
     Vue.component("w-sticky", Sticky)
     Vue.component("w-data-picker", DataPicker)
+    Vue.component("w-upload", UpLoad)
 
 
 
